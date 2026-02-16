@@ -24,31 +24,31 @@
             </div>
         </div>
     </header>
-    <section class="hero-banner">
-    <div class="banner-content">
-        <span class="badge">✨ #1 Cleaning Service App</span>
-        <h1>Your Space, <br> <span>Our Sparkle.</span></h1>
-        <p>Book the best cleaning service with just a tap. Professional, reliable, and instant.</p>
-        <div class="banner-buttons">
-            <a href="#calculator" class="btn-primary">Get Instant Quote</a>
-            <a href="#" class="btn-outline">Watch Demo</a>
-        </div>
-    </div>
-    <div class="banner-image">
-        <img src="HTML/assets/images/banner.jpg" alt="Professional Cleaning" onerror="this.src='https://via.placeholder.com/500x400'">
-    </div>
-</section>
 
+    <section class="hero-banner container">
+        <div class="banner-content">
+            <span class="badge">✨ #1 Cleaning Service App</span>
+            <h1>Your Space, <br> <span>Our Sparkle.</span></h1>
+            <p>Book the best cleaning service with just a tap. Professional, reliable, and instant.</p>
+            <div class="banner-buttons">
+                <a href="#calculator" class="btn-primary">Get Instant Quote</a>
+                <a href="#" class="btn-outline">Watch Demo</a>
+            </div>
+        </div>
+        <div class="banner-image">
+            <img src="http://googleusercontent.com/image_collection/image_retrieval/10874950346856831326_0" alt="Professional Cleaning Service" onerror="this.src='https://via.placeholder.com/600x400'">
+        </div>
+    </section>
 
     <main class="container">
-        <div class="hero-wrapper">
+        <div id="calculator" class="hero-wrapper">
             <div class="hero-text">
                 <h1>Professional Cleaning <span>Made Simple.</span></h1>
                 <p>Experience our interactive app to calculate your cleaning cost instantly.</p>
                 
                 <div class="gallery-grid" style="display: flex; gap: 10px; margin-top: 20px;">
-                    <img src="HTML/assets/images/before.jpg" alt="Before" style="width:48%; border-radius:15px; border: 2px solid #eee;">
-                    <img src="HTML/assets/images/after.jpg" alt="After" style="width:48%; border-radius:15px; border: 2px solid #eee;">
+                    <img src="HTML/assets/images/before.jpg" alt="Before" style="width:48%; border-radius:15px; border: 2px solid #eee;" onerror="this.src='https://via.placeholder.com/300x200?text=Before'">
+                    <img src="HTML/assets/images/after.jpg" alt="After" style="width:48%; border-radius:15px; border: 2px solid #eee;" onerror="this.src='https://via.placeholder.com/300x200?text=After'">
                 </div>
             </div>
 
@@ -69,7 +69,7 @@
                     <p>Estimated Total</p>
                     <h2>$<span id="priceValue">0</span></h2>
                 </div>
-                <button class="btn-checkout">Book Now</button>
+                <button class="btn-checkout" id="bookBtn">Book Now</button>
             </div>
         </div>
     </main>

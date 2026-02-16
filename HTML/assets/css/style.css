@@ -79,6 +79,57 @@ body {
 
 /* --- Dark Mode Toggle Styling --- */
 
+/* --- Hero Banner Responsive Design --- */
+.hero-banner {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically on mobile devices */
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--price-bg); /* Soft background color to highlight the banner */
+    border-radius: 24px;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+}
+
+.hero-banner h1 {
+    font-size: 2.5rem; /* Optimized font size for mobile readability */
+    line-height: 1.2;
+    margin-bottom: 15px;
+    font-weight: 900;
+}
+
+.hero-banner p {
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto 20px auto;
+    opacity: 0.9;
+}
+
+.banner-image img {
+    width: 100%;
+    max-width: 380px; /* Constrains image size for better mobile UI */
+    margin-top: 25px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+/* Desktop Adjustment */
+@media (min-width: 992px) {
+    .hero-banner {
+        flex-direction: row; /* Side-by-side layout for larger screens */
+        text-align: left;
+        padding: 60px;
+        align-items: center;
+    }
+    
+    .hero-banner h1 {
+        font-size: 3.5rem;
+    }
+}
+
+
+
 @media (max-width: 600px) {
     .hero-banner h1 {
         font-size: 32px !important; /* تصغير العنوان ليناسب شاشة الموبايل */

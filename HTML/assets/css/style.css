@@ -78,6 +78,19 @@ body {
 .brand-logo span { color: var(--primary); }
 
 /* --- Dark Mode Toggle Styling --- */
+
+@media (max-width: 600px) {
+    .hero-banner h1 {
+        font-size: 32px !important; /* تصغير العنوان ليناسب شاشة الموبايل */
+    }
+    .hero-text h1 {
+        font-size: 28px !important;
+    }
+    .banner-buttons {
+        flex-direction: column; /* ترتيب الأزرار تحت بعضها في الموبايل */
+    }
+}
+
 .theme-switch-wrapper {
     display: flex;
     align-items: center;

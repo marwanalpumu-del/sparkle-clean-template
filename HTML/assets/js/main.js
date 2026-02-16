@@ -1,50 +1,5 @@
-/**
- * SparkleClean Engine
- * Handles real-time price calculation and payment simulation.
- * All code written in English for professional standards.
- */
-
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // Select input elements
-    const inputArea = document.getElementById('inputArea');
-    const selectService = document.getElementById('selectService');
-    const priceValue = document.getElementById('priceValue');
-
-    /**
-     * Calculation Function
-     * Multiplies square meters by service rate
-     */
-    window.calculatePrice = () => {
-        const area = parseFloat(inputArea.value) || 0;
-        const rate = parseFloat(selectService.value);
-        const total = (area * rate).toFixed(2);
-        
-        // Update the UI
-        priceValue.innerText = total;
-    };
-
-    /**
-     * Payment Handler
-     * Simulates a redirect to a payment gateway
-     */
-    window.handlePayment = () => {
-        const finalPrice = priceValue.innerText;
-
-        if (parseFloat(finalPrice) <= 0) {
-            alert("Please enter a valid area size first.");
-            return;
-        }
-
-        // Professional redirect simulation (e.g., to PayPal)
-        const merchantEmail = "your-business@example.com";
-        const paymentUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${merchantEmail}&amount=${finalPrice}&currency_code=USD&item_name=Home_Cleaning_Service`;
-
-        alert(`Processing your payment of $${finalPrice}...`);
-        window.open(paymentUrl, '_blank');
-    };
-});
-const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+// 1. Dark Mode Logic
+const toggleSwitch = document.querySelector('#checkbox');
 const modeText = document.getElementById('mode-text');
 
 function switchTheme(e) {
@@ -53,8 +8,31 @@ function switchTheme(e) {
         modeText.innerText = "Dark Mode On";
     } else {
         document.documentElement.setAttribute('data-theme', 'light');
-        modeText.innerText = "Enable Dark Mode";
+        modeText.innerText = "Light Mode";
     }    
 }
-
 toggleSwitch.addEventListener('change', switchTheme, false);
+
+// 2. Calculator Logic
+function calculatePrice() {
+    const area = document.getElementById('inputArea').value;
+    const servicePrice = document.getElementById('selectService').value;
+    const priceDisplay = document.getElementById('priceValue');
+
+    if (area > 0) {
+        const total = area * servicePrice;
+        priceDisplay.innerText = total.toLocaleString(); // Format number with commas
+    } else {
+        priceDisplay.innerText = "0";
+    }
+}
+
+// 3. Booking Button Logic
+document.querySelector('.btn-checkout').addEventListener('click', function() {
+    const total = document.getElementById('priceValue').innerText;
+    if(total !== "0") {
+        alert("Success! Your booking estimate is $" + total);
+    } else {
+        alert("Please enter area size first.");
+    }
+});

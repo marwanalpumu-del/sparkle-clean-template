@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparkleClean | Premium Cleaning Services</title>
+    <title>SparkleClean | Interactive Cleaning App</title>
     <link rel="stylesheet" href="HTML/assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <header class="main-header">
         <div class="container navbar">
             <a href="#" class="brand-logo">
                 <div class="logo-icon">✨</div> Sparkle<span>Clean</span>
             </a>
+            
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+                <small id="mode-text">Light Mode</small>
+            </div>
         </div>
     </header>
 
@@ -20,22 +29,32 @@
         <div class="hero-wrapper">
             <div class="hero-text">
                 <h1>Professional Cleaning <span>Made Simple.</span></h1>
-                <p>Book your service with our interactive calculator.</p>
+                <p>Experience our interactive app to calculate your cleaning cost instantly.</p>
+                
                 <div class="gallery-grid" style="display: flex; gap: 10px; margin-top: 20px;">
-                    <img src="HTML/assets/images/before.jpg" alt="Before" style="width:45%; border-radius:10px;">
-                    <img src="HTML/assets/images/after.jpg" alt="After" style="width:45%; border-radius:10px;">
+                    <img src="HTML/assets/images/before.jpg" alt="Before" style="width:48%; border-radius:15px; border: 2px solid #eee;">
+                    <img src="HTML/assets/images/after.jpg" alt="After" style="width:48%; border-radius:15px; border: 2px solid #eee;">
                 </div>
             </div>
 
             <div class="calc-card">
-                <input type="number" id="inputArea" placeholder="Area size" oninput="calculatePrice()">
-                <select id="selectService" onchange="calculatePrice()">
-                    <option value="10">Basic ($10)</option>
-                    <option value="25">Deep ($25)</option>
-                </select>
+                <div class="form-group">
+                    <label>Area Size (m²)</label>
+                    <input type="number" id="inputArea" placeholder="e.g. 120" oninput="calculatePrice()">
+                </div>
+                <div class="form-group">
+                    <label>Service Type</label>
+                    <select id="selectService" onchange="calculatePrice()">
+                        <option value="10">Basic Cleaning ($10/m²)</option>
+                        <option value="25">Deep Cleaning ($25/m²)</option>
+                        <option value="40">Post-Construction ($40/m²)</option>
+                    </select>
+                </div>
                 <div class="price-result">
+                    <p>Estimated Total</p>
                     <h2>$<span id="priceValue">0</span></h2>
                 </div>
+                <button class="btn-checkout">Book Now</button>
             </div>
         </div>
     </main>

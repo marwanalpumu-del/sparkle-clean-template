@@ -206,4 +206,70 @@ input:checked + .slider:before { transform: translateX(26px); }
 @media (max-width: 992px) {
     .hero-wrapper { grid-template-columns: 1fr; text-align: center; padding: 40px 0; }
     .gallery-grid { flex-direction: column; }
+}/* --- Hero Banner Special Styling --- */
+.hero-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 0;
+    gap: 40px;
+    background: linear-gradient(135deg, var(--bg-color) 0%, var(--price-bg) 100%);
+    border-radius: 30px;
+    margin: 20px 0;
 }
+
+.banner-content { flex: 1.2; }
+.banner-image { flex: 0.8; text-align: right; }
+.banner-image img { 
+    width: 100%; 
+    max-width: 450px; 
+    border-radius: 20px; 
+    box-shadow: var(--shadow);
+}
+
+.banner-content h1 { 
+    font-size: 52px; 
+    line-height: 1.1; 
+    margin: 15px 0; 
+    color: var(--text-color);
+}
+
+.banner-buttons { 
+    display: flex; 
+    gap: 15px; 
+    margin-top: 30px; 
+}
+
+.btn-primary { 
+    background: var(--primary); 
+    color: white; 
+    padding: 15px 30px; 
+    border-radius: 12px; 
+    text-decoration: none; 
+    font-weight: bold; 
+    transition: 0.3s;
+}
+
+.btn-outline { 
+    border: 2px solid var(--primary); 
+    color: var(--primary); 
+    padding: 15px 30px; 
+    border-radius: 12px; 
+    text-decoration: none; 
+    font-weight: bold; 
+}
+
+/* Badge Styling */
+.badge {
+    background: var(--primary);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* Smooth Scrolling for the "Get Quote" button */
+html { scroll-behavior: smooth; }
+

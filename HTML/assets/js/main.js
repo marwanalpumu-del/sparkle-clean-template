@@ -44,3 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
         window.open(paymentUrl, '_blank');
     };
 });
+const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+const modeText = document.getElementById('mode-text');
+
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        modeText.innerText = "Dark Mode On";
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        modeText.innerText = "Enable Dark Mode";
+    }    
+}
+
+toggleSwitch.addEventListener('change', switchTheme, false);

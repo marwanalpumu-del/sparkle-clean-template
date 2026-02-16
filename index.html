@@ -1,9 +1,45 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="refresh" content="0; url=./HTML/index.html">
-  </head>
-  <body>
-    <p>Loading SparkleClean...</p>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SparkleClean | Premium Cleaning Services</title>
+    <link rel="stylesheet" href="HTML/assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="#" class="brand-logo">
+                <div class="logo-icon">✨</div> Sparkle<span>Clean</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="hero-wrapper">
+            <div class="hero-text">
+                <h1>Professional Cleaning <span>Made Simple.</span></h1>
+                <p>Book your service with our interactive calculator.</p>
+                <div class="gallery-grid" style="display: flex; gap: 10px; margin-top: 20px;">
+                    <img src="HTML/assets/images/before.jpg" alt="Before" style="width:45%; border-radius:10px;">
+                    <img src="HTML/assets/images/after.jpg" alt="After" style="width:45%; border-radius:10px;">
+                </div>
+            </div>
+
+            <div class="calc-card">
+                <input type="number" id="inputArea" placeholder="Area size" oninput="calculatePrice()">
+                <select id="selectService" onchange="calculatePrice()">
+                    <option value="10">Basic ($10)</option>
+                    <option value="25">Deep ($25)</option>
+                </select>
+                <div class="price-result">
+                    <h2>$<span id="priceValue">0</span></h2>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="HTML/assets/js/main.js"></script>
+</body>
 </html>

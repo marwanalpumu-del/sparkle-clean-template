@@ -336,4 +336,74 @@ input:checked + .slider:before { transform: translateX(26px); }
 
 /* Smooth Scrolling for the "Get Quote" button */
 html { scroll-behavior: smooth; }
+/* --- Hero Banner Responsive Styles --- */
+.hero-banner {
+    display: flex;
+    flex-direction: column; /* Stacks content vertically for mobile by default */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+    background: var(--card-bg); /* Adapts to Dark/Light mode automatically */
+    border-radius: 25px;
+    margin: 20px 0 40px 0;
+    box-shadow: var(--shadow);
+}
+
+.banner-content {
+    max-width: 100%;
+}
+
+.banner-content h1 {
+    font-size: 2.5rem; /* Large, bold title for mobile */
+    line-height: 1.1;
+    margin-bottom: 20px;
+    font-weight: 900;
+}
+
+.banner-content p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.banner-image {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.banner-image img {
+    width: 100%;
+    max-width: 500px; /* Prevents image from becoming too large on tablets */
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.banner-image img:hover {
+    transform: scale(1.02); /* Subtle hover effect for a premium feel */
+}
+
+/* --- Desktop Layout (Screens wider than 992px) --- */
+@media (min-width: 992px) {
+    .hero-banner {
+        flex-direction: row; /* Side-by-side layout for desktop */
+        text-align: left;
+        padding: 80px 60px;
+        gap: 50px;
+    }
+
+    .banner-content {
+        flex: 1.2;
+    }
+
+    .banner-image {
+        flex: 0.8;
+        margin-top: 0;
+    }
+
+    .banner-content h1 {
+        font-size: 4rem; /* Heroic size for large screens */
+    }
+}
 

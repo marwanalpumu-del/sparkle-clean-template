@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SparkleClean | Premium Cleaning Services</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="main-header">
@@ -14,11 +14,11 @@
                 <div class="logo-icon">✨</div> Sparkle<span>Clean</span>
             </a>
             <nav>
-                <ul style="display: flex; gap: 20px; list-style: none;">
-                    <li><a href="index.html" style="color: var(--primary); font-weight: bold; text-decoration: none;">Home</a></li>
-                    <li><a href="services.html" style="text-decoration: none; color: inherit;">Services</a></li>
-                    <li><a href="about.html" style="text-decoration: none; color: inherit;">About</a></li>
-                    <li><a href="contact.html" style="text-decoration: none; color: inherit;">Contact</a></li>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
             <div class="theme-switch-wrapper">
@@ -26,30 +26,35 @@
                     <input type="checkbox" id="checkbox" />
                     <div class="slider round"></div>
                 </label>
-                <small id="mode-text">Light Mode</small>
+                <small id="mode-text">Mode</small>
             </div>
         </div>
     </header>
 
-    <section class="hero-banner container">
-        <div class="banner-content">
-            <span class="badge">✨ #1 Cleaning Service App</span>
-            <h1>Your Space, <br> <span>Our Sparkle.</span></h1>
-            <p>Book the best cleaning service with just a tap. Professional, reliable, and instant.</p>
-            <div class="banner-buttons">
-                <a href="#calculator" class="btn-primary">Get Instant Quote</a>
-                <a href="services.html" class="btn-outline">Our Services</a>
+    <section class="hero-banner">
+        <div class="container hero-flex">
+            <div class="banner-content">
+                <span class="badge">✨ #1 Premium Cleaning Service</span>
+                <h1>Your Space, <br> <span>Our Sparkle.</span></h1>
+                <p>Experience the ultimate freshness with our expert cleaning team. Professional, reliable, and just a click away.</p>
+                <div class="banner-buttons">
+                    <a href="#calculator" class="btn-glass-primary">Get Instant Quote</a>
+                    <a href="services.html" class="btn-glass-outline">Our Services</a>
+                </div>
             </div>
-        </div>
-        <div class="banner-image">
-            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1000&auto=format&fit=crop" alt="Cleaning Service">
+            
+            <div class="sparkle-wrap">
+                <div class="sparkle s1"></div>
+                <div class="sparkle s2"></div>
+                <div class="sparkle s3"></div>
+            </div>
         </div>
     </section>
 
     <main class="container">
         <div id="calculator" class="hero-wrapper">
             <div class="hero-text">
-                <h1>Cleaning <span>Made Simple.</span></h1>
+                <h2>Cleaning <span>Made Simple.</span></h2>
                 <p>Use our interactive calculator to get an estimate for your space instantly.</p>
                 <div class="gallery-grid">
                     <div class="gallery-item">
@@ -62,6 +67,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="calc-card">
                 <div class="form-group">
                     <label>Area Size (sq meters)</label>
@@ -84,8 +90,8 @@
         </div>
     </main>
 
-    <footer style="text-align: center; padding: 40px; border-top: 1px solid var(--input-border); margin-top: 50px;">
-        <p>&copy; 2026 SparkleClean. All rights reserved.</p>
+    <footer class="main-footer">
+        <p>&copy; 2026 SparkleClean. Professional Cleaning Template.</p>
     </footer>
 
     <script src="assets/js/main.js"></script>

@@ -1,27 +1,49 @@
 /**
  * Project: SparkleClean - Premium Cleaning Template
- * Version: 2.1 (Final Pro Mix)
- * Scripts: Preloader, Theme Toggle & Advanced Calculator
+ * Version: 2.3 (Final Pro Mix - English Edition)
+ * Scripts: Preloader, Theme Toggle, Mobile Hamburger Menu & Advanced Calculator
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- 1. PRELOADER LOGIC ---
-    // This hides the loader once the page is fully loaded
+    // Smoothly hides the loader once the page is fully loaded
     window.addEventListener('load', () => {
         const preloader = document.getElementById('preloader');
         if (preloader) {
             setTimeout(() => {
                 preloader.classList.add('preloader-hidden');
-            }, 1000); // 1 second delay for professional feel
+            }, 1000); // 1 second delay for a polished user experience
         }
     });
 
-    // --- 2. THEME MANAGEMENT (Dark/Light Mode) ---
+    // --- 2. MOBILE HAMBURGER MENU LOGIC ---
+    // Handles the sliding side menu for mobile devices
+    const menuToggle = document.querySelector('#mobile-menu');
+    const navContainer = document.querySelector('#nav-container');
+
+    if (menuToggle && navContainer) {
+        menuToggle.addEventListener('click', () => {
+            // Toggle classes for the "X" animation and side menu visibility
+            menuToggle.classList.toggle('is-active');
+            navContainer.classList.toggle('active');
+        });
+
+        // Close menu when clicking any nav link (important for single-page feel)
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('is-active');
+                navContainer.classList.remove('active');
+            });
+        });
+    }
+
+    // --- 3. THEME MANAGEMENT (Dark/Light Mode) ---
     const toggleSwitch = document.querySelector('#checkbox');
     const modeText = document.getElementById('mode-text');
     const currentTheme = localStorage.getItem('theme');
 
+    // Apply saved theme preference on initial load
     if (currentTheme) {
         document.documentElement.setAttribute('data-theme', currentTheme);
         if (currentTheme === 'dark') {
@@ -48,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleSwitch.addEventListener('change', switchTheme);
     }
 
-    // --- 3. CALCULATOR LOGIC ---
+    // --- 4. CALCULATOR LOGIC ---
     const areaInput = document.getElementById('inputArea');
     const serviceSelect = document.getElementById('selectService');
     const priceDisplay = document.getElementById('priceValue');
@@ -61,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (area > 0 && !isNaN(area)) {
             const total = area * serviceRate;
-            // Display formatted price
+            // Display formatted price with commas and 2 decimal places
             priceDisplay.innerText = total.toLocaleString(undefined, { 
                 minimumFractionDigits: 0, 
                 maximumFractionDigits: 2 
@@ -75,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (serviceSelect) serviceSelect.addEventListener('change', calculatePrice);
 
 
-    // --- 4. CHECKOUT INTERACTION ---
+    // --- 5. CHECKOUT INTERACTION ---
     const checkoutBtn = document.querySelector('.btn-checkout');
     
     if (checkoutBtn) {
@@ -83,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const total = priceDisplay ? priceDisplay.innerText : "0";
             
             if (total !== "0" && total !== "") {
+                // Professional alert for the user in English
                 alert(`✨ Thank you for choosing SparkleClean!\nYour estimated total is: $${total}\nProceeding to secure booking...`);
             } else {
                 alert("Please enter a valid area size to get an estimate.");

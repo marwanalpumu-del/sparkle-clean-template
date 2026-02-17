@@ -8,6 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <div id="preloader">
+        <div class="loader">
+            <div class="loader-icon">✨</div>
+            <div class="loader-text">Sparkle<span>Clean</span></div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
     <header class="main-header">
         <div class="container navbar">
             <a href="index.html" class="brand-logo">
@@ -35,8 +44,8 @@
         <div class="container hero-flex">
             <div class="banner-content">
                 <span class="badge">✨ #1 Premium Cleaning Service</span>
-                <h1>Your Space, <br> <span>Our Sparkle.</span></h1>
-                <p>Experience the ultimate freshness with our expert cleaning team. Professional, reliable, and just a click away.</p>
+                <h1 class="hero-title">Your Space, <br> <span>Our Sparkle.</span></h1>
+                <p class="hero-description">Experience the ultimate freshness with our expert cleaning team. Professional, reliable, and just a click away.</p>
                 <div class="banner-buttons">
                     <a href="#calculator" class="btn-glass-primary">Get Instant Quote</a>
                     <a href="services.html" class="btn-glass-outline">Our Services</a>
@@ -56,13 +65,14 @@
             <div class="hero-text">
                 <h2>Cleaning <span>Made Simple.</span></h2>
                 <p>Use our interactive calculator to get an estimate for your space instantly.</p>
+                
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6958?q=80&w=400" alt="Before">
+                        <img src="assets/images/before.jpg" alt="Room Before Cleaning">
                         <p>BEFORE</p>
                     </div>
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=400" alt="After">
+                        <img src="assets/images/after.jpg" alt="Room After Cleaning">
                         <p>AFTER</p>
                     </div>
                 </div>
@@ -71,11 +81,11 @@
             <div class="calc-card">
                 <div class="form-group">
                     <label>Area Size (sq meters)</label>
-                    <input type="number" id="inputArea" placeholder="e.g. 120" oninput="calculatePrice()">
+                    <input type="number" id="inputArea" placeholder="e.g. 120">
                 </div>
                 <div class="form-group">
                     <label>Service Type</label>
-                    <select id="selectService" onchange="calculatePrice()">
+                    <select id="selectService">
                         <option value="10">Basic Cleaning ($10/m²)</option>
                         <option value="25">Deep Cleaning ($25/m²)</option>
                         <option value="40">Post-Construction ($40/m²)</option>
@@ -91,7 +101,7 @@
     </main>
 
     <footer class="main-footer">
-        <p>&copy; 2026 SparkleClean. Professional Cleaning Template.</p>
+        <p>&copy; 2026 SparkleClean. Professional Cleaning Template for ThemeForest.</p>
     </footer>
 
     <script src="assets/js/main.js"></script>

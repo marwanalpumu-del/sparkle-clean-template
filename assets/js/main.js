@@ -1,17 +1,27 @@
 /**
  * Project: SparkleClean - Premium Cleaning Template
- * Version: 2.0
- * Scripts: Theme Toggle & Advanced Calculator Logic
+ * Version: 2.1 (Final Pro Mix)
+ * Scripts: Preloader, Theme Toggle & Advanced Calculator
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. THEME MANAGEMENT (Dark/Light Mode) ---
+    // --- 1. PRELOADER LOGIC ---
+    // This hides the loader once the page is fully loaded
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            setTimeout(() => {
+                preloader.classList.add('preloader-hidden');
+            }, 1000); // 1 second delay for professional feel
+        }
+    });
+
+    // --- 2. THEME MANAGEMENT (Dark/Light Mode) ---
     const toggleSwitch = document.querySelector('#checkbox');
     const modeText = document.getElementById('mode-text');
     const currentTheme = localStorage.getItem('theme');
 
-    // Apply saved theme on load
     if (currentTheme) {
         document.documentElement.setAttribute('data-theme', currentTheme);
         if (currentTheme === 'dark') {
@@ -29,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function switchTheme(e) {
         const isDark = e.target.checked;
         const theme = isDark ? 'dark' : 'light';
-        
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
         updateModeText(isDark);
@@ -39,8 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleSwitch.addEventListener('change', switchTheme);
     }
 
-    // --- 2. CALCULATOR LOGIC ---
-    // Using a more robust event listener approach
+    // --- 3. CALCULATOR LOGIC ---
     const areaInput = document.getElementById('inputArea');
     const serviceSelect = document.getElementById('selectService');
     const priceDisplay = document.getElementById('priceValue');
@@ -53,19 +61,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (area > 0 && !isNaN(area)) {
             const total = area * serviceRate;
-            // animateValue function can be added here for extra polish
-            priceDisplay.innerText = total.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+            // Display formatted price
+            priceDisplay.innerText = total.toLocaleString(undefined, { 
+                minimumFractionDigits: 0, 
+                maximumFractionDigits: 2 
+            });
         } else {
             priceDisplay.innerText = "0";
         }
     }
 
-    // Listen for inputs
     if (areaInput) areaInput.addEventListener('input', calculatePrice);
     if (serviceSelect) serviceSelect.addEventListener('change', calculatePrice);
 
 
-    // --- 3. CHECKOUT & UX INTERACTION ---
+    // --- 4. CHECKOUT INTERACTION ---
     const checkoutBtn = document.querySelector('.btn-checkout');
     
     if (checkoutBtn) {
@@ -73,11 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const total = priceDisplay ? priceDisplay.innerText : "0";
             
             if (total !== "0" && total !== "") {
-                // SweetAlert could be used here for a better UI than standard alert
                 alert(`✨ Thank you for choosing SparkleClean!\nYour estimated total is: $${total}\nProceeding to secure booking...`);
             } else {
                 alert("Please enter a valid area size to get an estimate.");
-                areaInput.focus(); // Directs user to the input
+                if(areaInput) areaInput.focus();
             }
         });
     }

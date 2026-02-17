@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | SparkleClean Premium</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <title>About Us | SparkleClean</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div id="preloader">
-        <div class="loader">
-            <div class="loader-icon">✨</div>
-            <div class="loader-text">Sparkle<span>Clean</span></div>
-            <div class="loader-bar"></div>
-        </div>
-    </div>
+    <div id="preloader"><div class="loader"><div class="loader-icon">✨</div></div></div>
 
     <header class="main-header">
         <div class="container navbar">
             <a href="index.html" class="brand-logo">
-                <div class="logo-icon">✨</div> Sparkle<span>Clean</span>
+                <div class="logo-shape"></div>
+                <div class="logo-text">Sparkle<span>Clean</span></div>
             </a>
-            <nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </div>
+            <nav class="nav-container" id="nav-container">
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="services.html" class="nav-link">Services</a></li>
@@ -32,45 +29,30 @@
             </nav>
             <div class="theme-switch-wrapper">
                 <label class="theme-switch" for="checkbox">
-                    <input type="checkbox" id="checkbox" />
-                    <div class="slider round"></div>
+                    <input type="checkbox" id="checkbox" /><div class="slider round"></div>
                 </label>
             </div>
         </div>
     </header>
 
-    <section class="hero-banner" style="height: 50vh; min-height: 400px;">
-        <div class="container">
+    <section class="container" style="padding: 80px 20px;">
+        <div class="hero-wrapper">
             <div class="banner-content">
-                <span class="badge">OUR STORY</span>
-                <h1>Who We <span>Are.</span></h1>
-                <p>We are a team of dedicated professionals committed to making your world sparkle, one room at a time.</p>
+                <h1 class="hero-title">We Shine <span>So You</span> Can Stay Safe</h1>
+                <p>Since 2020, SparkleClean has been the leading provider of premium cleaning solutions. We don't just clean; we sanitize and revitalize your living space.</p>
+            </div>
+            <div class="calc-card">
+                <h3>Our Core Values</h3>
+                <ul style="list-style: none; margin-top: 20px;">
+                    <li style="margin-bottom: 15px;">💎 <strong>Quality:</strong> Double-checked results.</li>
+                    <li style="margin-bottom: 15px;">🛡️ <strong>Safety:</strong> Eco-friendly materials.</li>
+                    <li style="margin-bottom: 15px;">⏰ <strong>Punctuality:</strong> We respect your time.</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <main class="container">
-        <section class="hero-wrapper" style="padding: 100px 0;">
-            <div class="hero-text">
-                <h2>Our <span>Mission</span></h2>
-                <p>Since our establishment, SparkleClean has been at the forefront of the cleaning industry. We don't just clean; we care for your health and environment using eco-friendly products and advanced techniques.</p>
-                <ul style="margin-top: 20px; list-style: none;">
-                    <li style="margin-bottom: 10px;">✅ 100% Satisfaction Guaranteed</li>
-                    <li style="margin-bottom: 10px;">✅ Professional & Trained Staff</li>
-                    <li style="margin-bottom: 10px;">✅ Eco-Friendly Cleaning Materials</li>
-                </ul>
-            </div>
-            
-            <div class="calc-card" style="padding: 0; overflow: hidden;">
-                <img src="assets/images/hero.jpg" alt="Our Team" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-        </section>
-    </main>
-
-    <footer class="main-footer">
-        <p>&copy; 2026 SparkleClean. Professional Cleaning Template.</p>
-    </footer>
-
-    <script src="assets/js/main.js"></script>
+    <footer class="main-footer"><p>&copy; 2026 SparkleClean Premium.</p></footer>
+    <script src="main.js"></script>
 </body>
 </html>

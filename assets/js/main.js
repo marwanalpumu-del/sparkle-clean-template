@@ -104,3 +104,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+    // --- 7. SCROLL TO TOP LOGIC ---
+    const scrollBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            scrollBtn.style.display = "block";
+        } else {
+            scrollBtn.style.display = "none";
+        }
+    });
+
+    if (scrollBtn) {
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }

@@ -1,5 +1,5 @@
 /* * Project: SparkleClean - Premium Cleaning Template
- * Version: 2.0 (Pro Edition)
+ * Version: 2.1 (Full Responsive + Preloader)
  * Standard: ThemeForest Quality Compliance
  */
 
@@ -28,227 +28,101 @@
     --glass: rgba(255, 255, 255, 0.05);
 }
 
-/* Base Styles */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-    font-family: 'Inter', sans-serif; 
+/* --- 1. PRELOADER STYLES --- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-body { 
-    background-color: var(--bg-color); 
-    color: var(--text-color); 
-    transition: var(--transition); 
-    overflow-x: hidden; 
+#preloader.preloader-hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
-.container { 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
-}
+.loader { text-align: center; }
+.loader-icon { font-size: 50px; animation: pulse 1.5s infinite ease-in-out; }
+.loader-text { font-size: 24px; font-weight: 900; color: var(--text-color); margin-top: 10px; }
+.loader-text span { color: var(--primary); }
+.loader-bar { width: 100px; height: 4px; background: var(--input-border); margin: 20px auto; position: relative; border-radius: 10px; overflow: hidden; }
+.loader-bar::after { content: ''; position: absolute; left: -100%; width: 100%; height: 100%; background: var(--primary); animation: loading 1.5s infinite ease; }
 
-/* Header & Navigation */
-.main-header { 
-    background: var(--card-bg); 
-    padding: 15px 0; 
-    position: sticky; 
-    top: 0; 
-    z-index: 1000; 
-    box-shadow: var(--shadow); 
-}
+/* --- 2. BASE STYLES --- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background-color: var(--bg-color); color: var(--text-color); transition: var(--transition); overflow-x: hidden; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-.navbar { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-}
+/* --- 3. HEADER & NAVIGATION --- */
+.main-header { background: var(--card-bg); padding: 15px 0; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow); }
+.navbar { display: flex; justify-content: space-between; align-items: center; }
+.brand-logo { text-decoration: none; color: var(--text-color); font-size: 24px; font-weight: 900; display: flex; align-items: center; gap: 8px; }
+.brand-logo span { color: var(--primary); }
+.nav-menu { display: flex; gap: 25px; list-style: none; }
+.nav-link { text-decoration: none; color: var(--text-color); font-weight: 500; transition: var(--transition); }
+.nav-link.active, .nav-link:hover { color: var(--primary); }
 
-.nav-menu { 
-    display: flex; 
-    gap: 25px; 
-    list-style: none; 
-}
-
-.nav-link { 
-    text-decoration: none; 
-    color: var(--text-color); 
-    font-weight: 500; 
-    transition: var(--transition); 
-}
-
-.nav-link.active, .nav-link:hover { 
-    color: var(--primary); 
-}
-
-/* --- PRO HERO BANNER SECTION --- */
+/* --- 4. HERO BANNER --- */
 .hero-banner {
     position: relative;
     height: 85vh;
     min-height: 600px;
     display: flex;
     align-items: center;
-    /* Smart Image Overlay: Blends color with image for text readability */
     background: linear-gradient(to right, var(--bg-color) 40%, rgba(10, 25, 47, 0.3) 70%, transparent 100%), 
-                url('../images/hero.jpg'); 
+                url('../images/hero.jpg'); /* Local Path */
     background-size: cover;
     background-position: center right;
     margin-bottom: 50px;
 }
 
-.banner-content { 
-    max-width: 600px; 
-    animation: fadeInUp 1s ease; 
-}
+.banner-content { max-width: 600px; animation: fadeInUp 1s ease; }
+.hero-title { font-size: clamp(2.2rem, 5vw, 4.5rem); line-height: 1.1; margin: 20px 0; font-weight: 900; }
+.hero-title span { color: var(--primary); }
+.hero-description { font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9; }
 
-.banner-content h1 { 
-    font-size: clamp(2.5rem, 5vw, 4.5rem); 
-    line-height: 1.1; 
-    margin: 20px 0; 
-    font-weight: 900; 
-}
+/* Glassmorphism Buttons */
+.banner-buttons { display: flex; gap: 15px; }
+.btn-glass-primary { background: var(--primary); color: white; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: bold; transition: var(--transition); border: 1px solid rgba(255,255,255,0.1); }
+.btn-glass-primary:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 180, 219, 0.4); }
 
-.banner-content h1 span { 
-    color: var(--primary); 
-}
+.btn-glass-outline { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--input-border); color: var(--text-color); padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: bold; transition: var(--transition); }
+.btn-glass-outline:hover { background: rgba(255,255,255,0.1); transform: translateY(-5px); }
 
-/* Glassmorphism Buttons - Modern UI Trend */
-.banner-buttons { 
-    display: flex; 
-    gap: 15px; 
-    margin-top: 30px; 
-}
+/* --- 5. CALCULATOR & GALLERY --- */
+.hero-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding: 60px 0; align-items: center; }
+.calc-card { background: var(--card-bg); padding: 40px; border-radius: 28px; box-shadow: var(--shadow); border-top: 6px solid var(--primary); }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+.form-group input, .form-group select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--input-border); background: var(--bg-color); color: var(--text-color); }
 
-.btn-glass-primary {
-    background: var(--primary);
-    color: white;
-    padding: 16px 32px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: bold;
-    border: 1px solid rgba(255,255,255,0.2);
-    transition: var(--transition);
-}
+.price-result { background: var(--price-bg); padding: 20px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+.price-result h2 { font-size: 40px; color: var(--primary); }
+.btn-checkout { width: 100%; padding: 15px; background: var(--primary); border: none; color: white; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; }
 
-.btn-glass-primary:hover { 
-    transform: translateY(-5px); 
-    box-shadow: 0 10px 20px rgba(0, 180, 219, 0.4); 
-}
+.gallery-grid { display: flex; gap: 15px; margin-top: 25px; }
+.gallery-item { flex: 1; text-align: center; }
+.gallery-item img { width: 100%; border-radius: 15px; height: 150px; object-fit: cover; border: 1px solid var(--input-border); }
+.gallery-item p { font-size: 12px; font-weight: bold; margin-top: 8px; color: var(--primary); }
 
-.btn-glass-outline {
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--input-border);
-    color: var(--text-color);
-    padding: 16px 32px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: var(--transition);
-}
+/* --- 6. ANIMATIONS & RESPONSIVE --- */
+@keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.7; } }
+@keyframes loading { 0% { left: -100%; } 100% { left: 100%; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-.btn-glass-outline:hover { 
-    background: rgba(255,255,255,0.1); 
-    transform: translateY(-5px); 
-}
-
-/* Sparkles Decoration - Cleaning Visual Cue */
-.sparkle-wrap { 
-    position: absolute; 
-    right: 20%; 
-    top: 30%; 
-    width: 200px; 
-    height: 200px; 
-    pointer-events: none; 
-}
-
-.sparkle { 
-    position: absolute; 
-    background: white; 
-    width: 6px; 
-    height: 6px; 
-    border-radius: 50%; 
-    box-shadow: 0 0 15px white; 
-    opacity: 0; 
-    animation: flash 3s infinite; 
-}
-
-.s1 { top: 10%; left: 20%; animation-delay: 0s; }
-.s2 { top: 50%; right: 0; animation-delay: 1s; }
-.s3 { bottom: 10%; left: 40%; animation-delay: 2s; }
-
-/* Interactive Calculator Section */
-.hero-wrapper { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 60px; 
-    padding: 60px 0; 
-}
-
-.calc-card { 
-    background: var(--card-bg); 
-    padding: 40px; 
-    border-radius: 28px; 
-    box-shadow: var(--shadow); 
-    border-top: 6px solid var(--primary); 
-    transition: var(--transition);
-}
-
-.price-result h2 { 
-    font-size: 45px; 
-    font-weight: 900; 
-}
-
-/* Gallery Display */
-.gallery-grid { 
-    display: flex; 
-    gap: 15px; 
-    margin-top: 25px; 
-}
-
-.gallery-item img { 
-    width: 100%; 
-    border-radius: 15px; 
-    height: 120px; 
-    object-fit: cover; 
-}
-
-/* Footer Section */
-.main-footer { 
-    text-align: center; 
-    padding: 50px; 
-    border-top: 1px solid var(--input-border); 
-    margin-top: 50px; 
-}
-
-/* Keyframe Animations */
-@keyframes flash { 
-    0%, 100% { opacity: 0; transform: scale(0.5); } 
-    50% { opacity: 1; transform: scale(1.2); } 
-}
-
-@keyframes fadeInUp { 
-    from { opacity: 0; transform: translateY(30px); } 
-    to { opacity: 1; transform: translateY(0); } 
-}
-
-/* Responsive Design (Mobile & Tablet) */
 @media (max-width: 991px) {
-    .hero-banner { 
-        background: linear-gradient(to bottom, var(--bg-color) 60%, rgba(10, 25, 47, 0.7)), 
-                    url('../images/hero.jpg');
-        text-align: center; 
-        justify-content: center;
-    }
-    .banner-buttons { 
-        flex-direction: column; 
-    }
-    .hero-wrapper { 
-        grid-template-columns: 1fr; 
-    }
-    .sparkle-wrap {
-        display: none;
-    }
+    .hero-banner { background: linear-gradient(to bottom, var(--bg-color) 50%, rgba(10, 25, 47, 0.8)), url('../images/hero.jpg'); text-align: center; height: auto; padding: 100px 0; }
+    .hero-flex { justify-content: center; }
+    .banner-buttons { flex-direction: column; }
+    .hero-wrapper { grid-template-columns: 1fr; }
+    .gallery-grid { flex-direction: column; }
 }
+
+.main-footer { text-align: center; padding: 40px; border-top: 1px solid var(--input-border); margin-top: 50px; opacity: 0.7; }

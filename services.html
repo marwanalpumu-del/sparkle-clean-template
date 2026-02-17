@@ -4,8 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services | SparkleClean Premium</title>
+    
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Extra polish for Services page */
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            padding: 40px 20px !important;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 180, 219, 0.15);
+        }
+
+        .service-icon {
+            font-size: 60px;
+            margin-bottom: 25px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner { height: auto !important; padding: 120px 0 60px 0 !important; }
+            .hero-title { font-size: 2.5rem !important; }
+        }
+    </style>
 </head>
 <body>
 
@@ -48,11 +79,12 @@
         </div>
     </header>
 
-    <section class="hero-banner" style="height: 40vh; min-height: 300px; display: flex; align-items: center;">
+    <section class="hero-banner" style="height: 45vh; min-height: 350px; display: flex; align-items: center; justify-content: center;">
         <div class="container">
             <div class="banner-content" style="text-align: center; max-width: 100%;">
-                <h1 class="hero-title">Cleaning <span>Services.</span></h1>
-                <p>Tailored solutions for every space, ensured with a sparkle.</p>
+                <h1 class="hero-title">Premium <span>Services.</span></h1>
+                <p style="font-size: 1.2rem; opacity: 0.9;">Tailored cleaning solutions for every space, delivered with a sparkle.</p>
+                <div style="width: 80px; height: 4px; background: var(--primary); margin: 20px auto; border-radius: 2px;"></div>
             </div>
         </div>
     </section>
@@ -60,34 +92,36 @@
     <section class="container" style="padding: 80px 20px;">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
             
-            <div class="calc-card" style="text-align: center; transition: 0.3s; border-top: 5px solid var(--primary);">
-                <div style="font-size: 50px; margin-bottom: 20px;">🏠</div>
-                <h3>Residential</h3>
-                <p style="margin: 15px 0; opacity: 0.8;">Complete home cleaning including bedrooms, kitchens, and premium floor care.</p>
-                <a href="contact.html" style="color: var(--primary); text-decoration: none; font-weight: bold;">Learn More →</a>
+            <div class="calc-card service-card" style="text-align: center; border-top: 5px solid var(--primary);">
+                <div class="service-icon">🏠</div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Residential</h3>
+                <p style="margin: 15px 0; opacity: 0.8; line-height: 1.6;">Complete home cleaning including bedrooms, deep kitchen sanitization, and premium floor care.</p>
+                <a href="contact.html" style="color: var(--primary); text-decoration: none; font-weight: 700; letter-spacing: 0.5px;">BOOK SERVICE →</a>
             </div>
 
-            <div class="calc-card" style="text-align: center; transition: 0.3s; border-top: 5px solid #ff9800;">
-                <div style="font-size: 50px; margin-bottom: 20px;">🏢</div>
-                <h3>Office Cleaning</h3>
-                <p style="margin: 15px 0; opacity: 0.8;">Maintain a healthy workspace to boost productivity and professional atmosphere.</p>
-                <a href="contact.html" style="color: #ff9800; text-decoration: none; font-weight: bold;">Learn More →</a>
+            <div class="calc-card service-card" style="text-align: center; border-top: 5px solid #ff9800;">
+                <div class="service-icon">🏢</div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Office Cleaning</h3>
+                <p style="margin: 15px 0; opacity: 0.8; line-height: 1.6;">Maintain a healthy workspace to boost productivity and ensure a professional atmosphere for clients.</p>
+                <a href="contact.html" style="color: #ff9800; text-decoration: none; font-weight: 700; letter-spacing: 0.5px;">BOOK SERVICE →</a>
             </div>
 
-            <div class="calc-card" style="text-align: center; transition: 0.3s; border-top: 5px solid #4caf50;">
-                <div style="font-size: 50px; margin-bottom: 20px;">🪟</div>
-                <h3>Window Sparkle</h3>
-                <p style="margin: 15px 0; opacity: 0.8;">Professional glass cleaning for residential and high-rise commercial buildings.</p>
-                <a href="contact.html" style="color: #4caf50; text-decoration: none; font-weight: bold;">Learn More →</a>
+            <div class="calc-card service-card" style="text-align: center; border-top: 5px solid #4caf50;">
+                <div class="service-icon">🪟</div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Window Sparkle</h3>
+                <p style="margin: 15px 0; opacity: 0.8; line-height: 1.6;">Crystal clear results for residential and commercial windows using professional streak-free tools.</p>
+                <a href="contact.html" style="color: #4caf50; text-decoration: none; font-weight: 700; letter-spacing: 0.5px;">BOOK SERVICE →</a>
             </div>
 
         </div>
     </section>
 
-    <footer class="main-footer">
-        <p>&copy; 2026 SparkleClean. All Rights Reserved.</p>
+    <footer class="main-footer" style="padding: 40px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <p>&copy; 2026 SparkleClean Premium. All Rights Reserved.</p>
+        </div>
     </footer>
 
-<script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

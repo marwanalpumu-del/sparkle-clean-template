@@ -123,3 +123,38 @@ body { background-color: var(--bg-color); color: var(--text-color); transition: 
 
 /* --- 6. FOOTER --- */
 .main-footer { text-align: center; padding: 30px; border-top: 1px solid var(--input-border); opacity: 0.7; margin-top: 50px; }
+
+
+/* Scroll to Top Button Styles */
+.scroll-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 180, 219, 0.4);
+    display: none; /* Hidden by default */
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.scroll-btn:hover {
+    transform: translateY(-5px);
+    background: var(--secondary);
+}
+
+@media (max-width: 768px) {
+    .scroll-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}

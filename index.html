@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SparkleClean | Premium Cleaning Services</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -20,9 +20,17 @@
     <header class="main-header">
         <div class="container navbar">
             <a href="index.html" class="brand-logo">
-                <div class="logo-icon">✨</div> Sparkle<span>Clean</span>
+                <div class="logo-shape"></div>
+                <div class="logo-text">Sparkle<span>Clean</span></div>
             </a>
-            <nav>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <nav class="nav-container" id="nav-container">
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link active">Home</a></li>
                     <li><a href="services.html" class="nav-link">Services</a></li>
@@ -30,80 +38,57 @@
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
+
             <div class="theme-switch-wrapper">
+                <span id="mode-text" style="font-size: 12px; margin-right: 8px;">Light Mode</span>
                 <label class="theme-switch" for="checkbox">
                     <input type="checkbox" id="checkbox" />
                     <div class="slider round"></div>
                 </label>
-                <small id="mode-text">Mode</small>
             </div>
         </div>
     </header>
 
     <section class="hero-banner">
-        <div class="container hero-flex">
+        <div class="container hero-wrapper">
             <div class="banner-content">
-                <span class="badge">✨ #1 Premium Cleaning Service</span>
-                <h1 class="hero-title">Your Space, <br> <span>Our Sparkle.</span></h1>
-                <p class="hero-description">Experience the ultimate freshness with our expert cleaning team. Professional, reliable, and just a click away.</p>
+                <h1 class="hero-title">Experience <span>Sparkling</span> Excellence</h1>
+                <p class="hero-description">Professional cleaning services tailored for your home and office. Quality you can see, service you can trust.</p>
                 <div class="banner-buttons">
-                    <a href="#calculator" class="btn-glass-primary">Get Instant Quote</a>
-                    <a href="services.html" class="btn-glass-outline">Our Services</a>
+                    <a href="services.html" class="btn-glass-primary">Our Services</a>
+                    <a href="contact.html" class="btn-glass-outline">Book Now</a>
                 </div>
             </div>
-            
-            <div class="sparkle-wrap">
-                <div class="sparkle s1"></div>
-                <div class="sparkle s2"></div>
-                <div class="sparkle s3"></div>
-            </div>
-        </div>
-    </section>
 
-    <main class="container">
-        <div id="calculator" class="hero-wrapper">
-            <div class="hero-text">
-                <h2>Cleaning <span>Made Simple.</span></h2>
-                <p>Use our interactive calculator to get an estimate for your space instantly.</p>
-                
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="assets/images/before.jpg" alt="Room Before Cleaning">
-                        <p>BEFORE</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="assets/images/after.jpg" alt="Room After Cleaning">
-                        <p>AFTER</p>
-                    </div>
-                </div>
-            </div>
-            
             <div class="calc-card">
+                <h3 style="margin-bottom: 20px;">Estimate Cleaning Cost</h3>
                 <div class="form-group">
-                    <label>Area Size (sq meters)</label>
-                    <input type="number" id="inputArea" placeholder="e.g. 120">
+                    <label>Area Size (sq. meters)</label>
+                    <input type="number" id="inputArea" placeholder="e.g. 100">
                 </div>
                 <div class="form-group">
                     <label>Service Type</label>
                     <select id="selectService">
                         <option value="10">Basic Cleaning ($10/m²)</option>
-                        <option value="25">Deep Cleaning ($25/m²)</option>
-                        <option value="40">Post-Construction ($40/m²)</option>
+                        <option value="20">Deep Cleaning ($20/m²)</option>
+                        <option value="30">Post Construction ($30/m²)</option>
                     </select>
                 </div>
                 <div class="price-result">
                     <p>Estimated Total</p>
                     <h2>$<span id="priceValue">0</span></h2>
                 </div>
-                <button class="btn-checkout">Book Now</button>
+                <button class="btn-checkout">Secure Booking</button>
             </div>
         </div>
-    </main>
+    </section>
 
     <footer class="main-footer">
-        <p>&copy; 2026 SparkleClean. Professional Cleaning Template for ThemeForest.</p>
+        <div class="container">
+            <p>&copy; 2026 SparkleClean Premium. All Rights Reserved.</p>
+        </div>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

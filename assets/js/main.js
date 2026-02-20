@@ -1,125 +1,121 @@
 /**
  * Project: SparkleClean - Premium Cleaning Template
  * Version: 2.5 (Final Pro Edition)
- * Features: Preloader, Theme Toggle, Mobile Menu, Calculator, and Form Handling
+ * Features: Price Counter, Theme Toggle, Mobile Menu, and AOS Initialization
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- 1. PRELOADER LOGIC ---
-    // Smoothly hides the loader once the page content is ready
-    window.addEventListener('load', () => {
-        const preloader = document.getElementById('preloader');
-        if (preloader) {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        window.addEventListener('load', () => {
             setTimeout(() => {
                 preloader.style.opacity = '0';
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                }, 500);
-            }, 1000); 
-        }
-    });
+                setTimeout(() => { preloader.style.display = 'none'; }, 500);
+            }, 800); 
+        });
+    }
 
-    // --- 2. MOBILE MENU LOGIC ---
-    // Handles the hamburger menu toggle for mobile responsiveness
-    const menuToggle = document.querySelector('#mobile-menu');
-    const navContainer = document.querySelector('#nav-container');
+    // --- 2. MOBILE MENU & ACCESSIBILITY ---
+    const menuToggle = document.querySelector('#mobile-menu'); // Adjusted to match your HTML
+    const navMenu = document.querySelector('#nav-menu');
 
-    if (menuToggle && navContainer) {
+    if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('is-active');
-            navContainer.classList.toggle('active');
+            navMenu.classList.toggle('active');
         });
 
-        // Close menu when a link is clicked
+        // Close menu on link click (Perfect for One-Page layouts)
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('is-active');
-                navContainer.classList.remove('active');
+                navMenu.classList.remove('active');
             });
         });
     }
 
-    // --- 3. DARK MODE MANAGEMENT ---
-    const toggleSwitch = document.querySelector('#checkbox');
-    const currentTheme = localStorage.getItem('theme');
+    // --- 3. THEME MANAGEMENT (DARK/LIGHT) ---
+    const themeBtn = document.getElementById('theme-toggle');
+    const currentTheme = localStorage.getItem('theme') || 'dark';
 
-    if (currentTheme) {
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        if (currentTheme === 'dark' && toggleSwitch) {
-            toggleSwitch.checked = true;
-        }
-    }
+    // Apply initial theme
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-    if (toggleSwitch) {
-        toggleSwitch.addEventListener('change', (e) => {
-            const theme = e.target.checked ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            let newTheme = theme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Subtle feedback icon change if needed
+            themeBtn.innerText = newTheme === 'dark' ? '🌓' : '☀️';
         });
     }
 
-    // --- 4. CLEANING CALCULATOR ---
+    // --- 4. ADVANCED CALCULATOR WITH COUNTER ---
     const areaInput = document.getElementById('inputArea');
     const serviceSelect = document.getElementById('selectService');
     const priceDisplay = document.getElementById('priceValue');
 
-    function calculatePrice() {
+    function animateValue(obj, start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    function updatePrice() {
         if (!areaInput || !serviceSelect || !priceDisplay) return;
 
-        const area = parseFloat(areaInput.value);
-        const rate = parseFloat(serviceSelect.value);
+        const area = parseFloat(areaInput.value) || 0;
+        const rate = parseFloat(serviceSelect.value) || 0;
+        const currentPrice = parseInt(priceDisplay.innerText.replace(/,/g, '')) || 0;
+        const targetPrice = area * rate;
 
-        if (area > 0) {
-            const total = area * rate;
-            priceDisplay.innerText = total.toLocaleString();
-        } else {
-            priceDisplay.innerText = "0";
+        if (targetPrice !== currentPrice) {
+            animateValue(priceDisplay, currentPrice, targetPrice, 300);
         }
     }
 
-    if (areaInput) areaInput.addEventListener('input', calculatePrice);
-    if (serviceSelect) serviceSelect.addEventListener('change', calculatePrice);
+    if (areaInput) areaInput.addEventListener('input', updatePrice);
+    if (serviceSelect) serviceSelect.addEventListener('change', updatePrice);
 
-    // --- 5. BOOKING BUTTON INTERACTION ---
-    const checkoutBtn = document.querySelector('.btn-checkout');
-    if (checkoutBtn && !document.getElementById('contact-form')) {
-        checkoutBtn.addEventListener('click', () => {
-            const total = priceDisplay ? priceDisplay.innerText : "0";
-            if (total !== "0") {
-                alert(`✨ Thank you for choosing SparkleClean!\nYour estimated total is: $${total}\nRedirecting to secure booking...`);
+    // --- 5. SCROLL TO TOP (Smooth Visibility) ---
+    const scrollBtn = document.getElementById('scrollToTop');
+    if (scrollBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                scrollBtn.classList.add('visible');
+                scrollBtn.style.display = "block";
             } else {
-                alert("Please enter the area size to get an estimate.");
+                scrollBtn.classList.remove('visible');
+                setTimeout(() => { if(!scrollBtn.classList.contains('visible')) scrollBtn.style.display = "none"; }, 300);
+            }
+        });
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // --- 6. FORM & BOOKING INTERACTION ---
+    const bookingBtn = document.querySelector('.btn-primary'); // Adjust selector as needed
+    if (bookingBtn && areaInput) {
+        bookingBtn.addEventListener('click', (e) => {
+            if (areaInput.value <= 0) {
+                alert("Please enter a valid area size.");
+                e.preventDefault();
             }
         });
     }
-
-    // --- 6. CONTACT FORM HANDLING ---
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert("✨ Success! Your message has been sent.\nOur team will contact you within 24 hours.");
-            contactForm.reset();
-        });
-    }
 });
-    // --- 7. SCROLL TO TOP LOGIC ---
-    const scrollBtn = document.getElementById('scrollToTop');
-
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            scrollBtn.style.display = "block";
-        } else {
-            scrollBtn.style.display = "none";
-        }
-    });
-
-    if (scrollBtn) {
-        scrollBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }

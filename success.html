@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed | SparkleClean</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .success-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .check-container {
+            width: 80px;
+            height: 80px;
+            background: #25d366;
+            color: white;
+            font-size: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            animation: popIn 0.5s cubic-bezier(0.26, 0.53, 0.74, 1.48);
+        }
+        @keyframes popIn {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+        .btn-home {
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="check-container">✓</div>
+        <h1>Thank You!</h1>
+        <p>Your request has been received. Our team will contact you shortly.</p>
+        <a href="index.html" class="btn-home">Back to Homepage</a>
+    </div>
+</body>
+</html>

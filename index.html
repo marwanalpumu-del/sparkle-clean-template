@@ -1,1 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SparkleClean | Premium Cleaning Service & Booking App</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-theme="dark"> <div id="preloader">
+        <div class="loader">
+            <div class="loader-icon">✨</div>
+            <div class="loader-text">Sparkle<span>Clean</span></div>
+        </div>
+    </div>
 
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="index.html" class="logo-container">
+                <div class="logo-icon">S</div>
+                <div class="logo-text">Sparkle<span>Clean</span></div>
+            </a>
+
+            <nav class="nav-container" id="nav-menu">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button id="theme-toggle" class="btn-theme">🌓</button>
+                <div class="menu-toggle" id="mobile-menu-btn">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-banner">
+        <div class="container hero-wrapper">
+            <div class="banner-content" data-aos="fade-right">
+                <h1 class="hero-title">Experience <span>Sparkling</span> Excellence</h1>
+                <p class="hero-description">The next generation of professional cleaning services. Fast, reliable, and completely digital.</p>
+                <div class="banner-buttons">
+                    <a href="#booking" class="btn-primary">Get Started</a>
+                    <a href="#services" class="btn-outline">Learn More</a>
+                </div>
+            </div>
+
+            <div class="glass-card" data-aos="zoom-in" id="booking">
+                <h3>Estimate Your Cost</h3>
+                <div class="form-group">
+                    <label>Area Size (m²)</label>
+                    <input type="number" id="inputArea" placeholder="e.g. 100">
+                </div>
+                <div class="form-group">
+                    <label>Choose Service</label>
+                    <select id="selectService">
+                        <option value="10">Basic - $10/m²</option>
+                        <option value="20">Deep Clean - $20/m²</option>
+                        <option value="30">Construction - $30/m²</option>
+                    </select>
+                </div>
+                <div class="price-result">
+                    <p>Total Estimate</p>
+                    <h2>$<span id="priceValue">0</span></h2>
+                </div>
+                <button class="btn-primary" style="width: 100%;">Secure Booking Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="padding: 100px 20px;">
+        <div class="section-header" data-aos="fade-up" style="text-align: center; margin-bottom: 60px;">
+            <h2>Our <span style="color: var(--primary-color);">Magic</span> Results</h2>
+            <p>Witness the SparkleClean transformation</p>
+        </div>
+        
+        <div class="results-grid">
+            <div class="glass-card result-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="img-wrapper">
+                    <img src="assets/images/bathroom-result.jpg" alt="Cleaning Result">
+                    <span class="badge">LATEST WORK ✨</span>
+                </div>
+                <div class="card-info">
+                    <h3>Bathroom Sanitization</h3>
+                    <p>Full stain removal and anti-bacterial treatment.</p>
+                </div>
+            </div>
+            </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 data-aos="fade-up" style="text-align:center; margin-bottom: 50px;">Trusted by Hundreds</h2>
+            <div class="testimonial-grid">
+                <div class="testi-card glass-card" data-aos="fade-right">
+                    <div class="stars">★★★★★</div>
+                    <p>"Absolutely flawless service. The dark mode app-style booking is so intuitive!"</p>
+                    <h4>Sarah Johnson</h4>
+                </div>
+                <div class="testi-card glass-card" data-aos="fade-left">
+                    <div class="stars">★★★★★</div>
+                    <p>"Fast, professional, and reliable. Highly recommended for office cleaning."</p>
+                    <h4>Michael Ross</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container" style="text-align: center; padding: 60px 0; opacity: 0.6;">
+            <p>&copy; 2026 SparkleClean Premium. Designed for Excellence.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/yournumber" class="whatsapp-float">
+        <span>💬</span> Chat With Us
+    </a>
+    <button id="scrollToTop" class="btn-primary scroll-btn">↑</button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Simple Calculator Logic for Demo
+        const areaInput = document.getElementById('inputArea');
+        const serviceSelect = document.getElementById('selectService');
+        const priceDisplay = document.getElementById('priceValue');
+
+        function calculate() {
+            const area = areaInput.value || 0;
+            const rate = serviceSelect.value;
+            priceDisplay.innerText = area * rate;
+        }
+
+        areaInput.addEventListener('input', calculate);
+        serviceSelect.addEventListener('change', calculate);
+
+        // Preloader Logic
+        window.addEventListener('load', () => {
+            document.getElementById('preloader').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

@@ -194,3 +194,44 @@ body { background-color: var(--bg-color); color: var(--text-color); transition: 
 @media (max-width: 768px) {
     .scroll-btn { bottom: 20px; right: 20px; width: 45px; height: 45px; }
 }
+/* --- WHATSAPP FLOATING BUTTON --- */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 30px; /* Opposite side of Scroll Button */
+    background-color: #25d366;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-icon {
+    font-size: 20px;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    background-color: #128c7e;
+    box-shadow: 0 15px 25px rgba(37, 211, 102, 0.4);
+}
+
+/* Hide text on small screens to keep it clean */
+@media (max-width: 480px) {
+    .whatsapp-text {
+        display: none;
+    }
+    .whatsapp-btn {
+        padding: 15px;
+        border-radius: 50%;
+        bottom: 20px;
+        left: 20px;
+    }
+}

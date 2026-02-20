@@ -3,157 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparkleClean | Premium Cleaning Service & Booking App</title>
+    <title>SparkleClean | Premium Cleaning Services</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <style>
+        /* Mobile Optimization & Extra Polish */
+        .hero-banner {
+            padding: 100px 0 60px 0;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .result-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .result-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 180, 219, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero-wrapper {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            .hero-title { font-size: 2.2rem; }
+            .calc-card { width: 100%; max-width: 100%; }
+            .nav-container { display: none; } /* Managed by JS */
+            .nav-container.active { display: block; }
+        }
+    </style>
 </head>
-<body data-theme="dark"> <div id="preloader">
+<body>
+<button id="scrollToTop" class="scroll-btn">↑</button>
+
+    <div id="preloader">
         <div class="loader">
             <div class="loader-icon">✨</div>
             <div class="loader-text">Sparkle<span>Clean</span></div>
+            <div class="loader-bar"></div>
         </div>
     </div>
 
     <header class="main-header">
         <div class="container navbar">
-            <a href="index.html" class="logo-container">
-                <div class="logo-icon">S</div>
+            <a href="index.html" class="brand-logo">
+                <div class="logo-shape"></div>
                 <div class="logo-text">Sparkle<span>Clean</span></div>
             </a>
 
-            <nav class="nav-container" id="nav-menu">
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <nav class="nav-container" id="nav-container">
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link active">Home</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
 
-            <div class="header-actions">
-                <button id="theme-toggle" class="btn-theme">🌓</button>
-                <div class="menu-toggle" id="mobile-menu-btn">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
             </div>
         </div>
     </header>
 
     <section class="hero-banner">
         <div class="container hero-wrapper">
-            <div class="banner-content" data-aos="fade-right">
+            <div class="banner-content">
                 <h1 class="hero-title">Experience <span>Sparkling</span> Excellence</h1>
-                <p class="hero-description">The next generation of professional cleaning services. Fast, reliable, and completely digital.</p>
+                <p class="hero-description">Professional cleaning services tailored for your home and office. Quality you can see, service you can trust.</p>
                 <div class="banner-buttons">
-                    <a href="#booking" class="btn-primary">Get Started</a>
-                    <a href="#services" class="btn-outline">Learn More</a>
+                    <a href="services.html" class="btn-glass-primary">Our Services</a>
+                    <a href="contact.html" class="btn-glass-outline">Book Now</a>
                 </div>
             </div>
 
-            <div class="glass-card" data-aos="zoom-in" id="booking">
-                <h3>Estimate Your Cost</h3>
+            <div class="calc-card">
+                <h3 style="margin-bottom: 20px;">Estimate Cleaning Cost</h3>
                 <div class="form-group">
-                    <label>Area Size (m²)</label>
+                    <label>Area Size (sq. meters)</label>
                     <input type="number" id="inputArea" placeholder="e.g. 100">
                 </div>
                 <div class="form-group">
-                    <label>Choose Service</label>
+                    <label>Service Type</label>
                     <select id="selectService">
-                        <option value="10">Basic - $10/m²</option>
-                        <option value="20">Deep Clean - $20/m²</option>
-                        <option value="30">Construction - $30/m²</option>
+                        <option value="10">Basic Cleaning ($10/m²)</option>
+                        <option value="20">Deep Cleaning ($20/m²)</option>
+                        <option value="30">Post Construction ($30/m²)</option>
                     </select>
                 </div>
                 <div class="price-result">
-                    <p>Total Estimate</p>
+                    <p>Estimated Total</p>
                     <h2>$<span id="priceValue">0</span></h2>
                 </div>
-                <button class="btn-primary" style="width: 100%;">Secure Booking Now</button>
+                <button class="btn-checkout">Secure Booking</button>
             </div>
         </div>
     </section>
 
-    <section class="container" style="padding: 100px 20px;">
-        <div class="section-header" data-aos="fade-up" style="text-align: center; margin-bottom: 60px;">
-            <h2>Our <span style="color: var(--primary-color);">Magic</span> Results</h2>
-            <p>Witness the SparkleClean transformation</p>
+    <section class="container" style="padding: 80px 20px;">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Our <span style="color: var(--primary);">Magic</span> Results</h2>
+            <div style="width: 60px; height: 4px; background: var(--primary); margin: 0 auto; border-radius: 2px;"></div>
+            <p style="margin-top: 15px; opacity: 0.8;">Witness the SparkleClean transformation</p>
         </div>
         
-        <div class="results-grid">
-            <div class="glass-card result-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="img-wrapper">
-                    <img src="assets/images/bathroom-result.jpg" alt="Cleaning Result">
-                    <span class="badge">LATEST WORK ✨</span>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+            
+            <div class="calc-card result-card" style="padding: 15px; border: 1px solid rgba(0,180,219,0.1);">
+                <div style="overflow: hidden; border-radius: 12px; position: relative;">
+                    <img src="assets/images/bathroom-result.jpg" alt="Bathroom Result" 
+                         style="width: 100%; height: 300px; object-fit: cover; display: block;">
+                    <div style="position: absolute; bottom: 10px; right: 10px; background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; letter-spacing: 1px;">
+                        LATEST WORK ✨
+                    </div>
                 </div>
-                <div class="card-info">
-                    <h3>Bathroom Sanitization</h3>
-                    <p>Full stain removal and anti-bacterial treatment.</p>
+                <div style="padding: 20px 10px 10px 10px; text-align: center;">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Bathroom Deep Clean</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.7; line-height: 1.6;">Full sanitization and stain removal for a brand-new look.</p>
                 </div>
             </div>
+
             </div>
     </section>
 
-    <section class="testimonials">
-        <div class="container">
-            <h2 data-aos="fade-up" style="text-align:center; margin-bottom: 50px;">Trusted by Hundreds</h2>
-            <div class="testimonial-grid">
-                <div class="testi-card glass-card" data-aos="fade-right">
-                    <div class="stars">★★★★★</div>
-                    <p>"Absolutely flawless service. The dark mode app-style booking is so intuitive!"</p>
-                    <h4>Sarah Johnson</h4>
-                </div>
-                <div class="testi-card glass-card" data-aos="fade-left">
-                    <div class="stars">★★★★★</div>
-                    <p>"Fast, professional, and reliable. Highly recommended for office cleaning."</p>
-                    <h4>Michael Ross</h4>
-                </div>
+<section class="testimonials">
+    <div class="container">
+        <h2 style="text-align:center; margin-bottom: 40px;">What Our Clients Say</h2>
+        <div class="testimonial-grid">
+            <div class="testi-card">
+                <div class="stars">★★★★★</div>
+                <p>"Best cleaning service I've ever used. My house sparkles!"</p>
+                <h4>- Sarah Johnson</h4>
+            </div>
+            <div class="testi-card">
+                <div class="stars">★★★★★</div>
+                <p>"Very professional and the booking process was so easy."</p>
+                <h4>- Michael Ross</h4>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <footer class="main-footer">
-        <div class="container" style="text-align: center; padding: 60px 0; opacity: 0.6;">
-            <p>&copy; 2026 SparkleClean Premium. Designed for Excellence.</p>
+        <div class="container" style="text-align: center; padding: 40px 0;">
+            <p>&copy; 2026 SparkleClean Premium. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <a href="https://wa.me/yournumber" class="whatsapp-float">
-        <span>💬</span> Chat With Us
-    </a>
-    <button id="scrollToTop" class="btn-primary scroll-btn">↑</button>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
+    
+    <a href="https://wa.me/1234567890" class="whatsapp-btn" target="_blank">
+    <span class="whatsapp-icon">💬</span>
+    <span class="whatsapp-text">Chat with us</span>
+</a>
 
-        // Simple Calculator Logic for Demo
-        const areaInput = document.getElementById('inputArea');
-        const serviceSelect = document.getElementById('selectService');
-        const priceDisplay = document.getElementById('priceValue');
-
-        function calculate() {
-            const area = areaInput.value || 0;
-            const rate = serviceSelect.value;
-            priceDisplay.innerText = area * rate;
-        }
-
-        areaInput.addEventListener('input', calculate);
-        serviceSelect.addEventListener('change', calculate);
-
-        // Preloader Logic
-        window.addEventListener('load', () => {
-            document.getElementById('preloader').style.display = 'none';
-        });
-    </script>
 </body>
 </html>

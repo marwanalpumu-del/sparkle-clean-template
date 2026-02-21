@@ -1,7 +1,28 @@
-/* * Project: SparkleClean - Premium Cleaning Template
- * Features: New Glass-Shine Circular Logo, Animations, Dark Mode, Mobile Responsive
+/*
+ * Theme Name: SparkleClean - Premium Cleaning Service HTML Template
+ * Theme URI: https://yourdomain.com/sparkleclean
+ * Author: YourName
+ * Author URI: https://yourportfolio.com
+ * Description: Professional, modern, and responsive HTML5 template for cleaning services.
+ * Version: 1.0.0
+ * License: ThemeForest Regular License
  */
 
+/* ==========================================================================
+   TABLE OF CONTENTS
+   ==========================================================================
+   1. Root Variables
+   2. Base Styles & Typography
+   3. Animations
+   4. Header & Navigation
+   5. Hero Section & Calculator
+   6. Components (Buttons, Cards)
+   7. Sections (Testimonials, Results)
+   8. Footer
+   9. Responsive Media Queries
+   ========================================================================== */
+
+/* 1. Root Variables */
 :root {
     --primary: #00b4db;
     --secondary: #0083b0;
@@ -10,9 +31,10 @@
     --text-color: #1a2a3a;
     --input-border: #eeeeee;
     --price-bg: #f0faff;
-    --shadow: 0 10px 30px rgba(0,0,0,0.1);
+    --shadow: 0 10px 30px rgba(0,0,0,0.08);
     --glass: rgba(255, 255, 255, 0.2);
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --border-radius: 12px;
 }
 
 [data-theme="dark"] {
@@ -20,95 +42,49 @@
     --card-bg: #112240;
     --text-color: #ccd6f6;
     --input-border: #233554;
-    --price-bg: rgba(0, 180, 219, 0.1);
+    --price-bg: rgba(0, 180, 219, 0.05);
     --shadow: 0 20px 40px rgba(0,0,0,0.4);
     --glass: rgba(255, 255, 255, 0.05);
 }
 
-/* --- 1. PRELOADER & ANIMATIONS --- */
-#preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bg-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+/* 2. Base Styles & Typography */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
 }
 
-.loader-icon {
-    font-size: 60px;
-    animation: spinAndPulse 1.2s infinite ease-in-out;
+html {
+    scroll-behavior: smooth;
 }
 
-.preloader-hidden {
-    opacity: 0;
-    visibility: hidden;
+body { 
+    background-color: var(--bg-color); 
+    color: var(--text-color); 
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    transition: var(--transition); 
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 3. Animations */
 @keyframes spinAndPulse {
     0% { transform: rotate(0deg) scale(1); }
     50% { transform: rotate(180deg) scale(1.3); }
     100% { transform: rotate(360deg) scale(1); }
-}
-
-/* --- 2. BASE STYLES --- */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-body { background-color: var(--bg-color); color: var(--text-color); transition: var(--transition); overflow-x: hidden; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-/* --- 3. LOGO & HEADER --- */
-.main-header { 
-    background: var(--card-bg); 
-    padding: 10px 0; 
-    position: sticky; 
-    top: 0; 
-    z-index: 1000; 
-    box-shadow: var(--shadow); 
-}
-
-.brand-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    animation: logoFadeIn 1.5s ease-out forwards;
-}
-
-.logo-shape {
-    width: 40px;
-    height: 40px;
-    background: var(--primary);
-    border-radius: 50%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 15px rgba(0, 180, 219, 0.3);
-    overflow: hidden;
-    transition: 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-/* Glass Shine Effect */
-.logo-shape::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
-    transform: translateX(-100%);
-    animation: shine 3s infinite;
-}
-
-.logo-shape::after {
-    content: 'S';
-    color: white;
-    font-size: 20px;
-    font-weight: 900;
 }
 
 @keyframes shine {
@@ -116,161 +92,149 @@ body { background-color: var(--bg-color); color: var(--text-color); transition: 
     20%, 100% { transform: translateX(100%); }
 }
 
-@keyframes logoFadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes sparkleSweep {
+    0% { left: -100%; }
+    100% { left: 150%; }
 }
 
-.brand-logo:hover .logo-shape {
-    background: var(--secondary);
-    transform: rotate(360deg);
+/* 4. Preloader */
+#preloader {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-color);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-.logo-text { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; color: var(--text-color); text-transform: uppercase; }
+.loader-icon { font-size: 60px; animation: spinAndPulse 1.2s infinite ease-in-out; }
+
+/* 5. Header & Navigation */
+.main-header { 
+    background: var(--card-bg); 
+    padding: 15px 0; 
+    position: sticky; top: 0; z-index: 1000; 
+    box-shadow: var(--shadow); 
+}
+
+.navbar { display: flex; justify-content: space-between; align-items: center; }
+
+.brand-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+
+.logo-shape {
+    width: 40px; height: 40px; background: var(--primary);
+    border-radius: 50%; position: relative;
+    display: flex; justify-content: center; align-items: center;
+    overflow: hidden; transition: 0.8s var(--transition);
+}
+
+.logo-shape::before {
+    content: ''; position: absolute; width: 100%; height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
+    transform: translateX(-100%); animation: shine 3s infinite;
+}
+
+.logo-shape::after { content: 'S'; color: white; font-size: 20px; font-weight: 900; }
+
+.logo-text { font-size: 24px; font-weight: 800; color: var(--text-color); text-transform: uppercase; }
 .logo-text span { color: var(--primary); font-weight: 400; }
 
-/* --- 4. NAVIGATION --- */
-.navbar { display: flex; justify-content: space-between; align-items: center; }
 .nav-menu { display: flex; gap: 25px; list-style: none; }
-.nav-link { text-decoration: none; color: var(--text-color); font-weight: 600; font-size: 15px; transition: var(--transition); }
+.nav-link { 
+    text-decoration: none; color: var(--text-color); 
+    font-weight: 600; font-size: 15px; transition: var(--transition); 
+}
 .nav-link.active, .nav-link:hover { color: var(--primary); }
 
-.menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; z-index: 1100; }
-.bar { width: 25px; height: 3px; background-color: var(--text-color); transition: 0.4s; border-radius: 2px; }
+/* 6. Calculator & Hero */
+.hero-wrapper { display: flex; align-items: center; gap: 50px; padding: 60px 0; }
 
-/* --- 5. RESPONSIVE / MOBILE MENU --- */
-@media (max-width: 768px) {
-    .menu-toggle { display: flex; }
-
-    .nav-container {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 75%;
-        height: 100vh;
-        background: var(--card-bg);
-        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-        transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 1050;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .nav-container.active { right: 0; }
-    .nav-menu { flex-direction: column; align-items: center; gap: 30px; }
-    .nav-link { font-size: 20px; }
-
-    .is-active .bar:nth-child(2) { opacity: 0; }
-    .is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-}
-
-/* --- 6. SCROLL TO TOP --- */
-.scroll-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 180, 219, 0.4);
-    display: none;
-    z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-.scroll-btn:hover {
-    transform: translateY(-5px);
-    background: var(--secondary);
-}
-
-@media (max-width: 768px) {
-    .scroll-btn { bottom: 20px; right: 20px; width: 45px; height: 45px; }
-}
-/* --- WHATSAPP FLOATING BUTTON --- */
-.whatsapp-btn {
-    position: fixed;
-    bottom: 30px;
-    left: 30px; /* Opposite side of Scroll Button */
-    background-color: #25d366;
-    color: white;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 600;
-    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
-    z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-.whatsapp-icon {
-    font-size: 20px;
-}
-
-.whatsapp-btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    background-color: #128c7e;
-    box-shadow: 0 15px 25px rgba(37, 211, 102, 0.4);
-}
-
-/* Hide text on small screens to keep it clean */
-@media (max-width: 480px) {
-    .whatsapp-text {
-        display: none;
-    }
-    .whatsapp-btn {
-        padding: 15px;
-        border-radius: 50%;
-        bottom: 20px;
-        left: 20px;
-    }
-}
-/* --- TESTIMONIALS --- */
-.testimonials {
-    padding: 80px 0;
-    background: var(--price-bg);
-}
-
-.testimonial-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.testi-card {
+.calc-card {
     background: var(--card-bg);
-    padding: 30px;
-    border-radius: 15px;
+    padding: 35px;
+    border-radius: var(--border-radius);
     box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sparkle Sweep Effect for Cards */
+.calc-card::after {
+    content: ''; position: absolute; top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: skewX(-20deg);
+}
+
+.calc-card:hover::after { animation: sparkleSweep 0.6s ease-in-out; }
+
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+
+input, select {
+    width: 100%; padding: 12px;
+    border-radius: 8px; border: 1px solid var(--input-border);
+    background: var(--bg-color); color: var(--text-color);
+    font-family: inherit; transition: var(--transition);
+}
+
+input:focus, select:focus { outline: 2px solid var(--primary); border-color: transparent; }
+
+.price-result {
+    background: var(--price-bg);
+    padding: 20px; border-radius: 8px;
+    text-align: center; margin-bottom: 20px;
+}
+
+.btn-checkout, .btn-glass-primary {
+    width: 100%; padding: 15px;
+    background: var(--primary); color: white;
+    border: none; border-radius: 8px;
+    font-weight: 700; cursor: pointer;
     transition: var(--transition);
 }
 
-.testi-card:hover {
-    transform: translateY(-10px);
+.btn-checkout:hover { background: var(--secondary); transform: translateY(-2px); }
+
+/* 7. Testimonials */
+.testimonials { padding: 80px 0; background: var(--price-bg); }
+.testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.testi-card { 
+    background: var(--card-bg); padding: 30px; 
+    border-radius: var(--border-radius); box-shadow: var(--shadow); 
 }
 
-.stars {
-    color: #ffb400;
-    margin-bottom: 15px;
-    font-size: 18px;
+/* 8. Floating Buttons */
+.scroll-btn, .whatsapp-btn {
+    position: fixed; z-index: 1000; transition: var(--transition);
 }
 
-.testi-card p {
-    font-style: italic;
-    margin-bottom: 15px;
-    line-height: 1.6;
+.scroll-btn {
+    bottom: 30px; right: 30px; width: 50px; height: 50px;
+    background: var(--primary); color: white; border: none;
+    border-radius: 50%; font-size: 20px; cursor: pointer;
+    display: none; align-items: center; justify-content: center;
 }
 
-.testi-card h4 {
-    color: var(--primary);
+.whatsapp-btn {
+    bottom: 30px; left: 30px; background-color: #25d366;
+    color: white; text-decoration: none; padding: 12px 20px;
+    border-radius: 50px; display: flex; align-items: center; gap: 10px;
+}
+
+/* 9. Responsive Queries */
+@media (max-width: 768px) {
+    .menu-toggle { display: flex; flex-direction: column; gap: 5px; cursor: pointer; }
+    .bar { width: 25px; height: 3px; background-color: var(--text-color); border-radius: 2px; }
+    
+    .nav-container {
+        position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
+        background: var(--card-bg); z-index: 1050; transition: 0.5s;
+        display: flex; justify-content: center; align-items: center;
+    }
+    
+    .nav-container.active { right: 0; }
+    .nav-menu { flex-direction: column; text-align: center; }
 }

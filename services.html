@@ -2,45 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services | SparkleClean Premium</title>
+    <title>Premium Cleaning Services | SparkleClean Solutions</title>
     
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="assets/css/style.css">
+    
     <style>
-        /* Extra polish for Services page */
+        /* Services Specific Polish */
+        .services-hero {
+            height: 45vh;
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&q=80&w=1500');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
         .service-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: var(--transition);
             cursor: pointer;
-            padding: 40px 20px !important;
+            padding: 40px 30px !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 180, 219, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 180, 219, 0.2);
         }
 
         .service-icon {
-            font-size: 60px;
-            margin-bottom: 25px;
-            display: inline-block;
-            transition: transform 0.3s ease;
+            font-size: 55px;
+            margin-bottom: 20px;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .service-card:hover .service-icon {
-            transform: scale(1.2) rotate(5deg);
+            transform: scale(1.2) rotate(8deg);
+        }
+
+        .service-link {
+            margin-top: auto;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
         }
 
         @media (max-width: 768px) {
-            .hero-banner { height: auto !important; padding: 120px 0 60px 0 !important; }
-            .hero-title { font-size: 2.5rem !important; }
+            .services-hero { height: auto; padding: 120px 0 60px 0; }
         }
     </style>
 </head>
 <body>
     
-<button id="scrollToTop" class="scroll-btn">↑</button>
+    <button id="scrollToTop" class="scroll-btn" aria-label="Scroll to top">↑</button>
 
     <div id="preloader">
         <div class="loader">
@@ -58,9 +89,7 @@
             </a>
 
             <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </div>
 
             <nav class="nav-container" id="nav-container">
@@ -81,45 +110,42 @@
         </div>
     </header>
 
-    <section class="hero-banner" style="height: 45vh; min-height: 350px; display: flex; align-items: center; justify-content: center;">
+    <section class="services-hero">
         <div class="container">
-            <div class="banner-content" style="text-align: center; max-width: 100%;">
-                <h1 class="hero-title">Premium <span>Services.</span></h1>
-                <p style="font-size: 1.2rem; opacity: 0.9;">Tailored cleaning solutions for every space, delivered with a sparkle.</p>
-                <div style="width: 80px; height: 4px; background: var(--primary); margin: 20px auto; border-radius: 2px;"></div>
-            </div>
+            <h1 class="hero-title" style="color: white;">Premium <span>Services.</span></h1>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;">Tailored cleaning solutions for every space, delivered with a professional sparkle you can trust.</p>
         </div>
     </section>
 
-    <section class="container" style="padding: 80px 20px;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+    <main class="container" style="padding: 80px 20px;">
+        <div class="grid-layout" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
             
-            <div class="calc-card service-card" style="text-align: center; border-top: 5px solid var(--primary);">
-                <div class="service-icon">🏠</div>
-                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Residential</h3>
-                <p style="margin: 15px 0; opacity: 0.8; line-height: 1.6;">Complete home cleaning including bedrooms, deep kitchen sanitization, and premium floor care.</p>
-                <a href="contact.html" style="color: var(--primary); text-decoration: none; font-weight: 700; letter-spacing: 0.5px;">BOOK SERVICE →</a>
+            <div class="calc-card service-card" style="border-top: 5px solid var(--primary);">
+                <div class="service-icon" aria-hidden="true">🏠</div>
+                <h3>Residential Clean</h3>
+                <p style="margin: 15px 0; opacity: 0.8;">Complete home cleaning including bedrooms, deep kitchen sanitization, and premium floor care for your family.</p>
+                <a href="contact.html" class="service-link" style="color: var(--primary);">Book Service →</a>
             </div>
 
-            <div class="calc-card service-card" style="text-align: center; border-top: 5px solid #ff9800;">
-                <div class="service-icon">🏢</div>
-                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Office Cleaning</h3>
-                <p style="margin: 15px 0; opacity: 0.8; line-height: 1.6;">Maintain a healthy workspace to boost productivity and ensure a professional atmosphere for clients.</p>
-                <a href="contact.html" style="color: #ff9800; text-decoration: none; font-weight: 700; letter-spacing: 0.5px;">BOOK SERVICE →</a>
+            <div class="calc-card service-card" style="border-top: 5px solid #ff9800;">
+                <div class="service-icon" aria-hidden="true">🏢</div>
+                <h3>Office Cleaning</h3>
+                <p style="margin: 15px 0; opacity: 0.8;">Maintain a healthy workspace to boost productivity and ensure a professional atmosphere for your valuable clients.</p>
+                <a href="contact.html" class="service-link" style="color: #ff9800;">Book Service →</a>
             </div>
 
-            <div class="calc-card service-card" style="text-align: center; border-top: 5px solid #4caf50;">
-                <div class="service-icon">🪟</div>
-                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Window Sparkle</h3>
-                <p style="margin: 15px 0; opacity: 0.8; line-height: 1.6;">Crystal clear results for residential and commercial windows using professional streak-free tools.</p>
-                <a href="contact.html" style="color: #4caf50; text-decoration: none; font-weight: 700; letter-spacing: 0.5px;">BOOK SERVICE →</a>
+            <div class="calc-card service-card" style="border-top: 5px solid #4caf50;">
+                <div class="service-icon" aria-hidden="true">🪟</div>
+                <h3>Window Sparkle</h3>
+                <p style="margin: 15px 0; opacity: 0.8;">Crystal clear results for residential and commercial windows using professional streak-free tools and techniques.</p>
+                <a href="contact.html" class="service-link" style="color: #4caf50;">Book Service →</a>
             </div>
 
         </div>
-    </section>
+    </main>
 
-    <footer class="main-footer" style="padding: 40px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
-        <div class="container">
+    <footer class="main-footer">
+        <div class="container" style="text-align: center; padding: 40px 0;">
             <p>&copy; 2026 SparkleClean Premium. All Rights Reserved.</p>
         </div>
     </footer>

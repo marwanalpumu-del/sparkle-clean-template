@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,28 +13,47 @@
     <link rel="stylesheet" href="assets/css/rtl.css">
 
     <style>
-        /* الحفاظ على خط الاسم إنجليزي حتى في النسخة العربية */
+        /* الحفاظ على خط الاسم إنجليزي لضمان الفخامة */
         .logo-text { font-family: 'Inter', sans-serif; }
         
-        .hero-banner {
-            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
-                        url('assets/images/hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-        }
+        /* تكييف اتجاه النجوم في شاشة التحميل للنسخة العربية */
+        [dir="rtl"] .star { right: auto; left: 5px; }
     </style>
 </head>
 <body>
+
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-box">
+                <span class="star" style="top: 5px; left: 5px;">✦</span>
+                <span class="star" style="bottom: 5px; right: 5px;">✦</span>
+                <span class="loader-logo">S</span>
+            </div>
+            <p class="loader-text">SPARKLE CLEAN</p>
+        </div>
+    </div>
 
     <header class="main-header">
         <div class="container navbar">
             <a href="index-ar.html" class="brand-logo">
                 <div class="logo-shape"></div>
-                <div class="logo-text">
-                    SPARKLE
-                    <span>CLEAN</span>
-                </div>
+                <div class="logo-text">SPARKLE<span>CLEAN</span></div>
             </a>
+
+            <div class="nav-controls">
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider"></div>
+                    </label>
+                </div>
+
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
 
             <nav class="nav-container">
                 <ul class="nav-menu">
@@ -49,39 +68,39 @@
     <section class="hero-banner">
         <div class="container hero-wrapper">
             <div class="banner-content">
-                <h1 class="hero-title">اختبر <span>التميز</span> في النظافة</h1>
+                <h1 class="hero-title"><span class="highlight">نُضفي</span> بريقاً خاصاً على منزلك</h1>
                 <p>خدمات تنظيف احترافية مخصصة لمنزلك ومكتبك من <strong>SparkleClean</strong>. جودة تليق بك.</p>
                 <div class="banner-buttons">
-                    <a href="services-ar.html" class="btn-glass-primary">خدماتنا</a>
-                    <a href="contact-ar.html" class="btn-glass-outline">احجز الآن</a>
+                    <a href="services-ar.html" class="btn-glass-primary">اكتشف خدماتنا</a>
+                    <a href="contact-ar.html" class="btn-glass-outline">احجز موعدك ✨</a>
                 </div>
             </div>
 
             <div class="calc-card">
-                <h3 style="color: var(--primary);">حاسبة التكلفة</h3>
+                <h3>حاسبة التكلفة الذكية</h3>
                 <div class="form-group">
                     <label>المساحة (متر مربع)</label>
-                    <input type="number" id="inputArea" placeholder="مثلاً: 100">
+                    <input type="number" id="inputArea" placeholder="مثلاً: 120">
                 </div>
                 <div class="price-result">
                     <p>الإجمالي التقديري</p>
-                    <h2>$<span id="priceValue">0</span></h2>
+                    <h2 id="priceDisplay">0 $</h2>
                 </div>
-                <button class="btn-checkout">تأكيد الحجز</button>
+                <button class="btn-checkout">تأكيد الحجز الآمن</button>
             </div>
         </div>
     </section>
 
     <section class="container section-padding">
-        <h2 class="section-title">نتائج <span>SparkleClean</span></h2>
+        <h2 class="section-title">نتائج <span>SparkleClean</span> الساحرة</h2>
         <div class="grid-layout">
             <div class="calc-card result-card">
-                <div class="image-wrapper" style="border-radius: 12px; overflow: hidden;">
-                    <img src="assets/images/bathroom-result.jpg" alt="نتيجة تنظيف الحمام" style="width: 100%;">
+                <div class="image-wrapper">
+                    <img src="assets/images/bathroom-result.jpg" alt="نتيجة تنظيف الحمام">
                 </div>
                 <div class="card-content" style="padding-top: 20px;">
                     <h3>تنظيف عميق للحمامات</h3>
-                    <p>إعادة اللمعان الكامل لأسطح السيراميك والرخام باستخدام مواد صديقة للبيئة.</p>
+                    <p>إعادة اللمعان الكامل لأسطح السيراميك والرخام باستخدام مواد صديقة للبيئة وآمنة تماماً.</p>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 /**
  * SparkleClean - Main JavaScript
- * Professional Version
+ * Professional Version (Updated with Mobile Menu)
  */
 
 (function () {
@@ -8,7 +8,6 @@
 
     document.addEventListener('DOMContentLoaded', function () {
 
-        // Global check for RTL direction
         const isRTL = document.documentElement.dir === 'rtl';
 
         /**
@@ -54,14 +53,14 @@
             if (areaInput && priceDisplay) {
                 areaInput.addEventListener('input', () => {
                     const area = parseFloat(areaInput.value) || 0;
-                    const rate = 10; // Default rate per sqm
+                    const rate = 10; 
                     priceDisplay.innerText = (area * rate).toLocaleString();
                 });
             }
         };
 
         /**
-         * 4. BOOKING ALERTS (Bilingual Support)
+         * 4. BOOKING ALERTS
          */
         const initBookingAlerts = () => {
             const checkoutBtn = document.querySelector('.btn-checkout');
@@ -69,12 +68,34 @@
                 checkoutBtn.addEventListener('click', () => {
                     const price = document.getElementById('priceValue')?.innerText || "0";
                     if (price !== "0") {
-                        // Keep Brand name "SparkleClean" in English for both versions
                         const msg = isRTL 
-                            ? `✨ Thank you for choosing SparkleClean!\nEstimated total: $${price}` 
+                            ? `✨ شكراً لاختيارك SparkleClean!\nالتكلفة التقديرية: $${price}` 
                             : `✨ Thank you for choosing SparkleClean!\nEstimated total: $${price}`;
                         alert(msg);
                     }
+                });
+            }
+        };
+
+        /**
+         * 5. MOBILE MENU LOGIC (أهم تعديل للتجاوب)
+         */
+        const initNavigation = () => {
+            const menuToggle = document.getElementById('mobile-menu');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    menuToggle.classList.toggle('is-active'); // لتحريك الشرطات إلى X
+                });
+
+                // إغلاق القائمة عند الضغط على الروابط
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                        menuToggle.classList.remove('is-active');
+                    });
                 });
             }
         };
@@ -84,5 +105,6 @@
         initThemeMode();
         initCalculator();
         initBookingAlerts();
+        initNavigation(); // استدعاء دالة التجاوب الجديدة
     });
 })();

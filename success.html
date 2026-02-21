@@ -2,54 +2,109 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Confirmed | SparkleClean</title>
+    <title>Booking Confirmed | SparkleClean Premium</title>
+    
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
     <link rel="stylesheet" href="assets/css/style.css">
+    
     <style>
-        .success-container {
+        .success-wrapper {
             height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 20px;
+            background: var(--bg-color);
+            transition: var(--transition);
         }
-        .check-container {
-            width: 80px;
-            height: 80px;
+
+        .success-card {
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .check-icon-box {
+            width: 100px;
+            height: 100px;
             background: #25d366;
             color: white;
-            font-size: 40px;
+            font-size: 50px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 20px;
-            animation: popIn 0.5s cubic-bezier(0.26, 0.53, 0.74, 1.48);
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            animation: popIn 0.5s cubic-bezier(0.26, 0.53, 0.74, 1.48) 0.3s backwards;
         }
+
         @keyframes popIn {
-            0% { transform: scale(0); }
-            100% { transform: scale(1); }
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
-        .btn-home {
-            margin-top: 30px;
-            padding: 12px 30px;
+
+        @keyframes slideUp {
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .success-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .success-text {
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .btn-return {
+            display: inline-block;
+            padding: 15px 40px;
             background: var(--primary);
             color: white;
             text-decoration: none;
             border-radius: 8px;
-            font-weight: 600;
-            transition: 0.3s;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .btn-return:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 180, 219, 0.3);
         }
     </style>
 </head>
 <body>
-    <div class="success-container">
-        <div class="check-container">✓</div>
-        <h1>Thank You!</h1>
-        <p>Your request has been received. Our team will contact you shortly.</p>
-        <a href="index.html" class="btn-home">Back to Homepage</a>
-    </div>
+
+    <main class="success-wrapper">
+        <div class="success-card">
+            <div class="check-icon-box">✓</div>
+            <h1 class="success-title">Thank You!</h1>
+            <p class="success-text">
+                Your cleaning request has been received successfully. 
+                Our team will review the details and contact you within 24 hours to confirm your appointment.
+            </p>
+            <a href="index.html" class="btn-return">Return to Homepage</a>
+        </div>
+    </main>
+
+    <script>
+        // Apply theme immediately to prevent white flash
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+    </script>
 </body>
 </html>

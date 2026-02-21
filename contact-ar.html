@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تواصل معنا | SparkleClean</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>تواصل معنا | SparkleClean - احصل على تسعيرة</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    
     <div id="preloader"></div>
 
     <header class="main-header">
@@ -15,11 +17,13 @@
             <nav class="navbar">
                 <a href="index-ar.html" class="brand-logo">
                     <div class="logo-shape"></div>
-                    <div class="logo-text">SparkleClean<span>خدمات مميزة</span></div>
+                    <div class="logo-text">SparkleClean<span>خدمة بريميوم</span></div>
                 </a>
+                
                 <div class="menu-toggle" id="mobile-menu">
                     <span class="bar"></span><span class="bar"></span><span class="bar"></span>
                 </div>
+
                 <ul class="nav-menu">
                     <li><a href="index-ar.html" class="nav-link">الرئيسية</a></li>
                     <li><a href="about-ar.html" class="nav-link">من نحن</a></li>
@@ -39,10 +43,11 @@
 
     <main class="container" style="padding: 60px 20px;">
         <div class="contact-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 40px;">
+            
             <div class="info-card">
                 <span class="badge">تواصل معنا</span>
                 <h2 style="margin: 15px 0;">معلومات الاتصال</h2>
-                <p style="color: var(--text-muted); margin-bottom: 30px;">هل لديك استفسارات؟ فريقنا متاح لخدمتك على مدار الساعة.</p>
+                <p style="color: var(--text-muted); margin-bottom: 30px;">هل لديك استفسارات؟ فريقنا متاح لمساعدتك على مدار الساعة.</p>
                 
                 <div class="info-item" style="display: flex; gap: 15px; margin-bottom: 25px;">
                     <div style="font-size: 24px;">📍</div>
@@ -57,9 +62,12 @@
             <div class="service-card">
                 <h2 style="margin-bottom: 20px;">أرسل لنا رسالة</h2>
                 <form id="contact-form" method="POST">
+                    <input type="hidden" name="_next" value="success-ar.html">
+                    <input type="hidden" name="_captcha" value="false">
+
                     <div class="form-group">
                         <label>الاسم الكامل</label>
-                        <input type="text" name="name" placeholder="أدخل اسمك" required>
+                        <input type="text" name="name" placeholder="أدخل اسمك هنا" required>
                     </div>
                     <div class="form-group">
                         <label>البريد الإلكتروني</label>
@@ -67,18 +75,17 @@
                     </div>
                     <div class="form-group">
                         <label>الرسالة</label>
-                        <textarea name="message" rows="5" placeholder="كيف يمكننا مساعدتك؟" required></textarea>
+                        <textarea name="message" rows="5" placeholder="اكتب رسالتك هنا..." required></textarea>
                     </div>
-                    <button type="submit" class="btn-checkout">إرسال الرسالة الآن ✨</button>
+                    <button type="submit" class="btn-checkout" style="width: 100%;">إرسال الرسالة ✨</button>
                 </form>
             </div>
+
         </div>
     </main>
 
     <button id="scrollToTop">↑</button>
-    <a href="#" id="whatsapp-link" class="whatsapp-float" target="_blank">
-        </a>
-
+    
     <script src="assets/js/main.js"></script>
 </body>
 </html>

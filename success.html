@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking Confirmed | SparkleClean Premium</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="assets/css/style.css">
+    
     <style>
         .success-wrapper {
             height: 100vh;
@@ -12,6 +16,7 @@
             justify-content: center;
             align-items: center;
             background: var(--bg-color);
+            transition: var(--transition);
         }
         .success-card {
             background: var(--card-bg);
@@ -22,44 +27,83 @@
             max-width: 500px;
             width: 90%;
             animation: slideUp 0.6s ease-out;
+            position: relative;
+            overflow: hidden;
         }
+        /* تأثير النجوم المتطايرة في الخلفية */
+        .success-card::before {
+            content: '✨';
+            position: absolute;
+            top: 10px; right: 10px;
+            font-size: 2rem;
+            opacity: 0.2;
+            animation: sparkleStars 3s infinite;
+        }
+
         .check-icon-box {
             width: 100px; height: 100px;
-            background: #25d366; color: white;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
             font-size: 50px; border-radius: 50%;
             display: flex; justify-content: center; align-items: center;
             margin: 0 auto 30px;
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
             animation: popIn 0.5s cubic-bezier(0.26, 0.53, 0.74, 1.48) 0.3s backwards;
         }
+
         @keyframes popIn { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
         @keyframes slideUp { 0% { transform: translateY(30px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
-        .redirect-notice { font-size: 0.85rem; opacity: 0.6; margin-top: 20px; }
+
+        .redirect-notice { font-size: 0.85rem; opacity: 0.6; margin-top: 20px; color: var(--text-muted); }
+        
         .btn-return {
-            display: inline-block; padding: 15px 40px;
-            background: var(--primary); color: white;
-            text-decoration: none; border-radius: 8px;
-            font-weight: 700; transition: var(--transition);
+            display: inline-block; 
+            padding: 15px 40px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white !important;
+            text-decoration: none; 
+            border-radius: 8px;
+            font-weight: 700; 
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 180, 219, 0.3);
         }
-        .btn-return:hover { transform: translateY(-3px); background: var(--secondary); }
+        .btn-return:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 180, 219, 0.4); }
     </style>
 </head>
 <body>
+
     <main class="success-wrapper">
         <div class="success-card">
             <div class="check-icon-box">✓</div>
-            <h1>Thank You!</h1>
-            <p style="margin-bottom: 25px; line-height: 1.6;">Your request has been received. Our team will contact you within 24 hours.</p>
+            <h1 style="color: var(--text-color); margin-bottom: 15px;">Thank You!</h1>
+            <p style="margin-bottom: 30px; line-height: 1.6; color: var(--text-muted);">
+                Your request has been received with a <strong>Sparkle!</strong> ✨<br>
+                Our team will contact you within 24 hours to confirm your appointment.
+            </p>
+            
             <a href="index.html" class="btn-return">Return Home Now</a>
-            <p class="redirect-notice">You will be redirected automatically in a few seconds...</p>
+            
+            <p class="redirect-notice" id="timer">You will be redirected automatically in 8 seconds...</p>
         </div>
     </main>
 
     <script>
-        // Apply theme
-        document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
-        // Auto redirect after 8 seconds
-        setTimeout(() => { window.location.href = "index.html"; }, 8000);
+        // تطبيق الثيم المحفوظ (داكن/فاتح)
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+
+        // عداد ثواني تفاعلي للتحويل التلقائي
+        let seconds = 8;
+        const timerElement = document.getElementById('timer');
+        
+        const countdown = setInterval(() => {
+            seconds--;
+            timerElement.innerText = `You will be redirected automatically in ${seconds} seconds...`;
+            if (seconds <= 0) {
+                clearInterval(countdown);
+                window.location.href = "index.html";
+            }
+        }, 1000);
     </script>
 </body>
 </html>

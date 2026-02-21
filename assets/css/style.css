@@ -1,38 +1,22 @@
 /*
  * Theme Name: SparkleClean - Premium Cleaning Service HTML Template
- * Theme URI: https://yourdomain.com/sparkleclean
- * Author: YourName
- * Author URI: https://yourportfolio.com
- * Description: Professional, modern, and responsive HTML5 template for cleaning services.
+ * Description: Professional, modern, and responsive HTML5 template with programmatic logo and dark mode.
  * Version: 1.0.0
- * License: ThemeForest Regular License
  */
 
 /* ==========================================================================
-   TABLE OF CONTENTS
-   ==========================================================================
    1. Root Variables
-   2. Base Styles & Typography
-   3. Animations
-   4. Header & Navigation
-   5. Hero Section & Calculator
-   6. Components (Buttons, Cards)
-   7. Sections (Testimonials, Results)
-   8. Footer
-   9. Responsive Media Queries
    ========================================================================== */
-
-/* 1. Root Variables */
 :root {
     --primary: #00b4db;
     --secondary: #0083b0;
     --bg-color: #f4f7f6;
     --card-bg: #ffffff;
     --text-color: #1a2a3a;
+    --text-muted: #64748b;
     --input-border: #eeeeee;
     --price-bg: #f0faff;
     --shadow: 0 10px 30px rgba(0,0,0,0.08);
-    --glass: rgba(255, 255, 255, 0.2);
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --border-radius: 12px;
 }
@@ -41,22 +25,22 @@
     --bg-color: #0a192f; 
     --card-bg: #112240;
     --text-color: #ccd6f6;
+    --text-muted: #8892b0;
     --input-border: #233554;
     --price-bg: rgba(0, 180, 219, 0.05);
     --shadow: 0 20px 40px rgba(0,0,0,0.4);
-    --glass: rgba(255, 255, 255, 0.05);
 }
 
-/* 2. Base Styles & Typography */
+/* ==========================================================================
+   2. Base Styles
+   ========================================================================== */
 * { 
     margin: 0; 
     padding: 0; 
     box-sizing: border-box; 
 }
 
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body { 
     background-color: var(--bg-color); 
@@ -65,8 +49,6 @@ body {
     line-height: 1.6;
     transition: var(--transition); 
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 .container { 
@@ -75,166 +57,165 @@ body {
     padding: 0 20px; 
 }
 
-img {
-    max-width: 100%;
-    height: auto;
+/* ==========================================================================
+   3. Programmatic Logo (CSS Based)
+   ========================================================================== */
+.brand-logo { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    text-decoration: none; 
 }
 
-/* 3. Animations */
-@keyframes spinAndPulse {
-    0% { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(180deg) scale(1.3); }
-    100% { transform: rotate(360deg) scale(1); }
+.logo-shape {
+    width: 45px; 
+    height: 45px; 
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 10px;
+    position: relative;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 180, 219, 0.3);
 }
 
-@keyframes shine {
-    0% { transform: translateX(-100%); }
-    20%, 100% { transform: translateX(100%); }
+/* Programmatic Shine Animation over Logo */
+.logo-shape::before {
+    content: ''; 
+    position: absolute; 
+    width: 150%; 
+    height: 150%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.5), transparent);
+    transform: translateX(-150%) skewX(-25deg);
+    animation: logoShine 3s infinite ease-in-out;
 }
 
-@keyframes sparkleSweep {
-    0% { left: -100%; }
-    100% { left: 150%; }
+@keyframes logoShine {
+    0% { transform: translateX(-150%) skewX(-25deg); }
+    30% { transform: translateX(150%) skewX(-25deg); }
+    100% { transform: translateX(150%) skewX(-25deg); }
 }
 
-/* 4. Preloader */
-#preloader {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: var(--bg-color);
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    z-index: 9999;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+.logo-shape::after {
+    content: '✨';
+    font-size: 20px;
 }
 
-.loader-icon { font-size: 60px; animation: spinAndPulse 1.2s infinite ease-in-out; }
+.logo-text {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--text-color);
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+}
 
-/* 5. Header & Navigation */
+.logo-text span {
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+/* ==========================================================================
+   4. Header & Nav
+   ========================================================================== */
 .main-header { 
     background: var(--card-bg); 
-    padding: 15px 0; 
-    position: sticky; top: 0; z-index: 1000; 
+    padding: 12px 0; 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
     box-shadow: var(--shadow); 
 }
 
 .navbar { display: flex; justify-content: space-between; align-items: center; }
 
-.brand-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-menu { display: flex; gap: 25px; list-style: none; align-items: center; }
 
-.logo-shape {
-    width: 40px; height: 40px; background: var(--primary);
-    border-radius: 50%; position: relative;
-    display: flex; justify-content: center; align-items: center;
-    overflow: hidden; transition: 0.8s var(--transition);
-}
-
-.logo-shape::before {
-    content: ''; position: absolute; width: 100%; height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
-    transform: translateX(-100%); animation: shine 3s infinite;
-}
-
-.logo-shape::after { content: 'S'; color: white; font-size: 20px; font-weight: 900; }
-
-.logo-text { font-size: 24px; font-weight: 800; color: var(--text-color); text-transform: uppercase; }
-.logo-text span { color: var(--primary); font-weight: 400; }
-
-.nav-menu { display: flex; gap: 25px; list-style: none; }
 .nav-link { 
-    text-decoration: none; color: var(--text-color); 
-    font-weight: 600; font-size: 15px; transition: var(--transition); 
+    text-decoration: none; 
+    color: var(--text-color); 
+    font-weight: 600; 
+    font-size: 15px; 
+    transition: var(--transition); 
 }
-.nav-link.active, .nav-link:hover { color: var(--primary); }
 
-/* 6. Calculator & Hero */
-.hero-wrapper { display: flex; align-items: center; gap: 50px; padding: 60px 0; }
+.nav-link:hover, .nav-link.active { color: var(--primary); }
 
+.lang-btn {
+    padding: 6px 12px;
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--primary) !important;
+}
+
+/* ==========================================================================
+   5. Calculator & Cards
+   ========================================================================== */
 .calc-card {
     background: var(--card-bg);
-    padding: 35px;
+    padding: 30px;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
     width: 100%;
-    max-width: 450px;
-    position: relative;
-    overflow: hidden;
+    max-width: 420px;
 }
-
-/* Sparkle Sweep Effect for Cards */
-.calc-card::after {
-    content: ''; position: absolute; top: 0; left: -100%;
-    width: 50%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-    transform: skewX(-20deg);
-}
-
-.calc-card:hover::after { animation: sparkleSweep 0.6s ease-in-out; }
-
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
-
-input, select {
-    width: 100%; padding: 12px;
-    border-radius: 8px; border: 1px solid var(--input-border);
-    background: var(--bg-color); color: var(--text-color);
-    font-family: inherit; transition: var(--transition);
-}
-
-input:focus, select:focus { outline: 2px solid var(--primary); border-color: transparent; }
 
 .price-result {
     background: var(--price-bg);
-    padding: 20px; border-radius: 8px;
-    text-align: center; margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 20px 0;
 }
 
-.btn-checkout, .btn-glass-primary {
-    width: 100%; padding: 15px;
-    background: var(--primary); color: white;
-    border: none; border-radius: 8px;
-    font-weight: 700; cursor: pointer;
+.btn-checkout {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
     transition: var(--transition);
 }
 
-.btn-checkout:hover { background: var(--secondary); transform: translateY(-2px); }
-
-/* 7. Testimonials */
-.testimonials { padding: 80px 0; background: var(--price-bg); }
-.testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.testi-card { 
-    background: var(--card-bg); padding: 30px; 
-    border-radius: var(--border-radius); box-shadow: var(--shadow); 
+.btn-checkout:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
 }
 
-/* 8. Floating Buttons */
-.scroll-btn, .whatsapp-btn {
-    position: fixed; z-index: 1000; transition: var(--transition);
+/* ==========================================================================
+   6. Dark Mode Toggle
+   ========================================================================== */
+.theme-switch-wrapper { display: flex; align-items: center; }
+.theme-switch { display: inline-block; height: 24px; position: relative; width: 50px; }
+.theme-switch input { display: none; }
+.slider {
+    background-color: #ccc; bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0;
+    transition: .4s; border-radius: 34px;
 }
-
-.scroll-btn {
-    bottom: 30px; right: 30px; width: 50px; height: 50px;
-    background: var(--primary); color: white; border: none;
-    border-radius: 50%; font-size: 20px; cursor: pointer;
-    display: none; align-items: center; justify-content: center;
+.slider:before {
+    background-color: #fff; bottom: 4px; content: ""; height: 16px; left: 4px; position: absolute;
+    transition: .4s; width: 16px; border-radius: 50%;
 }
+input:checked + .slider { background-color: var(--primary); }
+input:checked + .slider:before { transform: translateX(26px); }
 
-.whatsapp-btn {
-    bottom: 30px; left: 30px; background-color: #25d366;
-    color: white; text-decoration: none; padding: 12px 20px;
-    border-radius: 50px; display: flex; align-items: center; gap: 10px;
-}
-
-/* 9. Responsive Queries */
+/* ==========================================================================
+   7. Responsive Queries
+   ========================================================================== */
 @media (max-width: 768px) {
-    .menu-toggle { display: flex; flex-direction: column; gap: 5px; cursor: pointer; }
-    .bar { width: 25px; height: 3px; background-color: var(--text-color); border-radius: 2px; }
-    
     .nav-container {
-        position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
+        position: fixed; top: 0; right: -100%; width: 70%; height: 100vh;
         background: var(--card-bg); z-index: 1050; transition: 0.5s;
         display: flex; justify-content: center; align-items: center;
     }
-    
     .nav-container.active { right: 0; }
-    .nav-menu { flex-direction: column; text-align: center; }
+    .nav-menu { flex-direction: column; }
 }

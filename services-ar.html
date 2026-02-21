@@ -1,31 +1,27 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خدماتنا المميزة | سباركل كلين</title>
+    <title>خدماتنا | SparkleClean</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        /* محاكاة نفس التنسيق في الصفحة الإنجليزية */
         .services-hero {
-            height: 45vh; min-height: 350px; display: flex; align-items: center; justify-content: center;
+            height: 45vh; display: flex; align-items: center; justify-content: center;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&q=80&w=1500');
             background-size: cover; background-position: center; color: white; text-align: center;
         }
-        .service-card { transition: var(--transition); cursor: pointer; padding: 40px 30px !important; display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 180, 219, 0.2); }
-        .service-icon { font-size: 55px; margin-bottom: 20px; }
-        .service-link { margin-top: auto; text-decoration: none; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; }
     </style>
 </head>
 <body>
-    <button id="scrollToTop" class="scroll-btn">↑</button>
+    <div id="preloader"></div>
 
     <header class="main-header">
         <div class="container navbar">
             <a href="index-ar.html" class="brand-logo">
                 <div class="logo-shape"></div>
-                <div class="logo-text">سباركل<span>كلين</span></div>
+                <div class="logo-text">Sparkle<span>Clean</span></div>
             </a>
             <div class="menu-toggle" id="mobile-menu">
                 <span class="bar"></span><span class="bar"></span><span class="bar"></span>
@@ -35,38 +31,43 @@
                 <li><a href="services-ar.html" class="nav-link active">خدماتنا</a></li>
                 <li><a href="about-ar.html" class="nav-link">من نحن</a></li>
                 <li><a href="contact-ar.html" class="nav-link">اتصل بنا</a></li>
-                <li><a href="services.html" class="lang-btn">English</a></li>
+                <li><a href="services.html" class="nav-link lang-btn">English</a></li>
+                <li class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" /><div class="slider"></div>
+                    </label>
+                </li>
             </ul>
         </div>
     </header>
 
     <section class="services-hero">
         <div class="container">
-            <h1 style="color: white;">خدمات <span>احترافية.</span></h1>
+            <h1 style="color: white; font-size: 3rem;">خدمات <span class="highlight">احترافية.</span></h1>
             <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;">حلول تنظيف مخصصة لكل مساحة، تُقدم بلمعان احترافي يمكنك الوثوق به.</p>
         </div>
     </section>
 
     <main class="container" style="padding: 80px 20px;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
-            <div class="calc-card service-card" style="border-top: 5px solid var(--primary);">
+        <div class="grid-layout">
+            <div class="service-card" style="border-top: 5px solid var(--primary);">
                 <div class="service-icon">🏠</div>
                 <h3>تنظيف سكني</h3>
-                <p>تنظيف كامل للمنزل يشمل غرف النوم، تعقيم عميق للمطبخ، وعناية ممتازة بالأرضيات.</p>
+                <p style="margin: 15px 0; color: var(--text-muted);">تنظيف كامل للمنازل يشمل غرف النوم، وتعقيم المطبخ بعمق، والعناية بالأرضيات.</p>
                 <a href="contact-ar.html" class="service-link" style="color: var(--primary);">احجز الآن ←</a>
             </div>
 
-            <div class="calc-card service-card" style="border-top: 5px solid #ff9800;">
+            <div class="service-card" style="border-top: 5px solid #ff9800;">
                 <div class="service-icon">🏢</div>
                 <h3>تنظيف المكاتب</h3>
-                <p>حافظ على مساحة عمل صحية لزيادة الإنتاجية وضمان أجواء احترافية لعملائك.</p>
+                <p style="margin: 15px 0; color: var(--text-muted);">حافظ على بيئة عمل صحية لزيادة الإنتاجية وضمان جو احترافي لعملائك.</p>
                 <a href="contact-ar.html" class="service-link" style="color: #ff9800;">احجز الآن ←</a>
             </div>
 
-            <div class="calc-card service-card" style="border-top: 5px solid #4caf50;">
+            <div class="service-card" style="border-top: 5px solid #4caf50;">
                 <div class="service-icon">🪟</div>
                 <h3>تلميع النوافذ</h3>
-                <p>نتائج كريستالية للنوافذ السكنية والتجارية باستخدام أدوات احترافية خالية من الخطوط.</p>
+                <p style="margin: 15px 0; color: var(--text-muted);">نتائج نقية وواضحة للنوافذ باستخدام أدوات احترافية وتقنيات خالية من الخطوط.</p>
                 <a href="contact-ar.html" class="service-link" style="color: #4caf50;">احجز الآن ←</a>
             </div>
         </div>

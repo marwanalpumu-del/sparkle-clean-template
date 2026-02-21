@@ -1,23 +1,23 @@
 /**
  * SparkleClean - Main JavaScript Core
- * Version: 1.5.0 (Ready for Marketplace)
+ * Version: 1.5.0 (Marketplace Ready)
  */
 
 (function () {
     "use strict";
 
-    // 1. إعدادات الشركة (لتسهيل التعديل على المشتري)
+    // 1. Company Configuration (Easily editable for buyers)
     const COMPANY_SETTINGS = {
         whatsappNumber: "966500000000",
         emailAddress: "info@sparkleclean.com",
         welcomeMsg: "Hello SparkleClean, I would like to inquire about your services! ✨"
     };
 
-    // 2. مصفوفة آراء العملاء (تلقائية حسب لغة الصفحة)
+    // 2. Testimonials Data (Auto-switches based on page language)
     const TESTIMONIALS_DATA = {
         ar: [
-            { name: "سارة الأحمد", role: "عميل سكني", text: "خدمة مذهلة! فريق SparkleClean جعل شقتي تلمع كأنها جديدة.", stars: 5, initial: "س" },
-            { name: "فهد العتيبي", role: "صاحب شركة", text: "الاحترافية والأمانة هي عنوانهم. نتائج مبهرة فعلاً.", stars: 5, initial: "ف" }
+            { name: "Sarah Ahmed", role: "Residential Client", text: "Amazing service! The SparkleClean team made my apartment shine like new.", stars: 5, initial: "س" },
+            { name: "Fahad Al-Otaibi", role: "Business Owner", text: "Professionalism and honesty. The results were truly impressive.", stars: 5, initial: "ف" }
         ],
         en: [
             { name: "Sarah Ahmed", role: "Residential Client", text: "Amazing service! The SparkleClean team made my apartment shine.", stars: 5, initial: "S" },
@@ -27,9 +27,9 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         const isRTL = document.documentElement.dir === 'rtl';
-        const lang = isRTL ? 'ar' : 'en';
+        const lang = document.documentElement.lang || (isRTL ? 'ar' : 'en');
 
-        // 3. تهيئة الروابط والـ Form
+        // 3. Initialize Global Links & Forms
         const setupGlobalSettings = () => {
             const waLink = document.getElementById('whatsapp-link');
             if (waLink) {
@@ -43,12 +43,12 @@
             }
         };
 
-        // 4. بناء السلايدر (Testimonials)
+        // 4. Render Testimonials Slider
         const renderTestimonials = () => {
             const container = document.getElementById('testimonials-container');
             if (!container) return;
 
-            const data = TESTIMONIALS_DATA[lang];
+            const data = TESTIMONIALS_DATA[isRTL ? 'ar' : 'en'];
             container.innerHTML = data.map(item => `
                 <div class="testimonial-card">
                     <div class="stars">${'⭐'.repeat(item.stars)}</div>
@@ -64,13 +64,13 @@
             `).join('');
         };
 
-        // 5. التحكم في الـ Preloader والتمرير
+        // 5. Scroll Effects & Preloader Control
         const initScrollEffects = () => {
             const preloader = document.getElementById('preloader');
             const header = document.querySelector('.main-header');
             const scrollBtn = document.getElementById('scrollToTop');
 
-            // إخفاء الـ Preloader باحترافية
+            // Professional Preloader Fade-out
             window.addEventListener('load', () => {
                 if (preloader) {
                     setTimeout(() => {
@@ -80,7 +80,7 @@
                 }
             });
 
-            // تأثيرات الهيدر وزر الصعود
+            // Header Sticky Effect & Scroll-to-Top Visibility
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) header?.classList.add('header-scrolled');
                 else header?.classList.remove('header-scrolled');
@@ -101,10 +101,10 @@
             });
         };
 
-        // 6. حاسبة الأسعار (العداد المتحرك)
+        // 6. Price Calculator (Animated Counter)
         const initCalculator = () => {
-            const areaInput = document.getElementById('inputArea'); // تم التأكد من الـ ID
-            const priceDisplay = document.getElementById('priceDisplay'); // تم التأكد من الـ ID
+            const areaInput = document.getElementById('inputArea'); 
+            const priceDisplay = document.getElementById('priceDisplay'); 
 
             if (areaInput && priceDisplay) {
                 areaInput.addEventListener('input', () => {
@@ -122,7 +122,7 @@
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
                 const currentVal = Math.floor(progress * (end - start) + start);
                 
-                // عرض السعر بعلامة $ واحدة وبدون تكرار
+                // Adaptive Currency Formatting
                 obj.innerText = isRTL ? `${currentVal.toLocaleString()} $` : `$${currentVal.toLocaleString()}`;
                 
                 if (progress < 1) {
@@ -132,7 +132,7 @@
             window.requestAnimationFrame(step);
         }
 
-        // 7. الوضع الداكن والقائمة (تم تحسين التوافق مع الجوال)
+        // 7. Dark Mode & Navigation Management (Mobile Optimized)
         const initThemeMode = () => {
             const toggleSwitch = document.querySelector('#checkbox');
             const savedTheme = localStorage.getItem('theme') || 'light';
@@ -150,7 +150,7 @@
 
         const initNavigation = () => {
             const menuToggle = document.getElementById('mobile-menu');
-            const navContainer = document.querySelector('.nav-container'); // التأكد من الكلاس الصحيح
+            const navContainer = document.querySelector('.nav-container'); 
 
             if (menuToggle && navContainer) {
                 menuToggle.addEventListener('click', (e) => {
@@ -159,7 +159,7 @@
                     menuToggle.classList.toggle('is-active');
                 });
 
-                // إغلاق المنيو عند الضغط في أي مكان خارجها
+                // Close menu when clicking outside
                 document.addEventListener('click', (e) => {
                     if (!navContainer.contains(e.target) && !menuToggle.contains(e.target)) {
                         navContainer.classList.remove('active');
@@ -169,7 +169,7 @@
             }
         };
 
-        // تشغيل جميع الوظائف
+        // Execution Core
         setupGlobalSettings();
         renderTestimonials();
         initScrollEffects();

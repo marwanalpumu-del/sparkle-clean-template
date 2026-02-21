@@ -219,3 +219,58 @@ input:checked + .slider:before { transform: translateX(26px); }
     .nav-container.active { right: 0; }
     .nav-menu { flex-direction: column; }
 }
+/* --- إعدادات القائمة المتجاوبة --- */
+
+/* 1. إخفاء الثلاث شرطات في وضع الكمبيوتر */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1000;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color); /* تأكد أن هذا المتغير موجود عندك */
+    transition: 0.3s;
+    border-radius: 3px;
+}
+
+/* 2. وضع الجوال (أقل من 768px) */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: flex; /* تظهر الأيقونة الآن */
+    }
+
+    .nav-menu {
+        display: none; /* مخفية حتى يتم الضغط على الزر */
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--card-bg); /* لون خلفية القائمة عند الفتح */
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        z-index: 999;
+    }
+
+    /* عندما تصبح القائمة نشطة */
+    .nav-menu.active {
+        display: flex;
+        animation: fadeIn 0.3s ease-in;
+    }
+
+    .nav-menu li {
+        margin: 15px 0;
+    }
+}
+
+/* حركة بسيطة لظهور القائمة */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سباركل كلين | خدمات تنظيف احترافية</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
 
+    <style>
+        /* اللوجو البرمجي في النسخة العربية */
+        .brand-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+        .logo-icon { font-size: 24px; animation: shine 2s infinite; }
+        .logo-text { font-size: 24px; font-weight: 900; color: var(--text-color); font-family: 'Cairo'; }
+        .logo-text span { color: var(--primary); }
+
+        .hero-banner {
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
+                        url('assets/images/hero-bg.jpg');
+            background-size: cover; background-position: center;
+            min-height: 85vh; display: flex; align-items: center; color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="index-ar.html" class="brand-logo">
+                <span class="logo-icon">✨</span>
+                <div class="logo-text">سباركل<span>كلين</span></div>
+            </a>
+            <nav class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="index-ar.html" class="nav-link active">الرئيسية</a></li>
+                    <li><a href="services-ar.html" class="nav-link">خدماتنا</a></li>
+                    <li><a href="index.html" class="nav-link lang-btn">English</a></li>
+                </ul>
+            </nav>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch"><input type="checkbox" id="checkbox"><div class="slider round"></div></label>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-banner">
+        <div class="container hero-wrapper">
+            <div class="banner-content">
+                <h1>اختبر <span>التميز</span> في النظافة</h1>
+                <p>خدمات احترافية مخصصة لمنزلك ومكتبك بأعلى جودة.</p>
+                <div class="banner-buttons">
+                    <a href="#services" class="btn-glass-primary">خدماتنا</a>
+                </div>
+            </div>
+            <div class="calc-card">
+                <h3>حاسبة التكلفة</h3>
+                <div class="form-group">
+                    <label>المساحة (م²)</label>
+                    <input type="number" id="inputArea" placeholder="مثلاً: 100">
+                </div>
+                <div class="price-result">
+                    <p>الإجمالي: $<span id="priceValue">0</span></p>
+                </div>
+                <button class="btn-checkout">احجز الآن</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

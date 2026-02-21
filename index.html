@@ -1,33 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SparkleClean | Premium Cleaning Service</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-
-    <style>
-        .hero-banner {
-            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
-                        url('assets/images/hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
 </head>
 <body>
+
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-box">
+                <span class="star" style="top: 5px; right: 5px;">✦</span>
+                <span class="star" style="bottom: 5px; left: 5px;">✦</span>
+                <span class="loader-logo">S</span>
+            </div>
+            <p class="loader-text">SPARKLE CLEAN</p>
+        </div>
+    </div>
 
     <header class="main-header">
         <div class="container navbar">
             <a href="index.html" class="brand-logo">
                 <div class="logo-shape"></div>
-                <div class="logo-text">
-                    SPARKLE
-                    <span>CLEAN</span>
-                </div>
+                <div class="logo-text">SPARKLE<span>CLEAN</span></div>
             </a>
+
+            <div class="nav-controls">
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider"></div>
+                    </label>
+                </div>
+
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
 
             <nav class="nav-container">
                 <ul class="nav-menu">
@@ -43,7 +56,7 @@
         <div class="container hero-wrapper">
             <div class="banner-content">
                 <h1 class="hero-title">Experience <span>Sparkling</span> Excellence</h1>
-                <p>Top-tier professional cleaning services from <strong>SparkleClean</strong>. Quality you can trust.</p>
+                <p>Top-tier professional cleaning services from <strong>SparkleClean</strong>.</p>
                 <div class="banner-buttons">
                     <a href="services.html" class="btn-glass-primary">Our Services</a>
                     <a href="contact.html" class="btn-glass-outline">Book Now</a>
@@ -58,24 +71,9 @@
                 </div>
                 <div class="price-result">
                     <p>Estimated Total</p>
-                    <h2>$<span id="priceValue">0</span></h2>
+                    <h2 id="priceDisplay">$0</h2>
                 </div>
-                <button class="btn-checkout">Secure Booking</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="container section-padding">
-        <h2 class="section-title">Our <span>Magic</span> Results</h2>
-        <div class="grid-layout">
-            <div class="calc-card result-card">
-                <div class="image-wrapper" style="border-radius: 12px; overflow: hidden;">
-                    <img src="assets/images/bathroom-result.jpg" alt="Bathroom Deep Clean" style="width: 100%;">
-                </div>
-                <div class="card-content" style="padding-top: 20px;">
-                    <h3>Bathroom Deep Clean</h3>
-                    <p>Full sanitization and stain removal for a brand-new look.</p>
-                </div>
+                <button class="btn-checkout">Secure Booking ✨</button>
             </div>
         </div>
     </section>

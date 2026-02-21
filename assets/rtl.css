@@ -6,8 +6,7 @@
 
 /* 1. Reset & Typography */
 :root {
-    /* يمكنك إضافة خط عربي هنا إذا أردت تخصيصه للنسخة العربية فقط */
-    --font-arabic: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+    --font-arabic: 'Cairo', 'Inter', 'Segoe UI', Tahoma, sans-serif;
 }
 
 [dir="rtl"] {
@@ -16,18 +15,19 @@
     font-family: var(--font-arabic);
 }
 
-/* 2. Navigation & Header */
-[dir="rtl"] .navbar {
-    flex-direction: row; /* Flexbox يتعامل تلقائياً مع RTL */
+/* الحفاظ على خط الاسم الإنجليزي في اللوجو حتى في نسخة العربي */
+[dir="rtl"] .logo-text {
+    font-family: 'Inter', sans-serif !important;
+    letter-spacing: -0.5px;
 }
 
-[dir="rtl"] .nav-menu {
-    padding-right: 0;
-    margin-right: 0;
+/* 2. Navigation & Header */
+[dir="rtl"] .navbar {
+    flex-direction: row; 
 }
 
 [dir="rtl"] .theme-switch-wrapper {
-    margin-right: auto; /* دفع الزر لليسار في النسخة العربية */
+    margin-right: auto; /* دفع زر الوضع الليلي لليسار */
     margin-left: 0;
 }
 
@@ -36,65 +36,28 @@
     text-align: right;
 }
 
-[dir="rtl"] .hero-title span::after {
-    right: 0;
-    left: auto; /* عكس موضع الخط الزخرفي تحت الكلمة */
-}
-
 /* 4. Pricing Calculator */
-[dir="rtl"] .calc-card {
-    text-align: right;
-}
-
 [dir="rtl"] .price-result h2 {
-    direction: ltr; /* الحفاظ على تنسيق الرقم $100 من اليسار لليمين */
+    direction: ltr; /* الحفاظ على تنسيق العملة $100 */
     display: inline-block;
-}
-
-[dir="rtl"] .form-group label {
-    display: block;
-    margin-bottom: 8px;
 }
 
 /* 5. Components & Icons */
-[dir="rtl"] .info-item {
-    display: flex;
-    gap: 15px;
-}
-
-[dir="rtl"] .service-card {
-    border-left: none;
-    /* إذا كان هناك Border جانبي في التصميم الأساسي، اعكسه هنا */
-}
-
-/* عكس اتجاه الأسهم الزخرفية */
-[dir="rtl"] .btn-glass-primary::after, 
-[dir="rtl"] .service-link::after {
-    content: ' ←'; /* سهم يشير لليسار بدلاً من اليمين */
+/* عكس اتجاه الأسهم في العربي */
+[dir="rtl"] .btn-glass-primary::after {
+    content: ' ←'; 
     margin-right: 8px;
     margin-left: 0;
-    display: inline-block;
 }
 
 /* 6. Mobile Responsiveness */
 @media (max-width: 768px) {
     [dir="rtl"] .nav-container {
-        right: -100%; /* القائمة تخرج من اليمين */
+        right: -100%; 
         left: auto;
     }
 
     [dir="rtl"] .nav-container.active {
         right: 0;
-        left: auto;
     }
-
-    [dir="rtl"] .menu-toggle {
-        margin-left: 0;
-        margin-right: auto;
-    }
-}
-
-/* 7. Footer Styles */
-[dir="rtl"] .main-footer {
-    text-align: center;
 }

@@ -1,1 +1,100 @@
+/**
+ * SparkleClean - RTL Framework Support
+ * Professional Arabic Layout Alignment
+ * Version: 1.0.0
+ */
 
+/* 1. Reset & Typography */
+:root {
+    /* يمكنك إضافة خط عربي هنا إذا أردت تخصيصه للنسخة العربية فقط */
+    --font-arabic: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+}
+
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+    font-family: var(--font-arabic);
+}
+
+/* 2. Navigation & Header */
+[dir="rtl"] .navbar {
+    flex-direction: row; /* Flexbox يتعامل تلقائياً مع RTL */
+}
+
+[dir="rtl"] .nav-menu {
+    padding-right: 0;
+    margin-right: 0;
+}
+
+[dir="rtl"] .theme-switch-wrapper {
+    margin-right: auto; /* دفع الزر لليسار في النسخة العربية */
+    margin-left: 0;
+}
+
+/* 3. Hero & Content Sections */
+[dir="rtl"] .banner-content {
+    text-align: right;
+}
+
+[dir="rtl"] .hero-title span::after {
+    right: 0;
+    left: auto; /* عكس موضع الخط الزخرفي تحت الكلمة */
+}
+
+/* 4. Pricing Calculator */
+[dir="rtl"] .calc-card {
+    text-align: right;
+}
+
+[dir="rtl"] .price-result h2 {
+    direction: ltr; /* الحفاظ على تنسيق الرقم $100 من اليسار لليمين */
+    display: inline-block;
+}
+
+[dir="rtl"] .form-group label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* 5. Components & Icons */
+[dir="rtl"] .info-item {
+    display: flex;
+    gap: 15px;
+}
+
+[dir="rtl"] .service-card {
+    border-left: none;
+    /* إذا كان هناك Border جانبي في التصميم الأساسي، اعكسه هنا */
+}
+
+/* عكس اتجاه الأسهم الزخرفية */
+[dir="rtl"] .btn-glass-primary::after, 
+[dir="rtl"] .service-link::after {
+    content: ' ←'; /* سهم يشير لليسار بدلاً من اليمين */
+    margin-right: 8px;
+    margin-left: 0;
+    display: inline-block;
+}
+
+/* 6. Mobile Responsiveness */
+@media (max-width: 768px) {
+    [dir="rtl"] .nav-container {
+        right: -100%; /* القائمة تخرج من اليمين */
+        left: auto;
+    }
+
+    [dir="rtl"] .nav-container.active {
+        right: 0;
+        left: auto;
+    }
+
+    [dir="rtl"] .menu-toggle {
+        margin-left: 0;
+        margin-right: auto;
+    }
+}
+
+/* 7. Footer Styles */
+[dir="rtl"] .main-footer {
+    text-align: center;
+}

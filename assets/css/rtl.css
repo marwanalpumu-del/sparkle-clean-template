@@ -1,0 +1,70 @@
+/*
+ * Theme Name: SparkleClean - RTL Styles
+ * Description: Arabic (Right-to-Left) overrides for the main stylesheet.
+ */
+
+/* 1. Global RTL Overrides */
+body {
+    direction: rtl;
+    unicode-bidi: embed;
+    font-family: 'Cairo', sans-serif; /* خط عربي احترافي */
+    text-align: right;
+}
+
+/* 2. Logo RTL Adjustment */
+.brand-logo {
+    flex-direction: row; /* الحفاظ على الأيقونة يمين النص */
+}
+
+.logo-text {
+    letter-spacing: 0; /* العربى لا يحتاج تباعد حروف */
+}
+
+.logo-text span {
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
+
+/* 3. Navigation & Header */
+.nav-menu {
+    gap: 30px;
+}
+
+.lang-btn {
+    font-family: 'Inter', sans-serif; /* ليبقى اسم اللغة الإنجليزية بخطه الأصلي */
+    letter-spacing: 0.5px;
+}
+
+/* 4. Calculator Overrides */
+.form-group label {
+    text-align: right;
+}
+
+input, select {
+    text-align: right;
+}
+
+/* 5. Floating Buttons Position Switch */
+.whatsapp-btn {
+    left: auto;
+    right: 30px; /* الواتساب على اليمين في العربي */
+}
+
+.scroll-btn {
+    right: auto;
+    left: 30px; /* زر الصعود على اليسار في العربي */
+}
+
+/* 6. Responsive Mobile Menu RTL */
+@media (max-width: 768px) {
+    .nav-container {
+        right: auto;
+        left: -100%; /* القائمة تخرج من اليسار في العربي */
+    }
+    
+    .nav-container.active {
+        left: 0;
+        right: auto;
+    }
+}

@@ -1,11 +1,11 @@
 /*
- * Theme Name: SparkleClean - Premium Cleaning Service HTML Template
- * Description: Professional, modern, and responsive HTML5 template with programmatic logo and dark mode.
- * Version: 1.0.0
+ * Theme Name: SparkleClean - Professional Responsive Template
+ * Features: Dark Mode, Programmatic S-Logo, Responsive Navigation
+ * Version: 1.1.0
  */
 
 /* ==========================================================================
-   1. Root Variables
+   1. Root Variables & Themes
    ========================================================================== */
 :root {
     --primary: #00b4db;
@@ -58,7 +58,7 @@ body {
 }
 
 /* ==========================================================================
-   3. Programmatic Logo (CSS Based)
+   3. Programmatic S-Logo (S + Pulse + Stars)
    ========================================================================== */
 .brand-logo { 
     display: flex; 
@@ -71,56 +71,58 @@ body {
     width: 45px; 
     height: 45px; 
     background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border-radius: 10px;
+    border-radius: 12px;
     position: relative;
     display: flex; 
     justify-content: center; 
     align-items: center;
-    overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 180, 219, 0.3);
+    transition: var(--transition);
+    animation: logoEntrance 1.5s ease-out;
 }
 
-/* Programmatic Shine Animation over Logo */
-.logo-shape::before {
-    content: ''; 
-    position: absolute; 
-    width: 150%; 
-    height: 150%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.5), transparent);
-    transform: translateX(-150%) skewX(-25deg);
-    animation: logoShine 3s infinite ease-in-out;
-}
-
-@keyframes logoShine {
-    0% { transform: translateX(-150%) skewX(-25deg); }
-    30% { transform: translateX(150%) skewX(-25deg); }
-    100% { transform: translateX(150%) skewX(-25deg); }
-}
-
+/* حرف S البرمجي */
 .logo-shape::after {
+    content: 'S';
+    color: white;
+    font-size: 26px;
+    font-weight: 900;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+/* أنيميشن النجوم ✨ */
+.logo-shape::before {
     content: '✨';
-    font-size: 20px;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 18px;
+    animation: sparkleStars 3s infinite;
+}
+
+/* نبض اللوجو عند التمرير */
+.brand-logo:hover .logo-shape {
+    transform: scale(1.1);
+    animation: pulseEffect 0.6s infinite alternate;
 }
 
 .logo-text {
     font-size: 22px;
     font-weight: 900;
     color: var(--text-color);
-    line-height: 1;
     display: flex;
     flex-direction: column;
 }
 
 .logo-text span {
     color: var(--primary);
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 10px;
     letter-spacing: 2px;
-    margin-top: 4px;
+    text-transform: uppercase;
 }
 
 /* ==========================================================================
-   4. Header & Nav
+   4. Header & Navigation
    ========================================================================== */
 .main-header { 
     background: var(--card-bg); 
@@ -145,16 +147,85 @@ body {
 
 .nav-link:hover, .nav-link.active { color: var(--primary); }
 
-.lang-btn {
-    padding: 6px 12px;
-    border: 1px solid var(--primary);
-    border-radius: 6px;
-    font-size: 13px;
-    color: var(--primary) !important;
+/* ==========================================================================
+   5. Mobile Menu Toggle (The Hamburger)
+   ========================================================================== */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1100;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    transition: var(--transition);
+    border-radius: 3px;
+}
+
+/* تحويل الأيقونة لشكل X */
+#mobile-menu.is-active .bar:nth-child(2) { opacity: 0; }
+#mobile-menu.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+#mobile-menu.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* ==========================================================================
+   6. Responsive Design (Mobile First)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--card-bg);
+        flex-direction: column;
+        padding: 30px 0;
+        text-align: center;
+        box-shadow: var(--shadow);
+        z-index: 1000;
+        border-top: 1px solid var(--input-border);
+    }
+
+    .nav-menu.active {
+        display: flex;
+        animation: fadeInMenu 0.4s ease-out forwards;
+    }
+
+    .nav-menu li { margin: 15px 0; }
 }
 
 /* ==========================================================================
-   5. Calculator & Cards
+   7. Animations Keyframes
+   ========================================================================== */
+@keyframes logoEntrance {
+    0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+@keyframes sparkleStars {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4) rotate(20deg); opacity: 0.7; }
+}
+
+@keyframes pulseEffect {
+    to { box-shadow: 0 0 25px var(--primary); }
+}
+
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   8. Calculator & Common Components
    ========================================================================== */
 .calc-card {
     background: var(--card-bg);
@@ -162,7 +233,6 @@ body {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
     width: 100%;
-    max-width: 420px;
 }
 
 .price-result {
@@ -171,12 +241,15 @@ body {
     border-radius: 8px;
     text-align: center;
     margin: 20px 0;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary);
 }
 
 .btn-checkout {
     width: 100%;
     padding: 15px;
-    background: var(--primary);
+    background: linear-gradient(to right, var(--primary), var(--secondary));
     color: white;
     border: none;
     border-radius: 8px;
@@ -186,91 +259,6 @@ body {
 }
 
 .btn-checkout:hover {
-    background: var(--secondary);
-    transform: translateY(-2px);
-}
-
-/* ==========================================================================
-   6. Dark Mode Toggle
-   ========================================================================== */
-.theme-switch-wrapper { display: flex; align-items: center; }
-.theme-switch { display: inline-block; height: 24px; position: relative; width: 50px; }
-.theme-switch input { display: none; }
-.slider {
-    background-color: #ccc; bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0;
-    transition: .4s; border-radius: 34px;
-}
-.slider:before {
-    background-color: #fff; bottom: 4px; content: ""; height: 16px; left: 4px; position: absolute;
-    transition: .4s; width: 16px; border-radius: 50%;
-}
-input:checked + .slider { background-color: var(--primary); }
-input:checked + .slider:before { transform: translateX(26px); }
-
-/* ==========================================================================
-   7. Responsive Queries
-   ========================================================================== */
-@media (max-width: 768px) {
-    .nav-container {
-        position: fixed; top: 0; right: -100%; width: 70%; height: 100vh;
-        background: var(--card-bg); z-index: 1050; transition: 0.5s;
-        display: flex; justify-content: center; align-items: center;
-    }
-    .nav-container.active { right: 0; }
-    .nav-menu { flex-direction: column; }
-}
-/* --- إعدادات القائمة المتجاوبة --- */
-
-/* 1. إخفاء الثلاث شرطات في وضع الكمبيوتر */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
-    z-index: 1000;
-}
-
-.menu-toggle .bar {
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-color); /* تأكد أن هذا المتغير موجود عندك */
-    transition: 0.3s;
-    border-radius: 3px;
-}
-
-/* 2. وضع الجوال (أقل من 768px) */
-@media screen and (max-width: 768px) {
-    .menu-toggle {
-        display: flex; /* تظهر الأيقونة الآن */
-    }
-
-    .nav-menu {
-        display: none; /* مخفية حتى يتم الضغط على الزر */
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: var(--card-bg); /* لون خلفية القائمة عند الفتح */
-        padding: 20px 0;
-        text-align: center;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        z-index: 999;
-    }
-
-    /* عندما تصبح القائمة نشطة */
-    .nav-menu.active {
-        display: flex;
-        animation: fadeIn 0.3s ease-in;
-    }
-
-    .nav-menu li {
-        margin: 15px 0;
-    }
-}
-
-/* حركة بسيطة لظهور القائمة */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 180, 219, 0.4);
 }

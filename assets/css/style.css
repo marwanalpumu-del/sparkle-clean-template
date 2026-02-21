@@ -1,7 +1,7 @@
 /*
  * Theme Name: SparkleClean - Professional Responsive Template
- * Features: Dark Mode, Programmatic S-Logo, Responsive Navigation
- * Version: 1.1.0
+ * Version: 1.2.0 (Full Integration)
+ * Features: Dark Mode, Multi-language Support, Animated UI
  */
 
 /* ==========================================================================
@@ -34,299 +34,131 @@
 /* ==========================================================================
    2. Base Styles
    ========================================================================== */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 body { 
     background-color: var(--bg-color); 
     color: var(--text-color); 
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', 'Cairo', sans-serif;
     line-height: 1.6;
     transition: var(--transition); 
     overflow-x: hidden;
 }
 
-.container { 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+img { max-width: 100%; height: auto; }
 
 /* ==========================================================================
-   3. Programmatic S-Logo (S + Pulse + Stars)
+   3. Programmatic S-Logo
    ========================================================================== */
-.brand-logo { 
-    display: flex; 
-    align-items: center; 
-    gap: 12px; 
-    text-decoration: none; 
-}
-
+.brand-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .logo-shape {
-    width: 45px; 
-    height: 45px; 
+    width: 45px; height: 45px; 
     background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border-radius: 12px;
-    position: relative;
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
+    border-radius: 12px; position: relative;
+    display: flex; justify-content: center; align-items: center;
     box-shadow: 0 4px 15px rgba(0, 180, 219, 0.3);
-    transition: var(--transition);
     animation: logoEntrance 1.5s ease-out;
 }
-
-/* حرف S البرمجي */
-.logo-shape::after {
-    content: 'S';
-    color: white;
-    font-size: 26px;
-    font-weight: 900;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-}
-
-/* أنيميشن النجوم ✨ */
-.logo-shape::before {
-    content: '✨';
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    font-size: 18px;
-    animation: sparkleStars 3s infinite;
-}
-
-/* نبض اللوجو عند التمرير */
-.brand-logo:hover .logo-shape {
-    transform: scale(1.1);
-    animation: pulseEffect 0.6s infinite alternate;
-}
-
-.logo-text {
-    font-size: 22px;
-    font-weight: 900;
-    color: var(--text-color);
-    display: flex;
-    flex-direction: column;
-}
-
-.logo-text span {
-    color: var(--primary);
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
+.logo-shape::after { content: 'S'; color: white; font-size: 26px; font-weight: 900; }
+.logo-shape::before { content: '✨'; position: absolute; top: -10px; right: -10px; font-size: 18px; animation: sparkleStars 3s infinite; }
+.logo-text { font-size: 22px; font-weight: 900; color: var(--text-color); display: flex; flex-direction: column; }
+.logo-text span { color: var(--primary); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
 
 /* ==========================================================================
-   4. Header & Navigation
+   4. Navigation & Language Switcher
    ========================================================================== */
 .main-header { 
     background: var(--card-bg); 
     padding: 12px 0; 
-    position: sticky; 
-    top: 0; 
-    z-index: 1000; 
-    box-shadow: var(--shadow); 
+    position: sticky; top: 0; 
+    z-index: 1000; box-shadow: var(--shadow); 
 }
-
 .navbar { display: flex; justify-content: space-between; align-items: center; }
-
-.nav-menu { display: flex; gap: 25px; list-style: none; align-items: center; }
-
-.nav-link { 
-    text-decoration: none; 
-    color: var(--text-color); 
-    font-weight: 600; 
-    font-size: 15px; 
-    transition: var(--transition); 
-}
-
+.nav-menu { display: flex; gap: 20px; list-style: none; align-items: center; }
+.nav-link { text-decoration: none; color: var(--text-color); font-weight: 600; font-size: 15px; transition: var(--transition); }
 .nav-link:hover, .nav-link.active { color: var(--primary); }
 
-/* ==========================================================================
-   5. Mobile Menu Toggle (The Hamburger)
-   ========================================================================== */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
-    z-index: 1100;
-}
-
-.menu-toggle .bar {
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-color);
+.lang-btn {
+    padding: 6px 14px;
+    border: 1.5px solid var(--primary);
+    border-radius: 20px;
+    color: var(--primary) !important;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
     transition: var(--transition);
-    border-radius: 3px;
 }
-
-/* تحويل الأيقونة لشكل X */
-#mobile-menu.is-active .bar:nth-child(2) { opacity: 0; }
-#mobile-menu.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-#mobile-menu.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.lang-btn:hover { background: var(--primary); color: white !important; }
 
 /* ==========================================================================
-   6. Responsive Design (Mobile First)
+   5. Dark Mode Toggle
    ========================================================================== */
-@media screen and (max-width: 768px) {
-    .menu-toggle {
-        display: flex;
-    }
+.theme-switch-wrapper { display: flex; align-items: center; margin-left: 10px; }
+.theme-switch { display: inline-block; height: 24px; position: relative; width: 45px; }
+.theme-switch input { display: none; }
+.slider { background-color: #ccc; bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0; transition: .4s; border-radius: 34px; }
+.slider:before { background-color: white; bottom: 4px; content: ""; height: 16px; left: 4px; position: absolute; transition: .4s; width: 16px; border-radius: 50%; }
+input:checked + .slider { background-color: var(--primary); }
+input:checked + .slider:before { transform: translateX(21px); }
 
+/* ==========================================================================
+   6. Components (Cards, Buttons, Forms)
+   ========================================================================== */
+.calc-card { background: var(--card-bg); padding: 30px; border-radius: var(--border-radius); box-shadow: var(--shadow); border: 1px solid var(--input-border); }
+.btn-checkout {
+    display: inline-block; text-align: center; width: 100%; padding: 15px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;
+    text-decoration: none; transition: var(--transition);
+}
+.btn-checkout:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 180, 219, 0.4); }
+
+.form-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; text-align: initial; }
+.form-group label { font-size: 14px; font-weight: 600; color: var(--text-color); }
+.form-group input, .form-group textarea {
+    padding: 12px; border-radius: 8px; border: 1px solid var(--input-border);
+    background: var(--bg-color); color: var(--text-color); transition: var(--transition);
+}
+.form-group input:focus { border-color: var(--primary); outline: none; }
+
+/* ==========================================================================
+   7. Page Sections (About, Contact, Services)
+   ========================================================================== */
+/* About */
+.about-hero { padding: 80px 0; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.badge { background: var(--price-bg); color: var(--primary); padding: 5px 15px; border-radius: 50px; font-size: 12px; font-weight: 700; }
+.stats-grid { display: flex; gap: 30px; margin-top: 40px; }
+
+/* Contact */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; }
+.info-card { background: var(--primary); color: white; padding: 40px; border-radius: var(--border-radius); }
+.info-item { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+
+/* Utilities */
+.scroll-btn {
+    position: fixed; bottom: 20px; right: 20px; width: 45px; height: 45px;
+    background: var(--primary); color: white; border: none; border-radius: 50%;
+    cursor: pointer; z-index: 999; display: none; transition: var(--transition);
+}
+
+/* ==========================================================================
+   8. Animations & Responsiveness
+   ========================================================================== */
+@keyframes logoEntrance { 0% { transform: scale(0) rotate(-180deg); } 100% { transform: scale(1) rotate(0); } }
+@keyframes sparkleStars { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.4); } }
+@keyframes fadeInMenu { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 768px) {
+    .menu-toggle { display: flex; }
     .nav-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-       
-        width: 100%;
-        background: var(--card-bg);
-        flex-direction: column;
-        padding: 30px 0;
-        text-align: center;
-        box-shadow: var(--shadow);
-        z-index: 1000;
+        display: none; position: absolute; top: 100%; left: 0; width: 100%;
+        background: var(--card-bg); flex-direction: column; padding: 20px;
         border-top: 1px solid var(--input-border);
     }
-
-    .nav-menu.active {
-        display: flex;
-        animation: fadeInMenu 0.4s ease-out forwards;
-    }
-
-    .nav-menu li { margin: 15px 0; }
-}
-
-/* ==========================================================================
-   7. Animations Keyframes
-   ========================================================================== */
-@keyframes logoEntrance {
-    0% { transform: scale(0) rotate(-180deg); opacity: 0; }
-    100% { transform: scale(1) rotate(0); opacity: 1; }
-}
-
-@keyframes sparkleStars {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.4) rotate(20deg); opacity: 0.7; }
-}
-
-@keyframes pulseEffect {
-    to { box-shadow: 0 0 25px var(--primary); }
-}
-
-@keyframes fadeInMenu {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* ==========================================================================
-   8. Calculator & Common Components
-   ========================================================================== */
-.calc-card {
-    background: var(--card-bg);
-    padding: 30px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    width: 100%;
-}
-
-.price-result {
-    background: var(--price-bg);
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    margin: 20px 0;
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--primary);
-}
-
-.btn-checkout {
-    width: 100%;
-    padding: 15px;
-    background: linear-gradient(to right, var(--primary), var(--secondary));
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.btn-checkout:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 180, 219, 0.4);
-}
-
-/* --- 1. أنيميشن اللوجو والنجوم --- */
-@keyframes logoEntrance {
-    0% { transform: scale(0) rotate(-180deg); opacity: 0; }
-    100% { transform: scale(1) rotate(0); opacity: 1; }
-}
-
-@keyframes sparkleStars {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.4) rotate(20deg); opacity: 0.7; }
-}
-
-@keyframes pulseEffect {
-    to { box-shadow: 0 0 25px var(--primary); }
-}
-
-/* --- 2. تنسيق صفحة About --- */
-.about-hero { padding: 80px 0; }
-.about-grid { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 50px; 
-    align-items: center; 
-}
-
-.badge {
-    background: var(--price-bg);
-    color: var(--primary);
-    padding: 5px 15px;
-    border-radius: 50px;
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.highlight { color: var(--primary); }
-
-.stats-grid {
-    display: flex;
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.about-visual {
-    height: 400px;
-    background: linear-gradient(135deg, var(--card-bg), var(--bg-color));
-    border-radius: var(--border-radius);
-    position: relative;
-    border: 1px solid var(--input-border);
-}
-
-.experience-box {
-    position: absolute;
-    bottom: -20px;
-    left: -20px;
-    background: var(--primary);
-    color: white;
-    padding: 25px;
-    border-radius: var(--border-radius);
-    text-align: center;
-}
-
-/* جعل صفحة About متجاوبة */
-@media (max-width: 768px) {
-    .about-grid { grid-template-columns: 1fr; text-align: center; }
+    .nav-menu.active { display: flex; animation: fadeInMenu 0.3s forwards; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; text-align: center; }
     .stats-grid { justify-content: center; }
-    .experience-box { position: static; margin-top: 30px; }
 }

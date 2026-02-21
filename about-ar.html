@@ -1,27 +1,54 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl"> <head>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>من نحن | SparkleClean</title>
+    <title>من نحن | SparkleClean - خدمات تنظيف احترافية</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body { font-family: 'Cairo', sans-serif; } /* تخصيص الخط العربي */
+    </style>
 </head>
 <body>
+
+    <div id="preloader"></div>
+
     <header class="main-header">
         <div class="container">
             <nav class="navbar">
                 <a href="index-ar.html" class="brand-logo">
                     <div class="logo-shape"></div>
-                    <div class="logo-text">سباركل كلين <span>خدمة مميزة</span></div>
+                    <div class="logo-text">
+                        سباركل كلين
+                        <span>خدمة مميزة</span>
+                    </div>
                 </a>
-                
+
                 <div class="menu-toggle" id="mobile-menu">
-                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
                 </div>
 
                 <ul class="nav-menu">
                     <li><a href="index-ar.html" class="nav-link">الرئيسية</a></li>
                     <li><a href="about-ar.html" class="nav-link active">من نحن</a></li>
-                    <li><a href="about.html" class="lang-btn">English</a></li> </ul>
+                    <li><a href="services-ar.html" class="nav-link">خدماتنا</a></li>
+                    
+                    <li class="theme-switch-wrapper">
+                        <label class="theme-switch" for="checkbox">
+                            <input type="checkbox" id="checkbox" />
+                            <div class="slider"></div>
+                        </label>
+                    </li>
+
+                    <li><a href="about.html" class="nav-link lang-btn">English</a></li>
+                    
+                    <li><a href="contact-ar.html" class="btn-checkout" style="padding: 10px 20px; text-decoration: none;">اتصل بنا</a></li>
+                </ul>
             </nav>
         </div>
     </header>
@@ -30,16 +57,54 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-content">
-                    <span class="badge">من نحن</span>
-                    <h1>نقدم خدمات تنظيف <span class="highlight">احترافية</span></h1>
-                    <p>سباركل كلين هي الشركة الرائدة في تقديم حلول التنظيف عالية الجودة للمنازل والمكاتب. نحن نؤمن أن المكان النظيف هو مكان سعيد.</p>
-                </div>
-                <div class="about-visual">
-                    <div class="experience-box">
-                        <h2>5</h2>
-                        <p>سنوات من الخبرة</p>
+                    <span class="badge">تأسست عام 2021</span>
+                    <h1>نحن نضفي <span class="highlight">اللمعان</span> على مكانك</h1>
+                    <p>في سباركل كلين، نحن لا ننظف فقط؛ نحن نهتم ببيئتك. فريقنا من المحترفين مكرس لتقديم أفضل خدمات التنظيف باستخدام مواد صديقة للبيئة وتقنيات متطورة.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <h3>500+</h3>
+                            <p>عميل سعيد</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>1200+</h3>
+                            <p>عملية تنظيف</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>15+</h3>
+                            <p>منظف خبير</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px;">
+                        <a href="services-ar.html" class="btn-checkout" style="padding: 15px 35px; text-decoration: none; display: inline-block; width: auto;">استعرض خدماتنا</a>
                     </div>
                 </div>
+
+                <div class="about-visual">
+                    <div class="experience-box">
+                        <h2>5+</h2>
+                        <p>سنوات من <br>التميز المطلق</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="padding: 60px 20px; text-align: center;">
+        <h2 style="margin-bottom: 40px;">لماذا تختار <span class="highlight">سباركل كلين</span>؟</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div class="calc-card" style="padding: 20px;">
+                <h4 style="color: var(--primary);">جودة عالية</h4>
+                <p style="color: var(--text-muted); font-size: 14px;">نستخدم معدات ذات معايير صناعية لضمان أفضل النتائج.</p>
+            </div>
+            <div class="calc-card" style="padding: 20px;">
+                <h4 style="color: var(--primary);">فريق موثوق</h4>
+                <p style="color: var(--text-muted); font-size: 14px;">جميع منظفينا خضعوا لفحص السيرة الذاتية والتدريب المكثف.</p>
+            </div>
+            <div class="calc-card" style="padding: 20px;">
+                <h4 style="color: var(--primary);">صديق للبيئة</h4>
+                <p style="color: var(--text-muted); font-size: 14px;">منتجات تنظيف آمنة تماماً على أطفالك وحيواناتك الأليفة.</p>
             </div>
         </div>
     </section>

@@ -2,157 +2,75 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خدماتنا المتميزة | حلول SparkleClean</title>
-    
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@900&display=swap" rel="stylesheet">
-    
+    <title>خدماتنا المميزة | سباركل كلين</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/rtl.css">
-    
     <style>
-        /* الحفاظ على خط الاسم إنجليزي */
-        .logo-text { font-family: 'Inter', sans-serif; }
-
+        /* محاكاة نفس التنسيق في الصفحة الإنجليزية */
         .services-hero {
-            height: 45vh;
-            min-height: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 45vh; min-height: 350px; display: flex; align-items: center; justify-content: center;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&q=80&w=1500');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
+            background-size: cover; background-position: center; color: white; text-align: center;
         }
-
-        .service-card {
-            transition: var(--transition);
-            cursor: pointer;
-            padding: 40px 30px !important;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 180, 219, 0.2);
-        }
-
-        .service-icon {
-            font-size: 55px;
-            margin-bottom: 20px;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .service-card:hover .service-icon {
-            transform: scale(1.2) rotate(8deg);
-        }
-
-        .service-link {
-            margin-top: auto;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: var(--transition);
-        }
-
-        @media (max-width: 768px) {
-            .services-hero { height: auto; padding: 120px 0 60px 0; }
-        }
+        .service-card { transition: var(--transition); cursor: pointer; padding: 40px 30px !important; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 180, 219, 0.2); }
+        .service-icon { font-size: 55px; margin-bottom: 20px; }
+        .service-link { margin-top: auto; text-decoration: none; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; }
     </style>
 </head>
 <body>
-    
-    <button id="scrollToTop" class="scroll-btn" aria-label="العودة للأعلى">↑</button>
-
-    <div id="preloader">
-        <div class="loader">
-            <div class="loader-icon">✨</div>
-            <div class="loader-text">Sparkle<span>Clean</span></div>
-            <div class="loader-bar"></div>
-        </div>
-    </div>
+    <button id="scrollToTop" class="scroll-btn">↑</button>
 
     <header class="main-header">
         <div class="container navbar">
             <a href="index-ar.html" class="brand-logo">
                 <div class="logo-shape"></div>
-                <div class="logo-text">Sparkle<span>Clean</span></div>
+                <div class="logo-text">سباركل<span>كلين</span></div>
             </a>
-
             <div class="menu-toggle" id="mobile-menu">
                 <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </div>
-
-            <nav class="nav-container" id="nav-container">
-                <ul class="nav-menu">
-                    <li><a href="index-ar.html" class="nav-link">الرئيسية</a></li>
-                    <li><a href="services-ar.html" class="nav-link active">خدماتنا</a></li>
-                    <li><a href="about-ar.html" class="nav-link">عن الشركة</a></li>
-                    <li><a href="contact-ar.html" class="nav-link">اتصل بنا</a></li>
-                </ul>
-            </nav>
-
-            <div class="theme-switch-wrapper">
-                <a href="services.html" class="nav-link lang-btn" style="margin-left: 15px;">English</a>
-                <label class="theme-switch" for="checkbox">
-                    <input type="checkbox" id="checkbox" />
-                    <div class="slider round"></div>
-                </label>
-            </div>
+            <ul class="nav-menu">
+                <li><a href="index-ar.html" class="nav-link">الرئيسية</a></li>
+                <li><a href="services-ar.html" class="nav-link active">خدماتنا</a></li>
+                <li><a href="about-ar.html" class="nav-link">من نحن</a></li>
+                <li><a href="contact-ar.html" class="nav-link">اتصل بنا</a></li>
+                <li><a href="services.html" class="lang-btn">English</a></li>
+            </ul>
         </div>
     </header>
 
     <section class="services-hero">
         <div class="container">
-            <h1 class="hero-title" style="color: white;">خدمات <span>متميزة.</span></h1>
-            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;">حلول تنظيف مخصصة لكل مساحة، تُقدم بلمعان SparkleClean الاحترافي الذي يمكنك الوثوق به.</p>
+            <h1 style="color: white;">خدمات <span>احترافية.</span></h1>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;">حلول تنظيف مخصصة لكل مساحة، تُقدم بلمعان احترافي يمكنك الوثوق به.</p>
         </div>
     </section>
 
     <main class="container" style="padding: 80px 20px;">
-        <div class="grid-layout" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
-            
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
             <div class="calc-card service-card" style="border-top: 5px solid var(--primary);">
-                <div class="service-icon" aria-hidden="true">🏠</div>
+                <div class="service-icon">🏠</div>
                 <h3>تنظيف سكني</h3>
-                <p style="margin: 15px 0; opacity: 0.8;">تنظيف شامل للمنازل يشمل غرف النوم، تعقيم المطابخ بعمق، وعناية فائقة بالأرضيات لراحة عائلتك.</p>
-                <a href="contact-ar.html" class="service-link" style="color: var(--primary);">احجز الخدمة ←</a>
+                <p>تنظيف كامل للمنزل يشمل غرف النوم، تعقيم عميق للمطبخ، وعناية ممتازة بالأرضيات.</p>
+                <a href="contact-ar.html" class="service-link" style="color: var(--primary);">احجز الآن ←</a>
             </div>
 
             <div class="calc-card service-card" style="border-top: 5px solid #ff9800;">
-                <div class="service-icon" aria-hidden="true">🏢</div>
+                <div class="service-icon">🏢</div>
                 <h3>تنظيف المكاتب</h3>
-                <p style="margin: 15px 0; opacity: 0.8;">حافظ على بيئة عمل صحية لزيادة الإنتاجية وضمان مظهر احترافي أمام عملائك المميزين.</p>
-                <a href="contact-ar.html" class="service-link" style="color: #ff9800;">احجز الخدمة ←</a>
+                <p>حافظ على مساحة عمل صحية لزيادة الإنتاجية وضمان أجواء احترافية لعملائك.</p>
+                <a href="contact-ar.html" class="service-link" style="color: #ff9800;">احجز الآن ←</a>
             </div>
 
             <div class="calc-card service-card" style="border-top: 5px solid #4caf50;">
-                <div class="service-icon" aria-hidden="true">🪟</div>
+                <div class="service-icon">🪟</div>
                 <h3>تلميع النوافذ</h3>
-                <p style="margin: 15px 0; opacity: 0.8;">نتائج كريستالية للنوافذ السكنية والتجارية باستخدام أدوات احترافية وتقنيات تضمن عدم ترك أي أثر.</p>
-                <a href="contact-ar.html" class="service-link" style="color: #4caf50;">احجز الخدمة ←</a>
+                <p>نتائج كريستالية للنوافذ السكنية والتجارية باستخدام أدوات احترافية خالية من الخطوط.</p>
+                <a href="contact-ar.html" class="service-link" style="color: #4caf50;">احجز الآن ←</a>
             </div>
-
         </div>
     </main>
-
-    <footer class="main-footer">
-        <div class="container" style="text-align: center; padding: 40px 0;">
-            <p>&copy; 2026 SparkleClean Premium. جميع الحقوق محفوظة.</p>
-        </div>
-    </footer>
 
     <script src="assets/js/main.js"></script>
 </body>

@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سباركل كلين | خدمات تنظيف متميزة</title>
+    <title>SparkleClean | خدمات تنظيف متميزة</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/rtl.css">
 
     <style>
+        /* الحفاظ على خط الاسم إنجليزي حتى في النسخة العربية */
+        .logo-text { font-family: 'Inter', sans-serif; }
+        
         .hero-banner {
             background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
-                        url('assets/images/hero-bg.jpg'); /* الصورة التي رفعتها */
+                        url('assets/images/hero-bg.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -28,8 +31,8 @@
             <a href="index-ar.html" class="brand-logo">
                 <div class="logo-shape"></div>
                 <div class="logo-text">
-                    سباركل
-                    <span>كلين</span>
+                    SPARKLE
+                    <span>CLEAN</span>
                 </div>
             </a>
 
@@ -47,7 +50,7 @@
         <div class="container hero-wrapper">
             <div class="banner-content">
                 <h1 class="hero-title">اختبر <span>التميز</span> في النظافة</h1>
-                <p>خدمات تنظيف احترافية مخصصة لمنزلك ومكتبك. جودة يمكنك رؤيتها، وخدمة يمكنك الوثوق بها.</p>
+                <p>خدمات تنظيف احترافية مخصصة لمنزلك ومكتبك من <strong>SparkleClean</strong>. جودة تليق بك.</p>
                 <div class="banner-buttons">
                     <a href="services-ar.html" class="btn-glass-primary">خدماتنا</a>
                     <a href="contact-ar.html" class="btn-glass-outline">احجز الآن</a>
@@ -55,7 +58,7 @@
             </div>
 
             <div class="calc-card">
-                <h3>حاسبة التكلفة</h3>
+                <h3 style="color: var(--primary);">حاسبة التكلفة</h3>
                 <div class="form-group">
                     <label>المساحة (متر مربع)</label>
                     <input type="number" id="inputArea" placeholder="مثلاً: 100">
@@ -70,13 +73,15 @@
     </section>
 
     <section class="container section-padding">
-        <h2 class="section-title">نتائجنا <span>السحرية</span></h2>
+        <h2 class="section-title">نتائج <span>SparkleClean</span></h2>
         <div class="grid-layout">
             <div class="calc-card result-card">
-                <img src="assets/images/bathroom-result.jpg" alt="نتيجة تنظيف الحمام" class="result-img">
-                <div class="card-content">
+                <div class="image-wrapper" style="border-radius: 12px; overflow: hidden;">
+                    <img src="assets/images/bathroom-result.jpg" alt="نتيجة تنظيف الحمام" style="width: 100%;">
+                </div>
+                <div class="card-content" style="padding-top: 20px;">
                     <h3>تنظيف عميق للحمامات</h3>
-                    <p>تعقيم كامل وإزالة للبقع ليعود كأنه جديد تماماً.</p>
+                    <p>إعادة اللمعان الكامل لأسطح السيراميك والرخام باستخدام مواد صديقة للبيئة.</p>
                 </div>
             </div>
         </div>

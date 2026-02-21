@@ -2,106 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SparkleClean | Premium Cleaning Service</title>
     
-    <title>SparkleClean | Premium Cleaning Service Template</title>
-    
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
-        /* CSS Logo Styling */
-        .brand-logo { 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            text-decoration: none; 
-        }
-        .logo-icon { 
-            font-size: 24px; 
-            animation: sparkle-pulse 2s infinite; 
-        }
-        .logo-text { 
-            font-size: 24px; 
-            font-weight: 900; 
-            color: var(--text-color); 
-            letter-spacing: -0.5px;
-        }
-        .logo-text span { color: var(--primary); }
-
-        @keyframes sparkle-pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        /* Hero Background Integration */
         .hero-banner {
-            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
                         url('assets/images/hero-bg.jpg');
             background-size: cover;
             background-position: center;
-            padding: 140px 0 100px 0;
-            min-height: 85vh;
-            display: flex;
-            align-items: center;
-            color: #ffffff;
-        }
-
-        @media (max-width: 768px) {
-            .hero-wrapper { flex-direction: column; text-align: center; gap: 40px; }
-            .hero-title { font-size: 2.5rem; }
-            .calc-card { width: 100%; max-width: 450px; margin: 0 auto; }
         }
     </style>
 </head>
 <body>
 
-    <button id="scrollToTop" class="scroll-btn" aria-label="Scroll to Top">↑</button>
-
-    <div id="preloader">
-        <div class="loader">
-            <div class="loader-icon">✨</div>
-            <div class="loader-text">Sparkle<span>Clean</span></div>
-            <div class="loader-bar"></div>
-        </div>
-    </div>
-
     <header class="main-header">
         <div class="container navbar">
             <a href="index.html" class="brand-logo">
-                <span class="logo-icon">✨</span>
-                <div class="logo-text">Sparkle<span>Clean</span></div>
+                <div class="logo-shape"></div>
+                <div class="logo-text">
+                    SPARKLE
+                    <span>CLEAN</span>
+                </div>
             </a>
 
-            <div class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-
-            <nav class="nav-container" id="nav-container">
+            <nav class="nav-container">
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link active">Home</a></li>
                     <li><a href="services.html" class="nav-link">Services</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
-                    <li><a href="index-ar.html" class="nav-link lang-btn">Arabic</a></li>
+                    <li><a href="index-ar.html" class="nav-link lang-btn">العربية</a></li>
                 </ul>
             </nav>
-
-            <div class="theme-switch-wrapper">
-                <label class="theme-switch" for="checkbox">
-                    <input type="checkbox" id="checkbox" aria-label="Toggle Dark Mode" />
-                    <div class="slider round"></div>
-                </label>
-            </div>
         </div>
     </header>
 
@@ -109,7 +43,7 @@
         <div class="container hero-wrapper">
             <div class="banner-content">
                 <h1 class="hero-title">Experience <span>Sparkling</span> Excellence</h1>
-                <p class="hero-description">Premium cleaning services for high-end homes and offices. Professional results you can trust.</p>
+                <p>Top-tier professional cleaning services from <strong>SparkleClean</strong>. Quality you can trust.</p>
                 <div class="banner-buttons">
                     <a href="services.html" class="btn-glass-primary">Our Services</a>
                     <a href="contact.html" class="btn-glass-outline">Book Now</a>
@@ -117,54 +51,34 @@
             </div>
 
             <div class="calc-card">
-                <h3 class="card-title">Instant Estimator</h3>
+                <h3>Cost Estimator</h3>
                 <div class="form-group">
-                    <label for="inputArea">Area Size (sqm)</label>
-                    <input type="number" id="inputArea" placeholder="e.g. 100" min="0">
-                </div>
-                <div class="form-group">
-                    <label for="selectService">Service Type</label>
-                    <select id="selectService">
-                        <option value="10">Basic ($10/m²)</option>
-                        <option value="20">Deep Clean ($20/m²)</option>
-                        <option value="30">Construction ($30/m²)</option>
-                    </select>
+                    <label>Area (sq. meters)</label>
+                    <input type="number" id="inputArea" placeholder="e.g. 100">
                 </div>
                 <div class="price-result">
-                    <p>Total Estimate</p>
+                    <p>Estimated Total</p>
                     <h2>$<span id="priceValue">0</span></h2>
                 </div>
-                <button type="button" class="btn-checkout">Get Started</button>
+                <button class="btn-checkout">Secure Booking</button>
             </div>
         </div>
     </section>
 
     <section class="container section-padding">
-        <div class="section-header">
-            <h2 class="section-title">Our <span class="highlight">Magic</span> Results</h2>
-            <div class="title-divider"></div>
-            <p class="section-subtitle">Real transformations from our recent projects</p>
-        </div>
-        
+        <h2 class="section-title">Our <span>Magic</span> Results</h2>
         <div class="grid-layout">
             <div class="calc-card result-card">
-                <div class="image-wrapper">
-                    <img src="assets/images/bathroom-result.jpg" alt="Bathroom restoration result" class="result-img">
-                    <div class="badge-new">LATEST ✨</div>
+                <div class="image-wrapper" style="border-radius: 12px; overflow: hidden;">
+                    <img src="assets/images/bathroom-result.jpg" alt="Bathroom Deep Clean" style="width: 100%;">
                 </div>
-                <div class="card-content">
-                    <h3>Deep Restoration</h3>
-                    <p>Complete sanitization for a brand-new look and feel.</p>
+                <div class="card-content" style="padding-top: 20px;">
+                    <h3>Bathroom Deep Clean</h3>
+                    <p>Full sanitization and stain removal for a brand-new look.</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <footer class="main-footer">
-        <div class="container">
-            <p>&copy; 2026 SparkleClean Premium. All Rights Reserved.</p>
-        </div>
-    </footer>
 
     <script src="assets/js/main.js"></script>
 </body>

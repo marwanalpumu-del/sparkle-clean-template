@@ -8,36 +8,33 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@900&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/rtl.css">
 
     <style>
-        /* تحسينات سريعة لضمان أفضل مظهر */
-        .logo-text { font-family: 'Inter', sans-serif !important; }
         html { scroll-behavior: smooth; }
         body { overflow-x: hidden; width: 100%; font-family: 'Cairo', sans-serif; }
+        .logo-text { font-family: 'Inter', sans-serif !important; }
         
-        /* أنيميشن القلب في الفوتر */
         .heart-icon { color: #e74c3c; margin: 0 4px; display: inline-block; animation: heartBeat 1.5s infinite; }
         @keyframes heartBeat {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.2); }
         }
 
-        /* تنسيق مربع القبول العربي */
         .policy-check {
-            margin-bottom: 20px;
+            margin: 15px 0;
             display: flex;
             align-items: flex-start;
             gap: 10px;
             font-size: 0.85rem;
             text-align: right;
         }
-        .policy-check input { width: 18px; height: 18px; cursor: pointer; margin-top: 3px; }
+        .policy-check input { width: 18px; height: 18px; cursor: pointer; flex-shrink: 0; margin-top: 3px; }
         .policy-check label { color: var(--text-muted); cursor: pointer; line-height: 1.4; }
+        
+        .calc-card { height: auto !important; display: flex; flex-direction: column; gap: 15px; padding: 30px; }
     </style>
 </head>
 <body>
@@ -83,7 +80,6 @@
                         <div class="slider round"></div>
                     </label>
                 </div>
-
                 <div class="menu-toggle" id="mobile-menu">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -110,6 +106,7 @@
                     <label for="inputArea">المساحة (متر مربع)</label>
                     <input type="number" id="inputArea" placeholder="مثلاً: 120" min="0">
                 </div>
+                
                 <div class="price-result">
                     <p>الإجمالي التقديري</p>
                     <h2 id="priceDisplay">0 ريال</h2>
@@ -122,22 +119,7 @@
                     </label>
                 </div>
 
-                <a href="#" class="btn-checkout whatsapp-link">تأكيد الحجز عبر الواتساب</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="container section-padding">
-        <h2 class="section-title">نتائج <span>SparkleClean</span> الساحرة</h2>
-        <div class="grid-layout">
-            <div class="calc-card result-card">
-                <div class="image-wrapper">
-                    <img src="assets/images/bathroom-result.jpg" alt="تنظيف احترافي">
-                </div>
-                <div class="card-content" style="padding: 25px 20px;">
-                    <h3>تنظيف عميق للحمامات</h3>
-                    <p>إعادة اللمعان الكامل لأسطح السيراميك والرخام باستخدام مواد صديقة للبيئة وآمنة.</p>
-                </div>
+                <a href="#" class="btn-checkout whatsapp-link" style="display: block; text-align: center; text-decoration: none;">تأكيد الحجز عبر الواتساب</a>
             </div>
         </div>
     </section>
@@ -145,10 +127,10 @@
     <footer class="main-footer">
         <div class="container footer-grid">
             <div class="footer-brand">
-                <a href="index-ar.html" class="brand-logo">
+                <div class="brand-logo">
                     <div class="logo-shape"></div>
                     <div class="logo-text">SPARKLE<span>CLEAN</span></div>
-                </a>
+                </div>
                 <p>خدمات تنظيف متميزة للمنازل الحديثة والمكاتب المهنية. جودة يمكنك رؤيتها، وثقة يمكنك الشعور بها.</p>
             </div>
 
@@ -172,7 +154,6 @@
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
             <p>&copy; 2026 SparkleClean. جميع الحقوق محفوظة. صُمم بكل <span class="heart-icon">❤️</span> وشغف</p>
         </div>

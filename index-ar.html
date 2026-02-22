@@ -1,3 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SparkleClean | خدمات تنظيف متميزة</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+
+    <style>
+        /* تحسينات سريعة لضمان أفضل مظهر */
+        .logo-text { font-family: 'Inter', sans-serif !important; }
+        html { scroll-behavior: smooth; }
+        body { overflow-x: hidden; width: 100%; font-family: 'Cairo', sans-serif; }
+        
+        /* أنيميشن القلب في الفوتر */
+        .heart-icon { color: #e74c3c; margin: 0 4px; display: inline-block; animation: heartBeat 1.5s infinite; }
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-box">
+                <span class="star" style="top: 5px; left: 5px;">✦</span>
+                <span class="star" style="bottom: 5px; right: 5px;">✦</span>
+                <span class="loader-logo">S</span>
+            </div>
+            <p class="loader-text">SPARKLE CLEAN</p>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="index-ar.html" class="brand-logo">
+                <div class="logo-shape"></div>
+                <div class="logo-text">SPARKLE<span>CLEAN</span></div>
+            </a>
+
+            <nav class="nav-container" id="nav-menu">
+                <ul class="nav-menu">
+                    <li><a href="index-ar.html" class="nav-link active">الرئيسية</a></li>
+                    <li><a href="services-ar.html" class="nav-link">خدماتنا</a></li>
+                    <li><a href="index.html" class="nav-link lang-btn">English</a></li>
+                    <li class="mobile-only">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox-mobile">
+                                <input type="checkbox" id="checkbox-mobile" class="theme-toggle-btn" />
+                                <div class="slider round"></div>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="nav-controls">
+                <div class="theme-switch-wrapper desktop-only">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" class="theme-toggle-btn" />
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <section class="hero-banner">
         <div class="container hero-wrapper">
             <div class="banner-content">
@@ -19,7 +102,22 @@
                     <p>الإجمالي التقديري</p>
                     <h2 id="priceDisplay">0 ريال</h2>
                 </div>
-                <a href="#" class="btn-checkout whatsapp-link" style="display: block; text-align: center; text-decoration: none;">تأكيد الحجز الآمن</a>
+                <a href="#" class="btn-checkout whatsapp-link">تأكيد الحجز عبر الواتساب</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="container section-padding">
+        <h2 class="section-title">نتائج <span>SparkleClean</span> الساحرة</h2>
+        <div class="grid-layout">
+            <div class="calc-card result-card">
+                <div class="image-wrapper">
+                    <img src="assets/images/bathroom-result.jpg" alt="تنظيف احترافي">
+                </div>
+                <div class="card-content" style="padding: 25px 20px;">
+                    <h3>تنظيف عميق للحمامات</h3>
+                    <p>إعادة اللمعان الكامل لأسطح السيراميك والرخام باستخدام مواد صديقة للبيئة وآمنة.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -54,7 +152,13 @@
                 </div>
             </div>
         </div>
+
         <div class="footer-bottom">
             <p>&copy; 2026 SparkleClean. جميع الحقوق محفوظة. صُمم بكل <span class="heart-icon">❤️</span> وشغف</p>
         </div>
     </footer>
+
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>

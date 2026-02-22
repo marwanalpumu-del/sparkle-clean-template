@@ -1,20 +1,21 @@
 /**
  * SparkleClean - Main JavaScript Core
- * Version: 1.6.0 (Optimized & Policy Integrated)
+ * Version: 1.7.0 (Smart Currency & Policy Integrated)
  */
 
 (function () {
     "use strict";
 
-    // 1. إعدادات الشركة
+    // 1. إعدادات الشركة العامة
     const COMPANY_SETTINGS = {
         whatsappNumber: "966500000000",
         emailAddress: "info@sparkleclean.com",
-        welcomeMsg: "مرحباً SparkleClean، قرأت الشروط وأرغب في حجز موعد للتنظيف! ✨",
-        currency: "ريال" 
+        // رسالة ترحيب ذكية تتغير حسب اللغة لاحقاً
+        welcomeMsgAr: "مرحباً SparkleClean، قرأت الشروط وأرغب في حجز موعد للتنظيف! ✨",
+        welcomeMsgEn: "Hello SparkleClean, I've read the terms and would like to book a cleaning service! ✨"
     };
 
-    // 2. بيانات آراء العملاء
+    // 2. بيانات آراء العملاء لغتين
     const TESTIMONIALS_DATA = {
         ar: [
             { name: "سارة الأحمد", role: "عميل سكني", text: "خدمة مذهلة! فريق SparkleClean جعل شقتي تلمع كأنها جديدة.", stars: 5, initial: "س" },
@@ -27,12 +28,14 @@
     };
 
     document.addEventListener('DOMContentLoaded', function () {
-        const isRTL = document.documentElement.dir === 'rtl';
+        // تحديد اللغة والاتجاه مرة واحدة لاستخدامها في كل الوظائف
+        const isRTL = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ar';
 
         // 3. تجهيز روابط الواتساب والنموذج
         const setupGlobalSettings = () => {
             const waLinks = document.querySelectorAll('.whatsapp-link'); 
-            const encodedMsg = encodeURIComponent(COMPANY_SETTINGS.welcomeMsg);
+            const msg = isRTL ? COMPANY_SETTINGS.welcomeMsgAr : COMPANY_SETTINGS.welcomeMsgEn;
+            const encodedMsg = encodeURIComponent(msg);
             
             waLinks.forEach(link => {
                 link.href = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodedMsg}`;
@@ -41,7 +44,7 @@
             });
         };
 
-        // 4. عرض آراء العملاء
+        // 4. عرض آراء العملاء ديناميكياً
         const renderTestimonials = () => {
             const container = document.getElementById('testimonials-container');
             if (!container) return;
@@ -97,24 +100,33 @@
             }
         };
 
+        // وظيفة تحريك الأرقام مع تحديد العملة آلياً
         function animateValue(obj, start, end, duration) {
             let startTimestamp = null;
             const step = (timestamp) => {
                 if (!startTimestamp) startTimestamp = timestamp;
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
                 const currentVal = Math.floor(progress * (end - start) + start);
-                const currency = COMPANY_SETTINGS.currency;
-                obj.innerText = isRTL ? `${currentVal.toLocaleString()} ${currency}` : `${currency} ${currentVal.toLocaleString()}`;
+                
+                // ذكاء العملة: SAR للإنجليزي، ريال للعربي
+                const currency = isRTL ? "ريال" : "SAR";
+                
+                // تنسيق العرض: (رقم ثم عملة للعربي) و (عملة ثم رقم للإنجليزي)
+                obj.innerText = isRTL 
+                    ? `${currentVal.toLocaleString()} ${currency}` 
+                    : `${currency} ${currentVal.toLocaleString()}`;
+                
                 if (progress < 1) window.requestAnimationFrame(step);
             };
             window.requestAnimationFrame(step);
         }
 
-        // 7. منطق الوضع الليلي
+        // 7. منطق الوضع الليلي (Dark Mode)
         const initThemeMode = () => {
             const themeToggles = document.querySelectorAll('.theme-switch input');
             const savedTheme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
+            
             themeToggles.forEach(toggle => {
                 toggle.checked = savedTheme === 'dark';
                 toggle.addEventListener('change', (e) => {
@@ -126,7 +138,7 @@
             });
         };
 
-        // 8. القائمة الجانبية (Mobile Menu)
+        // 8. القائمة الجانبية للجوال
         const initNavigation = () => {
             const menuToggle = document.getElementById('mobile-menu');
             const navContainer = document.querySelector('.nav-container'); 
@@ -145,36 +157,39 @@
             }
         };
 
-        // 9. التحقق من سياسة القبول قبل الحجز (جديد ومهم)
+        // 9. سياسة القبول (التحقق من المربع)
         const initAcceptancePolicy = () => {
             const acceptCheckbox = document.getElementById('acceptPolicy');
             const checkoutBtn = document.querySelector('.btn-checkout');
 
             if (acceptCheckbox && checkoutBtn) {
-                // حالة القفل المبدئي
-                checkoutBtn.style.opacity = "0.5";
+                // تعطيل الزر في البداية
+                checkoutBtn.style.opacity = "0.4";
                 checkoutBtn.style.pointerEvents = "none";
+                checkoutBtn.style.filter = "grayscale(1)";
 
                 acceptCheckbox.addEventListener('change', (e) => {
                     if (e.target.checked) {
                         checkoutBtn.style.opacity = "1";
                         checkoutBtn.style.pointerEvents = "auto";
+                        checkoutBtn.style.filter = "grayscale(0)";
                         checkoutBtn.style.cursor = "pointer";
                     } else {
-                        checkoutBtn.style.opacity = "0.5";
+                        checkoutBtn.style.opacity = "0.4";
                         checkoutBtn.style.pointerEvents = "none";
+                        checkoutBtn.style.filter = "grayscale(1)";
                     }
                 });
             }
         };
 
-        // تشغيل جميع الوظائف
+        // تشغيل المحرك
         setupGlobalSettings();
         renderTestimonials();
         initScrollEffects();
         initThemeMode();
         initCalculator();
         initNavigation();
-        initAcceptancePolicy(); // تشغيل سياسة القبول
+        initAcceptancePolicy();
     });
 })();

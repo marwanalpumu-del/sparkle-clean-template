@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparkleClean | Premium Cleaning Service</title>
+    <title>SparkleClean | Premium Cleaning Services</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* Modern UI Enhancements */
+        html { scroll-behavior: smooth; }
+        body { overflow-x: hidden; width: 100%; }
+        
+        /* Ensure specific branding font remains bold and clean */
+        .logo-text { font-family: 'Inter', sans-serif !important; }
+    </style>
 </head>
 <body>
 
@@ -27,11 +40,28 @@
                 <div class="logo-text">SPARKLE<span>CLEAN</span></div>
             </a>
 
+            <nav class="nav-container" id="nav-menu">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="index-ar.html" class="nav-link lang-btn">العربية</a></li>
+                    <li class="mobile-only">
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">Mode:</span>
+                        <div class="theme-switch-wrapper" style="margin-top: 10px;">
+                            <label class="theme-switch" for="checkbox-mobile">
+                                <input type="checkbox" id="checkbox-mobile" class="theme-toggle-btn" />
+                                <div class="slider round"></div>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
             <div class="nav-controls">
-                <div class="theme-switch-wrapper">
+                <div class="theme-switch-wrapper desktop-only">
                     <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" />
-                        <div class="slider"></div>
+                        <input type="checkbox" id="checkbox" class="theme-toggle-btn" />
+                        <div class="slider round"></div>
                     </label>
                 </div>
 
@@ -41,14 +71,6 @@
                     <span class="bar"></span>
                 </div>
             </div>
-
-            <nav class="nav-container">
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link active">Home</a></li>
-                    <li><a href="services.html" class="nav-link">Services</a></li>
-                    <li><a href="index-ar.html" class="nav-link lang-btn">العربية</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
@@ -56,7 +78,7 @@
         <div class="container hero-wrapper">
             <div class="banner-content">
                 <h1 class="hero-title">Experience <span>Sparkling</span> Excellence</h1>
-                <p>Top-tier professional cleaning services from <strong>SparkleClean</strong>.</p>
+                <p>Top-tier professional cleaning services from <strong>SparkleClean</strong>. We bring a professional sparkle you can trust for your home and office.</p>
                 <div class="banner-buttons">
                     <a href="services.html" class="btn-glass-primary">Our Services</a>
                     <a href="contact.html" class="btn-glass-outline">Book Now</a>
@@ -66,14 +88,14 @@
             <div class="calc-card">
                 <h3>Cost Estimator</h3>
                 <div class="form-group">
-                    <label>Area (sq. meters)</label>
-                    <input type="number" id="inputArea" placeholder="e.g. 100">
+                    <label for="inputArea">Area (sq. meters)</label>
+                    <input type="number" id="inputArea" placeholder="e.g. 100" min="0">
                 </div>
                 <div class="price-result">
                     <p>Estimated Total</p>
                     <h2 id="priceDisplay">$0</h2>
                 </div>
-                <button class="btn-checkout">Secure Booking ✨</button>
+                <a href="success.html" class="btn-checkout" style="display: block; text-align: center; text-decoration: none;">Secure Booking ✨</a>
             </div>
         </div>
     </section>

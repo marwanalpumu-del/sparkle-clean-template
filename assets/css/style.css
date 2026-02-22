@@ -1,7 +1,6 @@
 /*
  * Theme Name: SparkleClean - Professional Responsive Template
  * Version: 1.5.0 (Marketplace Ready)
- * Features: Dark Mode, Animated Preloader, Responsive Navigation, RTL Support
  */
 
 /* ==========================================================================
@@ -17,11 +16,10 @@
     --input-border: #eeeeee;
     --price-bg: #f0faff;
     --shadow: 0 10px 30px rgba(0,0,0,0.08);
-    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --border-radius: 12px;
 }
 
-/* Dark Theme Variables */
 [data-theme="dark"] {
     --bg-color: #0a192f; 
     --card-bg: #112240;
@@ -50,61 +48,142 @@
 }
 
 .star { position: absolute; color: #fff; animation: sparkle 1.2s infinite alternate; }
-
 @keyframes floating { 50% { transform: translateY(-20px) rotate(5deg); } }
 @keyframes sparkle { from { transform: scale(0.6); opacity: 0.3; } to { transform: scale(1.3); opacity: 1; } }
 .loader-fade { opacity: 0; visibility: hidden; }
 
 /* ==========================================================================
-   3. Header & Brand Identity
+   3. Header & Navigation (Improved)
    ========================================================================== */
 .main-header { 
-    background: var(--card-bg); padding: 15px 0; 
+    background: var(--card-bg); padding: 12px 0; 
     position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow);
 }
 
-.navbar { display: flex; justify-content: space-between; align-items: center; }
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
 
-.brand-logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+.brand-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; z-index: 1001; }
 .logo-shape {
-    width: 45px; height: 45px; background: var(--primary);
-    border-radius: 12px; display: flex; justify-content: center; align-items: center;
+    width: 40px; height: 40px; background: var(--primary);
+    border-radius: 10px; display: flex; justify-content: center; align-items: center;
 }
-.logo-shape::after { content: 'S'; color: white; font-size: 26px; font-weight: 900; }
-.logo-text { font-size: 20px; font-weight: 900; color: var(--text-color); line-height: 1; }
+.logo-shape::after { content: 'S'; color: white; font-size: 22px; font-weight: 900; }
+.logo-text { font-size: 18px; font-weight: 900; color: var(--text-color); line-height: 1.1; }
+.logo-text span { color: var(--primary); }
 
-/* Navigation Controls (Theme Switcher & Menu Toggle) */
-.nav-controls { display: flex; align-items: center; gap: 15px; }
+/* Navigation Menu Reset */
+.nav-menu { 
+    list-style: none !important; /* Removes the dots from your screenshots */
+    margin: 0; padding: 0; display: flex; gap: 30px; 
+}
 
-.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-.menu-toggle .bar { width: 25px; height: 3px; background: var(--text-color); border-radius: 3px; transition: 0.3s; }
+.nav-link {
+    text-decoration: none; color: var(--text-color);
+    font-weight: 600; transition: var(--transition);
+    font-size: 15px;
+}
+.nav-link:hover, .nav-link.active { color: var(--primary); }
+
+/* Theme Switcher Logic */
+.theme-switch-wrapper { display: flex; align-items: center; }
+.theme-switch { display: inline-block; height: 24px; position: relative; width: 48px; }
+.theme-switch input { display: none; }
+.slider {
+    background-color: #ccc; bottom: 0; cursor: pointer; left: 0;
+    position: absolute; right: 0; top: 0; transition: .4s; border-radius: 34px;
+}
+.slider:before {
+    background-color: #fff; bottom: 4px; content: ""; height: 16px;
+    left: 4px; position: absolute; transition: .4s; width: 16px; border-radius: 50%;
+}
+input:checked + .slider { background: var(--primary); }
+input:checked + .slider:before { transform: translateX(24px); }
+
+/* ==========================================================================
+   4. Mobile Responsive Navigation (The Fix)
+   ========================================================================== */
+.menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; z-index: 1001; }
+.menu-toggle .bar { width: 28px; height: 3px; background: var(--text-color); border-radius: 4px; transition: 0.3s; }
 
 /* Hamburger to X Animation */
 .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
-.menu-toggle.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-.menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.menu-toggle.is-active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-/* ==========================================================================
-   4. RTL Support (Language Adaptive)
-   ========================================================================== */
-[dir="rtl"] .brand-logo { flex-direction: row; }
-[dir="rtl"] .nav-controls { margin-right: auto; margin-left: 0; }
-[dir="rtl"] .whatsapp-float { right: auto; left: 20px; }
-
-/* ==========================================================================
-   5. Responsive Navigation Logic
-   ========================================================================== */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .menu-toggle { display: flex; }
-    
+    .desktop-only { display: none; }
+
     .nav-container {
-        display: none; position: absolute; top: 100%; left: 0; width: 100%;
-        background: var(--card-bg); padding: 25px; box-shadow: var(--shadow);
+        position: fixed; top: 0; right: -100%; /* Hidden off-screen */
+        width: 280px; height: 100vh; background: var(--card-bg);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        padding: 100px 30px; transition: 0.4s ease-in-out;
+        z-index: 1000;
     }
-    
-    .nav-container.active { display: block; animation: fadeInMenu 0.3s forwards; }
-    
-    .nav-menu { flex-direction: column; gap: 20px; width: 100%; }
+
+    /* Change 'right' to 'left' in RTL file for Arabic */
+    .nav-container.active { right: 0; }
+
+    .nav-menu { flex-direction: column; gap: 20px; }
+    .nav-menu li { width: 100%; border-bottom: 1px solid var(--input-border); padding-bottom: 10px; }
 }
 
-@keyframes fadeInMenu { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+/* ==========================================================================
+   5. RTL Adaptations
+   ========================================================================== */
+[dir="rtl"] .nav-container { right: auto; left: -100%; }
+[dir="rtl"] .nav-container.active { left: 0; }
+[dir="rtl"] .nav-controls { margin-right: auto; margin-left: 0; }
+
+/* ==========================================================================
+   6. Hero & Content Spacing
+   ========================================================================== */
+.hero-banner { padding: 80px 0; background: var(--bg-color); }
+.container { max-width: 1200px; margin: 0 auto; width: 90%; }
+.section-padding { padding: 100px 0; }
+/* ==========================================================================
+   7. Final Polish & Visual Fixes
+   ========================================================================== */
+
+/* تحسين شكل الأزرار في الحاسبة */
+.btn-checkout {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: var(--border-radius);
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.btn-checkout:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 180, 219, 0.3);
+}
+
+/* إصلاح تباين النصوص في الوضع الداكن */
+[data-theme="dark"] .nav-link {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .nav-link:hover {
+    color: var(--primary);
+}
+
+/* منع ظهور شريط التمرير الأفقي المزعج في الجوال */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* تحسين شكل الهيدر عند التمرير (Sticky) */
+.header-scrolled {
+    padding: 8px 0;
+    background: var(--card-bg);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}

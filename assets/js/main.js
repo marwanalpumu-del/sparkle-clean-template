@@ -6,12 +6,12 @@
 (function () {
     "use strict";
 
-    // 1. Company Configuration (Easily editable for buyers)
+    // 1. Company Configuration
     const COMPANY_SETTINGS = {
-        whatsappNumber: "966500000000", // رقم الواتساب الخاص بك
+        whatsappNumber: "966500000000",
         emailAddress: "info@sparkleclean.com",
         welcomeMsg: "Hello SparkleClean, I would like to inquire about your services! ✨",
-        currency: "SAR" // يمكنك تغييرها إلى $ إذا أردت
+        currency: "SAR" 
     };
 
     // 2. Testimonials Data
@@ -30,13 +30,15 @@
         const isRTL = document.documentElement.dir === 'rtl';
         const body = document.body;
 
-        // 3. Initialize Global Links & Forms
+        // 3. Initialize Global Links & WhatsApp
         const setupGlobalSettings = () => {
-            const waLinks = document.querySelectorAll('.whatsapp-link'); // البحث عن كل أزرار الواتساب
+            const waLinks = document.querySelectorAll('.whatsapp-link'); 
             const encodedMsg = encodeURIComponent(COMPANY_SETTINGS.welcomeMsg);
             
             waLinks.forEach(link => {
                 link.href = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodedMsg}`;
+                link.setAttribute('target', '_blank'); // فتح في نافذة جديدة
+                link.setAttribute('rel', 'noopener noreferrer');
             });
 
             const contactForm = document.getElementById('contact-form');
@@ -66,11 +68,12 @@
             `).join('');
         };
 
-        // 5. Scroll Effects & Preloader
+        // 5. Scroll Effects, Preloader & Floating Button
         const initScrollEffects = () => {
             const preloader = document.getElementById('preloader');
             const header = document.querySelector('.main-header');
             const scrollBtn = document.getElementById('scrollToTop');
+            const floatBtn = document.querySelector('.whatsapp-float'); // الزر العائم
 
             window.addEventListener('load', () => {
                 if (preloader) {
@@ -82,12 +85,19 @@
             });
 
             window.addEventListener('scroll', () => {
+                // Header Effect
                 if (window.scrollY > 50) header?.classList.add('header-scrolled');
                 else header?.classList.remove('header-scrolled');
 
+                // Scroll To Top Visibility
                 if (scrollBtn) {
                     scrollBtn.style.opacity = window.scrollY > 400 ? "1" : "0";
                     scrollBtn.style.pointerEvents = window.scrollY > 400 ? "auto" : "none";
+                }
+
+                // WhatsApp Float Visibility (تظهر بعد سكرول بسيط)
+                if (floatBtn) {
+                    floatBtn.style.transform = window.scrollY > 200 ? "scale(1)" : "scale(0)";
                 }
             });
 
@@ -96,7 +106,7 @@
             });
         };
 
-        // 6. Price Calculator (Improved Logic)
+        // 6. Price Calculator
         const initCalculator = () => {
             const areaInput = document.getElementById('inputArea'); 
             const priceDisplay = document.getElementById('priceDisplay'); 
@@ -104,7 +114,6 @@
             if (areaInput && priceDisplay) {
                 areaInput.addEventListener('input', () => {
                     const area = parseFloat(areaInput.value) || 0;
-                    // سعر تقريبي: 5 ريال للمتر المربع (يمكنك تعديله)
                     const baseRate = 5; 
                     const targetPrice = area * baseRate;
                     animateValue(priceDisplay, 0, targetPrice, 500);
@@ -118,10 +127,8 @@
                 if (!startTimestamp) startTimestamp = timestamp;
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
                 const currentVal = Math.floor(progress * (end - start) + start);
-                
                 const currency = COMPANY_SETTINGS.currency;
                 obj.innerText = isRTL ? `${currentVal.toLocaleString()} ${currency}` : `${currency} ${currentVal.toLocaleString()}`;
-                
                 if (progress < 1) window.requestAnimationFrame(step);
             };
             window.requestAnimationFrame(step);
@@ -131,33 +138,28 @@
         const initThemeMode = () => {
             const themeToggles = document.querySelectorAll('.theme-switch input');
             const savedTheme = localStorage.getItem('theme') || 'light';
-            
             document.documentElement.setAttribute('data-theme', savedTheme);
-
             themeToggles.forEach(toggle => {
                 toggle.checked = savedTheme === 'dark';
                 toggle.addEventListener('change', (e) => {
                     const theme = e.target.checked ? 'dark' : 'light';
                     document.documentElement.setAttribute('data-theme', theme);
                     localStorage.setItem('theme', theme);
-                    // مزامنة جميع المفاتيح في الصفحة
                     themeToggles.forEach(t => t.checked = e.target.checked);
                 });
             });
         };
 
-        // 8. Navigation Management
+        // 8. Navigation
         const initNavigation = () => {
             const menuToggle = document.getElementById('mobile-menu');
             const navContainer = document.querySelector('.nav-container'); 
-
             if (menuToggle && navContainer) {
                 menuToggle.addEventListener('click', (e) => {
                     e.stopPropagation();
                     navContainer.classList.toggle('active');
                     menuToggle.classList.toggle('is-active');
                 });
-
                 document.addEventListener('click', (e) => {
                     if (!navContainer.contains(e.target) && !menuToggle.contains(e.target)) {
                         navContainer.classList.remove('active');
@@ -167,7 +169,7 @@
             }
         };
 
-        // Run All Functions
+        // Run Functions
         setupGlobalSettings();
         renderTestimonials();
         initScrollEffects();

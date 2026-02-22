@@ -1,6 +1,6 @@
 /*
  * Theme Name: SparkleClean - Professional Responsive Template
- * Version: 1.5.0 (Marketplace Ready)
+ * Version: 1.6.0 (Fixed Overlay & Responsive Calculator)
  */
 
 /* ==========================================================================
@@ -87,56 +87,86 @@ input:checked + .slider { background: var(--primary); }
 input:checked + .slider:before { transform: translateX(24px); }
 
 /* ==========================================================================
-   4. Hero Section & Calculator
+   4. Hero Section & Calculator (FIXED Version)
    ========================================================================== */
 .hero-banner {
-    padding: 100px 0;
+    padding: 80px 0; /* تقليل البادينج قليلاً ليتناسب مع الجوال */
     background: linear-gradient(rgba(244, 247, 246, 0.85), rgba(244, 247, 246, 0.85)), url('../images/hero-bg.jpg') no-repeat center center;
     background-size: cover; background-attachment: fixed; min-height: 85vh;
     display: flex; align-items: center; transition: var(--transition);
 }
 
-[data-theme="dark"] .hero-banner { background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)), url('../images/hero-bg.jpg') no-repeat center center; background-size: cover; }
+[data-theme="dark"] .hero-banner { background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)), url('../images/hero-bg.jpg') no-repeat center center; }
 
-.hero-wrapper { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
-.hero-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; color: var(--text-color); line-height: 1.1; margin-bottom: 25px; }
-.highlight { color: var(--primary); }
+.hero-wrapper { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: start; position: relative; z-index: 2; }
+.hero-title { font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 900; color: var(--text-color); line-height: 1.1; margin-bottom: 20px; }
 
+/* البطاقة الذكية المعدلة */
 .calc-card {
-    background: var(--card-bg); padding: 40px; border-radius: 24px;
-    box-shadow: var(--shadow); border: 1px solid var(--input-border);
+    background: var(--card-bg); 
+    padding: 30px; 
+    border-radius: 24px;
+    box-shadow: var(--shadow); 
+    border: 1px solid var(--input-border);
+    /* الحل الجذري للمشكلة */
+    height: auto !important; 
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+    transition: var(--transition);
 }
 
-.price-result h2 { color: var(--primary); font-size: 2.5rem; font-weight: 900; }
+.form-group { display: flex; flex-direction: column; gap: 8px; text-align: inherit; }
+.form-group input {
+    padding: 12px 15px; border: 1px solid var(--input-border);
+    border-radius: 10px; background: var(--bg-color); color: var(--text-color);
+}
 
-.btn-glass-primary { background: var(--primary); color: white; padding: 16px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: var(--transition); display: inline-block; }
-.btn-glass-outline { border: 2px solid var(--primary); color: var(--primary); padding: 14px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: var(--transition); display: inline-block; }
+.price-result { 
+    background: var(--price-bg); 
+    padding: 20px; 
+    border-radius: 15px; 
+    text-align: center; 
+}
+.price-result h2 { color: var(--primary); font-size: 2.2rem; font-weight: 900; margin: 0; }
+
+/* تنسيق الـ Checkbox الجديد */
+.policy-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 5px 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+.policy-check input {
+    width: 18px; height: 18px; flex-shrink: 0; cursor: pointer;
+    accent-color: var(--primary);
+}
+
+/* الأزرار */
+.btn-glass-primary, .btn-checkout { 
+    background: var(--primary); color: white; padding: 15px 25px; 
+    border-radius: 50px; text-decoration: none; font-weight: 700; 
+    transition: var(--transition); text-align: center; border: none;
+}
+.btn-checkout { width: 100%; display: block; }
+.btn-glass-outline { border: 2px solid var(--primary); color: var(--primary); padding: 14px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: var(--transition); display: inline-block; }
 
 /* ==========================================================================
-   5. Footer & Social Icons (The Blue Look)
+   5. Footer & Social Icons
    ========================================================================== */
 .main-footer {
     background: var(--card-bg); padding: 60px 0 20px;
     margin-top: 80px; border-top: 1px solid var(--input-border);
 }
-
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
-
 .social-icons { display: flex; gap: 15px; margin-top: 20px; }
 .social-link {
-    width: 40px; height: 40px; 
-    background: rgba(var(--primary-rgb), 0.1); 
-    color: var(--primary);
-    display: flex; align-items: center; justify-content: center; 
-    border-radius: 50%; text-decoration: none; transition: 0.3s;
+    width: 40px; height: 40px; background: rgba(var(--primary-rgb), 0.1); color: var(--primary);
+    display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; transition: 0.3s;
 }
-
-.social-link:hover {
-    background: var(--primary);
-    color: white;
-    transform: translateY(-5px);
-}
-
+.social-link:hover { background: var(--primary); color: white; transform: translateY(-5px); }
 .heart-icon { color: #e74c3c; margin: 0 4px; display: inline-block; animation: heartBeat 1.5s infinite; }
 @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 
@@ -144,9 +174,8 @@ input:checked + .slider:before { transform: translateX(24px); }
    6. Responsiveness
    ========================================================================== */
 @media (max-width: 992px) {
-    .hero-wrapper { grid-template-columns: 1fr; text-align: center; }
+    .hero-wrapper { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+    .calc-card { max-width: 450px; margin: 0 auto; }
     .footer-grid { grid-template-columns: 1fr; text-align: center; }
     .social-icons { justify-content: center; }
 }
-
-

@@ -13,11 +13,17 @@
     <link rel="stylesheet" href="assets/css/rtl.css">
 
     <style>
-        /* الحفاظ على خط الاسم إنجليزي لضمان الفخامة */
-        .logo-text { font-family: 'Inter', sans-serif; }
+        /* Modern Branding & UI Fixes */
+        .logo-text { font-family: 'Inter', sans-serif !important; }
         
-        /* تكييف اتجاه النجوم في شاشة التحميل للنسخة العربية */
-        [dir="rtl"] .star { right: auto; left: 5px; }
+        /* Preloader RTL Star Position Fix */
+        [dir="rtl"] .star { right: auto !important; left: 5px !important; }
+
+        /* Ensure smooth scrolling for navigation */
+        html { scroll-behavior: smooth; }
+
+        /* Fix for potential overflow on mobile */
+        body { overflow-x: hidden; width: 100%; }
     </style>
 </head>
 <body>
@@ -40,11 +46,28 @@
                 <div class="logo-text">SPARKLE<span>CLEAN</span></div>
             </a>
 
+            <nav class="nav-container" id="nav-menu">
+                <ul class="nav-menu">
+                    <li><a href="index-ar.html" class="nav-link active">الرئيسية</a></li>
+                    <li><a href="services-ar.html" class="nav-link">خدماتنا</a></li>
+                    <li><a href="index.html" class="nav-link lang-btn">English</a></li>
+                    <li class="mobile-only">
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">تبديل الوضع:</span>
+                        <div class="theme-switch-wrapper" style="margin-top: 10px;">
+                            <label class="theme-switch" for="checkbox-mobile">
+                                <input type="checkbox" id="checkbox-mobile" class="theme-toggle-btn" />
+                                <div class="slider round"></div>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
             <div class="nav-controls">
-                <div class="theme-switch-wrapper">
+                <div class="theme-switch-wrapper desktop-only">
                     <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" />
-                        <div class="slider"></div>
+                        <input type="checkbox" id="checkbox" class="theme-toggle-btn" />
+                        <div class="slider round"></div>
                     </label>
                 </div>
 
@@ -54,14 +77,6 @@
                     <span class="bar"></span>
                 </div>
             </div>
-
-            <nav class="nav-container">
-                <ul class="nav-menu">
-                    <li><a href="index-ar.html" class="nav-link active">الرئيسية</a></li>
-                    <li><a href="services-ar.html" class="nav-link">خدماتنا</a></li>
-                    <li><a href="index.html" class="nav-link lang-btn">English</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
@@ -69,7 +84,7 @@
         <div class="container hero-wrapper">
             <div class="banner-content">
                 <h1 class="hero-title"><span class="highlight">نُضفي</span> بريقاً خاصاً على منزلك</h1>
-                <p>خدمات تنظيف احترافية مخصصة لمنزلك ومكتبك من <strong>SparkleClean</strong>. جودة تليق بك.</p>
+                <p>خدمات تنظيف احترافية مخصصة لمنزلك ومكتبك من <strong>SparkleClean</strong>. جودة تليق بك وأمانة نعتز بها.</p>
                 <div class="banner-buttons">
                     <a href="services-ar.html" class="btn-glass-primary">اكتشف خدماتنا</a>
                     <a href="contact-ar.html" class="btn-glass-outline">احجز موعدك ✨</a>
@@ -79,14 +94,14 @@
             <div class="calc-card">
                 <h3>حاسبة التكلفة الذكية</h3>
                 <div class="form-group">
-                    <label>المساحة (متر مربع)</label>
-                    <input type="number" id="inputArea" placeholder="مثلاً: 120">
+                    <label for="inputArea">المساحة (متر مربع)</label>
+                    <input type="number" id="inputArea" placeholder="مثلاً: 120" min="0">
                 </div>
                 <div class="price-result">
                     <p>الإجمالي التقديري</p>
                     <h2 id="priceDisplay">0 $</h2>
                 </div>
-                <button class="btn-checkout">تأكيد الحجز الآمن</button>
+                <a href="success-ar.html" class="btn-checkout" style="display: block; text-align: center; text-decoration: none;">تأكيد الحجز الآمن</a>
             </div>
         </div>
     </section>
@@ -96,11 +111,11 @@
         <div class="grid-layout">
             <div class="calc-card result-card">
                 <div class="image-wrapper">
-                    <img src="assets/images/bathroom-result.jpg" alt="نتيجة تنظيف الحمام">
+                    <img src="assets/images/bathroom-result.jpg" alt="نتيجة تنظيف الحمام الاحترافية">
                 </div>
-                <div class="card-content" style="padding-top: 20px;">
+                <div class="card-content" style="padding: 25px 20px;">
                     <h3>تنظيف عميق للحمامات</h3>
-                    <p>إعادة اللمعان الكامل لأسطح السيراميك والرخام باستخدام مواد صديقة للبيئة وآمنة تماماً.</p>
+                    <p>إعادة اللمعان الكامل لأسطح السيراميك والرخام باستخدام مواد صديقة للبيئة وآمنة تماماً على عائلتك.</p>
                 </div>
             </div>
         </div>

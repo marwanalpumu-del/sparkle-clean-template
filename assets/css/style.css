@@ -1,205 +1,247 @@
-/**
- * SparkleClean - Main JavaScript Core
- * Version: 1.7.0 (Smart Currency & Policy Integrated)
- * Developed for: SparkleClean Professional Services
+/* * SparkleClean Professional Services - Premium Stylesheet v1.7.0
+ * Handcrafted for Marwan's Project
+ * Features: S-Logo Code, Dark Mode, RTL Support, Responsive Calculator
  */
 
-(function () {
-    "use strict";
+:root {
+    /* الألوان الأساسية - متناسقة مع صور العمال (الأزرق والداكن) */
+    --primary: #00b4db;
+    --primary-dark: #0083b0;
+    --accent: #ff9800;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
 
-    // 1. إعدادات الشركة العامة
-    const COMPANY_SETTINGS = {
-        whatsappNumber: "966500000000",
-        emailAddress: "info@sparkleclean.com",
-        welcomeMsgAr: "مرحباً SparkleClean، قرأت الشروط وأرغب في حجز موعد للتنظيف! ✨",
-        welcomeMsgEn: "Hello SparkleClean, I've read the terms and would like to book a cleaning service! ✨"
-    };
+/* متغيرات الوضع الليلي */
+[data-theme="dark"] {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+}
 
-    // 2. بيانات آراء العملاء (Testimonials)
-    const TESTIMONIALS_DATA = {
-        ar: [
-            { name: "سارة الأحمد", role: "عميل سكني", text: "خدمة مذهلة! فريق SparkleClean جعل شقتي تلمع كأنها جديدة.", stars: 5, initial: "س" },
-            { name: "فهد العتيبي", role: "صاحب شركة", text: "الاحترافية والأمانة هي عنوانهم. نتائج مبهرة فعلاً.", stars: 5, initial: "ف" }
-        ],
-        en: [
-            { name: "Sarah Ahmed", role: "Residential Client", text: "Amazing service! The SparkleClean team made my apartment shine.", stars: 5, initial: "S" },
-            { name: "James Miller", role: "Business Owner", text: "Professionalism and quality. Highly recommended for offices.", stars: 5, initial: "J" }
-        ]
-    };
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
 
-    document.addEventListener('DOMContentLoaded', function () {
-        // تحديد اللغة والاتجاه (RTL vs LTR)
-        const isRTL = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ar';
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    transition: var(--transition);
+}
 
-        // 3. تجهيز روابط الواتساب الافتراضية
-        const setupGlobalSettings = () => {
-            const waLinks = document.querySelectorAll('.whatsapp-link'); 
-            const msg = isRTL ? COMPANY_SETTINGS.welcomeMsgAr : COMPANY_SETTINGS.welcomeMsgEn;
-            const encodedMsg = encodeURIComponent(msg);
-            
-            waLinks.forEach(link => {
-                link.href = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodedMsg}`;
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener noreferrer');
-            });
-        };
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-        // 4. عرض آراء العملاء ديناميكياً
-        const renderTestimonials = () => {
-            const container = document.getElementById('testimonials-container');
-            if (!container) return;
+/* --- 1. اللوجو البرمجي (حرف S) --- */
+.brand-logo-s {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
 
-            const data = TESTIMONIALS_DATA[isRTL ? 'ar' : 'en'];
-            container.innerHTML = data.map(item => `
-                <div class="testimonial-card">
-                    <div class="stars">${'⭐'.repeat(item.stars)}</div>
-                    <p>"${item.text}"</p>
-                    <div class="client-info">
-                        <div class="client-img-placeholder">${item.initial}</div>
-                        <div>
-                            <h4>${item.name}</h4>
-                            <span>${item.role}</span>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        };
+.s-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    color: white;
+    font-size: 22px;
+    box-shadow: 0 4px 12px rgba(0, 180, 219, 0.3);
+}
 
-        // 5. تأثيرات التمرير وشاشة التحميل (Preloader)
-        const initScrollEffects = () => {
-            const preloader = document.getElementById('preloader');
-            const header = document.querySelector('.main-header');
+.brand-name {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
 
-            if (preloader) {
-                window.addEventListener('load', () => {
-                    setTimeout(() => {
-                        preloader.classList.add('loader-fade');
-                        setTimeout(() => preloader.remove(), 800);
-                    }, 1000);
-                });
-            }
+.brand-name span { color: var(--primary); }
 
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) header?.classList.add('header-scrolled');
-                else header?.classList.remove('header-scrolled');
-            });
-        };
+/* --- 2. الهيدر والقائمة --- */
+.main-header {
+    background: var(--card-bg);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
 
-        // 6. حاسبة الأسعار التفاعلية
-        const initCalculator = () => {
-            const areaInput = document.getElementById('inputArea'); 
-            const priceDisplay = document.getElementById('priceDisplay'); 
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-            if (areaInput && priceDisplay) {
-                areaInput.addEventListener('input', () => {
-                    const area = parseFloat(areaInput.value) || 0;
-                    const baseRate = 5; // سعر المتر المربع
-                    const targetPrice = area * baseRate;
-                    animateValue(priceDisplay, 0, targetPrice, 500);
-                });
-            }
-        };
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
 
-        // وظيفة تحريك الأرقام (Counter Animation)
-        function animateValue(obj, start, end, duration) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const currentVal = Math.floor(progress * (end - start) + start);
-                const currency = isRTL ? "ريال" : "SAR";
-                
-                obj.innerText = isRTL 
-                    ? `${currentVal.toLocaleString()} ${currency}` 
-                    : `${currency} ${currentVal.toLocaleString()}`;
-                
-                if (progress < 1) window.requestAnimationFrame(step);
-            };
-            window.requestAnimationFrame(step);
-        }
+.nav-link {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 600;
+    transition: var(--transition);
+}
 
-        // 7. منطق الوضع الليلي (Dark Mode)
-        const initThemeMode = () => {
-            const themeToggles = document.querySelectorAll('.theme-switch input');
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            
-            themeToggles.forEach(toggle => {
-                toggle.checked = savedTheme === 'dark';
-                toggle.addEventListener('change', (e) => {
-                    const theme = e.target.checked ? 'dark' : 'light';
-                    document.documentElement.setAttribute('data-theme', theme);
-                    localStorage.setItem('theme', theme);
-                    themeToggles.forEach(t => t.checked = e.target.checked);
-                });
-            });
-        };
+.nav-link:hover { color: var(--primary); }
 
-        // 8. القائمة الجانبية للجوال (Mobile Menu)
-        const initNavigation = () => {
-            const menuToggle = document.getElementById('mobile-menu');
-            const navContainer = document.querySelector('.nav-container'); 
-            if (menuToggle && navContainer) {
-                menuToggle.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    navContainer.classList.toggle('active');
-                    menuToggle.classList.toggle('is-active');
-                });
-                document.addEventListener('click', (e) => {
-                    if (!navContainer.contains(e.target) && !menuToggle.contains(e.target)) {
-                        navContainer.classList.remove('active');
-                        menuToggle.classList.remove('is-active');
-                    }
-                });
-            }
-        };
+/* --- 3. قسم البنر (Hero Section) --- */
+.hero-section {
+    position: relative;
+    /* استخدام الصورة التي رفعتها hero-bg.jpg */
+    background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), 
+                url('../images/hero-bg.jpg') no-repeat;
+    background-size: cover;
+    background-position: center top;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
 
-        // 9. سياسة القبول والربط مع واتساب
-        const initAcceptancePolicy = () => {
-            const acceptCheckbox = document.getElementById('acceptPolicy');
-            const checkoutBtn = document.querySelector('.btn-checkout');
-            const areaInput = document.getElementById('inputArea');
-            const priceDisplay = document.getElementById('priceDisplay');
+.hero-content { width: 100%; padding: 20px; }
 
-            if (acceptCheckbox && checkoutBtn) {
-                // الحالة البدائية للزر
-                checkoutBtn.style.opacity = "0.4";
-                checkoutBtn.style.pointerEvents = "none";
-                checkoutBtn.style.filter = "grayscale(1)";
+.hero-content h1 { font-size: 3rem; margin-bottom: 20px; font-weight: 900; }
 
-                acceptCheckbox.addEventListener('change', (e) => {
-                    if (e.target.checked) {
-                        // تحديث رسالة الواتساب بالبيانات الحالية
-                        const area = areaInput?.value || "0";
-                        const price = priceDisplay?.innerText || "0";
-                        const customMsg = isRTL 
-                            ? `مرحباً SparkleClean، أرغب في حجز خدمة لمساحة ${area}م بقيمة ${price}`
-                            : `Hello SparkleClean, I'd like to book a service for ${area}sqm at ${price}`;
-                        
-                        checkoutBtn.href = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodeURIComponent(customMsg)}`;
-                        
-                        // تفعيل الزر
-                        checkoutBtn.style.opacity = "1";
-                        checkoutBtn.style.pointerEvents = "auto";
-                        checkoutBtn.style.filter = "grayscale(0)";
-                        checkoutBtn.style.cursor = "pointer";
-                    } else {
-                        // تعطيل الزر
-                        checkoutBtn.style.opacity = "0.4";
-                        checkoutBtn.style.pointerEvents = "none";
-                        checkoutBtn.style.filter = "grayscale(1)";
-                    }
-                });
-            }
-        };
+/* --- 4. حاسبة الأسعار والسياسة --- */
+.calc-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    max-width: 500px;
+    margin: -100px auto 50px; /* تداخل جميل مع البنر */
+    position: relative;
+    z-index: 10;
+}
 
-        // تشغيل جميع الوظائف
-        setupGlobalSettings();
-        renderTestimonials();
-        initScrollEffects();
-        initThemeMode();
-        initCalculator();
-        initNavigation();
-        initAcceptancePolicy();
-    });
-})();
+.input-group { margin-bottom: 20px; }
+
+.input-group label { display: block; margin-bottom: 8px; font-weight: 700; }
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--bg-color);
+    color: var(--text-main);
+    font-size: 1rem;
+}
+
+.price-display-box {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 180, 219, 0.1);
+    border-radius: 15px;
+    margin: 20px 0;
+}
+
+#priceDisplay {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--primary);
+}
+
+.btn-checkout {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: var(--primary);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+/* --- 5. قسم النتائج (قبل وبعد) --- */
+.results-section { padding: 80px 0; text-align: center; }
+
+.before-after-img {
+    max-width: 900px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    margin-top: 30px;
+}
+
+/* --- 6. الوضع الليلي (Switcher) --- */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme-switch {
+    position: relative;
+    width: 50px;
+    height: 24px;
+}
+
+.theme-switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    border-radius: 34px;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; width: 18px;
+    left: 4px; bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: .4s;
+}
+
+input:checked + .slider { background-color: var(--primary); }
+input:checked + .slider:before { transform: translateX(26px); }
+
+/* --- 7. التوافق مع الجوال (Responsive) --- */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2rem; }
+    .nav-menu { display: none; } /* يفضل إضافة هامبرغر منيو لاحقاً */
+    .calc-card { margin-top: -50px; width: 90%; }
+}
+
+/* شاشة التحميل Preloader */
+#preloader {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-color);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 9999;
+}
+
+.loader-fade { opacity: 0; visibility: hidden; transition: 0.8s; }

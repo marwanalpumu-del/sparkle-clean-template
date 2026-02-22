@@ -16,8 +16,8 @@
     // 2. Testimonials Data (Auto-switches based on page language)
     const TESTIMONIALS_DATA = {
         ar: [
-            { name: "Sarah Ahmed", role: "Residential Client", text: "Amazing service! The SparkleClean team made my apartment shine like new.", stars: 5, initial: "س" },
-            { name: "Fahad Al-Otaibi", role: "Business Owner", text: "Professionalism and honesty. The results were truly impressive.", stars: 5, initial: "ف" }
+            { name: "سارة الأحمد", role: "عميل سكني", text: "خدمة مذهلة! فريق SparkleClean جعل شقتي تلمع كأنها جديدة.", stars: 5, initial: "س" },
+            { name: "فهد العتيبي", role: "صاحب شركة", text: "الاحترافية والأمانة هي عنوانهم. نتائج مبهرة فعلاً.", stars: 5, initial: "ف" }
         ],
         en: [
             { name: "Sarah Ahmed", role: "Residential Client", text: "Amazing service! The SparkleClean team made my apartment shine.", stars: 5, initial: "S" },
@@ -27,7 +27,7 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         const isRTL = document.documentElement.dir === 'rtl';
-        const lang = document.documentElement.lang || (isRTL ? 'ar' : 'en');
+        const body = document.body;
 
         // 3. Initialize Global Links & Forms
         const setupGlobalSettings = () => {
@@ -132,31 +132,50 @@
             window.requestAnimationFrame(step);
         }
 
-        // 7. Dark Mode & Navigation Management (Mobile Optimized)
+        // 7. Dark Mode Logic (Enhanced for Desktop & Mobile Sync)
         const initThemeMode = () => {
-            const toggleSwitch = document.querySelector('#checkbox');
+            const themeToggles = document.querySelectorAll('.theme-toggle-btn, #checkbox, #checkbox-mobile');
             const savedTheme = localStorage.getItem('theme') || 'light';
             
             document.documentElement.setAttribute('data-theme', savedTheme);
-            if (toggleSwitch) {
-                toggleSwitch.checked = savedTheme === 'dark';
-                toggleSwitch.addEventListener('change', (e) => {
-                    const theme = e.target.checked ? 'dark' : 'light';
-                    document.documentElement.setAttribute('data-theme', theme);
-                    localStorage.setItem('theme', theme);
-                });
-            }
+
+            themeToggles.forEach(toggle => {
+                if (toggle) {
+                    toggle.checked = savedTheme === 'dark';
+                    toggle.addEventListener('change', (e) => {
+                        const theme = e.target.checked ? 'dark' : 'light';
+                        document.documentElement.setAttribute('data-theme', theme);
+                        localStorage.setItem('theme', theme);
+                        
+                        // Sync all other theme switches on the page
+                        themeToggles.forEach(t => t.checked = e.target.checked);
+                    });
+                }
+            });
         };
 
+        // 8. Navigation Management (Mobile Optimized)
         const initNavigation = () => {
             const menuToggle = document.getElementById('mobile-menu');
-            const navContainer = document.querySelector('.nav-container'); 
+            const navContainer = document.getElementById('nav-menu'); 
 
             if (menuToggle && navContainer) {
                 menuToggle.addEventListener('click', (e) => {
                     e.stopPropagation();
                     navContainer.classList.toggle('active');
                     menuToggle.classList.toggle('is-active');
+                    
+                    // Prevent background scroll when menu is open
+                    body.style.overflow = navContainer.classList.contains('active') ? 'hidden' : '';
+                });
+
+                // Close menu when clicking links
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navContainer.classList.remove('active');
+                        menuToggle.classList.remove('is-active');
+                        body.style.overflow = '';
+                    });
                 });
 
                 // Close menu when clicking outside
@@ -164,6 +183,7 @@
                     if (!navContainer.contains(e.target) && !menuToggle.contains(e.target)) {
                         navContainer.classList.remove('active');
                         menuToggle.classList.remove('is-active');
+                        body.style.overflow = '';
                     }
                 });
             }

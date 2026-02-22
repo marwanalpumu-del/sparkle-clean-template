@@ -9,15 +9,34 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
         /* Modern UI Enhancements */
         html { scroll-behavior: smooth; }
-        body { overflow-x: hidden; width: 100%; }
-        
-        /* Ensure specific branding font remains bold and clean */
+        body { overflow-x: hidden; width: 100%; font-family: 'Inter', sans-serif; }
         .logo-text { font-family: 'Inter', sans-serif !important; }
+        
+        /* Heart Beat Animation */
+        .heart-icon { color: #e74c3c; margin: 0 4px; display: inline-block; animation: heartBeat 1.5s infinite; }
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Checkbox Styling */
+        .policy-check {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.85rem;
+            text-align: left;
+        }
+        .policy-check input { width: 18px; height: 18px; cursor: pointer; margin-top: 2px; }
+        .policy-check label { color: var(--text-muted); cursor: pointer; line-height: 1.4; }
     </style>
 </head>
 <body>
@@ -81,7 +100,7 @@
                 <p>Top-tier professional cleaning services from <strong>SparkleClean</strong>. We bring a professional sparkle you can trust for your home and office.</p>
                 <div class="banner-buttons">
                     <a href="services.html" class="btn-glass-primary">Our Services</a>
-                    <a href="contact.html" class="btn-glass-outline">Book Now</a>
+                    <a href="#" class="btn-glass-outline whatsapp-link">Book Now ✨</a>
                 </div>
             </div>
 
@@ -92,50 +111,60 @@
                     <input type="number" id="inputArea" placeholder="e.g. 100" min="0">
                 </div>
                 <div class="price-result">
-                    <p>Estimated Total</p>
-                    <h2 id="priceDisplay">$0</h2>
+    <p>Estimated Total</p>
+    <h2 id="priceDisplay">0 SAR</h2> 
+</div>
+
                 </div>
-                <a href="success.html" class="btn-checkout" style="display: block; text-align: center; text-decoration: none;">Secure Booking ✨</a>
+
+                <div class="policy-check">
+                    <input type="checkbox" id="acceptPolicy">
+                    <label for="acceptPolicy">
+                        I agree to the <a href="#" style="color: var(--primary); text-decoration: underline;">Acceptance Policy</a> and Terms of Service.
+                    </label>
+                </div>
+
+                <a href="#" class="btn-checkout whatsapp-link" style="display: block; text-align: center; text-decoration: none;">Secure Booking ✨</a>
             </div>
         </div>
     </section>
 
-    <script src="assets/js/main.js"></script>
     <footer class="main-footer">
-    <div class="container footer-grid">
-        <div class="footer-brand">
-            <div class="brand-logo">
-                <div class="logo-shape"></div>
-                <div class="logo-text">SPARKLE<span>CLEAN</span></div>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand-logo">
+                    <div class="logo-shape"></div>
+                    <div class="logo-text">SPARKLE<span>CLEAN</span></div>
+                </div>
+                <p>Premium cleaning services for modern homes and professional offices. Quality you can see, trust you can feel.</p>
             </div>
-            <p>Premium cleaning services for modern homes and professional offices. Quality you can see, trust you can feel.</p>
-        </div>
 
-        <div class="footer-links">
-            <h4>Quick Links</h4>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
 
-        <div class="footer-contact">
-            <h4>Get In Touch</h4>
-            <p>📧 info@sparkleclean.com</p>
-            <p>📞 +966 500 000 000</p>
-            <div class="social-icons">
-                <a href="#" class="social-link">FB</a>
-                <a href="#" class="social-link">IG</a>
-                <a href="#" class="social-link">TW</a>
+            <div class="footer-contact">
+                <h4>Get In Touch</h4>
+                <p>📧 info@sparkleclean.com</p>
+                <p>📞 +966 500 000 000</p>
+                <div class="social-icons">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link whatsapp-link"><i class="fab fa-whatsapp"></i></a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2026 SparkleClean. All rights reserved. Designed with ✨</p>
-    </div>
-</footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 SparkleClean. All rights reserved. Designed with <span class="heart-icon">❤️</span> & Passion</p>
+        </div>
+    </footer>
 
+    <script src="assets/js/main.js"></script>
 
 </body>
 </html>

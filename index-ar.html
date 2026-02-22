@@ -26,6 +26,18 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.2); }
         }
+
+        /* تنسيق مربع القبول العربي */
+        .policy-check {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.85rem;
+            text-align: right;
+        }
+        .policy-check input { width: 18px; height: 18px; cursor: pointer; margin-top: 3px; }
+        .policy-check label { color: var(--text-muted); cursor: pointer; line-height: 1.4; }
     </style>
 </head>
 <body>
@@ -102,6 +114,14 @@
                     <p>الإجمالي التقديري</p>
                     <h2 id="priceDisplay">0 ريال</h2>
                 </div>
+
+                <div class="policy-check">
+                    <input type="checkbox" id="acceptPolicy">
+                    <label for="acceptPolicy">
+                        أوافق على <a href="#" style="color: var(--primary); text-decoration: underline;">سياسة القبول</a> وشروط الخدمة.
+                    </label>
+                </div>
+
                 <a href="#" class="btn-checkout whatsapp-link">تأكيد الحجز عبر الواتساب</a>
             </div>
         </div>

@@ -1,10 +1,8 @@
-/* * SparkleClean Professional Services - Premium Stylesheet v1.7.0
- * Handcrafted for Marwan's Project
- * Features: S-Logo Code, Dark Mode, RTL Support, Responsive Calculator
+/* * SparkleClean Professional Services - Premium Stylesheet v1.8.0
+ * Fully Optimized for Theme Stores | RTL & Dark Mode Ready
  */
 
 :root {
-    /* الألوان الأساسية - متناسقة مع صور العمال (الأزرق والداكن) */
     --primary: #00b4db;
     --primary-dark: #0083b0;
     --accent: #ff9800;
@@ -14,10 +12,10 @@
     --text-muted: #64748b;
     --border-color: #e2e8f0;
     --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius-main: 12px; /* توحيد الحواف بناءً على نصيحة المتجر */
 }
 
-/* متغيرات الوضع الليلي */
 [data-theme="dark"] {
     --bg-color: #0f172a;
     --card-bg: #1e293b;
@@ -27,19 +25,23 @@
     --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
 }
 
+/* التنسيق العام */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0; padding: 0; box-sizing: border-box;
 }
+
+html { scroll-behavior: smooth; }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.6;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
     transition: var(--transition);
 }
+
+/* دعم الاتجاه العربي تلقائياً */
+[dir="rtl"] body { text-align: right; }
 
 .container {
     max-width: 1200px;
@@ -47,201 +49,108 @@ body {
     padding: 0 20px;
 }
 
-/* --- 1. اللوجو البرمجي (حرف S) --- */
-.brand-logo-s {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-}
-
-.s-icon {
-    width: 40px;
-    height: 40px;
+/* --- 1. اللوجو البرمجي المحسن --- */
+.logo-shape {
+    width: 40px; height: 40px;
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    color: white;
-    font-size: 22px;
-    box-shadow: 0 4px 12px rgba(0, 180, 219, 0.3);
+    border-radius: var(--radius-main);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; color: white; font-size: 22px;
+    box-shadow: 0 4px 15px rgba(0, 180, 219, 0.3);
 }
 
-.brand-name {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--text-main);
-}
-
-.brand-name span { color: var(--primary); }
-
-/* --- 2. الهيدر والقائمة --- */
+/* --- 2. الهيدر --- */
 .main-header {
     background: var(--card-bg);
     padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    position: sticky; top: 0; z-index: 1000;
     border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+.navbar { display: flex; justify-content: space-between; align-items: center; }
 
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
+.nav-menu { display: flex; list-style: none; gap: 25px; align-items: center; }
 
 .nav-link {
-    text-decoration: none;
-    color: var(--text-main);
-    font-weight: 600;
-    transition: var(--transition);
+    text-decoration: none; color: var(--text-main);
+    font-weight: 600; transition: var(--transition);
 }
 
-.nav-link:hover { color: var(--primary); }
+.nav-link:hover, .nav-link.active { color: var(--primary); }
 
-/* --- 3. قسم البنر (Hero Section) --- */
-.hero-section {
-    position: relative;
-    /* استخدام الصورة التي رفعتها hero-bg.jpg */
-    background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), 
-                url('../images/hero-bg.jpg') no-repeat;
+/* --- 3. البنر (Hero) --- */
+.hero-banner, .hero-banner-ar {
+    background: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), 
+                url('../images/hero-bg.jpg') no-repeat center top;
     background-size: cover;
-    background-position: center top;
-    height: 85vh;
-    display: flex;
-    align-items: center;
-    color: white;
-    text-align: center;
+    min-height: 85vh;
+    display: flex; align-items: center; color: white;
 }
 
-.hero-content { width: 100%; padding: 20px; }
-
-.hero-content h1 { font-size: 3rem; margin-bottom: 20px; font-weight: 900; }
-
-/* --- 4. حاسبة الأسعار والسياسة --- */
+/* --- 4. الحاسبة (المحسنة) --- */
 .calc-card {
     background: var(--card-bg);
-    padding: 30px;
-    border-radius: 20px;
+    padding: 35px;
+    border-radius: var(--radius-main);
     box-shadow: var(--shadow);
-    max-width: 500px;
-    margin: -100px auto 50px; /* تداخل جميل مع البنر */
-    position: relative;
-    z-index: 10;
+    transition: transform 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
-.input-group { margin-bottom: 20px; }
+.calc-card:hover { transform: translateY(-5px); }
 
-.input-group label { display: block; margin-bottom: 8px; font-weight: 700; }
-
-.input-group input {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid var(--border-color);
-    border-radius: 10px;
-    background: var(--bg-color);
-    color: var(--text-main);
-    font-size: 1rem;
-}
-
-.price-display-box {
-    text-align: center;
-    padding: 20px;
-    background: rgba(0, 180, 219, 0.1);
-    border-radius: 15px;
-    margin: 20px 0;
-}
-
-#priceDisplay {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--primary);
+.price-result {
+    background: rgba(0, 180, 219, 0.08);
+    padding: 25px; border-radius: var(--radius-main);
+    text-align: center; margin: 20px 0;
+    border: 1px dashed var(--primary);
 }
 
 .btn-checkout {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    background: var(--primary);
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 12px;
-    font-weight: 700;
-    transition: var(--transition);
+    display: block; width: 100%; padding: 16px;
+    background: var(--primary); color: white;
+    text-align: center; text-decoration: none;
+    border-radius: var(--radius-main);
+    font-weight: 700; transition: var(--transition);
+    border: none; cursor: pointer;
 }
 
-/* --- 5. قسم النتائج (قبل وبعد) --- */
-.results-section { padding: 80px 0; text-align: center; }
+.btn-checkout:hover { background: var(--primary-dark); box-shadow: 0 5px 15px rgba(0, 180, 219, 0.4); }
 
-.before-after-img {
-    max-width: 900px;
-    width: 100%;
-    border-radius: 20px;
-    box-shadow: var(--shadow);
-    margin-top: 30px;
-}
-
-/* --- 6. الوضع الليلي (Switcher) --- */
-.theme-switch-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.theme-switch {
-    position: relative;
-    width: 50px;
-    height: 24px;
-}
-
-.theme-switch input { opacity: 0; width: 0; height: 0; }
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: #ccc;
-    border-radius: 34px;
-    transition: .4s;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 18px; width: 18px;
-    left: 4px; bottom: 3px;
-    background-color: white;
+/* --- 5. زر الواتساب العائم مع تأثير النبض --- */
+.whatsapp-float {
+    position: fixed; bottom: 30px; z-index: 1000;
+    animation: pulse-green 2s infinite;
     border-radius: 50%;
-    transition: .4s;
 }
 
-input:checked + .slider { background-color: var(--primary); }
-input:checked + .slider:before { transform: translateX(26px); }
-
-/* --- 7. التوافق مع الجوال (Responsive) --- */
-@media (max-width: 768px) {
-    .hero-content h1 { font-size: 2rem; }
-    .nav-menu { display: none; } /* يفضل إضافة هامبرغر منيو لاحقاً */
-    .calc-card { margin-top: -50px; width: 90%; }
+@keyframes pulse-green {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
-/* شاشة التحميل Preloader */
+/* --- 6. شاشة التحميل --- */
 #preloader {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: var(--bg-color);
-    display: flex; justify-content: center; align-items: center;
-    z-index: 9999;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-color); z-index: 9999;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
 }
 
-.loader-fade { opacity: 0; visibility: hidden; transition: 0.8s; }
+.loader-logo {
+    font-size: 45px; font-weight: 900; color: var(--primary);
+    animation: sparkle 1.5s infinite alternate;
+}
+
+@keyframes sparkle {
+    from { opacity: 0.5; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1.1); }
+}
+
+/* --- 7. Responsive --- */
+@media (max-width: 768px) {
+    .navbar { padding: 10px 0; }
+    .nav-menu { display: none; } /* سيتم تفعيل المنيو بالجافاسكريبت */
+    .hero-banner, .hero-banner-ar { text-align: center; padding-top: 50px; }
+}

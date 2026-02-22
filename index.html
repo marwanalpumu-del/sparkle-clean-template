@@ -14,29 +14,28 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
-        /* Modern UI Enhancements */
         html { scroll-behavior: smooth; }
         body { overflow-x: hidden; width: 100%; font-family: 'Inter', sans-serif; }
         .logo-text { font-family: 'Inter', sans-serif !important; }
         
-        /* Heart Beat Animation */
         .heart-icon { color: #e74c3c; margin: 0 4px; display: inline-block; animation: heartBeat 1.5s infinite; }
         @keyframes heartBeat {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.2); }
         }
 
-        /* Checkbox Styling */
         .policy-check {
-            margin-bottom: 20px;
+            margin: 15px 0;
             display: flex;
             align-items: flex-start;
             gap: 10px;
             font-size: 0.85rem;
             text-align: left;
         }
-        .policy-check input { width: 18px; height: 18px; cursor: pointer; margin-top: 2px; }
+        .policy-check input { width: 18px; height: 18px; cursor: pointer; flex-shrink: 0; }
         .policy-check label { color: var(--text-muted); cursor: pointer; line-height: 1.4; }
+        
+        .calc-card { height: auto !important; display: flex; flex-direction: column; gap: 15px; }
     </style>
 </head>
 <body>
@@ -110,11 +109,10 @@
                     <label for="inputArea">Area (sq. meters)</label>
                     <input type="number" id="inputArea" placeholder="e.g. 100" min="0">
                 </div>
+                
                 <div class="price-result">
-    <p>Estimated Total</p>
-    <h2 id="priceDisplay">0 SAR</h2> 
-</div>
-
+                    <p>Estimated Total</p>
+                    <h2 id="priceDisplay">0 SAR</h2> 
                 </div>
 
                 <div class="policy-check">

@@ -1,205 +1,113 @@
-/**
- * SparkleClean - Main JavaScript Core
- * Version: 1.7.0 (Smart Currency & Policy Integrated)
- * Developed for: SparkleClean Professional Services
- */
+/* SparkleClean - JavaScript Core v2.1 (Premium Pro Version)
+    Handcrafted for Marwan's Project - Ready for Sale
+    Features: Dark Mode, Smart Calc, WhatsApp Integration, Counter Animation
+*/
 
-(function () {
-    "use strict";
+document.addEventListener('DOMContentLoaded', () => {
+    const isRTL = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ar';
 
-    // 1. إعدادات الشركة العامة
-    const COMPANY_SETTINGS = {
-        whatsappNumber: "966500000000",
-        emailAddress: "info@sparkleclean.com",
-        welcomeMsgAr: "مرحباً SparkleClean، قرأت الشروط وأرغب في حجز موعد للتنظيف! ✨",
-        welcomeMsgEn: "Hello SparkleClean, I've read the terms and would like to book a cleaning service! ✨"
+    // 1. Preloader Logic (شاشة التحميل)
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                preloader.classList.add('loader-fade');
+                setTimeout(() => preloader.remove(), 800);
+            }, 1000);
+        });
+    }
+
+    // 2. Dark Mode Logic (نظام الوضع الليلي)
+    const themeToggle = document.getElementById('checkbox');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    if (themeToggle) {
+        themeToggle.checked = currentTheme === 'dark';
+        themeToggle.addEventListener('change', (e) => {
+            const theme = e.target.checked ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        });
+    }
+
+    // 3. Counter Animation Function (وظيفة عداد الأرقام الجميل)
+    const animatePrice = (obj, start, end, duration) => {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const currentVal = Math.floor(progress * (end - start) + start);
+            const currency = isRTL ? 'ريال' : 'SAR';
+            
+            obj.innerText = isRTL 
+                ? `${currentVal.toLocaleString()} ${currency}` 
+                : `${currency} ${currentVal.toLocaleString()}`;
+            
+            if (progress < 1) window.requestAnimationFrame(step);
+        };
+        window.requestAnimationFrame(step);
     };
 
-    // 2. بيانات آراء العملاء (Testimonials)
-    const TESTIMONIALS_DATA = {
-        ar: [
-            { name: "سارة الأحمد", role: "عميل سكني", text: "خدمة مذهلة! فريق SparkleClean جعل شقتي تلمع كأنها جديدة.", stars: 5, initial: "س" },
-            { name: "فهد العتيبي", role: "صاحب شركة", text: "الاحترافية والأمانة هي عنوانهم. نتائج مبهرة فعلاً.", stars: 5, initial: "ف" }
-        ],
-        en: [
-            { name: "Sarah Ahmed", role: "Residential Client", text: "Amazing service! The SparkleClean team made my apartment shine.", stars: 5, initial: "S" },
-            { name: "James Miller", role: "Business Owner", text: "Professionalism and quality. Highly recommended for offices.", stars: 5, initial: "J" }
-        ]
+    // 4. Calculator & WhatsApp Integration
+    const areaInput = document.getElementById('inputArea');
+    const priceDisplay = document.getElementById('priceDisplay');
+    const acceptPolicy = document.getElementById('acceptPolicy');
+    const bookingBtn = document.querySelector('.whatsapp-link.btn-checkout');
+
+    let lastPrice = 0; // لحفظ آخر سعر وتجنب تكرار الأنيميشن من الصفر
+
+    const updatePrice = () => {
+        const area = parseFloat(areaInput.value) || 0;
+        const baseRate = 5; // سعر المتر (يمكن للمشتري تعديله بسهولة)
+        const targetPrice = area * baseRate;
+
+        // تشغيل عداد الأرقام من السعر القديم إلى الجديد
+        animatePrice(priceDisplay, lastPrice, targetPrice, 400);
+        lastPrice = targetPrice;
+
+        return { area, targetPrice };
     };
 
-    document.addEventListener('DOMContentLoaded', function () {
-        // تحديد اللغة والاتجاه (RTL vs LTR)
-        const isRTL = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ar';
+    if (areaInput && bookingBtn) {
+        // تعطيل الزر في البداية
+        bookingBtn.style.opacity = '0.4';
+        bookingBtn.style.pointerEvents = 'none';
+        bookingBtn.style.filter = 'grayscale(1)';
 
-        // 3. تجهيز روابط الواتساب الافتراضية
-        const setupGlobalSettings = () => {
-            const waLinks = document.querySelectorAll('.whatsapp-link'); 
-            const msg = isRTL ? COMPANY_SETTINGS.welcomeMsgAr : COMPANY_SETTINGS.welcomeMsgEn;
-            const encodedMsg = encodeURIComponent(msg);
-            
-            waLinks.forEach(link => {
-                link.href = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodedMsg}`;
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener noreferrer');
-            });
-        };
+        const refreshWhatsApp = () => {
+            const data = updatePrice();
+            const currentPriceText = priceDisplay.innerText;
 
-        // 4. عرض آراء العملاء ديناميكياً
-        const renderTestimonials = () => {
-            const container = document.getElementById('testimonials-container');
-            if (!container) return;
-
-            const data = TESTIMONIALS_DATA[isRTL ? 'ar' : 'en'];
-            container.innerHTML = data.map(item => `
-                <div class="testimonial-card">
-                    <div class="stars">${'⭐'.repeat(item.stars)}</div>
-                    <p>"${item.text}"</p>
-                    <div class="client-info">
-                        <div class="client-img-placeholder">${item.initial}</div>
-                        <div>
-                            <h4>${item.name}</h4>
-                            <span>${item.role}</span>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        };
-
-        // 5. تأثيرات التمرير وشاشة التحميل (Preloader)
-        const initScrollEffects = () => {
-            const preloader = document.getElementById('preloader');
-            const header = document.querySelector('.main-header');
-
-            if (preloader) {
-                window.addEventListener('load', () => {
-                    setTimeout(() => {
-                        preloader.classList.add('loader-fade');
-                        setTimeout(() => preloader.remove(), 800);
-                    }, 1000);
-                });
-            }
-
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) header?.classList.add('header-scrolled');
-                else header?.classList.remove('header-scrolled');
-            });
-        };
-
-        // 6. حاسبة الأسعار التفاعلية
-        const initCalculator = () => {
-            const areaInput = document.getElementById('inputArea'); 
-            const priceDisplay = document.getElementById('priceDisplay'); 
-
-            if (areaInput && priceDisplay) {
-                areaInput.addEventListener('input', () => {
-                    const area = parseFloat(areaInput.value) || 0;
-                    const baseRate = 5; // سعر المتر المربع
-                    const targetPrice = area * baseRate;
-                    animateValue(priceDisplay, 0, targetPrice, 500);
-                });
-            }
-        };
-
-        // وظيفة تحريك الأرقام (Counter Animation)
-        function animateValue(obj, start, end, duration) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const currentVal = Math.floor(progress * (end - start) + start);
-                const currency = isRTL ? "ريال" : "SAR";
+            if (acceptPolicy.checked && data.area > 0) {
+                const msg = isRTL 
+                    ? `مرحباً SparkleClean، أرغب في حجز خدمة تنظيف لمساحة ${data.area}م بقيمة ${currentPriceText}`
+                    : `Hello SparkleClean, I'd like to book a cleaning for ${data.area}sqm at ${currentPriceText}`;
                 
-                obj.innerText = isRTL 
-                    ? `${currentVal.toLocaleString()} ${currency}` 
-                    : `${currency} ${currentVal.toLocaleString()}`;
+                bookingBtn.href = `https://wa.me/966500000000?text=${encodeURIComponent(msg)}`;
                 
-                if (progress < 1) window.requestAnimationFrame(step);
-            };
-            window.requestAnimationFrame(step);
-        }
-
-        // 7. منطق الوضع الليلي (Dark Mode)
-        const initThemeMode = () => {
-            const themeToggles = document.querySelectorAll('.theme-switch input');
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            
-            themeToggles.forEach(toggle => {
-                toggle.checked = savedTheme === 'dark';
-                toggle.addEventListener('change', (e) => {
-                    const theme = e.target.checked ? 'dark' : 'light';
-                    document.documentElement.setAttribute('data-theme', theme);
-                    localStorage.setItem('theme', theme);
-                    themeToggles.forEach(t => t.checked = e.target.checked);
-                });
-            });
-        };
-
-        // 8. القائمة الجانبية للجوال (Mobile Menu)
-        const initNavigation = () => {
-            const menuToggle = document.getElementById('mobile-menu');
-            const navContainer = document.querySelector('.nav-container'); 
-            if (menuToggle && navContainer) {
-                menuToggle.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    navContainer.classList.toggle('active');
-                    menuToggle.classList.toggle('is-active');
-                });
-                document.addEventListener('click', (e) => {
-                    if (!navContainer.contains(e.target) && !menuToggle.contains(e.target)) {
-                        navContainer.classList.remove('active');
-                        menuToggle.classList.remove('is-active');
-                    }
-                });
+                // تفعيل الزر
+                bookingBtn.style.opacity = '1';
+                bookingBtn.style.pointerEvents = 'auto';
+                bookingBtn.style.filter = 'grayscale(0)';
+            } else {
+                bookingBtn.style.opacity = '0.4';
+                bookingBtn.style.pointerEvents = 'none';
+                bookingBtn.style.filter = 'grayscale(1)';
             }
         };
 
-        // 9. سياسة القبول والربط مع واتساب
-        const initAcceptancePolicy = () => {
-            const acceptCheckbox = document.getElementById('acceptPolicy');
-            const checkoutBtn = document.querySelector('.btn-checkout');
-            const areaInput = document.getElementById('inputArea');
-            const priceDisplay = document.getElementById('priceDisplay');
+        areaInput.addEventListener('input', refreshWhatsApp);
+        acceptPolicy.addEventListener('change', refreshWhatsApp);
+    }
 
-            if (acceptCheckbox && checkoutBtn) {
-                // الحالة البدائية للزر
-                checkoutBtn.style.opacity = "0.4";
-                checkoutBtn.style.pointerEvents = "none";
-                checkoutBtn.style.filter = "grayscale(1)";
-
-                acceptCheckbox.addEventListener('change', (e) => {
-                    if (e.target.checked) {
-                        // تحديث رسالة الواتساب بالبيانات الحالية
-                        const area = areaInput?.value || "0";
-                        const price = priceDisplay?.innerText || "0";
-                        const customMsg = isRTL 
-                            ? `مرحباً SparkleClean، أرغب في حجز خدمة لمساحة ${area}م بقيمة ${price}`
-                            : `Hello SparkleClean, I'd like to book a service for ${area}sqm at ${price}`;
-                        
-                        checkoutBtn.href = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodeURIComponent(customMsg)}`;
-                        
-                        // تفعيل الزر
-                        checkoutBtn.style.opacity = "1";
-                        checkoutBtn.style.pointerEvents = "auto";
-                        checkoutBtn.style.filter = "grayscale(0)";
-                        checkoutBtn.style.cursor = "pointer";
-                    } else {
-                        // تعطيل الزر
-                        checkoutBtn.style.opacity = "0.4";
-                        checkoutBtn.style.pointerEvents = "none";
-                        checkoutBtn.style.filter = "grayscale(1)";
-                    }
-                });
-            }
-        };
-
-        // تشغيل جميع الوظائف
-        setupGlobalSettings();
-        renderTestimonials();
-        initScrollEffects();
-        initThemeMode();
-        initCalculator();
-        initNavigation();
-        initAcceptancePolicy();
-    });
-})();
+    // 5. Mobile Menu (قائمة الجوال)
+    const menuToggle = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('is-active');
+        });
+    }
+});

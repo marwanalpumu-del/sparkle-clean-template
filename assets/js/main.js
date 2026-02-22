@@ -1,20 +1,20 @@
 /**
  * SparkleClean - Main JavaScript Core
- * Version: 1.5.0 (Marketplace Ready)
+ * Version: 1.6.0 (Optimized & Policy Integrated)
  */
 
 (function () {
     "use strict";
 
-    // 1. Company Configuration
+    // 1. إعدادات الشركة
     const COMPANY_SETTINGS = {
         whatsappNumber: "966500000000",
         emailAddress: "info@sparkleclean.com",
-        welcomeMsg: "Hello SparkleClean, I would like to inquire about your services! ✨",
-        currency: "SAR" 
+        welcomeMsg: "مرحباً SparkleClean، قرأت الشروط وأرغب في حجز موعد للتنظيف! ✨",
+        currency: "ريال" 
     };
 
-    // 2. Testimonials Data
+    // 2. بيانات آراء العملاء
     const TESTIMONIALS_DATA = {
         ar: [
             { name: "سارة الأحمد", role: "عميل سكني", text: "خدمة مذهلة! فريق SparkleClean جعل شقتي تلمع كأنها جديدة.", stars: 5, initial: "س" },
@@ -28,26 +28,20 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         const isRTL = document.documentElement.dir === 'rtl';
-        const body = document.body;
 
-        // 3. Initialize Global Links & WhatsApp
+        // 3. تجهيز روابط الواتساب والنموذج
         const setupGlobalSettings = () => {
             const waLinks = document.querySelectorAll('.whatsapp-link'); 
             const encodedMsg = encodeURIComponent(COMPANY_SETTINGS.welcomeMsg);
             
             waLinks.forEach(link => {
                 link.href = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodedMsg}`;
-                link.setAttribute('target', '_blank'); // فتح في نافذة جديدة
+                link.setAttribute('target', '_blank');
                 link.setAttribute('rel', 'noopener noreferrer');
             });
-
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.action = `https://formsubmit.co/${COMPANY_SETTINGS.emailAddress}`;
-            }
         };
 
-        // 4. Render Testimonials
+        // 4. عرض آراء العملاء
         const renderTestimonials = () => {
             const container = document.getElementById('testimonials-container');
             if (!container) return;
@@ -68,12 +62,10 @@
             `).join('');
         };
 
-        // 5. Scroll Effects, Preloader & Floating Button
+        // 5. تأثيرات التمرير وشاشة التحميل
         const initScrollEffects = () => {
             const preloader = document.getElementById('preloader');
             const header = document.querySelector('.main-header');
-            const scrollBtn = document.getElementById('scrollToTop');
-            const floatBtn = document.querySelector('.whatsapp-float'); // الزر العائم
 
             window.addEventListener('load', () => {
                 if (preloader) {
@@ -85,28 +77,12 @@
             });
 
             window.addEventListener('scroll', () => {
-                // Header Effect
                 if (window.scrollY > 50) header?.classList.add('header-scrolled');
                 else header?.classList.remove('header-scrolled');
-
-                // Scroll To Top Visibility
-                if (scrollBtn) {
-                    scrollBtn.style.opacity = window.scrollY > 400 ? "1" : "0";
-                    scrollBtn.style.pointerEvents = window.scrollY > 400 ? "auto" : "none";
-                }
-
-                // WhatsApp Float Visibility (تظهر بعد سكرول بسيط)
-                if (floatBtn) {
-                    floatBtn.style.transform = window.scrollY > 200 ? "scale(1)" : "scale(0)";
-                }
-            });
-
-            scrollBtn?.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         };
 
-        // 6. Price Calculator
+        // 6. حاسبة الأسعار التفاعلية
         const initCalculator = () => {
             const areaInput = document.getElementById('inputArea'); 
             const priceDisplay = document.getElementById('priceDisplay'); 
@@ -134,7 +110,7 @@
             window.requestAnimationFrame(step);
         }
 
-        // 7. Dark Mode Logic
+        // 7. منطق الوضع الليلي
         const initThemeMode = () => {
             const themeToggles = document.querySelectorAll('.theme-switch input');
             const savedTheme = localStorage.getItem('theme') || 'light';
@@ -150,7 +126,7 @@
             });
         };
 
-        // 8. Navigation
+        // 8. القائمة الجانبية (Mobile Menu)
         const initNavigation = () => {
             const menuToggle = document.getElementById('mobile-menu');
             const navContainer = document.querySelector('.nav-container'); 
@@ -169,12 +145,36 @@
             }
         };
 
-        // Run Functions
+        // 9. التحقق من سياسة القبول قبل الحجز (جديد ومهم)
+        const initAcceptancePolicy = () => {
+            const acceptCheckbox = document.getElementById('acceptPolicy');
+            const checkoutBtn = document.querySelector('.btn-checkout');
+
+            if (acceptCheckbox && checkoutBtn) {
+                // حالة القفل المبدئي
+                checkoutBtn.style.opacity = "0.5";
+                checkoutBtn.style.pointerEvents = "none";
+
+                acceptCheckbox.addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        checkoutBtn.style.opacity = "1";
+                        checkoutBtn.style.pointerEvents = "auto";
+                        checkoutBtn.style.cursor = "pointer";
+                    } else {
+                        checkoutBtn.style.opacity = "0.5";
+                        checkoutBtn.style.pointerEvents = "none";
+                    }
+                });
+            }
+        };
+
+        // تشغيل جميع الوظائف
         setupGlobalSettings();
         renderTestimonials();
         initScrollEffects();
         initThemeMode();
         initCalculator();
         initNavigation();
+        initAcceptancePolicy(); // تشغيل سياسة القبول
     });
 })();

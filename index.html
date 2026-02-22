@@ -13,44 +13,35 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
-        html { scroll-behavior: smooth; }
-        body { overflow-x: hidden; width: 100%; font-family: 'Inter', sans-serif; }
-        .logo-text { font-family: 'Inter', sans-serif !important; }
+        /* إضافة سريعة لضمان ظهور اللوجو البرمجي في الهيدر */
+        .logo-shape {
+            width: 35px;
+            height: 35px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: white;
+            font-size: 20px;
+        }
+        .logo-shape::after { content: 'S'; }
         
+        /* تحسين مظهر البنر ليناسب صورتك hero-bg.jpg */
+        .hero-banner {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center top;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+        }
+
         .heart-icon { color: #e74c3c; margin: 0 4px; display: inline-block; animation: heartBeat 1.5s infinite; }
         @keyframes heartBeat {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.2); }
-        }
-
-        .policy-check {
-            margin: 15px 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 0.85rem;
-            text-align: left;
-        }
-        .policy-check input { width: 18px; height: 18px; cursor: pointer; flex-shrink: 0; }
-        .policy-check label { color: var(--text-muted); cursor: pointer; line-height: 1.4; }
-        
-        .calc-card { 
-            height: auto !important; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 15px; 
-            padding: 25px;
-            overflow: hidden;
-            background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
-
-        .nav-controls { display: flex; align-items: center; gap: 15px; }
-        
-        @media (max-width: 768px) {
-            .nav-container { display: none; }
-            .nav-container.active { display: block; position: absolute; top: 70px; left: 0; width: 100%; background: var(--card-bg); z-index: 1000; }
         }
     </style>
 </head>
@@ -69,16 +60,16 @@
 
     <header class="main-header">
         <div class="container navbar">
-            <a href="index.html" class="brand-logo">
+            <a href="index.html" class="brand-logo" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
                 <div class="logo-shape"></div>
-                <div class="logo-text">SPARKLE<span>CLEAN</span></div>
+                <div class="logo-text" style="font-weight: 900; font-size: 1.5rem; color: var(--text-main);">SPARKLE<span style="color: var(--primary);">CLEAN</span></div>
             </a>
 
             <nav class="nav-container" id="nav-menu">
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link active">Home</a></li>
                     <li><a href="services.html" class="nav-link">Services</a></li>
-                    <li><a href="index-ar.html" class="nav-link lang-btn">العربية</a></li>
+                    <li><a href="index-ar.html" class="nav-link lang-btn" style="color: var(--primary);">العربية</a></li>
                 </ul>
             </nav>
 
@@ -100,72 +91,53 @@
     </header>
 
     <section class="hero-banner">
-        <div class="container hero-wrapper">
-            <div class="banner-content">
-                <h1 class="hero-title">Experience <span>Sparkling</span> Excellence</h1>
-                <p>Top-tier professional cleaning services from <strong>SparkleClean</strong>. We bring a professional sparkle you can trust for your home and office.</p>
-                <div class="banner-buttons">
-                    <a href="services.html" class="btn-glass-primary">Our Services</a>
-                    <a href="#" class="btn-glass-outline whatsapp-link">Book Now ✨</a>
+        <div class="container hero-wrapper" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px;">
+            <div class="banner-content" style="flex: 1; min-width: 300px; color: white;">
+                <h1 class="hero-title" style="font-size: 3.5rem; line-height: 1.2;">Experience <span style="color: var(--primary);">Sparkling</span> Excellence</h1>
+                <p style="font-size: 1.1rem; margin: 20px 0;">Top-tier professional cleaning services from <strong>SparkleClean</strong>. We bring a professional sparkle you can trust for your home and office.</p>
+                <div class="banner-buttons" style="display: flex; gap: 15px;">
+                    <a href="services.html" class="btn-checkout" style="width: auto; padding: 12px 30px;">Our Services</a>
+                    <a href="#" class="whatsapp-link" style="color: white; text-decoration: none; border: 2px solid white; padding: 10px 25px; border-radius: 12px; font-weight: bold;">Book Now ✨</a>
                 </div>
             </div>
 
             <div class="calc-card">
-                <h3>Cost Estimator</h3>
+                <h3 style="margin-bottom: 15px; color: var(--text-main);">Cost Estimator</h3>
                 <div class="form-group">
-                    <label for="inputArea">Area (sq. meters)</label>
-                    <input type="number" id="inputArea" placeholder="e.g. 100" min="0">
+                    <label for="inputArea" style="display: block; margin-bottom: 8px;">Area (sq. meters)</label>
+                    <input type="number" id="inputArea" placeholder="e.g. 100" min="0" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border-color);">
                 </div>
                 
-                <div class="price-result">
-                    <p>Estimated Total</p>
-                    <h2 id="priceDisplay">0 SAR</h2> 
+                <div class="price-result" style="background: var(--bg-color); padding: 15px; border-radius: 12px; text-align: center; margin-top: 10px;">
+                    <p style="margin: 0; font-size: 0.9rem;">Estimated Total</p>
+                    <h2 id="priceDisplay" style="color: var(--primary); margin: 5px 0;">0 SAR</h2> 
                 </div>
 
                 <div class="policy-check">
                     <input type="checkbox" id="acceptPolicy">
                     <label for="acceptPolicy">
-                        I agree to the <a href="#" style="color: var(--primary); text-decoration: underline;">Acceptance Policy</a> and Terms of Service.
+                        I agree to the <a href="#" style="color: var(--primary);">Acceptance Policy</a>.
                     </label>
                 </div>
 
-                <a href="#" class="btn-checkout whatsapp-link" style="display: block; text-align: center; text-decoration: none;">Secure Booking ✨</a>
+                <a href="#" class="btn-checkout whatsapp-link" id="checkoutBtn" style="display: block; text-align: center; text-decoration: none;">Secure Booking ✨</a>
             </div>
         </div>
     </section>
 
-    <footer class="main-footer">
-        <div class="container footer-grid">
-            <div class="footer-brand">
-                <div class="brand-logo">
-                    <div class="logo-shape"></div>
-                    <div class="logo-text">SPARKLE<span>CLEAN</span></div>
-                </div>
-                <p>Premium cleaning services for modern homes and professional offices. Quality you can see, trust you can feel.</p>
-            </div>
-
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-contact">
-                <h4>Get In Touch</h4>
-                <p>📧 info@sparkleclean.com</p>
-                <p>📞 +966 500 000 000</p>
-                <div class="social-icons">
-                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link whatsapp-link"><i class="fab fa-whatsapp"></i></a>
-                </div>
+    <section class="results-section" style="padding: 60px 0; text-align: center; background: var(--card-bg);">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Our Results</h2>
+            <p style="color: var(--text-muted); margin-bottom: 40px;">See the magic of professional cleaning in our recent projects.</p>
+            <div class="image-wrapper" style="max-width: 800px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow);">
+                <img src="assets/images/bathroom-result.jpg" alt="Cleaning Result" style="width: 100%; display: block;">
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 SparkleClean. All rights reserved. Designed with <span class="heart-icon">❤️</span> & Passion</p>
+    </section>
+
+    <footer class="main-footer" style="padding: 60px 0 20px; background: var(--card-bg); border-top: 1px solid var(--border-color);">
+        <div class="container footer-bottom" style="text-align: center; margin-top: 40px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+             <p>&copy; 2026 SparkleClean. All rights reserved. Designed with <span class="heart-icon">❤️</span></p>
         </div>
     </footer>
 

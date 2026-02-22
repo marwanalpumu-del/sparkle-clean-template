@@ -1,6 +1,7 @@
 /**
  * SparkleClean - Main JavaScript Core
  * Version: 1.7.0 (Smart Currency & Policy Integrated)
+ * Developed for: SparkleClean Professional Services
  */
 
 (function () {
@@ -10,12 +11,11 @@
     const COMPANY_SETTINGS = {
         whatsappNumber: "966500000000",
         emailAddress: "info@sparkleclean.com",
-        // رسالة ترحيب ذكية تتغير حسب اللغة لاحقاً
         welcomeMsgAr: "مرحباً SparkleClean، قرأت الشروط وأرغب في حجز موعد للتنظيف! ✨",
         welcomeMsgEn: "Hello SparkleClean, I've read the terms and would like to book a cleaning service! ✨"
     };
 
-    // 2. بيانات آراء العملاء لغتين
+    // 2. بيانات آراء العملاء (Testimonials)
     const TESTIMONIALS_DATA = {
         ar: [
             { name: "سارة الأحمد", role: "عميل سكني", text: "خدمة مذهلة! فريق SparkleClean جعل شقتي تلمع كأنها جديدة.", stars: 5, initial: "س" },
@@ -28,10 +28,10 @@
     };
 
     document.addEventListener('DOMContentLoaded', function () {
-        // تحديد اللغة والاتجاه مرة واحدة لاستخدامها في كل الوظائف
+        // تحديد اللغة والاتجاه (RTL vs LTR)
         const isRTL = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ar';
 
-        // 3. تجهيز روابط الواتساب والنموذج
+        // 3. تجهيز روابط الواتساب الافتراضية
         const setupGlobalSettings = () => {
             const waLinks = document.querySelectorAll('.whatsapp-link'); 
             const msg = isRTL ? COMPANY_SETTINGS.welcomeMsgAr : COMPANY_SETTINGS.welcomeMsgEn;
@@ -65,19 +65,19 @@
             `).join('');
         };
 
-        // 5. تأثيرات التمرير وشاشة التحميل
+        // 5. تأثيرات التمرير وشاشة التحميل (Preloader)
         const initScrollEffects = () => {
             const preloader = document.getElementById('preloader');
             const header = document.querySelector('.main-header');
 
-            window.addEventListener('load', () => {
-                if (preloader) {
+            if (preloader) {
+                window.addEventListener('load', () => {
                     setTimeout(() => {
                         preloader.classList.add('loader-fade');
                         setTimeout(() => preloader.remove(), 800);
                     }, 1000);
-                }
-            });
+                });
+            }
 
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) header?.classList.add('header-scrolled');
@@ -93,25 +93,22 @@
             if (areaInput && priceDisplay) {
                 areaInput.addEventListener('input', () => {
                     const area = parseFloat(areaInput.value) || 0;
-                    const baseRate = 5; 
+                    const baseRate = 5; // سعر المتر المربع
                     const targetPrice = area * baseRate;
                     animateValue(priceDisplay, 0, targetPrice, 500);
                 });
             }
         };
 
-        // وظيفة تحريك الأرقام مع تحديد العملة آلياً
+        // وظيفة تحريك الأرقام (Counter Animation)
         function animateValue(obj, start, end, duration) {
             let startTimestamp = null;
             const step = (timestamp) => {
                 if (!startTimestamp) startTimestamp = timestamp;
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
                 const currentVal = Math.floor(progress * (end - start) + start);
-                
-                // ذكاء العملة: SAR للإنجليزي، ريال للعربي
                 const currency = isRTL ? "ريال" : "SAR";
                 
-                // تنسيق العرض: (رقم ثم عملة للعربي) و (عملة ثم رقم للإنجليزي)
                 obj.innerText = isRTL 
                     ? `${currentVal.toLocaleString()} ${currency}` 
                     : `${currency} ${currentVal.toLocaleString()}`;
@@ -138,7 +135,7 @@
             });
         };
 
-        // 8. القائمة الجانبية للجوال
+        // 8. القائمة الجانبية للجوال (Mobile Menu)
         const initNavigation = () => {
             const menuToggle = document.getElementById('mobile-menu');
             const navContainer = document.querySelector('.nav-container'); 
@@ -157,24 +154,37 @@
             }
         };
 
-        // 9. سياسة القبول (التحقق من المربع)
+        // 9. سياسة القبول والربط مع واتساب
         const initAcceptancePolicy = () => {
             const acceptCheckbox = document.getElementById('acceptPolicy');
             const checkoutBtn = document.querySelector('.btn-checkout');
+            const areaInput = document.getElementById('inputArea');
+            const priceDisplay = document.getElementById('priceDisplay');
 
             if (acceptCheckbox && checkoutBtn) {
-                // تعطيل الزر في البداية
+                // الحالة البدائية للزر
                 checkoutBtn.style.opacity = "0.4";
                 checkoutBtn.style.pointerEvents = "none";
                 checkoutBtn.style.filter = "grayscale(1)";
 
                 acceptCheckbox.addEventListener('change', (e) => {
                     if (e.target.checked) {
+                        // تحديث رسالة الواتساب بالبيانات الحالية
+                        const area = areaInput?.value || "0";
+                        const price = priceDisplay?.innerText || "0";
+                        const customMsg = isRTL 
+                            ? `مرحباً SparkleClean، أرغب في حجز خدمة لمساحة ${area}م بقيمة ${price}`
+                            : `Hello SparkleClean, I'd like to book a service for ${area}sqm at ${price}`;
+                        
+                        checkoutBtn.href = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodeURIComponent(customMsg)}`;
+                        
+                        // تفعيل الزر
                         checkoutBtn.style.opacity = "1";
                         checkoutBtn.style.pointerEvents = "auto";
                         checkoutBtn.style.filter = "grayscale(0)";
                         checkoutBtn.style.cursor = "pointer";
                     } else {
+                        // تعطيل الزر
                         checkoutBtn.style.opacity = "0.4";
                         checkoutBtn.style.pointerEvents = "none";
                         checkoutBtn.style.filter = "grayscale(1)";
@@ -183,7 +193,7 @@
             }
         };
 
-        // تشغيل المحرك
+        // تشغيل جميع الوظائف
         setupGlobalSettings();
         renderTestimonials();
         initScrollEffects();

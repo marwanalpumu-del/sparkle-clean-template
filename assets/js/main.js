@@ -8,12 +8,13 @@
 
     // 1. Company Configuration (Easily editable for buyers)
     const COMPANY_SETTINGS = {
-        whatsappNumber: "966500000000",
+        whatsappNumber: "966500000000", // رقم الواتساب الخاص بك
         emailAddress: "info@sparkleclean.com",
-        welcomeMsg: "Hello SparkleClean, I would like to inquire about your services! ✨"
+        welcomeMsg: "Hello SparkleClean, I would like to inquire about your services! ✨",
+        currency: "SAR" // يمكنك تغييرها إلى $ إذا أردت
     };
 
-    // 2. Testimonials Data (Auto-switches based on page language)
+    // 2. Testimonials Data
     const TESTIMONIALS_DATA = {
         ar: [
             { name: "سارة الأحمد", role: "عميل سكني", text: "خدمة مذهلة! فريق SparkleClean جعل شقتي تلمع كأنها جديدة.", stars: 5, initial: "س" },
@@ -31,11 +32,12 @@
 
         // 3. Initialize Global Links & Forms
         const setupGlobalSettings = () => {
-            const waLink = document.getElementById('whatsapp-link');
-            if (waLink) {
-                const encodedMsg = encodeURIComponent(COMPANY_SETTINGS.welcomeMsg);
-                waLink.href = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodedMsg}`;
-            }
+            const waLinks = document.querySelectorAll('.whatsapp-link'); // البحث عن كل أزرار الواتساب
+            const encodedMsg = encodeURIComponent(COMPANY_SETTINGS.welcomeMsg);
+            
+            waLinks.forEach(link => {
+                link.href = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodedMsg}`;
+            });
 
             const contactForm = document.getElementById('contact-form');
             if (contactForm) {
@@ -43,7 +45,7 @@
             }
         };
 
-        // 4. Render Testimonials Slider
+        // 4. Render Testimonials
         const renderTestimonials = () => {
             const container = document.getElementById('testimonials-container');
             if (!container) return;
@@ -64,13 +66,12 @@
             `).join('');
         };
 
-        // 5. Scroll Effects & Preloader Control
+        // 5. Scroll Effects & Preloader
         const initScrollEffects = () => {
             const preloader = document.getElementById('preloader');
             const header = document.querySelector('.main-header');
             const scrollBtn = document.getElementById('scrollToTop');
 
-            // Professional Preloader Fade-out
             window.addEventListener('load', () => {
                 if (preloader) {
                     setTimeout(() => {
@@ -80,19 +81,13 @@
                 }
             });
 
-            // Header Sticky Effect & Scroll-to-Top Visibility
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) header?.classList.add('header-scrolled');
                 else header?.classList.remove('header-scrolled');
 
                 if (scrollBtn) {
-                    if (window.scrollY > 400) {
-                        scrollBtn.style.opacity = "1";
-                        scrollBtn.style.pointerEvents = "auto";
-                    } else {
-                        scrollBtn.style.opacity = "0";
-                        scrollBtn.style.pointerEvents = "none";
-                    }
+                    scrollBtn.style.opacity = window.scrollY > 400 ? "1" : "0";
+                    scrollBtn.style.pointerEvents = window.scrollY > 400 ? "auto" : "none";
                 }
             });
 
@@ -101,7 +96,7 @@
             });
         };
 
-        // 6. Price Calculator (Animated Counter)
+        // 6. Price Calculator (Improved Logic)
         const initCalculator = () => {
             const areaInput = document.getElementById('inputArea'); 
             const priceDisplay = document.getElementById('priceDisplay'); 
@@ -109,7 +104,9 @@
             if (areaInput && priceDisplay) {
                 areaInput.addEventListener('input', () => {
                     const area = parseFloat(areaInput.value) || 0;
-                    const targetPrice = area * 10;
+                    // سعر تقريبي: 5 ريال للمتر المربع (يمكنك تعديله)
+                    const baseRate = 5; 
+                    const targetPrice = area * baseRate;
                     animateValue(priceDisplay, 0, targetPrice, 500);
                 });
             }
@@ -122,74 +119,55 @@
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
                 const currentVal = Math.floor(progress * (end - start) + start);
                 
-                // Adaptive Currency Formatting
-                obj.innerText = isRTL ? `${currentVal.toLocaleString()} $` : `$${currentVal.toLocaleString()}`;
+                const currency = COMPANY_SETTINGS.currency;
+                obj.innerText = isRTL ? `${currentVal.toLocaleString()} ${currency}` : `${currency} ${currentVal.toLocaleString()}`;
                 
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
+                if (progress < 1) window.requestAnimationFrame(step);
             };
             window.requestAnimationFrame(step);
         }
 
-        // 7. Dark Mode Logic (Enhanced for Desktop & Mobile Sync)
+        // 7. Dark Mode Logic
         const initThemeMode = () => {
-            const themeToggles = document.querySelectorAll('.theme-toggle-btn, #checkbox, #checkbox-mobile');
+            const themeToggles = document.querySelectorAll('.theme-switch input');
             const savedTheme = localStorage.getItem('theme') || 'light';
             
             document.documentElement.setAttribute('data-theme', savedTheme);
 
             themeToggles.forEach(toggle => {
-                if (toggle) {
-                    toggle.checked = savedTheme === 'dark';
-                    toggle.addEventListener('change', (e) => {
-                        const theme = e.target.checked ? 'dark' : 'light';
-                        document.documentElement.setAttribute('data-theme', theme);
-                        localStorage.setItem('theme', theme);
-                        
-                        // Sync all other theme switches on the page
-                        themeToggles.forEach(t => t.checked = e.target.checked);
-                    });
-                }
+                toggle.checked = savedTheme === 'dark';
+                toggle.addEventListener('change', (e) => {
+                    const theme = e.target.checked ? 'dark' : 'light';
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                    // مزامنة جميع المفاتيح في الصفحة
+                    themeToggles.forEach(t => t.checked = e.target.checked);
+                });
             });
         };
 
-        // 8. Navigation Management (Mobile Optimized)
+        // 8. Navigation Management
         const initNavigation = () => {
             const menuToggle = document.getElementById('mobile-menu');
-            const navContainer = document.getElementById('nav-menu'); 
+            const navContainer = document.querySelector('.nav-container'); 
 
             if (menuToggle && navContainer) {
                 menuToggle.addEventListener('click', (e) => {
                     e.stopPropagation();
                     navContainer.classList.toggle('active');
                     menuToggle.classList.toggle('is-active');
-                    
-                    // Prevent background scroll when menu is open
-                    body.style.overflow = navContainer.classList.contains('active') ? 'hidden' : '';
                 });
 
-                // Close menu when clicking links
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navContainer.classList.remove('active');
-                        menuToggle.classList.remove('is-active');
-                        body.style.overflow = '';
-                    });
-                });
-
-                // Close menu when clicking outside
                 document.addEventListener('click', (e) => {
                     if (!navContainer.contains(e.target) && !menuToggle.contains(e.target)) {
                         navContainer.classList.remove('active');
                         menuToggle.classList.remove('is-active');
-                        body.style.overflow = '';
                     }
                 });
             }
         };
 
-        // Execution Core
+        // Run All Functions
         setupGlobalSettings();
         renderTestimonials();
         initScrollEffects();

@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
@@ -35,7 +34,24 @@
         .policy-check input { width: 18px; height: 18px; cursor: pointer; flex-shrink: 0; }
         .policy-check label { color: var(--text-muted); cursor: pointer; line-height: 1.4; }
         
-        .calc-card { height: auto !important; display: flex; flex-direction: column; gap: 15px; }
+        .calc-card { 
+            height: auto !important; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            padding: 25px;
+            overflow: hidden;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-controls { display: flex; align-items: center; gap: 15px; }
+        
+        @media (max-width: 768px) {
+            .nav-container { display: none; }
+            .nav-container.active { display: block; position: absolute; top: 70px; left: 0; width: 100%; background: var(--card-bg); z-index: 1000; }
+        }
     </style>
 </head>
 <body>
@@ -63,20 +79,11 @@
                     <li><a href="index.html" class="nav-link active">Home</a></li>
                     <li><a href="services.html" class="nav-link">Services</a></li>
                     <li><a href="index-ar.html" class="nav-link lang-btn">العربية</a></li>
-                    <li class="mobile-only">
-                        <span style="color: var(--text-muted); font-size: 0.9rem;">Mode:</span>
-                        <div class="theme-switch-wrapper" style="margin-top: 10px;">
-                            <label class="theme-switch" for="checkbox-mobile">
-                                <input type="checkbox" id="checkbox-mobile" class="theme-toggle-btn" />
-                                <div class="slider round"></div>
-                            </label>
-                        </div>
-                    </li>
                 </ul>
             </nav>
 
             <div class="nav-controls">
-                <div class="theme-switch-wrapper desktop-only">
+                <div class="theme-switch-wrapper">
                     <label class="theme-switch" for="checkbox">
                         <input type="checkbox" id="checkbox" class="theme-toggle-btn" />
                         <div class="slider round"></div>

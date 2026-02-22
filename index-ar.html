@@ -11,67 +11,52 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/rtl.css">
 
     <style>
         html { scroll-behavior: smooth; }
-        body { overflow-x: hidden; width: 100%; font-family: 'Cairo', sans-serif; }
+        body { font-family: 'Cairo', sans-serif; overflow-x: hidden; }
         .logo-text { font-family: 'Inter', sans-serif !important; }
         
-        .heart-icon { color: #e74c3c; margin: 0 4px; display: inline-block; animation: heartBeat 1.5s infinite; }
+        /* تحسينات القائمة في الوضع العربي */
+        @media (max-width: 768px) {
+            .nav-container {
+                position: fixed;
+                top: -100%;
+                right: 0;
+                width: 100%;
+                background: var(--card-bg);
+                transition: 0.4s ease-in-out;
+                z-index: 999;
+                padding: 80px 20px 40px;
+                box-shadow: var(--shadow);
+            }
+            .nav-container.active { top: 0; }
+            .nav-menu { flex-direction: column; gap: 20px; text-align: center; }
+        }
+
+        /* تنسيق الحاسبة */
+        .calc-card { 
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-top: 30px;
+        }
+        
+        .heart-icon { color: #e74c3c; animation: heartBeat 1.5s infinite; display: inline-block; }
         @keyframes heartBeat {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.2); }
-        }
-
-        .policy-check {
-            margin: 15px 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 0.85rem;
-            text-align: right;
-        }
-        .policy-check input { width: 18px; height: 18px; cursor: pointer; flex-shrink: 0; margin-top: 3px; }
-        .policy-check label { color: var(--text-muted); cursor: pointer; line-height: 1.4; }
-        
-        .calc-card { 
-            height: auto !important; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 15px; 
-            padding: 25px;
-            overflow: hidden;
-            background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
-
-        .nav-controls { display: flex; align-items: center; gap: 15px; }
-        
-        @media (max-width: 768px) {
-            .nav-container { display: none; }
-            .nav-container.active { display: block; position: absolute; top: 70px; right: 0; width: 100%; background: var(--card-bg); z-index: 1000; }
         }
     </style>
 </head>
 <body>
 
-    <div id="preloader">
-        <div class="loader-content">
-            <div class="loader-box">
-                <span class="star" style="top: 5px; left: 5px;">✦</span>
-                <span class="star" style="bottom: 5px; right: 5px;">✦</span>
-                <span class="loader-logo">S</span>
-            </div>
-            <p class="loader-text">SPARKLE CLEAN</p>
-        </div>
-    </div>
+    <div id="preloader"></div>
 
     <header class="main-header">
         <div class="container navbar">
             <a href="index-ar.html" class="brand-logo">
-                <div class="logo-shape"></div>
                 <div class="logo-text">SPARKLE<span>CLEAN</span></div>
             </a>
 
@@ -80,97 +65,69 @@
                     <li><a href="index-ar.html" class="nav-link active">الرئيسية</a></li>
                     <li><a href="services-ar.html" class="nav-link">خدماتنا</a></li>
                     <li><a href="index.html" class="nav-link lang-btn">English</a></li>
+                    
+                    <li class="theme-switch-wrapper">
+                        <label class="theme-switch" for="checkbox">
+                            <input type="checkbox" id="checkbox" />
+                            <div class="slider round"></div>
+                        </label>
+                    </li>
                 </ul>
             </nav>
 
-            <div class="nav-controls">
-                <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" class="theme-toggle-btn" />
-                        <div class="slider round"></div>
-                    </label>
-                </div>
-
-                <div class="menu-toggle" id="mobile-menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
     </header>
 
-    <section class="hero-banner">
-        <div class="container hero-wrapper">
-            <div class="banner-content">
-                <h1 class="hero-title"><span class="highlight">نُعيد</span> بريقاً خاصاً لمنزلك</h1>
-                <p>خدمات تنظيف احترافية مخصصة لمنزلك ومكتبك من <strong>SparkleClean</strong>. جودة تليق بك وأمانة نعتز بها.</p>
-                <div class="banner-buttons">
-                    <a href="services-ar.html" class="btn-glass-primary">اكتشف خدماتنا</a>
-                    <a href="#" class="btn-glass-outline whatsapp-link">احجز موعدك ✨</a>
-                </div>
-            </div>
+    <section class="hero-section" style="padding: 120px 0 60px;">
+        <div class="container" style="text-align: center;">
+            <h1 class="hero-title" style="font-size: 2.8rem; margin-bottom: 20px;">نُعيد <span class="highlight">البريق</span> لمنزلك</h1>
+            <p style="color: var(--text-muted); margin-bottom: 40px;">احسب تكلفة التنظيف واحجز موعدك في ثوانٍ معدودة.</p>
 
-            <div class="calc-card">
-                <h3>حاسبة التكلفة الذكية</h3>
-                <div class="form-group">
+            <div class="calc-card" style="max-width: 450px; margin: 0 auto;">
+                <h3 style="text-align: right; margin-bottom: 20px;">حاسبة التكلفة الذكية</h3>
+                
+                <div class="form-group" style="text-align: right;">
                     <label for="inputArea">المساحة (متر مربع)</label>
                     <input type="number" id="inputArea" placeholder="مثلاً: 120" min="0">
                 </div>
-                
-                <div class="price-result">
-                    <p>الإجمالي التقديري</p>
-                    <h2 id="priceDisplay">0 ريال</h2>
+
+                <div class="price-result" style="background: rgba(0,180,219,0.05); padding: 20px; border-radius: 15px; margin: 20px 0;">
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">الإجمالي التقديري</p>
+                    <h2 id="priceDisplay" style="color: var(--primary); font-size: 2.5rem;">0 ريال</h2>
                 </div>
 
-                <div class="policy-check">
+                <div class="policy-check" style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px; text-align: right;">
                     <input type="checkbox" id="acceptPolicy">
-                    <label for="acceptPolicy">
-                        أوافق على <a href="#" style="color: var(--primary); text-decoration: underline;">سياسة القبول</a> وشروط الخدمة.
-                    </label>
+                    <label for="acceptPolicy" style="font-size: 0.85rem;">أوافق على <a href="policy.html" style="color: var(--primary);">سياسة القبول</a> وشروط الخدمة.</label>
                 </div>
 
-                <a href="#" class="btn-checkout whatsapp-link" style="display: block; text-align: center; text-decoration: none;">تأكيد الحجز ✨</a>
+                <a href="#" class="btn-checkout whatsapp-link" style="display: block; width: 100%; text-decoration: none;">تأكيد الحجز ✨</a>
             </div>
         </div>
     </section>
 
-    <footer class="main-footer">
-        <div class="container footer-grid">
-            <div class="footer-brand">
-                <div class="brand-logo">
-                    <div class="logo-shape"></div>
-                    <div class="logo-text">SPARKLE<span>CLEAN</span></div>
-                </div>
-                <p>خدمات تنظيف متميزة للمنازل الحديثة والمكاتب المهنية. جودة يمكنك رؤيتها، وثقة يمكنك الشعور بها.</p>
+    <footer class="main-footer" style="padding: 60px 0 20px; border-top: 1px solid var(--border-color);">
+        <div class="container" style="text-align: center;">
+            <div class="brand-logo" style="margin-bottom: 20px; justify-content: center;">
+                <div class="logo-text">SPARKLE<span>CLEAN</span></div>
             </div>
-
-            <div class="footer-links">
-                <h4>روابط سريعة</h4>
-                <ul>
-                    <li><a href="index-ar.html">الرئيسية</a></li>
-                    <li><a href="services-ar.html">خدماتنا</a></li>
-                    <li><a href="contact-ar.html">اتصل بنا</a></li>
-                </ul>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 30px;">نقدم أفضل خدمات التنظيف الاحترافية للمنازل والمكاتب بأحدث التقنيات وأعلى معايير الأمان.</p>
+            
+            <div style="border-top: 1px solid var(--border-color); padding-top: 20px;">
+                <p>&copy; 2026 SparkleClean. جميع الحقوق محفوظة. صُمم بكل <span class="heart-icon">❤️</span></p>
             </div>
-
-            <div class="footer-contact">
-                <h4>تواصل معنا</h4>
-                <p>📧 info@sparkleclean.com</p>
-                <p>📞 +966 500 000 000</p>
-                <div class="social-icons">
-                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link whatsapp-link"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 SparkleClean. جميع الحقوق محفوظة. صُمم بكل <span class="heart-icon">❤️</span> وشغف</p>
         </div>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <a href="#" class="whatsapp-float whatsapp-link" target="_blank" style="position: fixed; bottom: 30px; left: 30px; z-index: 1000;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="50">
+    </a>
 
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

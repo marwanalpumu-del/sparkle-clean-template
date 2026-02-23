@@ -117,16 +117,63 @@ input:checked + .slider:before { transform: translateX(24px); }
     70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
-
 @media (max-width: 768px) {
-    .menu-toggle { display: flex; }
-    .nav-container {
-        display: none; position: absolute; top: 100%; left: 0; width: 100%;
-        background: var(--card-bg); padding: 20px; flex-direction: column;
-        border-bottom: 3px solid var(--primary); box-shadow: var(--shadow);
+    .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: 20px;
     }
-    .nav-container.active { display: flex; }
-    .nav-menu { flex-direction: column; gap: 15px; text-align: center; }
+
+    .menu-toggle { 
+        display: flex; 
+        margin-left: 10px;
+    }
+
+    .hero-banner .banner-content h1 {
+        font-size: 2.4rem !important;
+        color: #ffffff !important;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero-banner .banner-content p {
+        color: #ffffff !important;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .banner-buttons a.nav-link, 
+    .banner-buttons a[href="#services"] {
+        color: var(--primary) !important;
+        font-weight: 900;
+        text-decoration: underline;
+    }
+
+    .nav-container {
+        display: none; 
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        width: 100%;
+        background: var(--card-bg); 
+        padding: 25px; 
+        flex-direction: column;
+        border-bottom: 4px solid var(--primary); 
+        box-shadow: var(--shadow);
+        z-index: 999;
+    }
+
+    .nav-container.active { 
+        display: flex; 
+    }
+
+    .nav-menu { 
+        flex-direction: column; 
+        gap: 20px; 
+        text-align: center; 
+    }
+}
+
     
     .whatsapp-float { bottom: 20px; right: 20px; }
     [dir="rtl"] .whatsapp-float { left: 20px; }

@@ -1,15 +1,15 @@
 /**
  * SparkleClean - Main JavaScript Core
- * Version: 1.8.0 (Gold Standard)
+ * Version: 1.8.5 (Premium Update)
  * Developed for: Marwan's Premium Project
  */
 
 (function () {
     "use strict";
 
-    // 1. إعدادات الشركة العامة (تأكد من وضع رقمك هنا)
+    // 1. إعدادات الشركة العامة
     const COMPANY_SETTINGS = {
-        whatsappNumber: "966500000000", 
+        whatsappNumber: "966500000000", // تأكد من تعديل الرقم هنا
         baseRate: 5, // سعر المتر المربع
         welcomeMsgAr: "مرحباً سباركل كلين، أرغب في الاستفسار عن خدماتكم! ✨",
         welcomeMsgEn: "Hello SparkleClean, I'd like to inquire about your services! ✨"
@@ -51,7 +51,7 @@
                     const area = parseFloat(areaInput.value) || 0;
                     const total = area * COMPANY_SETTINGS.baseRate;
                     animateValue(priceDisplay, total, 400);
-                    updateWhatsAppLink(); // تحديث الرابط فورياً عند تغيير السعر
+                    updateWhatsAppLink(); 
                 });
             }
         };
@@ -110,7 +110,6 @@
             }
         };
 
-        // الاستماع لتغيير حالة الصح في السياسة
         const policyCheckbox = document.getElementById('acceptPolicy');
         if (policyCheckbox) {
             policyCheckbox.addEventListener('change', updateWhatsAppLink);
@@ -128,12 +127,34 @@
             }
         };
 
+        // 8. زر الرجوع للأعلى (Back to Top)
+        const initBackToTop = () => {
+            const backToTopBtn = document.getElementById('backToTop');
+            if (backToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 400) {
+                        backToTopBtn.style.display = 'block';
+                    } else {
+                        backToTopBtn.style.display = 'none';
+                    }
+                });
+
+                backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        };
+
         // تشغيل كل الوظائف
         initPreloader();
         setupGlobalLinks();
         initCalculator();
         initTheme();
         initMobileMenu();
-        updateWhatsAppLink(); // تشغيل الحالة البدائية للزر
+        initBackToTop();
+        updateWhatsAppLink();
     });
 })();

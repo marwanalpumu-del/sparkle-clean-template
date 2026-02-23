@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>SparkleClean | Premium Professional Cleaning Services</title>
+    
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png">
+
     <meta name="description" content="SparkleClean offers top-tier professional cleaning services for homes and offices. Professional cleaning with a smart cost estimator.">
     <meta name="keywords" content="cleaning services, home cleaning, office cleaning, sparkle clean, cleaning calculator, premium cleaning">
-    <meta name="author" content="Marwan">
-
+    <meta name="author" content="Maymona">
     <meta property="og:title" content="SparkleClean | Excellence in Every Corner">
     <meta property="og:description" content="Professional cleaning services with a smart cost estimator. Book your sparkle today!">
     <meta property="og:image" content="assets/images/hero-bg.jpg">
@@ -17,14 +20,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
         :root { --radius-main: 12px; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', 'Cairo', sans-serif; }
 
         .logo-shape {
             width: 38px; height: 38px;
@@ -49,12 +52,6 @@
         .section-header h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 15px; color: var(--text-main); }
         .section-header h2 span { color: var(--primary); }
 
-        .about-grid, .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
         .feature-card {
             background: var(--card-bg);
             padding: 40px;
@@ -68,20 +65,14 @@
         .feature-card i { font-size: 45px; color: var(--primary); margin-bottom: 20px; }
 
         .contact-wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            padding: 50px;
-            border-radius: var(--radius-main);
-            box-shadow: var(--shadow);
+            max-width: 800px; margin: 0 auto;
+            background: var(--card-bg); padding: 50px;
+            border-radius: var(--radius-main); box-shadow: var(--shadow);
             text-align: center;
         }
 
         .heart-icon { color: #e74c3c; margin: 0 4px; display: inline-block; animation: heartBeat 1.5s infinite; }
-        @keyframes heartBeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
+        @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
     </style>
 </head>
 <body>
@@ -139,12 +130,12 @@
                     Premium professional cleaning for modern homes. We bring a touch of perfection you can see and trust.
                 </p>
                 <div class="banner-buttons" style="display: flex; gap: 20px;">
-                    <a href="#services" class="btn-checkout" style="width: auto; padding: 15px 35px;">View Services</a>
+                    <a href="#services" class="nav-link btn-checkout" style="width: auto; padding: 15px 35px; color:white; text-decoration:none;">View Services</a>
                     <a href="javascript:void(0)" class="whatsapp-link" style="color: white; text-decoration: none; border: 2px solid white; padding: 13px 30px; border-radius: 12px; font-weight: 700;">Book Now ✨</a>
                 </div>
             </div>
 
-            <div class="calc-card" style="flex: 0 1 420px; background: var(--card-bg); padding: 35px; box-shadow: var(--shadow);">
+            <div class="calc-card" style="flex: 0 1 420px; background: var(--card-bg); padding: 35px; box-shadow: var(--shadow); border-radius: 20px;">
                 <h3 style="margin-bottom: 20px; color: var(--text-main); font-weight: 900;">Cost Estimator</h3>
                 <div class="form-group">
                     <label for="inputArea" style="display: block; margin-bottom: 10px; font-weight: 700;">Area (sq. meters)</label>
@@ -163,7 +154,7 @@
                     </label>
                 </div>
 
-                <a href="javascript:void(0)" class="btn-checkout whatsapp-link" id="checkoutBtn" style="display: block; text-align: center; text-decoration: none;">Secure Booking ✨</a>
+                <a href="javascript:void(0)" class="btn-checkout whatsapp-link" id="checkoutBtn" style="display: block; text-align: center; text-decoration: none; background: var(--primary); color: white; padding: 15px; border-radius: 12px; font-weight: 700;">Secure Booking ✨</a>
             </div>
         </div>
     </section>
@@ -174,7 +165,7 @@
                 <h2>Our <span>Services</span></h2>
                 <p>Tailored cleaning solutions for every need.</p>
             </div>
-            <div class="services-grid">
+            <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
                 <div class="feature-card">
                     <i class="fas fa-home"></i>
                     <h3>Residential Cleaning</h3>
@@ -200,7 +191,7 @@
                 <h2>Why Choose <span>Us</span></h2>
                 <p>We combine technology with professional care.</p>
             </div>
-            <div class="about-grid">
+            <div class="about-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
                 <div class="feature-card">
                     <i class="fas fa-user-shield"></i>
                     <h3>Trusted Professionals</h3>
@@ -220,15 +211,6 @@
         </div>
     </section>
 
-    <section class="results-section" style="padding: 100px 0; text-align: center; background: var(--bg-color);">
-        <div class="container">
-            <h2 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 15px;">Real Results</h2>
-            <div class="image-wrapper" style="max-width: 850px; margin: 40px auto; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); border: 5px solid var(--card-bg);">
-                <img src="assets/images/bathroom-result.jpg" loading="lazy" alt="Cleaning Result" style="width: 100%; display: block;">
-            </div>
-        </div>
-    </section>
-
     <section id="contact" class="section-padding">
         <div class="container">
             <div class="contact-wrapper">
@@ -240,7 +222,7 @@
                     <p style="font-size: 1.2rem; margin-bottom: 10px;"><i class="fab fa-whatsapp" style="color: #25d366;"></i> WhatsApp: +966 50 000 0000</p>
                     <p style="font-size: 1.2rem;"><i class="fas fa-envelope" style="color: var(--primary);"></i> Email: info@sparkleclean.com</p>
                 </div>
-                <a href="javascript:void(0)" class="btn-checkout whatsapp-link" style="display: inline-block; width: auto; padding: 15px 50px;">Send a Message</a>
+                <a href="javascript:void(0)" class="btn-checkout whatsapp-link" style="display: inline-block; width: auto; padding: 15px 50px; background: var(--primary); color: white; border-radius: 12px; text-decoration: none; font-weight: 700;">Send a Message</a>
             </div>
         </div>
     </section>

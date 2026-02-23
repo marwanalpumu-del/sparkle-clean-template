@@ -1,3 +1,9 @@
+/* Template Name: SparkleClean - Cleaning Service HTML Template
+   Author: Maymona
+   Version: 1.0
+*/
+
+/* --- 1. Root Variables --- */
 :root {
     --primary: #00b4db;
     --primary-dark: #0083b0;
@@ -12,6 +18,7 @@
     --radius-main: 12px;
 }
 
+/* --- 2. Dark Mode Colors --- */
 [data-theme="dark"] {
     --bg-color: #0f172a;
     --card-bg: #1e293b;
@@ -21,8 +28,10 @@
     --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
 }
 
+/* --- 3. Base Styles --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
@@ -31,9 +40,11 @@ body {
     transition: var(--transition);
     overflow-x: hidden;
 }
+
 [dir="rtl"] body { text-align: right; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
+/* --- 4. Navigation & Header --- */
 .main-header {
     background: var(--card-bg);
     padding: 15px 0;
@@ -41,39 +52,55 @@ body {
     border-bottom: 1px solid var(--border-color);
     box-shadow: var(--shadow);
 }
-.navbar { display: flex; justify-content: space-between; align-items: center; }
 
+.navbar { display: flex; justify-content: space-between; align-items: center; }
 .nav-menu { display: flex; list-style: none; gap: 25px; }
 .nav-link { text-decoration: none; color: var(--text-main); font-weight: 600; transition: var(--transition); }
 .nav-link:hover, .nav-link.active { color: var(--primary); }
 
-.theme-switch-wrapper { display: flex; align-items: center; }
-.theme-switch {
-    position: relative; display: inline-block;
-    width: 50px; height: 26px;
+.logo-shape {
+    width: 38px; height: 38px;
+    background: var(--primary);
+    border-radius: var(--radius-main);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; color: white; font-size: 22px;
 }
+
+/* --- 5. Theme Switch Slider --- */
+.theme-switch-wrapper { display: flex; align-items: center; }
+.theme-switch { position: relative; display: inline-block; width: 50px; height: 26px; }
 .theme-switch input { opacity: 0; width: 0; height: 0; }
 .slider.round {
-    position: absolute; cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
+    position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
     background-color: #ccc; transition: .4s; border-radius: 34px;
 }
 .slider.round:before {
-    position: absolute; content: "";
-    height: 18px; width: 18px; left: 4px; bottom: 4px;
+    position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 4px;
     background-color: white; transition: .4s; border-radius: 50%;
 }
 input:checked + .slider { background-color: var(--primary); }
 input:checked + .slider:before { transform: translateX(24px); }
 
-.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
-.bar { width: 25px; height: 3px; background-color: var(--text-main); border-radius: 3px; transition: 0.3s; }
+/* --- 6. Hero & Sections --- */
+.section-padding { padding: 100px 0; }
+.section-header { text-align: center; margin-bottom: 50px; }
+.section-header h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 15px; }
+.section-header h2 span { color: var(--primary); }
 
+.feature-card {
+    background: var(--card-bg); padding: 40px; border-radius: var(--radius-main);
+    text-align: center; border: 1px solid var(--border-color); transition: var(--transition);
+    box-shadow: var(--shadow); height: 100%;
+}
+.feature-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+.feature-card i { font-size: 45px; color: var(--primary); margin-bottom: 20px; }
+
+/* --- 7. Floating & Utility Buttons --- */
 .whatsapp-float {
     position: fixed; bottom: 30px; right: 30px;
     z-index: 1000; animation: pulse-green 2s infinite; transition: var(--transition);
 }
-.whatsapp-float img { width: 60px; height: 60px; }
+[dir="rtl"] .whatsapp-float { right: auto; left: 30px; }
 
 .back-to-top {
     position: fixed; bottom: 30px; left: 30px;
@@ -82,21 +109,11 @@ input:checked + .slider:before { transform: translateX(24px); }
     cursor: pointer; display: none; z-index: 1000;
     box-shadow: var(--shadow); transition: var(--transition); font-size: 20px;
 }
-
-[dir="rtl"] .whatsapp-float { right: auto; left: 30px; }
 [dir="rtl"] .back-to-top { left: auto; right: 30px; }
 
-.section-padding { padding: 80px 0; }
-.feature-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;
-}
-.feature-card {
-    background: var(--card-bg); padding: 40px; border-radius: var(--radius-main);
-    text-align: center; border: 1px solid var(--border-color); transition: var(--transition);
-    box-shadow: var(--shadow);
-}
-.feature-card:hover { transform: translateY(-10px); border-color: var(--primary); }
-.feature-card i { font-size: 40px; color: var(--primary); margin-bottom: 20px; }
+/* --- 8. Mobile Menu & Responsive --- */
+.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
+.bar { width: 25px; height: 3px; background-color: var(--text-main); border-radius: 3px; transition: 0.3s; }
 
 @keyframes pulse-green {
     0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
@@ -105,81 +122,23 @@ input:checked + .slider:before { transform: translateX(24px); }
 }
 
 @media (max-width: 768px) {
-    .nav-controls {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .menu-toggle { 
-        display: flex; 
-        margin-left: 10px;
-    }
-
-    .hero-banner .banner-content h1 {
-        font-size: 2.4rem !important;
-        color: #ffffff !important;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-    }
-
-    .hero-banner .banner-content p {
-        color: #ffffff !important;
-        background: rgba(0, 0, 0, 0.3);
-        padding: 10px;
-        border-radius: 8px;
-    }
-
-    .banner-buttons a.nav-link, 
-    .banner-buttons a[href="#services"] {
-        color: var(--primary) !important;
-        font-weight: 900;
-        text-decoration: underline;
-    }
-
+    .menu-toggle { display: flex; }
     .nav-container {
-        display: none; 
-        position: absolute; 
-        top: 100%; 
-        left: 0; 
-        width: 100%;
-        background: var(--card-bg); 
-        padding: 25px; 
-        flex-direction: column;
-        border-bottom: 4px solid var(--primary); 
-        box-shadow: var(--shadow);
-        z-index: 999;
+        display: none; position: absolute; top: 100%; left: 0; width: 100%;
+        background: var(--card-bg); padding: 25px; flex-direction: column;
+        border-bottom: 4px solid var(--primary); box-shadow: var(--shadow);
     }
-
-    .nav-container.active { 
-        display: flex; 
-    }
-
-    .nav-menu { 
-        flex-direction: column; 
-        gap: 20px; 
-        text-align: center; 
-    }
-
-    .calc-card {
-        width: 100%;
-        max-width: 100%;
-        margin: 20px 0;
-        padding: 25px 15px;
-    }
-
-    #priceDisplay {
-        font-size: 2.2rem !important;
-    }
-
-    .form-group input {
-        font-size: 16px;
-        padding: 12px;
-    }
-
-    .whatsapp-float { bottom: 20px; right: 20px; }
-    [dir="rtl"] .whatsapp-float { left: 20px; }
-    .whatsapp-float img { width: 50px; height: 50px; }
+    .nav-container.active { display: flex; }
+    .nav-menu { flex-direction: column; gap: 20px; text-align: center; }
     
-    .back-to-top { bottom: 20px; left: 20px; width: 45px; height: 45px; }
-    [dir="rtl"] .back-to-top { right: 20px; }
+    .hero-banner .hero-title { font-size: 2.5rem !important; }
+    .calc-card { width: 100%; max-width: 100%; margin-top: 30px; }
 }
+
+/* --- 9. Preloader --- */
+#preloader {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-color); display: flex; align-items: center;
+    justify-content: center; z-index: 9999;
+}
+.loader-logo { font-size: 40px; font-weight: 900; color: var(--primary); }

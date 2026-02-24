@@ -12,6 +12,7 @@
             font-family: 'Inter', sans-serif; 
             display: flex; 
             justify-content: center; 
+            /* جعل العناصر تبدأ من الأعلى للسماح بالنزوح اليدوي */
             align-items: flex-start; 
             min-height: 100vh; 
             margin: 0; 
@@ -19,24 +20,25 @@
             color: #1e293b; 
             text-align: center;
             box-sizing: border-box;
+            /* الإزاحة المطلوبة من حافة الشاشة العلوية */
+            padding-top: 100px; 
         }
 
         .card { 
             background: white; 
             padding: 50px 40px; 
             border-radius: 24px; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08); 
+            /* ظل فخم يمنع تداخل المربع مع خلفية الجوال البيضاء */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1); 
             max-width: 400px; 
             width: 85%;
             border: 1px solid rgba(0,0,0,0.03);
-            /* التعديل المفضل: إزاحة للأسفل لراحة العين */
-            margin-top: 15vh; 
-            /* حركة دخول فخمة */
+            /* حركة دخول ناعمة */
             animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
 

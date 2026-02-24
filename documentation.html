@@ -1,38 +1,74 @@
-Documentation: SparkleClean Premium Template
-​1. Introduction
-​SparkleClean is a professional, high-performance HTML5 template designed for cleaning service providers. It features a modern, responsive design with advanced business logic, including a live cost estimator and WhatsApp booking integration.
-​2. Main Features
-​Multi-Language Support: Full LTR (English) and RTL (Arabic) versions included.
-​Theme Switching: Built-in Dark & Light mode toggle with local storage persistence.
-​Interactive Cost Estimator: Real-time pricing calculation based on area size.
-​Conversion Optimized: Direct WhatsApp booking system for instant lead generation.
-​Fully Responsive: Tested on multiple devices (iOS, Android, Windows, Mac).
-​W3C Validated: Clean, error-free code optimized for SEO.
-​3. Folder Structure
-​Inside the main package, you will find:
-​/HTML/index.html — The English version (LTR).
-​/HTML/index-ar.html — The Arabic version (RTL).
-​/HTML/assets/css/ — All stylesheets (style.css).
-​/HTML/assets/js/ — Core JavaScript files (main.js).
-​/HTML/assets/images/ — Optimized image assets.
-​/Documentation/ — This documentation file.
-​4. Installation & Customization
-​A. How to Set Your WhatsApp Number:
-​Open assets/js/main.js.
-​Locate the variable whatsappNumber.
-​Replace the placeholder with your phone number (including country code, e.g., 966500000000).
-​B. How to Edit Pricing:
-​In assets/js/main.js, find the calculation function.
-​Update the pricePerMeter variable to match your service rates.
-​C. Branding (Colors & Fonts):
-​Colors: All colors are managed via CSS Variables. Open assets/css/style.css and edit the :root section.
-​Fonts: We use Inter for English and Cairo for Arabic via Google Fonts.
-​5. Important Note on Visual Content
-​Before & After Section: The provided "Results" image features a Bathroom Deep Clean.
-​If you wish to use your own images, ensure they are high-resolution and maintain the aspect ratio for the best visual experience.
-​6. Credits & Sources
-​Icons: FontAwesome 6.0.0
-​Fonts: Google Fonts (Inter, Cairo)
-​Framework: Pure HTML5/CSS3/JavaScript (No heavy dependencies for faster loading).
-​7. Support
-​For any technical issues or custom modification requests, please contact me through my profile page on the marketplace.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | SparkleClean Premium Template</title>
+    <style>
+        :root { --primary: #00b4db; --text: #334155; --bg: #f8fafc; --code-bg: #1e293b; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); margin: 0; padding: 0; }
+        .container { max-width: 900px; margin: 50px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        h1 { color: var(--primary); border-bottom: 2px solid var(--bg); padding-bottom: 10px; }
+        h2 { margin-top: 30px; color: #1e293b; border-left: 4px solid var(--primary); padding-left: 15px; }
+        code { background: var(--code-bg); color: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+        pre { background: var(--code-bg); color: #f1f5f9; padding: 20px; border-radius: 8px; overflow-x: auto; }
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li::before { content: "✓ "; color: var(--primary); font-weight: bold; }
+        .note { background: #fff7ed; border-right: 4px solid #f97316; padding: 15px; margin: 20px 0; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SparkleClean Documentation</h1>
+        <p><strong>Version:</strong> 1.8.5 | <strong>Author:</strong> Maymona</p>
+
+        <h2>1. Introduction</h2>
+        <p>SparkleClean is a professional, high-performance HTML5 template designed for cleaning service providers. It features a modern, responsive design with advanced business logic, including a live cost estimator and WhatsApp booking integration.</p>
+
+        <h2>2. Main Features</h2>
+        <ul class="feature-list">
+            <li><strong>Multi-Language Support:</strong> Full LTR (English) and RTL (Arabic) versions included.</li>
+            <li><strong>Theme Switching:</strong> Built-in Dark & Light mode toggle with local storage persistence.</li>
+            <li><strong>Interactive Cost Estimator:</strong> Real-time pricing calculation based on area size.</li>
+            <li><strong>Conversion Optimized:</strong> Direct WhatsApp booking system for instant lead generation.</li>
+            <li><strong>Fully Responsive:</strong> Tested on iOS, Android, Windows, and Mac.</li>
+            <li><strong>W3C Validated:</strong> Clean, error-free code optimized for SEO.</li>
+        </ul>
+
+        <h2>3. Folder Structure</h2>
+        <pre>
+/HTML/index.html        — English version (LTR)
+/HTML/index-ar.html     — Arabic version (RTL)
+/HTML/assets/css/       — Stylesheets (style.css)
+/HTML/assets/js/        — JavaScript files (main.js)
+/HTML/assets/images/    — Optimized images
+/Documentation/         — This help file
+        </pre>
+
+        <h2>4. Installation & Customization</h2>
+        <h3>A. WhatsApp Number</h3>
+        <p>Open <code>assets/js/main.js</code>, locate <code>whatsappNumber</code>, and replace it with your number:</p>
+        <pre>const whatsappNumber = "966500000000";</pre>
+
+        <h3>B. Pricing Logic</h3>
+        <p>Update <code>pricePerMeter</code> in <code>main.js</code> to match your rates.</p>
+
+        <h3>C. Branding</h3>
+        <p><strong>Colors:</strong> Edit the <code>:root</code> section in <code>assets/css/style.css</code>.</p>
+        <p><strong>Fonts:</strong> Uses Google Fonts (Inter & Cairo).</p>
+
+        <div class="note">
+            <strong>5. Important Note:</strong> The "Before & After" image features a <strong>Bathroom Deep Clean</strong>. Ensure your HTML labels match this content for professionalism.
+        </div>
+
+        <h2>6. Credits</h2>
+        <ul>
+            <li>Icons: FontAwesome 6.0.0</li>
+            <li>Framework: Pure HTML5/CSS3/JavaScript</li>
+        </ul>
+
+        <h2>7. Support</h2>
+        <p>For technical issues, please contact me through my marketplace profile page.</p>
+    </div>
+</body>
+</html>

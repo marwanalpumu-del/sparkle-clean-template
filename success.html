@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Successful | SparkleClean</title>
+    <title>Order Confirmed | SparkleClean</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #00b4db; --bg: #f4f7f9; }
+        :root { --primary: #00b4db; --bg: #f8fafc; }
+        
         body { 
             font-family: 'Inter', sans-serif; 
             display: flex; 
@@ -14,44 +15,63 @@
             align-items: flex-start; 
             min-height: 100vh; 
             margin: 0; 
-            background: var(--bg); 
+            background-color: var(--bg); 
             color: #1e293b; 
             text-align: center; 
             box-sizing: border-box;
-            /* المسافة العلوية المطلوبة لراحة العين */
-            padding-top: 120px; 
+            /* تم دفع المربع للأسفل بمسافة 160 بكسل لمنع التداخل مع الهيدر */
+            padding-top: 160px; 
         }
+
         .card { 
             background: white; 
-            padding: 50px 40px; 
+            padding: 50px 35px; 
             border-radius: 24px; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1); 
+            /* ظل قوي للفصل البصري عن الخلفية */
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12); 
             max-width: 400px; 
-            width: 85%; 
-            border: 1px solid rgba(0,0,0,0.03);
-            /* حذفنا الأنميشن لضمان ثبات الموقع عند التحديث */
+            width: 88%; 
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 999;
         }
+
         .icon-circle {
-            width: 70px; height: 70px; background: rgba(0, 180, 219, 0.1);
+            width: 80px; height: 80px; background: rgba(0, 180, 219, 0.1);
             color: var(--primary); border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; font-size: 35px; margin: 0 auto 25px;
+            align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 25px;
         }
-        h1 { margin: 0 0 15px; font-size: 26px; font-weight: 900; color: #0f172a; }
+
+        h1 { margin: 0 0 15px; font-size: 24px; font-weight: 900; color: #0f172a; }
         p { color: #64748b; margin-bottom: 35px; line-height: 1.6; font-size: 1.05rem; }
+
         .btn { 
-            background: var(--primary); color: white; text-decoration: none; 
-            padding: 15px 30px; border-radius: 12px; font-weight: bold; 
-            transition: 0.3s; display: inline-block; width: 100%; box-sizing: border-box;
-            cursor: pointer; border: none;
+            background: var(--primary); 
+            color: white; 
+            text-decoration: none; 
+            padding: 16px 30px; 
+            border-radius: 14px; 
+            font-weight: bold; 
+            transition: 0.3s ease; 
+            display: block; 
+            width: 100%; 
+            box-sizing: border-box;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 180, 219, 0.3);
         }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,180,219,0.2); }
+
+        .btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 20px rgba(0, 180, 219, 0.4); 
+        }
     </style>
 </head>
 <body>
     <div class="card">
         <div class="icon-circle">✓</div>
         <h1>Order Received!</h1>
-        <p>Thank you for choosing SparkleClean. Your request has been sent. We will contact you via WhatsApp shortly.</p>
+        <p>Thank you for choosing SparkleClean. Your request has been sent successfully. We will contact you shortly.</p>
         
         <a href="index.html" class="btn">Back to Home</a>
     </div>

@@ -3,209 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>SparkleClean | Premium Professional Cleaning Services</title>
     
-    <link rel="icon" type="image/png" href="assets/images/favicon.png?7">
-    <link rel="apple-touch-icon" href="assets/images/favicon.png?7">
-
-    <meta name="description" content="SparkleClean offers top-tier professional cleaning services for homes and offices. Professional cleaning with a smart cost estimator.">
-    <meta name="keywords" content="cleaning services, home cleaning, office cleaning, sparkle clean, cleaning calculator, premium cleaning">
-    <meta name="author" content="Maymona">
-    <meta property="og:title" content="SparkleClean | Excellence in Every Corner">
-    <meta property="og:description" content="Professional cleaning services with a smart cost estimator. Book your sparkle today!">
-    <meta property="og:image" content="assets/images/hero-bg.jpg">
-    <meta property="og:type" content="website">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <link rel="stylesheet" href="assets/css/style.css">
-
-    <style>
-        :root { --radius-main: 12px; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', 'Cairo', sans-serif; }
-
-        .logo-shape {
-            width: 38px; height: 38px;
-            background: var(--primary);
-            border-radius: var(--radius-main);
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 900; color: white; font-size: 22px;
-        }
-        .logo-shape::after { content: 'S'; }
-
-        .hero-banner {
-            background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), 
-                        url('assets/images/hero-bg.jpg');
-            background-size: cover;
-            background-position: center top;
-            min-height: 85vh;
-            display: flex; align-items: center;
-        }
-
-        .section-padding { padding: 100px 0; }
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .section-header h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 15px; color: var(--text-main); }
-        .section-header h2 span { color: var(--primary); }
-
-        .feature-card {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: var(--radius-main);
-            box-shadow: var(--shadow);
-            text-align: center;
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-        .feature-card:hover { transform: translateY(-10px); }
-        .feature-card i { font-size: 45px; color: var(--primary); margin-bottom: 20px; }
-
-        .contact-wrapper {
-            max-width: 800px; margin: 0 auto;
-            background: var(--card-bg); padding: 50px;
-            border-radius: var(--radius-main); box-shadow: var(--shadow);
-            text-align: center;
-        }
-
-        .heart-icon { color: #e74c3c; margin: 0 4px; display: inline-block; animation: heartBeat 1.5s infinite; }
-        @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
-    </style>
 </head>
 <body>
 
     <div id="preloader">
         <div class="loader-content">
-            <div class="loader-box">
-                <span class="star" style="top: -10px; right: -10px; position: absolute; color: gold;">✦</span>
-                <span class="loader-logo">S</span>
-            </div>
-            <p class="loader-text" style="letter-spacing: 3px; font-weight: 900; margin-top: 15px;">SPARKLE CLEAN</p>
+            <div class="loader-box"><span class="loader-logo">S</span></div>
+            <p class="loader-text">SPARKLE CLEAN</p>
         </div>
     </div>
 
     <header class="main-header">
         <div class="container navbar">
-            <a href="index.html" class="brand-logo" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
-                <div class="logo-shape"></div>
-                <div class="logo-text" style="font-weight: 900; font-size: 1.6rem; color: var(--text-main); letter-spacing: -1px;">
-                    SPARKLE<span style="color: var(--primary);">CLEAN</span>
-                </div>
+            <a href="index.html" class="brand-logo" aria-label="SparkleClean Home">
+                <div class="logo-shape">S</div>
+                <div class="logo-text">SPARKLE<span>CLEAN</span></div>
             </a>
 
             <nav class="nav-container" id="nav-menu">
                 <ul class="nav-menu">
                     <li><a href="#home" class="nav-link">Home</a></li>
                     <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#results" class="nav-link">Results</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
-                    <li><a href="index-ar.html" class="nav-link lang-btn" style="color: var(--primary); font-weight: 700;">العربية</a></li>
+                    <li><a href="index-ar.html" class="nav-link" style="color: var(--primary); font-family: 'Cairo';">العربية</a></li>
                 </ul>
             </nav>
 
             <div class="nav-controls">
                 <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" class="theme-toggle-btn" />
+                    <label class="theme-switch" for="checkbox" aria-label="Toggle Dark/Light Mode">
+                        <input type="checkbox" id="checkbox" />
                         <span class="slider round"></span>
                     </label>
                 </div>
-                <div class="menu-toggle" id="mobile-menu">
-                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-                </div>
+
+                <button class="menu-toggle" id="mobile-menu" aria-label="Open Navigation Menu" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
             </div>
         </div>
     </header>
 
     <section id="home" class="hero-banner">
-        <div class="container hero-wrapper" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 50px;">
-            <div class="banner-content" style="flex: 1; min-width: 320px; color: white;">
-                <h1 class="hero-title" style="font-size: 3.8rem; line-height: 1.1; font-weight: 900;">
-                    Experience <span style="color: var(--primary);">Sparkling</span> Excellence
-                </h1>
-                <p style="font-size: 1.2rem; margin: 25px 0; opacity: 0.9;">
-                    Premium professional cleaning for modern homes. We bring a touch of perfection you can see and trust.
-                </p>
-                <div class="banner-buttons" style="display: flex; gap: 20px;">
-                    <a href="#services" class="nav-link btn-checkout" style="width: auto; padding: 15px 35px; color:white; text-decoration:none;">View Services</a>
-                    <a href="javascript:void(0)" class="whatsapp-link" style="color: white; text-decoration: none; border: 2px solid white; padding: 13px 30px; border-radius: 12px; font-weight: 700;">Book Now ✨</a>
+        <div class="container hero-wrapper">
+            <div class="banner-content">
+                <h1 class="hero-title">Experience <span>Sparkling</span> Excellence</h1>
+                <p>Premium professional cleaning for modern homes. Perfection you can trust.</p>
+                <div class="banner-buttons">
+                    <a href="#services" class="btn-primary" role="button">Our Services</a>
+                    <a href="#contact" class="btn-outline" role="button">Book Now ✨</a>
                 </div>
             </div>
 
-            <div class="calc-card" style="flex: 0 1 420px; background: var(--card-bg); padding: 35px; box-shadow: var(--shadow); border-radius: 20px;">
-                <h2 style="margin-bottom: 20px; color: var(--text-main); font-weight: 900; font-size: 1.5rem;">Cost Estimator</h2>
+            <div class="calc-card">
+                <h2>Cost Estimator</h2>
                 <div class="form-group">
-                    <label for="inputArea" style="display: block; margin-bottom: 10px; font-weight: 700;">Area (sq. meters)</label>
-                    <input type="number" id="inputArea" placeholder="e.g. 120" min="0" style="width: 100%; padding: 15px; border-radius: 10px; border: 2px solid var(--border-color); background: var(--bg-color); color: var(--text-main);">
+                    <label for="inputArea">Area (sq. meters)</label>
+                    <input type="number" id="inputArea" placeholder="e.g. 120">
+                </div>
+                <div class="price-result">
+                    <p>Estimated Total</p>
+                    <div id="priceDisplay">0 SAR</div> 
                 </div>
                 
-                <div class="price-result" style="background: rgba(0, 180, 219, 0.08); padding: 25px; border-radius: 15px; text-align: center; margin: 25px 0; border: 1px dashed var(--primary);">
-                    <p style="margin: 0; font-size: 0.9rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted);">Estimated Total</p>
-                    <div id="priceDisplay" style="color: var(--primary); font-size: 2.8rem; margin: 5px 0; font-weight: 900;">0 SAR</div> 
-                </div>
-
-                <div class="policy-check" style="margin-bottom: 25px; display: flex; gap: 10px; align-items: flex-start;">
-                    <input type="checkbox" id="acceptPolicy" style="margin-top: 4px;">
-                    <label for="acceptPolicy" style="font-size: 0.85rem; color: var(--text-muted);">
-                        I agree to the <a href="javascript:void(0)" style="color: var(--primary); font-weight: 700;">Service Policy</a>.
+                <div class="policy-check" style="margin-bottom: 15px; display: flex; gap: 8px;">
+                    <input type="checkbox" id="acceptPolicy">
+                    <label for="acceptPolicy" style="font-size: 0.8rem; color: var(--text-muted);">
+                        I agree to the service policy and terms.
                     </label>
                 </div>
 
-                <a href="javascript:void(0)" class="btn-checkout whatsapp-link" id="checkoutBtn" style="display: block; text-align: center; text-decoration: none; background: var(--primary); color: white; padding: 15px; border-radius: 12px; font-weight: 700;">Secure Booking ✨</a>
+                <a href="#contact" class="btn-checkout" id="checkoutBtn" style="display: block; text-align: center; text-decoration: none;" role="button">Secure Booking ✨</a>
             </div>
         </div>
     </section>
 
-    <section id="services" class="section-padding" style="background: var(--bg-color);">
+    <section id="services" class="section-padding">
         <div class="container">
             <div class="section-header">
                 <h2>Our <span>Services</span></h2>
-                <p>Tailored cleaning solutions for every need.</p>
             </div>
-            <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+            <div class="feature-grid">
                 <div class="feature-card">
-                    <i class="fas fa-home"></i>
-                    <h3>Residential Cleaning</h3>
-                    <p>Complete home cleaning including deep sanitization of all rooms.</p>
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    <h3>Residential</h3>
+                    <p>Complete home cleaning and sanitization.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fas fa-building"></i>
-                    <h3>Office Cleaning</h3>
-                    <p>Maintain a professional and healthy workspace for your team.</p>
+                    <i class="fas fa-building" aria-hidden="true"></i>
+                    <h3>Office</h3>
+                    <p>Healthy workspace for your team.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fas fa-broom"></i>
-                    <h3>Deep Cleaning</h3>
-                    <p>Focusing on hidden dirt and hard-to-reach areas for a fresh start.</p>
+                    <i class="fas fa-broom" aria-hidden="true"></i>
+                    <h3>Deep Clean</h3>
+                    <p>Reaching every hidden corner.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="main-footer" style="padding: 80px 0 30px; background: var(--card-bg); border-top: 1px solid var(--border-color);">
+    <section id="results" class="section-padding" style="background: var(--card-bg);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Before & <span>After</span></h2>
+            </div>
+            <div class="results-display">
+                <div class="results-card">
+                    <img src="assets/images/results.webp" alt="Kitchen cleaning before and after">
+                    <div style="padding: 15px; text-align: center; font-weight: bold;">Kitchen Deep Clean</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="section-header">
+                    <h2>Why Choose <span>Us?</span></h2>
+                </div>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--text-muted);">We use eco-friendly materials and professional equipment to ensure your home sparkles without harmful chemicals. Our team is trained to deliver perfection in every corner.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In <span>Touch</span></h2>
+            </div>
+            <div class="contact-wrapper">
+                <p>Ready for a cleaner home? Chat with us on WhatsApp for a custom quote.</p>
+                <a href="https://wa.me/966500000000" class="btn-primary" style="display:inline-block; margin-top:20px; text-decoration:none;" role="button">Chat on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
         <div class="container" style="text-align: center;">
-            <div class="brand-logo" style="justify-content: center; margin-bottom: 30px; display: flex; align-items: center; gap: 10px;">
-                <div class="logo-shape"></div>
-                <div class="logo-text" style="font-weight: 900; font-size: 1.5rem; color: var(--text-main);">SPARKLE<span style="color: var(--primary);">CLEAN</span></div>
-            </div>
-            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem;">
-                Providing elite cleaning solutions for modern living. Your satisfaction is our signature.
-            </p>
-            <div style="border-top: 1px solid var(--border-color); padding-top: 30px; font-size: 0.95rem;">
-                <p>&copy; 2026 SparkleClean. All rights reserved. Designed with <span class="heart-icon">❤️</span></p>
-            </div>
+            <p>&copy; 2026 SparkleClean. Designed with <span style="color:red;">❤️</span> by Maymona</p>
         </div>
     </footer>
 
-    <a href="javascript:void(0)" class="whatsapp-float whatsapp-link">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Support" width="60">
+    <a href="https://wa.me/966500000000" class="whatsapp-float" aria-label="Contact us on WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
-    <button id="backToTop" class="back-to-top" title="Back to Top">
-        <i class="fas fa-chevron-up"></i>
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
     </button>
 
     <script src="assets/js/main.js"></script>

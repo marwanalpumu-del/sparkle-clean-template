@@ -3,77 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تم استلام طلبك | سباركل كلين</title>
+    <title>تم استلام طلبك بنجاح | سباركل كلين</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #00b4db; --bg: #f8fafc; }
-        
+        :root {
+            --primary: #00b4db;
+            --bg: #f8fafc;
+            --text: #1e293b;
+        }
         body { 
             font-family: 'Cairo', sans-serif; 
             display: flex; 
+            align-items: center; 
             justify-content: center; 
-            align-items: flex-start; 
-            min-height: 100vh; 
+            height: 100vh; 
             margin: 0; 
-            background-color: var(--bg); 
-            color: #1e293b; 
+            background: var(--bg); 
+            color: var(--text); 
             text-align: center; 
-            box-sizing: border-box;
-            /* زيادة المسافة العلوية لضمان عدم التداخل مع الهيدر */
-            padding-top: 160px; 
         }
-
         .card { 
             background: white; 
-            padding: 50px 35px; 
+            padding: 50px 40px; 
             border-radius: 24px; 
-            /* ظل قوي ليفصل المربع عن أي خلفية متداخلة */
-            box-shadow: 0 30px 60px rgba(0,0,0,0.12); 
-            max-width: 400px; 
-            width: 88%; 
-            border: 1px solid rgba(0,0,0,0.05);
-            position: relative;
-            z-index: 999;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05); 
+            max-width: 450px; 
+            width: 90%;
         }
-
         .icon-circle {
-            width: 80px; height: 80px; background: rgba(0, 180, 219, 0.1);
-            color: var(--primary); border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 25px;
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 180, 219, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 25px;
+            font-weight: bold;
         }
-
-        h1 { margin: 0 0 15px; font-size: 24px; font-weight: 900; color: #0f172a; }
+        h1 { margin: 0 0 15px; font-size: 28px; font-weight: 900; color: var(--text); }
         p { color: #64748b; margin-bottom: 35px; line-height: 1.8; font-size: 1.1rem; }
-
         .btn { 
             background: var(--primary); 
             color: white; 
             text-decoration: none; 
-            padding: 16px 30px; 
-            border-radius: 14px; 
+            padding: 15px 35px; 
+            border-radius: 12px; 
             font-weight: bold; 
-            transition: 0.3s ease; 
-            display: block; /* جعل الزر يأخذ العرض كاملاً للضغط السهل */
-            width: 100%; 
+            transition: 0.3s;
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(0, 180, 219, 0.2);
+            width: 100%;
             box-sizing: border-box;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 4px 15px rgba(0, 180, 219, 0.3);
         }
-
-        .btn:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 8px 20px rgba(0, 180, 219, 0.4); 
-        }
+        .btn:hover { transform: translateY(-3px); background: #0083b0; }
     </style>
 </head>
 <body>
     <div class="card">
         <div class="icon-circle">✓</div>
-        <h1>تم استلام طلبك بنجاح!</h1>
-        <p>شكراً لثقتك بسباركل كلين. سنتواصل معك عبر الواتساب خلال دقائق لتأكيد موعدك.</p>
-        
-        <a href="index-ar.html" class="btn">العودة للصفحة الرئيسية</a>
+        <h1>تم استلام طلبك!</h1>
+        <p>شكراً لاختيارك سباركل كلين. لقد تم توجيهك للواتساب، وسنقوم بالتواصل معك فوراً لتأكيد التفاصيل النهائية للموعد.</p>
+        <a href="index-ar.html" class="btn">العودة للرئيسية</a>
     </div>
 </body>
 </html>

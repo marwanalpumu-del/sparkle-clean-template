@@ -3,178 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>سباركل كلين | خدمات تنظيف احترافية</title>
     
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <link rel="apple-touch-icon" href="assets/images/favicon.png">
-
-    <meta name="description" content="تقدم سباركل كلين أفضل خدمات التنظيف الاحترافية للمنازل والمكاتب. احصل على تقدير فوري للتكلفة عبر حاسبتنا الذكية.">
-    <meta name="author" content="Maymona">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <link rel="stylesheet" href="assets/css/style.css">
-
-    <style>
-        :root { --radius-main: 12px; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Cairo', sans-serif; }
-
-        .logo-shape {
-            width: 38px; height: 38px;
-            background: var(--primary);
-            border-radius: var(--radius-main);
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 900; color: white; font-size: 22px;
-        }
-        .logo-shape::after { content: 'S'; }
-
-        .hero-banner {
-            background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), 
-                        url('assets/images/hero-bg.jpg');
-            background-size: cover;
-            background-position: center top;
-            min-height: 85vh;
-            display: flex; align-items: center;
-        }
-
-        .section-padding { padding: 100px 0; }
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .section-header h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 15px; color: var(--text-main); }
-        .section-header h2 span { color: var(--primary); }
-
-        .feature-card {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: var(--radius-main);
-            box-shadow: var(--shadow);
-            text-align: center;
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-        .feature-card:hover { transform: translateY(-10px); }
-        .feature-card i { font-size: 45px; color: var(--primary); margin-bottom: 20px; }
-
-        .contact-wrapper {
-            max-width: 800px; margin: 0 auto;
-            background: var(--card-bg); padding: 50px;
-            border-radius: var(--radius-main); box-shadow: var(--shadow);
-            text-align: center;
-        }
-
-        .heart-icon { color: #e74c3c; margin: 0 4px; display: inline-block; animation: heartBeat 1.5s infinite; }
-        @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
-    </style>
 </head>
 <body>
 
     <div id="preloader">
         <div class="loader-content">
-            <div class="loader-box">
-                <span class="star" style="top: -10px; left: -10px; position: absolute; color: gold;">✦</span>
-                <span class="loader-logo">S</span>
-            </div>
-            <p class="loader-text" style="letter-spacing: 3px; font-weight: 900; margin-top: 15px;">سباركل كلين</p>
+            <div class="loader-box"><span class="loader-logo">S</span></div>
+            <p class="loader-text">SPARKLE CLEAN</p>
         </div>
     </div>
 
     <header class="main-header">
         <div class="container navbar">
-            <a href="index-ar.html" class="brand-logo" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
-                <div class="logo-shape"></div>
-                <div class="logo-text" style="font-weight: 900; font-size: 1.6rem; color: var(--text-main); letter-spacing: -1px;">
-                    سباركل<span style="color: var(--primary);">كلين</span>
-                </div>
+            <a href="index-ar.html" class="brand-logo" aria-label="سباركل كلين الرئيسية">
+                <div class="logo-shape">S</div>
+                <div class="logo-text">SPARKLE<span>CLEAN</span></div>
             </a>
 
             <nav class="nav-container" id="nav-menu">
                 <ul class="nav-menu">
                     <li><a href="#home" class="nav-link">الرئيسية</a></li>
                     <li><a href="#services" class="nav-link">خدماتنا</a></li>
-                    <li><a href="#about" class="nav-link">من نحن</a></li>
+                    <li><a href="#results" class="nav-link">أعمالنا</a></li>
+                    <li><a href="#about" class="nav-link">لماذا نحن؟</a></li>
                     <li><a href="#contact" class="nav-link">اتصل بنا</a></li>
-                    <li><a href="index.html" class="nav-link lang-btn" style="color: var(--primary); font-weight: 700;">English</a></li>
+                    <li><a href="index.html" class="nav-link" style="color: var(--primary); font-family: 'Inter';">English</a></li>
                 </ul>
             </nav>
 
             <div class="nav-controls">
                 <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" class="theme-toggle-btn" />
-                        <div class="slider round"></div>
+                    <label class="theme-switch" for="checkbox" aria-label="تبديل الوضع الليلي/النهاري">
+                        <input type="checkbox" id="checkbox" />
+                        <span class="slider round"></span>
                     </label>
                 </div>
-                <div class="menu-toggle" id="mobile-menu">
-                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-                </div>
+
+                <button class="menu-toggle" id="mobile-menu" aria-label="فتح قائمة التنقل" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
             </div>
         </div>
     </header>
 
     <section id="home" class="hero-banner">
-        <div class="container hero-wrapper" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 50px;">
-            <div class="banner-content" style="flex: 1; min-width: 320px; color: white;">
-                <h1 class="hero-title" style="font-size: 3.8rem; line-height: 1.2; font-weight: 900;">
-                    اختبر تميز <span style="color: var(--primary);">النظافة</span> المبهرة
-                </h1>
-                <p style="font-size: 1.2rem; margin: 25px 0; opacity: 0.9;">
-                    خدمات تنظيف احترافية للمنازل العصرية. نضفي لمسة من المثالية يمكنك رؤيتها والوثوق بها.
-                </p>
-                <div class="banner-buttons" style="display: flex; gap: 20px;">
-                    <a href="#services" class="nav-link btn-checkout" style="width: auto; padding: 15px 35px; color:white; text-decoration:none;">عرض الخدمات</a>
-                    <a href="javascript:void(0)" class="whatsapp-link" style="color: white; text-decoration: none; border: 2px solid white; padding: 13px 30px; border-radius: 12px; font-weight: 700;">احجز الآن ✨</a>
+        <div class="container hero-wrapper">
+            <div class="banner-content">
+                <h1 class="hero-title">تجربة <span>نظافة</span> استثنائية</h1>
+                <p>خدمات تنظيف احترافية للمنازل العصرية. دقة وإتقان يمكنك الوثوق بهما.</p>
+                <div class="banner-buttons">
+                    <a href="#services" class="btn-primary" role="button">خدماتنا</a>
+                    <a href="#contact" class="btn-outline" role="button">احجز الآن ✨</a>
                 </div>
             </div>
 
-            <div class="calc-card" style="flex: 0 1 420px; background: var(--card-bg); padding: 35px; box-shadow: var(--shadow); border-radius: 20px;">
-                <h3 style="margin-bottom: 20px; color: var(--text-main); font-weight: 900;">حاسبة التكلفة</h3>
+            <div class="calc-card">
+                <h2>حاسبة التكلفة</h2>
                 <div class="form-group">
-                    <label for="inputArea" style="display: block; margin-bottom: 10px; font-weight: 700;">المساحة (متر مربع)</label>
-                    <input type="number" id="inputArea" placeholder="مثال: 120" min="0" style="width: 100%; padding: 15px; border-radius: 10px; border: 2px solid var(--border-color); background: var(--bg-color); color: var(--text-main); font-family: 'Cairo';">
+                    <label for="inputArea">المساحة (متر مربع)</label>
+                    <input type="number" id="inputArea" placeholder="مثلاً: 120">
+                </div>
+                <div class="price-result">
+                    <p>التكلفة التقديرية</p>
+                    <div id="priceDisplay">0 ريال</div> 
                 </div>
                 
-                <div class="price-result" style="background: rgba(0, 180, 219, 0.08); padding: 25px; border-radius: 15px; text-align: center; margin: 25px 0; border: 1px dashed var(--primary);">
-                    <p style="margin: 0; font-size: 0.9rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted);">التكلفة التقديرية</p>
-                    <h2 id="priceDisplay" style="color: var(--primary); font-size: 2.8rem; margin: 5px 0; font-weight: 900;">0 ريال</h2> 
-                </div>
-
-                <div class="policy-check" style="margin-bottom: 25px; display: flex; gap: 10px; align-items: flex-start;">
-                    <input type="checkbox" id="acceptPolicy" style="margin-top: 4px;">
-                    <label for="acceptPolicy" style="font-size: 0.85rem; color: var(--text-muted);">
-                        أوافق على <a href="javascript:void(0)" style="color: var(--primary); font-weight: 700;">سياسة الخدمة</a>.
+                <div class="policy-check" style="margin-bottom: 15px; display: flex; gap: 8px; align-items: center;">
+                    <input type="checkbox" id="acceptPolicy">
+                    <label for="acceptPolicy" style="font-size: 0.8rem; color: var(--text-muted);">
+                        أوافق على سياسة الخدمة والشروط.
                     </label>
                 </div>
 
-                <a href="javascript:void(0)" class="btn-checkout whatsapp-link" id="checkoutBtn" style="display: block; text-align: center; text-decoration: none; background: var(--primary); color: white; padding: 15px; border-radius: 12px; font-weight: 700;">تأكيد الحجز ✨</a>
+                <a href="#contact" class="btn-checkout" id="checkoutBtn" style="display: block; text-align: center; text-decoration: none;" role="button">تأكيد الحجز ✨</a>
             </div>
         </div>
     </section>
 
-    <section id="services" class="section-padding" style="background: var(--bg-color);">
+    <section id="services" class="section-padding">
         <div class="container">
             <div class="section-header">
-                <h2>خدماتنا <span>المتميزة</span></h2>
-                <p>حلول تنظيف مصممة خصيصاً لكل احتياجاتك.</p>
+                <h2><span>خدماتنا</span> المتميزة</h2>
             </div>
-            <div class="services-grid">
+            <div class="feature-grid">
                 <div class="feature-card">
-                    <i class="fas fa-home"></i>
+                    <i class="fas fa-home" aria-hidden="true"></i>
                     <h3>تنظيف سكني</h3>
-                    <p>تنظيف شامل للمنزل يشمل التعقيم العميق لجميع الغرف والمطابخ.</p>
+                    <p>تنظيف وتعقيم شامل لجميع مرافق المنزل.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fas fa-building"></i>
+                    <i class="fas fa-building" aria-hidden="true"></i>
                     <h3>تنظيف مكاتب</h3>
-                    <p>حافظ على بيئة عمل احترافية وصحية لفريقك وعملائك.</p>
+                    <p>بيئة عمل صحية ومنظمة لفريق عملك.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fas fa-broom"></i>
+                    <i class="fas fa-broom" aria-hidden="true"></i>
                     <h3>تنظيف عميق</h3>
-                    <p>التركيز على الأوساخ المخفية والمناطق التي يصعب الوصول إليها.</p>
+                    <p>الوصول إلى أصعب الزوايا والأماكن المخفية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="results" class="section-padding" style="background: var(--card-bg);">
+        <div class="container">
+            <div class="section-header">
+                <h2>قبل <span>وبعد</span></h2>
+            </div>
+            <div class="results-display">
+                <div class="results-card">
+                    <img src="assets/images/results.webp" alt="نتائج تنظيف المطبخ قبل وبعد">
+                    <div style="padding: 15px; text-align: center; font-weight: bold;">تنظيف عميق للمرافق</div>
                 </div>
             </div>
         </div>
@@ -182,67 +131,39 @@
 
     <section id="about" class="section-padding">
         <div class="container">
-            <div class="section-header">
-                <h2>لماذا <span>تختارنا</span></h2>
-                <p>نحن نجمع بين التكنولوجيا الحديثة والاحترافية العالية.</p>
-            </div>
-            <div class="about-grid">
-                <div class="feature-card">
-                    <i class="fas fa-user-shield"></i>
-                    <h3>محترفون موثوقون</h3>
-                    <p>جميع موظفينا تم فحص خلفياتهم وتدريبهم على أعلى المستويات.</p>
+            <div class="contact-wrapper">
+                <div class="section-header">
+                    <h2>لماذا تختار <span>سباركل كلين؟</span></h2>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-leaf"></i>
-                    <h3>صديق للبيئة</h3>
-                    <p>نستخدم منتجات تنظيف غير سامة وآمنة على الأطفال والحيوانات الأليفة.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-star"></i>
-                    <h3>ضمان الرضا</h3>
-                    <p>إذا لم تكن راضياً، سنعيد التنظيف مجاناً. هذا وعدنا لك.</p>
-                </div>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--text-muted);">نحن نستخدم مواد صديقة للبيئة ومعدات احترافية لضمان لمعان منزلك دون استخدام مواد كيميائية ضارة. فريقنا مدرب لتقديم المثالية في كل زاوية.</p>
             </div>
         </div>
     </section>
 
     <section id="contact" class="section-padding">
         <div class="container">
+            <div class="section-header">
+                <h2>تواصل <span>معنا</span></h2>
+            </div>
             <div class="contact-wrapper">
-                <div class="section-header">
-                    <h2>اتصل <span>بنا</span></h2>
-                    <p>جاهز لمساحة أكثر نظافة؟ تحدث إلينا اليوم.</p>
-                </div>
-                <div style="margin-bottom: 40px;">
-                    <p style="font-size: 1.2rem; margin-bottom: 10px;"><i class="fab fa-whatsapp" style="color: #25d366;"></i> واتساب: 000 000 000 966+</p>
-                    <p style="font-size: 1.2rem;"><i class="fas fa-envelope" style="color: var(--primary);"></i> البريد: info@sparkleclean.com</p>
-                </div>
-                <a href="javascript:void(0)" class="btn-checkout whatsapp-link" style="display: inline-block; width: auto; padding: 15px 50px; background: var(--primary); color: white; border-radius: 12px; text-decoration: none; font-weight: 700;">أرسل رسالة</a>
+                <p>هل أنت مستعد لمنزل أكثر نظافة؟ تواصل معنا عبر الواتساب للحصول على عرض سعر مخصص.</p>
+                <a href="https://wa.me/966500000000" class="btn-primary" style="display:inline-block; margin-top:20px; text-decoration:none;" role="button">تحدث معنا عبر الواتساب</a>
             </div>
         </div>
     </section>
 
-    <footer class="main-footer" style="padding: 80px 0 30px; background: var(--card-bg); border-top: 1px solid var(--border-color);">
+    <footer class="main-footer">
         <div class="container" style="text-align: center;">
-            <div class="brand-logo" style="justify-content: center; margin-bottom: 30px; display: flex; align-items: center; gap: 10px;">
-                <div class="logo-shape"></div>
-                <div class="logo-text" style="font-weight: 900; font-size: 1.5rem; color: var(--text-main);">سباركل<span style="color: var(--primary);">كلين</span></div>
-            </div>
-            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem;">
-                نقدم حلول تنظيف نخبوية للحياة العصرية. رضاكم هو بصمتنا الحقيقية.
-            </p>
-            <div style="border-top: 1px solid var(--border-color); padding-top: 30px; font-size: 0.95rem;">
-                <p>جميع الحقوق محفوظة &copy; 2026 سباركل كلين. صمم بكل <span class="heart-icon">❤️</span></p>
-            </div>
+            <p>&copy; 2026 سباركل كلين. صُمم بكل <span style="color:red;">❤️</span> بواسطة ميمونة</p>
         </div>
     </footer>
 
-    <a href="javascript:void(0)" class="whatsapp-float whatsapp-link">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Support" width="60">
+    <a href="https://wa.me/966500000000" class="whatsapp-float" aria-label="تواصل معنا عبر الواتساب">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
-    <button id="backToTop" class="back-to-top" title="العودة للأعلى">
-        <i class="fas fa-chevron-up"></i>
+    <button id="backToTop" class="back-to-top" aria-label="الرجوع للأعلى">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
     </button>
 
     <script src="assets/js/main.js"></script>

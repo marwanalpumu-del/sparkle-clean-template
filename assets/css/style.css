@@ -1,4 +1,4 @@
-/* Project: SparkleClean - Premium Cleaning Template
+٨/* Project: SparkleClean - Premium Cleaning Template
    Version: 1.8.5
    Author: Maymona
    Features: Dark/Light Mode, Responsive, RTL/LTR Support, Cost Estimator
@@ -220,104 +220,7 @@ input:checked + .slider:before { transform: translateX(22px); }
         display: flex !important; /* تظهر فقط عند الضغط */
     }
 
-    /* --- 2. تقليل المسافة بين الأزرار (بناءً على طلبك) --- */
-    .hero-wrapper {
-        gap: 20px !important; /* تقليل الفجوة الكبيرة بين النصوص والأزرار */
-    }
-
-    .banner-content .btn-primary {
-        margin-bottom: 12px !important; /* مسافة بسيطة وأنيقة بين الزرين */
-    }
-
-    .hero-title {
-        font-size: 2.1rem !important; /* حجم متناسق لا يسبب تداخل */
-        margin-bottom: 10px !important;
-    }
-}
-
-/* --- 3. ضبط المسافات لكل الأجهزة (Desktop/Tablet) --- */
-@media (min-width: 769px) {
-    .hero-btns {
-        display: flex;
-        gap: 15px; /* مسافة قريبة ومنظمة للأجهزة الكبيرة */
-        justify-content: center;
-    }
-    
-    [dir="rtl"] .btn-outline {
-        margin-right: 15px; /* مسافة بسيطة للنسخة العربية */
-        margin-left: 0;
-    }
-}
-
-
-    .nav-container.active { display: flex; }
-    .nav-menu { flex-direction: column; gap: 20px; }
-    .hero-wrapper { flex-direction: column; text-align: center; }
-    .hero-title { font-size: 2.5rem; }
-    .calc-card { margin: 0 auto; }
-}
-/* --- إصلاح شامل لسطح المكتب (Desktop) ليعود فخماً --- */
-@media (min-width: 992px) {
-    /* إجبار الهيدر على توزيع العناصر بالعرض */
-    .navbar {
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-    }
-
-    /* إظهار القائمة مفرودة بالعرض في الكمبيوتر */
-    .nav-container {
-        display: flex !important;
-        position: static !important;
-        width: auto !important;
-        background: transparent !important;
-        box-shadow: none !important;
-    }
-
-    .nav-menu {
-        display: flex !important;
-        flex-direction: row !important;
-        gap: 30px !important;
-        list-style: none;
-    }
-
-    /* إخفاء زر الهمبرجر في الكمبيوتر */
-    .menu-toggle {
-        display: none !important;
-    }
-
-    /* توزيع النص والمربع بجانب بعضهما في الكمبيوتر */
-    .hero-wrapper {
-        display: flex !important;
-        flex-direction: row !important; /* النص يسار والمربع يمين */
-        justify-content: space-between !important;
-        align-items: center !important;
-        text-align: left !important;
-        gap: 50px !important;
-    }
-
-    .banner-content {
-        flex: 1;
-        max-width: 50%;
-    }
-
-    .calc-card {
-        flex: 0 0 400px; /* حجم ثابت للمربع في الكمبيوتر */
-    }
-
-    /* وضع أزرار الهيرو بجانب بعضها */
-    .banner-buttons {
-        display: flex !important;
-        gap: 15px !important;
-        justify-content: flex-start !important;
-    }
-}
-
-/* --- الحفاظ على أناقة الجوال (Mobile) كما أحببتِها --- */
-@media (max-width: 991px) {
-    .hero-wrapper {
-        flex-direction: column !important; /* العناصر فوق بعضها */
-        text-align: center !important;
+            text-align: center !important;
     }
 
     /* زر الهمبرجر يظهر في الجوال */
@@ -356,14 +259,79 @@ input:checked + .slider:before { transform: translateX(22px); }
 }
 
 
-/* --- لمسات التجاوب النهائية (Final Polish) --- */
+/* --- 1. ضبط قائمة الهمبرجر (الجوال) --- */
+.nav-menu {
+    display: none; /* مخفي افتراضياً في الجوال */
+    flex-direction: column;
+    background: var(--bg-card);
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    gap: 15px;
+    z-index: 1000;
+    border-bottom: 2px solid var(--primary);
+}
 
-/* 1. ضبط الهمبرجر ليعمل في كل الأجهزة */
-@media (max-width: 768px) {
-    .menu-toggle { display: flex !important; }
-    .nav-container { display: none; }
-    .nav-container.active { display: flex !important; }
+.nav-menu.active {
+    display: flex !important; /* يظهر عند الضغط على الهمبرجر */
+}
 
+/* --- 2. ضبط الأزرار في الكمبيوتر (عرضي) --- */
+@media (min-width: 992px) {
+    .banner-buttons {
+        display: flex !important;
+        flex-direction: row !important; /* جعلها بجانب بعض */
+        align-items: center !important;
+        gap: 20px !important;
+    }
+
+    /* زر Book Now الأصغر (الكمبيوتر) */
+    .banner-buttons .btn-outline {
+        height: 40px !important;       /* أنحف */
+        min-width: 140px !important;    /* أقل عرضاً */
+        font-size: 0.85rem !important;  /* خط أصغر */
+        padding: 0 20px !important;
+        border-radius: 8px !important;
+    }
+}
+
+/* --- 3. ضبط الأزرار في الجوال --- */
+@media (max-width: 991px) {
+    .banner-buttons {
+        display: flex !important;
+        flex-direction: column !important; /* فوق بعض في الجوال */
+        align-items: center !important;
+        gap: 10px !important;
+    }
+
+    /* زر Book Now الأصغر (الجوال) */
+    .banner-buttons .btn-outline {
+        height: 38px !important;
+        width: auto !important;
+        min-width: 130px !important;
+        font-size: 0.8rem !important;
+        padding: 0 15px !important;
+    }
+}
+
+/* --- تنسيق عام لزر Book Now لضمان النحافة --- */
+.banner-buttons .btn-outline {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    background: transparent !important;
+    color: white !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+.banner-buttons .btn-outline:hover {
+    border-color: var(--primary) !important;
+    color: var(--primary) !important;
+}
 
 
 

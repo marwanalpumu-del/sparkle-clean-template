@@ -256,3 +256,35 @@ input:checked + .slider:before { transform: translateX(22px); }
     .hero-title { font-size: 2.5rem; }
     .calc-card { margin: 0 auto; }
 }
+
+
+/* --- لمسات التجاوب النهائية (Final Polish) --- */
+
+/* 1. ضبط الهمبرجر ليعمل في كل الأجهزة */
+@media (max-width: 768px) {
+    .menu-toggle { display: flex !important; }
+    .nav-container { display: none; }
+    .nav-container.active { display: flex !important; }
+
+    /* 2. المسافة "الملمومة" بين الأزرار (تقليل الفجوة) */
+    .hero-wrapper { 
+        gap: 25px !important; /* تقليل المسافة بين النص والمربع */
+    }
+    
+    .btn-primary { 
+        margin-bottom: 10px !important; /* مسافة بسيطة جداً وأنيقة */
+    }
+
+    /* 3. منع النصوص من الخروج عن الإطار في الشاشات الصغيرة جداً */
+    .hero-title {
+        font-size: clamp(1.8rem, 5vw, 2.5rem) !important;
+        word-wrap: break-word;
+    }
+}
+
+/* 4. ضمان التجاوب في الشاشات الكبيرة (الكمبيوتر) */
+.hero-banner {
+    height: auto !important;
+    min-height: 100vh;
+    padding: 100px 0;
+}

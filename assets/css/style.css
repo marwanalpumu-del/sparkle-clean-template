@@ -1,6 +1,7 @@
 /* Project: SparkleClean - Premium Cleaning Template
-   Version: 1.8.6 (Original Colors - Animated Toggle)
+   Version: 1.8.5
    Author: Maymona
+   Features: Dark/Light Mode, Responsive, RTL/LTR Support, Cost Estimator
 */
 
 :root {
@@ -73,8 +74,13 @@ section { padding: 80px 0; }
 .hero-banner {
     background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
                 url('../images/hero-bg.webp');
-    background-size: cover; background-position: center; background-attachment: fixed;
-    min-height: 85vh; display: flex; align-items: center; color: white;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    color: white;
 }
 
 .hero-wrapper { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px; }
@@ -119,9 +125,28 @@ section { padding: 80px 0; }
     border-radius: 12px; text-decoration: none; font-weight: 700; margin-left: 10px;
 }
 
-/* --- 5. Theme Switch & Menu Toggle (Modified for Animation) --- */
-.nav-controls { display: flex; align-items: center; gap: 15px; }
+/* --- 5. Features Section --- */
+.feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.feature-card {
+    background: var(--card-bg); padding: 40px; border-radius: var(--radius-main);
+    text-align: center; border: 1px solid var(--border-color); transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+.feature-card i { font-size: 40px; color: var(--primary); margin-bottom: 20px; }
+.feature-card h3 { margin-bottom: 15px; }
+.feature-card:hover { border-color: var(--primary); transform: translateY(-10px); }
 
+/* --- 6. Results Section --- */
+.results-card {
+    background: var(--card-bg); border-radius: var(--radius-main);
+    overflow: hidden; border: 1px solid var(--border-color);
+    box-shadow: var(--shadow); transition: var(--transition);
+}
+.results-card img { width: 100%; height: auto; display: block; transition: 0.5s; }
+.results-card:hover img { transform: scale(1.05); }
+
+/* --- 7. Theme Switch & Controls --- */
+.nav-controls { display: flex; align-items: center; gap: 15px; }
 .theme-switch { position: relative; display: inline-block; width: 46px; height: 24px; }
 .theme-switch input { opacity: 0; width: 0; height: 0; }
 .slider.round {
@@ -135,25 +160,24 @@ section { padding: 80px 0; }
 input:checked + .slider { background-color: var(--primary); }
 input:checked + .slider:before { transform: translateX(22px); }
 
-/* زر الهمبرجر مع لمسة التحويل */
 .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; border: none; background: none; }
-.bar { 
-    width: 25px; height: 3px; background-color: var(--text-main); 
-    border-radius: 3px; transition: var(--transition); 
-}
+.bar { width: 25px; height: 3px; background-color: var(--text-main); border-radius: 3px; }
 
-/* Logic للتحول إلى X عند وجود كلاس is-active */
-.menu-toggle.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-.menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
-.menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-/* --- 6. Floating UI --- */
+/* --- 8. Floating UI --- */
 .whatsapp-float {
     position: fixed; bottom: 30px; right: 30px; z-index: 1000;
     background: #25d366; color: white; width: 60px; height: 60px;
     border-radius: 50%; display: flex; align-items: center; justify-content: center;
     font-size: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     animation: pulse-green 2s infinite; text-decoration: none;
+}
+
+.back-to-top {
+    position: fixed; bottom: 100px; right: 30px;
+    width: 45px; height: 45px; background: var(--primary);
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; display: none; align-items: center; justify-content: center;
+    z-index: 1000; box-shadow: var(--shadow);
 }
 
 @keyframes pulse-green {
@@ -164,10 +188,14 @@ input:checked + .slider:before { transform: translateX(22px); }
 
 /* RTL Specifics */
 [dir="rtl"] .whatsapp-float { right: auto; left: 30px; }
+[dir="rtl"] .back-to-top { right: auto; left: 30px; }
+[dir="rtl"] .btn-outline { margin-left: 0; margin-right: 10px; }
 
-/* --- 7. Responsive --- */
-
-    @media (max-width: 768px) {
+/* --- 9. Responsive --- */
+@media (max-width: 992px) {
+    .hero-title { font-size: 2.8rem; }
+}
+@media (max-width: 768px) {
     /* 1. الحفاظ على حجم العنوان كما هو في صورتك (صغير وأنيق) */
     .hero-title { 
         font-size: 2.2rem; /* الحجم المثالي الذي يظهر في صورتك */
@@ -191,8 +219,10 @@ input:checked + .slider:before { transform: translateX(22px); }
     }
 }
 
-    /* يظهر المنيو عند إضافة كلاس active عبر الـ JS */
-    #nav-menu.active { display: flex; } 
-    
+
+    .nav-container.active { display: flex; }
     .nav-menu { flex-direction: column; gap: 20px; }
+    .hero-wrapper { flex-direction: column; text-align: center; }
+    .hero-title { font-size: 2.5rem; }
+    .calc-card { margin: 0 auto; }
 }

@@ -1,16 +1,15 @@
 /**
- * SparkleClean - Main JavaScript Core
- * Version: 1.8.5 (Premium Update)
- * Developed for: Marwan's Premium Project
+ * SparkleClean - Premium JS Core
+ * Optimized for: Maymona's $50 Premium Template
+ * Version: 1.8.5
  */
 
 (function () {
     "use strict";
 
-    // 1. إعدادات الشركة العامة
     const COMPANY_SETTINGS = {
-        whatsappNumber: "966500000000", // تأكد من تعديل الرقم هنا
-        baseRate: 5, // سعر المتر المربع
+        whatsappNumber: "966500000000", // ميمونة: غيري الرقم هنا فقط
+        baseRate: 5, 
         welcomeMsgAr: "مرحباً سباركل كلين، أرغب في الاستفسار عن خدماتكم! ✨",
         welcomeMsgEn: "Hello SparkleClean, I'd like to inquire about your services! ✨"
     };
@@ -18,17 +17,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         const isRTL = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ar';
 
-        // 2. تهيئة الروابط الافتراضية للواتساب
-        const setupGlobalLinks = () => {
-            const waLinks = document.querySelectorAll('.whatsapp-link:not(#checkoutBtn)'); 
-            const msg = isRTL ? COMPANY_SETTINGS.welcomeMsgAr : COMPANY_SETTINGS.welcomeMsgEn;
-            waLinks.forEach(link => {
-                link.href = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodeURIComponent(msg)}`;
-                link.setAttribute('target', '_blank');
-            });
-        };
-
-        // 3. شاشة التحميل (Preloader)
+        // 1. شاشة التحميل
         const initPreloader = () => {
             const preloader = document.getElementById('preloader');
             if (preloader) {
@@ -41,18 +30,34 @@
             }
         };
 
-        // 4. حاسبة الأسعار مع تحريك الأرقام
+        // 2. التحكم في الهيدر عند التمرير (Sticky Header)
+        const initHeaderScroll = () => {
+            const header = document.querySelector('.main-header');
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        header.style.padding = "8px 0";
+                        header.style.boxShadow = "var(--shadow)";
+                    } else {
+                        header.style.padding = "12px 0";
+                        header.style.boxShadow = "none";
+                    }
+                });
+            }
+        };
+
+        // 3. الحاسبة الذكية مع تحريك الأرقام
         const initCalculator = () => {
             const areaInput = document.getElementById('inputArea'); 
             const priceDisplay = document.getElementById('priceDisplay'); 
 
             if (areaInput && priceDisplay) {
-                areaInput.addEventListener('input', () => {
+                areaInput.oninput = () => {
                     const area = parseFloat(areaInput.value) || 0;
                     const total = area * COMPANY_SETTINGS.baseRate;
                     animateValue(priceDisplay, total, 400);
                     updateWhatsAppLink(); 
-                });
+                };
             }
         };
 
@@ -70,22 +75,57 @@
             window.requestAnimationFrame(step);
         }
 
-        // 5. منطق الوضع الليلي (Dark Mode)
+        // 4. الوضع الليلي (Dark Mode)
         const initTheme = () => {
             const toggle = document.querySelector('.theme-switch input');
             const savedTheme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
             if (toggle) {
                 toggle.checked = savedTheme === 'dark';
-                toggle.addEventListener('change', () => {
+                toggle.onchange = () => {
                     const newTheme = toggle.checked ? 'dark' : 'light';
                     document.documentElement.setAttribute('data-theme', newTheme);
                     localStorage.setItem('theme', newTheme);
+                };
+            }
+        };
+
+        // 5. تفعيل المنيو (إغلاق عند الضغط)
+        const initMobileMenu = () => {
+            const btn = document.getElementById('mobile-menu');
+            const nav = document.getElementById('nav-menu');
+            const links = document.querySelectorAll('.nav-link');
+
+            if (btn && nav) {
+                btn.onclick = () => {
+                    nav.classList.toggle('active');
+                    btn.classList.toggle('is-active');
+                    const expanded = btn.getAttribute('aria-expanded') === 'true';
+                    btn.setAttribute('aria-expanded', !expanded);
+                };
+
+                links.forEach(link => {
+                    link.onclick = () => {
+                        nav.classList.remove('active');
+                        btn.classList.remove('is-active');
+                        btn.setAttribute('aria-expanded', 'false');
+                    };
                 });
             }
         };
 
-        // 6. تفعيل زر الحجز بناءً على السياسة والمساحة
+        // 6. زر الرجوع للأعلى
+        const initBackToTop = () => {
+            const btn = document.getElementById('backToTop');
+            if (btn) {
+                window.addEventListener('scroll', () => {
+                    btn.style.display = window.scrollY > 400 ? 'flex' : 'none';
+                });
+                btn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        };
+
+        // 7. تحديث رابط الواتساب المحسن بناءً على السعر
         const updateWhatsAppLink = () => {
             const checkoutBtn = document.getElementById('checkoutBtn');
             const acceptPolicy = document.getElementById('acceptPolicy');
@@ -95,66 +135,32 @@
             if (checkoutBtn && acceptPolicy) {
                 if (acceptPolicy.checked && area > 0) {
                     const msg = isRTL 
-                        ? `حجز جديد من الموقع:\nالمساحة: ${area} متر\nالسعر المتوقع: ${price}`
-                        : `New Booking Request:\nArea: ${area} sqm\nEstimated Price: ${price}`;
+                        ? `حجز جديد من الموقع:\nالمساحة: ${area}م\nالسعر التقديري: ${price}`
+                        : `New Website Booking:\nArea: ${area}sqm\nPrice: ${price}`;
                     checkoutBtn.href = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodeURIComponent(msg)}`;
-                    checkoutBtn.style.opacity = "1";
                     checkoutBtn.style.pointerEvents = "auto";
-                    checkoutBtn.style.filter = "grayscale(0)";
+                    checkoutBtn.style.opacity = "1";
                 } else {
-                    checkoutBtn.href = "javascript:void(0)";
-                    checkoutBtn.style.opacity = "0.5";
-                    checkoutBtn.style.pointerEvents = "none";
-                    checkoutBtn.style.filter = "grayscale(1)";
+                    // بدلاً من تعطيل الزر تماماً، نوجهه لسكشن التواصل لتحسين تجربة المستخدم
+                    checkoutBtn.href = "#contact";
+                    checkoutBtn.style.opacity = "0.6";
                 }
             }
         };
 
+        // تفعيل المستمع لسياسة الخدمة
         const policyCheckbox = document.getElementById('acceptPolicy');
         if (policyCheckbox) {
-            policyCheckbox.addEventListener('change', updateWhatsAppLink);
+            policyCheckbox.onchange = updateWhatsAppLink;
         }
 
-        // 7. القائمة الجانبية (Mobile Menu)
-        const initMobileMenu = () => {
-            const btn = document.getElementById('mobile-menu');
-            const nav = document.getElementById('nav-menu');
-            if (btn && nav) {
-                btn.addEventListener('click', () => {
-                    nav.classList.toggle('active');
-                    btn.classList.toggle('is-active');
-                });
-            }
-        };
-
-        // 8. زر الرجوع للأعلى (Back to Top)
-        const initBackToTop = () => {
-            const backToTopBtn = document.getElementById('backToTop');
-            if (backToTopBtn) {
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 400) {
-                        backToTopBtn.style.display = 'block';
-                    } else {
-                        backToTopBtn.style.display = 'none';
-                    }
-                });
-
-                backToTopBtn.addEventListener('click', () => {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            }
-        };
-
-        // تشغيل كل الوظائف
+        // تشغيل كافة المحركات
         initPreloader();
-        setupGlobalLinks();
+        initHeaderScroll();
         initCalculator();
         initTheme();
         initMobileMenu();
         initBackToTop();
-        updateWhatsAppLink();
+        updateWhatsAppLink(); // تشغيل أولي لضمان جاهزية الزر
     });
 })();

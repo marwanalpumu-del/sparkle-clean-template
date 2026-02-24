@@ -1,107 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparkleClean | Premium Documentation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root { --primary: #00b4db; --secondary: #0083b0; --dark: #1a2a3a; --light: #f4f7f6; --accent: #ff9f43; }
-        body { font-family: 'Inter', 'Cairo', sans-serif; line-height: 1.6; color: #444; margin: 0; background: #f9fbfb; }
-        
-        header { 
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            padding: 40px 20px; color: white; text-align: center; margin-bottom: 30px;
-        }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
-        
-        /* نظام الأعمدة المتساوية */
-        .dual-layout { display: flex; gap: 30px; flex-wrap: wrap; }
-        .col { flex: 1; min-width: 300px; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .col-ar { direction: rtl; border-right: 4px solid var(--primary); }
-        .col-en { direction: ltr; border-left: 4px solid var(--primary); }
-
-        h2 { color: var(--dark); font-size: 1.4rem; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .code-box { background: #2d3436; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 13px; color: #fab1a0; margin: 15px 0; overflow-x: auto; }
-        .badge { background: var(--accent); color: white; padding: 3px 10px; border-radius: 50px; font-size: 0.7rem; font-weight: bold; }
-        .note { background: #fff9db; padding: 10px; border-radius: 5px; font-size: 0.9rem; margin-top: 10px; border: 1px dashed var(--accent); }
-        
-        .footer { text-align: center; padding: 30px; color: #888; font-size: 0.9rem; }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1><i class="fas fa-book-open"></i> SparkleClean Documentation</h1>
-        <p>Template Setup Guide | دليل إعداد القالب</p>
-    </header>
-
-    <div class="container">
-        <div class="dual-layout">
-            
-            <div class="col col-en">
-                <h2><i class="fas fa-flag-usa"></i> English Guide</h2>
-                <p>Welcome! Follow these steps to set up your template:</p>
-                
-                <h3>1. Configuration</h3>
-                <p>Open <code>assets/js/main.js</code> and update your WhatsApp number:</p>
-                <div class="code-box">
-                    whatsappNumber: "9665XXXXXXXX",<br>
-                    baseRate: 5 // Price per m²
-                </div>
-
-                <h3>2. Files Included</h3>
-                <ul>
-                    <li><strong>index.html</strong> (English Version)</li>
-                    <li><strong>index-ar.html</strong> (Arabic Version)</li>
-                    <li><strong>style.css</strong> (Central Styles)</li>
-                </ul>
-
-                <div class="note">
-                    <strong>Tip:</strong> Change <code>--primary</code> in style.css to update the whole brand color.
-                </div>
-            </div>
-
-            <div class="col col-ar">
-                <h2><i class="fas fa-flag-sa"></i> الدليل العربي</h2>
-                <p>أهلاً بك! اتبع هذه الخطوات لتجهيز قالبك الخاص:</p>
-                
-                <h3>١. الإعدادات الأساسية</h3>
-                <p>افتح ملف <code>assets/js/main.js</code> وضع رقم الواتساب الخاص بك:</p>
-                <div class="code-box">
-                    whatsappNumber: "9665XXXXXXXX",<br>
-                    baseRate: 5 // سعر المتر المربع
-                </div>
-
-                <h3>٢. الملفات المرفقة</h3>
-                <ul>
-                    <li><strong>index.html</strong> (النسخة الإنجليزية)</li>
-                    <li><strong>index-ar.html</strong> (النسخة العربية RTL)</li>
-                    <li><strong>style.css</strong> (ملف التنسيق الشامل)</li>
-                </ul>
-
-                <div class="note">
-                    <strong>نصيحة:</strong> لتغيير لون الموقع بالكامل، قم بتغيير كود اللون في <code>--primary</code> داخل ملف CSS.
-                </div>
-            </div>
-
-        </div>
-
-        <section style="margin-top: 30px; background: white; padding: 25px; border-radius: 15px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <h2 style="justify-content: center;"><i class="fas fa-rocket"></i> Features | المميزات</h2>
-            <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
-                <span><i class="fas fa-check-circle" style="color: #2ecc71;"></i> Responsive / متجاوب</span>
-                <span><i class="fas fa-check-circle" style="color: #2ecc71;"></i> Dark Mode / وضع ليلي</span>
-                <span><i class="fas fa-check-circle" style="color: #2ecc71;"></i> Smart Calculator / حاسبة ذكية</span>
-            </div>
-        </section>
-    </div>
-
-    <div class="footer">
-        <p>© 2026 Created with ❤️ by <strong></strong>Maymona</strong></p>
-    </div>
-
-</body>
-</html>
+Documentation: SparkleClean Premium Template
+​1. Introduction
+​SparkleClean is a professional, high-performance HTML5 template designed for cleaning service providers. It features a modern, responsive design with advanced business logic, including a live cost estimator and WhatsApp booking integration.
+​2. Main Features
+​Multi-Language Support: Full LTR (English) and RTL (Arabic) versions included.
+​Theme Switching: Built-in Dark & Light mode toggle with local storage persistence.
+​Interactive Cost Estimator: Real-time pricing calculation based on area size.
+​Conversion Optimized: Direct WhatsApp booking system for instant lead generation.
+​Fully Responsive: Tested on multiple devices (iOS, Android, Windows, Mac).
+​W3C Validated: Clean, error-free code optimized for SEO.
+​3. Folder Structure
+​Inside the main package, you will find:
+​/HTML/index.html — The English version (LTR).
+​/HTML/index-ar.html — The Arabic version (RTL).
+​/HTML/assets/css/ — All stylesheets (style.css).
+​/HTML/assets/js/ — Core JavaScript files (main.js).
+​/HTML/assets/images/ — Optimized image assets.
+​/Documentation/ — This documentation file.
+​4. Installation & Customization
+​A. How to Set Your WhatsApp Number:
+​Open assets/js/main.js.
+​Locate the variable whatsappNumber.
+​Replace the placeholder with your phone number (including country code, e.g., 966500000000).
+​B. How to Edit Pricing:
+​In assets/js/main.js, find the calculation function.
+​Update the pricePerMeter variable to match your service rates.
+​C. Branding (Colors & Fonts):
+​Colors: All colors are managed via CSS Variables. Open assets/css/style.css and edit the :root section.
+​Fonts: We use Inter for English and Cairo for Arabic via Google Fonts.
+​5. Important Note on Visual Content
+​Before & After Section: The provided "Results" image features a Bathroom Deep Clean.
+​If you wish to use your own images, ensure they are high-resolution and maintain the aspect ratio for the best visual experience.
+​6. Credits & Sources
+​Icons: FontAwesome 6.0.0
+​Fonts: Google Fonts (Inter, Cairo)
+​Framework: Pure HTML5/CSS3/JavaScript (No heavy dependencies for faster loading).
+​7. Support
+​For any technical issues or custom modification requests, please contact me through my profile page on the marketplace.

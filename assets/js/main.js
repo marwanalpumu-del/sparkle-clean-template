@@ -1,7 +1,7 @@
 /**
  * SparkleClean - Premium JS Core
  * Optimized for: Maymona's $50 Premium Template
- * Version: 1.8.5
+ * Logic: Smart Redirect to Success Page (Method 2)
  */
 
 (function () {
@@ -9,15 +9,13 @@
 
     const COMPANY_SETTINGS = {
         whatsappNumber: "966500000000", // ميمونة: غيري الرقم هنا فقط
-        baseRate: 5, 
-        welcomeMsgAr: "مرحباً سباركل كلين، أرغب في الاستفسار عن خدماتكم! ✨",
-        welcomeMsgEn: "Hello SparkleClean, I'd like to inquire about your services! ✨"
+        baseRate: 5
     };
 
     document.addEventListener('DOMContentLoaded', function () {
         const isRTL = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ar';
 
-        // 1. شاشة التحميل
+        // 1. شاشة التحميل (Preloader)
         const initPreloader = () => {
             const preloader = document.getElementById('preloader');
             if (preloader) {
@@ -30,7 +28,7 @@
             }
         };
 
-        // 2. التحكم في الهيدر عند التمرير (Sticky Header)
+        // 2. الهيدر التفاعلي عند التمرير
         const initHeaderScroll = () => {
             const header = document.querySelector('.main-header');
             if (header) {
@@ -46,7 +44,7 @@
             }
         };
 
-        // 3. الحاسبة الذكية مع تحريك الأرقام
+        // 3. الحاسبة مع تحريك الأرقام
         const initCalculator = () => {
             const areaInput = document.getElementById('inputArea'); 
             const priceDisplay = document.getElementById('priceDisplay'); 
@@ -75,7 +73,42 @@
             window.requestAnimationFrame(step);
         }
 
-        // 4. الوضع الليلي (Dark Mode)
+        // 4. نظام الحجز الذكي (الطريقة الثانية - الأفخم)
+        const updateWhatsAppLink = () => {
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            const acceptPolicy = document.getElementById('acceptPolicy');
+            const area = document.getElementById('inputArea')?.value || 0;
+            const price = document.getElementById('priceDisplay')?.innerText || "0";
+
+            if (checkoutBtn && acceptPolicy) {
+                if (acceptPolicy.checked && area > 0) {
+                    const msg = isRTL 
+                        ? `حجز جديد من الموقع:\nالمساحة: ${area}م\nالسعر التقديري: ${price}`
+                        : `New Website Booking:\nArea: ${area}sqm\nPrice: ${price}`;
+                    
+                    const waUrl = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+                    
+                    // تفعيل منطق التحويل الذكي
+                    checkoutBtn.onclick = (e) => {
+                        e.preventDefault();
+                        window.open(waUrl, '_blank'); // فتح الواتساب
+                        
+                        // تحويل الموقع لصفحة النجاح حسب اللغة
+                        const successPage = isRTL ? 'success-ar.html' : 'success.html';
+                        window.location.href = successPage; 
+                    };
+
+                    checkoutBtn.style.opacity = "1";
+                    checkoutBtn.style.pointerEvents = "auto";
+                } else {
+                    checkoutBtn.onclick = null;
+                    checkoutBtn.href = "#contact";
+                    checkoutBtn.style.opacity = "0.6";
+                }
+            }
+        };
+
+        // 5. باقي الوظائف (Theme, Menu, BackToTop)
         const initTheme = () => {
             const toggle = document.querySelector('.theme-switch input');
             const savedTheme = localStorage.getItem('theme') || 'light';
@@ -90,31 +123,17 @@
             }
         };
 
-        // 5. تفعيل المنيو (إغلاق عند الضغط)
         const initMobileMenu = () => {
             const btn = document.getElementById('mobile-menu');
             const nav = document.getElementById('nav-menu');
-            const links = document.querySelectorAll('.nav-link');
-
             if (btn && nav) {
                 btn.onclick = () => {
                     nav.classList.toggle('active');
                     btn.classList.toggle('is-active');
-                    const expanded = btn.getAttribute('aria-expanded') === 'true';
-                    btn.setAttribute('aria-expanded', !expanded);
                 };
-
-                links.forEach(link => {
-                    link.onclick = () => {
-                        nav.classList.remove('active');
-                        btn.classList.remove('is-active');
-                        btn.setAttribute('aria-expanded', 'false');
-                    };
-                });
             }
         };
 
-        // 6. زر الرجوع للأعلى
         const initBackToTop = () => {
             const btn = document.getElementById('backToTop');
             if (btn) {
@@ -125,42 +144,16 @@
             }
         };
 
-        // 7. تحديث رابط الواتساب المحسن بناءً على السعر
-        const updateWhatsAppLink = () => {
-            const checkoutBtn = document.getElementById('checkoutBtn');
-            const acceptPolicy = document.getElementById('acceptPolicy');
-            const area = document.getElementById('inputArea')?.value || 0;
-            const price = document.getElementById('priceDisplay')?.innerText || "0";
-
-            if (checkoutBtn && acceptPolicy) {
-                if (acceptPolicy.checked && area > 0) {
-                    const msg = isRTL 
-                        ? `حجز جديد من الموقع:\nالمساحة: ${area}م\nالسعر التقديري: ${price}`
-                        : `New Website Booking:\nArea: ${area}sqm\nPrice: ${price}`;
-                    checkoutBtn.href = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodeURIComponent(msg)}`;
-                    checkoutBtn.style.pointerEvents = "auto";
-                    checkoutBtn.style.opacity = "1";
-                } else {
-                    // بدلاً من تعطيل الزر تماماً، نوجهه لسكشن التواصل لتحسين تجربة المستخدم
-                    checkoutBtn.href = "#contact";
-                    checkoutBtn.style.opacity = "0.6";
-                }
-            }
-        };
-
-        // تفعيل المستمع لسياسة الخدمة
-        const policyCheckbox = document.getElementById('acceptPolicy');
-        if (policyCheckbox) {
-            policyCheckbox.onchange = updateWhatsAppLink;
-        }
-
-        // تشغيل كافة المحركات
+        // تشغيل المحركات
         initPreloader();
         initHeaderScroll();
         initCalculator();
         initTheme();
         initMobileMenu();
         initBackToTop();
-        updateWhatsAppLink(); // تشغيل أولي لضمان جاهزية الزر
+        updateWhatsAppLink();
+
+        const policyCheckbox = document.getElementById('acceptPolicy');
+        if (policyCheckbox) policyCheckbox.onchange = updateWhatsAppLink;
     });
 })();

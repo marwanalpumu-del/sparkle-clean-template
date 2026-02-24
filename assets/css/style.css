@@ -195,14 +195,30 @@ input:checked + .slider:before { transform: translateX(22px); }
 @media (max-width: 992px) {
     .hero-title { font-size: 2.8rem; }
 }
-
 @media (max-width: 768px) {
-    .menu-toggle { display: flex; }
-    .nav-container {
-        display: none; position: absolute; top: 100%; left: 0; width: 100%;
-        background: var(--card-bg); padding: 30px; border-bottom: 3px solid var(--primary);
-        flex-direction: column; text-align: center; box-shadow: var(--shadow);
+    /* 1. الحفاظ على حجم العنوان كما هو في صورتك (صغير وأنيق) */
+    .hero-title { 
+        font-size: 2.2rem; /* الحجم المثالي الذي يظهر في صورتك */
+        margin-bottom: 15px;
     }
+
+    /* 2. الحل المطلوب: إنزال زر Book Now للأسفل قليلاً فقط */
+    .banner-content .btn-primary {
+        margin-bottom: 20px !important; /* يضيف مسافة تحت الزر الأول */
+    }
+
+    .banner-content .btn-outline {
+        margin-top: 10px !important; /* يضمن ابتعاد الزر الثاني */
+        display: inline-block; /* يحافظ على شكل الزر كما في الصورة */
+    }
+
+    /* 3. التأكد من عدم تداخل المنيو مع المحتوى */
+    .main-header {
+        position: relative; /* يمنع الهيدر من تغطية الكلام */
+        z-index: 1000;
+    }
+}
+
     .nav-container.active { display: flex; }
     .nav-menu { flex-direction: column; gap: 20px; }
     .hero-wrapper { flex-direction: column; text-align: center; }

@@ -266,4 +266,13 @@ input:checked + .slider:before { transform: translateX(22px); }
         width: auto !important; /* يبقى صغيراً وأنيقاً */
         margin-top: 5px !important;
     }
+}/* ضبط المسافات للأزرار في النسخة العربية */
+[dir="rtl"] .banner-buttons {
+    gap: 15px !important;
 }
+[dir="rtl"] .btn-outline {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+

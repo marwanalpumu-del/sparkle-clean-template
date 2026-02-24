@@ -266,25 +266,75 @@ input:checked + .slider:before { transform: translateX(22px); }
     .nav-container { display: none; }
     .nav-container.active { display: flex !important; }
 
-    /* 2. المسافة "الملمومة" بين الأزرار (تقليل الفجوة) */
-    .hero-wrapper { 
-        gap: 25px !important; /* تقليل المسافة بين النص والمربع */
-    }
-    
-    .btn-primary { 
-        margin-bottom: 10px !important; /* مسافة بسيطة جداً وأنيقة */
+    /* --- 1. إصلاح الكمبيوتر (Desktop) ليعود فخماً ومنظماً --- */
+@media (min-width: 992px) {
+    .hero-wrapper {
+        display: flex !important;
+        flex-direction: row !important; /* النص والمربع بجانب بعضهما */
+        justify-content: space-between !important;
+        align-items: center !important;
+        text-align: left !important;
+        gap: 50px !important;
     }
 
-    /* 3. منع النصوص من الخروج عن الإطار في الشاشات الصغيرة جداً */
-    .hero-title {
-        font-size: clamp(1.8rem, 5vw, 2.5rem) !important;
-        word-wrap: break-word;
+    [dir="rtl"] .hero-wrapper {
+        text-align: right !important;
+    }
+
+    .nav-container {
+        display: flex !important; /* المنيو مفرود بالعرض */
+        position: static !important;
+        flex-direction: row !important;
+        background: transparent !important;
+    }
+
+    .menu-toggle {
+        display: none !important; /* إخفاء الهمبرجر في الكمبيوتر */
+    }
+
+    .hero-btns {
+        display: flex !important;
+        gap: 20px !important;
+        margin-top: 30px !important;
     }
 }
 
-/* 4. ضمان التجاوب في الشاشات الكبيرة (الكمبيوتر) */
-.hero-banner {
-    height: auto !important;
-    min-height: 100vh;
-    padding: 100px 0;
+/* --- 2. الحفاظ على أناقة الجوال (Mobile) كما أحببتِها --- */
+@media (max-width: 991px) {
+    .hero-wrapper {
+        flex-direction: column !important; /* العناصر فوق بعضها */
+        text-align: center !important;
+        gap: 30px !important;
+    }
+
+    .menu-toggle {
+        display: flex !important; /* إظهار الهمبرجر */
+    }
+
+    .nav-container {
+        display: none; /* مخفية حتى يتم الضغط */
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: 100% !important;
+        background: var(--card-bg) !important;
+        flex-direction: column !important;
+        z-index: 9999;
+    }
+
+    .nav-container.active {
+        display: flex !important;
+    }
+
+    /* المسافة الملمومة للأزرار في الجوال */
+    .banner-content .btn-primary {
+        margin-bottom: 12px !important;
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    .banner-content .btn-outline {
+        display: block !important;
+        width: 100% !important;
+    }
 }

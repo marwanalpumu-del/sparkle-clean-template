@@ -11,7 +11,6 @@
             font-family: 'Inter', sans-serif; 
             display: flex; 
             justify-content: center; 
-            /* جعل العناصر تبدأ من الأعلى للسماح بالنزوح اليدوي */
             align-items: flex-start; 
             min-height: 100vh; 
             margin: 0; 
@@ -19,7 +18,7 @@
             color: #1e293b; 
             text-align: center; 
             box-sizing: border-box;
-            /* الإزاحة المطلوبة لجعل المربع ينزل للأسفل - جربي زيادة الرقم لو أردتِ نزولاً أكثر */
+            /* المسافة العلوية المطلوبة لراحة العين */
             padding-top: 120px; 
         }
         .card { 
@@ -30,11 +29,7 @@
             max-width: 400px; 
             width: 85%; 
             border: 1px solid rgba(0,0,0,0.03);
-            animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+            /* حذفنا الأنميشن لضمان ثبات الموقع عند التحديث */
         }
         .icon-circle {
             width: 70px; height: 70px; background: rgba(0, 180, 219, 0.1);
@@ -47,18 +42,18 @@
             background: var(--primary); color: white; text-decoration: none; 
             padding: 15px 30px; border-radius: 12px; font-weight: bold; 
             transition: 0.3s; display: inline-block; width: 100%; box-sizing: border-box;
+            cursor: pointer; border: none;
         }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,180,219,0.2); }
     </style>
 </head>
 <body>
-        <div class="card">
+    <div class="card">
         <div class="icon-circle">✓</div>
         <h1>Order Received!</h1>
         <p>Thank you for choosing SparkleClean. Your request has been sent. We will contact you via WhatsApp shortly.</p>
         
-        <a href="index.html" class="btn" style="cursor: pointer;">Back to Home</a>
+        <a href="index.html" class="btn">Back to Home</a>
     </div>
-
 </body>
 </html>

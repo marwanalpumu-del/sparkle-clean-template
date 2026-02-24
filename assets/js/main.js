@@ -1,7 +1,7 @@
 /**
  * SparkleClean - Premium JS Core
  * Optimized for: Maymona's $50 Premium Template
- * Version: 1.9.0 (Smart Redirect Update)
+ * Version: 1.8.5
  */
 
 (function () {
@@ -125,7 +125,7 @@
             }
         };
 
-        // 7. تحديث رابط الواتساب والتحويل الذكي (الطريقة الثانية الفخمة)
+        // 7. تحديث رابط الواتساب المحسن بناءً على السعر
         const updateWhatsAppLink = () => {
             const checkoutBtn = document.getElementById('checkoutBtn');
             const acceptPolicy = document.getElementById('acceptPolicy');
@@ -137,23 +137,11 @@
                     const msg = isRTL 
                         ? `حجز جديد من الموقع:\nالمساحة: ${area}م\nالسعر التقديري: ${price}`
                         : `New Website Booking:\nArea: ${area}sqm\nPrice: ${price}`;
-                    
-                    const waUrl = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodeURIComponent(msg)}`;
-
-                    // تفعيل منطق الطريقة الثانية عند الضغط
-                    checkoutBtn.onclick = (e) => {
-                        e.preventDefault(); 
-                        window.open(waUrl, '_blank'); // فتح الواتساب في نافذة جديدة
-                        
-                        // تحويل الصفحة الحالية لصفحة النجاح حسب اللغة
-                        const successPage = isRTL ? 'success-ar.html' : 'success.html';
-                        window.location.href = successPage; 
-                    };
-
+                    checkoutBtn.href = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodeURIComponent(msg)}`;
                     checkoutBtn.style.pointerEvents = "auto";
                     checkoutBtn.style.opacity = "1";
                 } else {
-                    checkoutBtn.onclick = null; // إزالة الحدث في حال عدم استيفاء الشروط
+                    // بدلاً من تعطيل الزر تماماً، نوجهه لسكشن التواصل لتحسين تجربة المستخدم
                     checkoutBtn.href = "#contact";
                     checkoutBtn.style.opacity = "0.6";
                 }

@@ -256,6 +256,104 @@ input:checked + .slider:before { transform: translateX(22px); }
     .hero-title { font-size: 2.5rem; }
     .calc-card { margin: 0 auto; }
 }
+/* --- إصلاح شامل لسطح المكتب (Desktop) ليعود فخماً --- */
+@media (min-width: 992px) {
+    /* إجبار الهيدر على توزيع العناصر بالعرض */
+    .navbar {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+
+    /* إظهار القائمة مفرودة بالعرض في الكمبيوتر */
+    .nav-container {
+        display: flex !important;
+        position: static !important;
+        width: auto !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+
+    .nav-menu {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 30px !important;
+        list-style: none;
+    }
+
+    /* إخفاء زر الهمبرجر في الكمبيوتر */
+    .menu-toggle {
+        display: none !important;
+    }
+
+    /* توزيع النص والمربع بجانب بعضهما في الكمبيوتر */
+    .hero-wrapper {
+        display: flex !important;
+        flex-direction: row !important; /* النص يسار والمربع يمين */
+        justify-content: space-between !important;
+        align-items: center !important;
+        text-align: left !important;
+        gap: 50px !important;
+    }
+
+    .banner-content {
+        flex: 1;
+        max-width: 50%;
+    }
+
+    .calc-card {
+        flex: 0 0 400px; /* حجم ثابت للمربع في الكمبيوتر */
+    }
+
+    /* وضع أزرار الهيرو بجانب بعضها */
+    .banner-buttons {
+        display: flex !important;
+        gap: 15px !important;
+        justify-content: flex-start !important;
+    }
+}
+
+/* --- الحفاظ على أناقة الجوال (Mobile) كما أحببتِها --- */
+@media (max-width: 991px) {
+    .hero-wrapper {
+        flex-direction: column !important; /* العناصر فوق بعضها */
+        text-align: center !important;
+    }
+
+    /* زر الهمبرجر يظهر في الجوال */
+    .menu-toggle {
+        display: flex !important;
+    }
+
+    /* القائمة المنسدلة في الجوال */
+    .nav-container {
+        display: none; /* مخفية حتى نضغط الهمبرجر */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--card-bg);
+        flex-direction: column;
+        padding: 20px;
+        z-index: 1000;
+    }
+
+    .nav-container.active {
+        display: flex !important;
+    }
+
+    /* المسافة الملمومة للأزرار التي أعجبتك في الجوال */
+    .banner-buttons .btn-primary {
+        margin-bottom: 12px !important;
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .banner-buttons .btn-outline {
+        display: block !important;
+        width: 100% !important;
+    }
+}
 
 
 /* --- لمسات التجاوب النهائية (Final Polish) --- */
@@ -266,87 +364,8 @@ input:checked + .slider:before { transform: translateX(22px); }
     .nav-container { display: none; }
     .nav-container.active { display: flex !important; }
 
-    /* --- 1. إصلاح الكمبيوتر (Desktop) ليعود فخماً ومنظماً --- */
-@media (min-width: 992px) {
-    .hero-wrapper {
-        display: flex !important;
-        flex-direction: row !important; /* النص والمربع بجانب بعضهما */
-        justify-content: space-between !important;
-        align-items: center !important;
-        text-align: left !important;
-        gap: 50px !important;
-    }
 
-    [dir="rtl"] .hero-wrapper {
-        text-align: right !important;
-    }
 
-    .nav-container {
-        display: flex !important; /* المنيو مفرود بالعرض */
-        position: static !important;
-        flex-direction: row !important;
-        background: transparent !important;
-    }
 
-    .menu-toggle {
-        display: none !important; /* إخفاء الهمبرجر في الكمبيوتر */
-    }
 
-    .hero-btns {
-        display: flex !important;
-        gap: 20px !important;
-        margin-top: 30px !important;
-    }
-}
 
-/* --- 1. إصلاح شامل لسطح المكتب (Desktop Fix) --- */
-@media (min-width: 992px) {
-    /* إجبار النص والمربع على البقاء بجانب بعضهما */
-    .hero .container, .hero-wrapper {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        gap: 40px !important;
-        text-align: right !important; /* لنسخة العربي */
-    }
-
-    /* ضمان أن النص يأخذ مساحة كافية ولا يتكدس */
-    .banner-content {
-        flex: 1 !important;
-        max-width: 50% !important;
-    }
-
-    /* ضمان أن المنيو (الروابط) مفرودة بالعرض */
-    .nav-container {
-        display: flex !important;
-        flex-direction: row !important;
-        position: static !important;
-        background: transparent !important;
-        box-shadow: none !important;
-        width: auto !important;
-    }
-
-    /* إخفاء الهمبرجر تماماً في الكمبيوتر */
-    .menu-toggle {
-        display: none !important;
-    }
-
-    /* وضع الأزرار بجانب بعضها في الكمبيوتر */
-    .hero-btns {
-        display: flex !important;
-        gap: 15px !important;
-    }
-}
-
-/* --- 2. الحفاظ على شكل الجوال الأنيق (Mobile) --- */
-@media (max-width: 991px) {
-    .hero-wrapper {
-        flex-direction: column !important;
-        text-align: center !important;
-    }
-    .banner-content .btn-primary {
-        margin-bottom: 12px !important;
-        width: 100% !important;
-    }
-}

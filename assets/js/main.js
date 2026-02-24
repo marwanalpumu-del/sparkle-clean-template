@@ -1,7 +1,7 @@
 /**
  * SparkleClean - Premium JS Core
- * Optimized for: Maymona's $50 Premium Template
- * Logic: Smart Redirect to Success Page (Method 2)
+ * Optimized for: Maymona's Premium Template
+ * Logic: Smart WhatsApp Redirect with 1s Delay
  */
 
 (function () {
@@ -33,18 +33,13 @@
             const header = document.querySelector('.main-header');
             if (header) {
                 window.addEventListener('scroll', () => {
-                    if (window.scrollY > 50) {
-                        header.style.padding = "8px 0";
-                        header.style.boxShadow = "var(--shadow)";
-                    } else {
-                        header.style.padding = "12px 0";
-                        header.style.boxShadow = "none";
-                    }
+                    header.style.padding = window.scrollY > 50 ? "8px 0" : "12px 0";
+                    header.style.boxShadow = window.scrollY > 50 ? "var(--shadow)" : "none";
                 });
             }
         };
 
-        // 3. الحاسبة مع تحريك الأرقام
+        // 3. الحاسبة التفاعلية
         const initCalculator = () => {
             const areaInput = document.getElementById('inputArea'); 
             const priceDisplay = document.getElementById('priceDisplay'); 
@@ -73,7 +68,7 @@
             window.requestAnimationFrame(step);
         }
 
-        // 4. نظام الحجز الذكي (الطريقة الثانية - الأفخم)
+        // 4. نظام الحجز الذكي (فتح الواتساب + تحويل لصفحة النجاح)
         const updateWhatsAppLink = () => {
             const checkoutBtn = document.getElementById('checkoutBtn');
             const acceptPolicy = document.getElementById('acceptPolicy');
@@ -88,27 +83,28 @@
                     
                     const waUrl = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodeURIComponent(msg)}`;
                     
-                    // تفعيل منطق التحويل الذكي
                     checkoutBtn.onclick = (e) => {
                         e.preventDefault();
-                        window.open(waUrl, '_blank'); // فتح الواتساب
+                        window.open(waUrl, '_blank'); // فتح الواتساب في نافذة جديدة
                         
-                        // تحويل الموقع لصفحة النجاح حسب اللغة
-                        const successPage = isRTL ? 'success-ar.html' : 'success.html';
-                        window.location.href = successPage; 
+                        // تأخير ثانية واحدة قبل التحويل لصفحة النجاح
+                        setTimeout(() => {
+                            const successPage = isRTL ? 'success-ar.html' : 'success.html';
+                            window.location.href = successPage; 
+                        }, 1000); 
                     };
 
                     checkoutBtn.style.opacity = "1";
                     checkoutBtn.style.pointerEvents = "auto";
                 } else {
                     checkoutBtn.onclick = null;
-                    checkoutBtn.href = "#contact";
-                    checkoutBtn.style.opacity = "0.6";
+                    checkoutBtn.style.opacity = "0.5";
+                    checkoutBtn.style.pointerEvents = "none";
                 }
             }
         };
 
-        // 5. باقي الوظائف (Theme, Menu, BackToTop)
+        // 5. الوظائف الإضافية (Menu, Theme, BackToTop)
         const initTheme = () => {
             const toggle = document.querySelector('.theme-switch input');
             const savedTheme = localStorage.getItem('theme') || 'light';
@@ -127,10 +123,7 @@
             const btn = document.getElementById('mobile-menu');
             const nav = document.getElementById('nav-menu');
             if (btn && nav) {
-                btn.onclick = () => {
-                    nav.classList.toggle('active');
-                    btn.classList.toggle('is-active');
-                };
+                btn.onclick = () => nav.classList.toggle('active');
             }
         };
 
@@ -144,7 +137,7 @@
             }
         };
 
-        // تشغيل المحركات
+        // تشغيل كافة المحركات
         initPreloader();
         initHeaderScroll();
         initCalculator();

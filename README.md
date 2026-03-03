@@ -1,7 +1,8 @@
 .د
 .# ✨ SparkleClean - Premium Cleaning Service HTML5 Template
 
-![SparkleClean Official Mockup](SparkleClean_UI_Mockup_2026.png)
+![SparkleClean Official Mockup](assets/images/SparkleClean_UI_Mockup_2026.png)
+
 
 **SparkleClean** is a high-performance, responsive HTML5 template...
 

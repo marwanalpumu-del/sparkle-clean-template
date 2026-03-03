@@ -8,7 +8,7 @@
     "use strict";
 
     const COMPANY_SETTINGS = {
-        whatsappNumber: "967730592217", // ميمونة: غيري الرقم هنا فقط
+        whatsappNumber: "967739777381", // ميمونة: غيري الرقم هنا فقط
         baseRate: 5
     };
 

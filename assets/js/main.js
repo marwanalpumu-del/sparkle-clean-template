@@ -16,7 +16,7 @@
      * Update these values to customize the template globally.
      */
     const COMPANY_SETTINGS = {
-        whatsappNumber: "966500000000", // International format (e.g., 9665XXXXXXXX)
+        whatsappNumber: "739777381", // International format (e.g., 9665XXXXXXXX)
         baseRate: 5                     // Base price per square meter
     };
 

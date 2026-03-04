@@ -1,21 +1,34 @@
 /**
- * SparkleClean - Premium JS Core
- * Optimized for: Maymona's Premium Template
- * Logic: Smart WhatsApp Redirect & Auto-Link Sync
+ * SparkleClean - Premium Cleaning Service HTML5 Template
+ * --------------------------------------------------------
+ * Author: Maymona
+ * Version: 1.8.5
+ * License: Commercial
+ * Description: Core JavaScript for price estimation and WhatsApp sync.
+ * --------------------------------------------------------
  */
 
 (function () {
     "use strict";
 
+    /**
+     * CENTRAL CONFIGURATION
+     * Update these values to customize the template globally.
+     */
     const COMPANY_SETTINGS = {
-        whatsappNumber: "967739777381", // ميمونة: غيري الرقم هنا فقط وسيتغير في كل الموقع
-        baseRate: 5
+        whatsappNumber: "966500000000", // International format (e.g., 9665XXXXXXXX)
+        baseRate: 5                     // Base price per square meter
     };
 
     document.addEventListener('DOMContentLoaded', function () {
+        
+        // Detect Language Direction (RTL/LTR)
         const isRTL = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ar';
 
-        // 1. شاشة التحميل (Preloader)
+        /**
+         * 1. PRELOADER
+         * Handles the initial loading screen fade-out.
+         */
         const initPreloader = () => {
             const preloader = document.getElementById('preloader');
             if (preloader) {
@@ -28,7 +41,10 @@
             }
         };
 
-        // 2. تحديث كافة روابط الواتساب في الصفحة تلقائياً (بدون لمس HTML)
+        /**
+         * 2. GLOBAL WHATSAPP SYNC
+         * Automatically updates all WhatsApp links in the template based on COMPANY_SETTINGS.
+         */
         const initGlobalWhatsApp = () => {
             const defaultMsg = isRTL 
                 ? "مرحباً SparkleClean، أريد الاستفسار عن خدماتكم" 
@@ -36,42 +52,56 @@
             
             const newLink = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodeURIComponent(defaultMsg)}`;
 
-            // البحث عن أي رابط واتساب في الصفحة (باستثناء زر الحاسبة)
+            // Select all WhatsApp links excluding the dynamic estimator button
             const waLinks = document.querySelectorAll('a[href^="https://wa.me/"]');
             waLinks.forEach(link => {
                 if (link.id !== 'checkoutBtn') {
                     link.href = newLink;
-                    link.target = "_blank";
+                    link.setAttribute('target', '_blank');
+                    link.setAttribute('rel', 'noopener noreferrer'); // Security Best Practice
                 }
             });
         };
 
-        // 3. الهيدر التفاعلي عند التمرير
+        /**
+         * 3. STICKY HEADER
+         * Manages header appearance on page scroll.
+         */
         const initHeaderScroll = () => {
             const header = document.querySelector('.main-header');
             if (header) {
                 window.addEventListener('scroll', () => {
-                    header.style.padding = window.scrollY > 50 ? "8px 0" : "12px 0";
-                    header.style.boxShadow = window.scrollY > 50 ? "var(--shadow)" : "none";
+                    if (window.scrollY > 50) {
+                        header.classList.add('header-scrolled');
+                    } else {
+                        header.classList.remove('header-scrolled');
+                    }
                 });
             }
         };
 
-        // 4. الحاسبة التفاعلية
+        /**
+         * 4. INTERACTIVE COST ESTIMATOR
+         * Real-time price calculation logic with animations.
+         */
         const initCalculator = () => {
             const areaInput = document.getElementById('inputArea'); 
             const priceDisplay = document.getElementById('priceDisplay'); 
 
             if (areaInput && priceDisplay) {
-                areaInput.oninput = () => {
+                areaInput.addEventListener('input', () => {
                     const area = parseFloat(areaInput.value) || 0;
                     const total = area * COMPANY_SETTINGS.baseRate;
                     animateValue(priceDisplay, total, 400);
-                    updateWhatsAppLink(); 
-                };
+                    updateEstimatorBooking(); 
+                });
             }
         };
 
+        /**
+         * ANIMATION HELPER
+         * Smoothly transitions numerical values in the UI.
+         */
         function animateValue(obj, end, duration) {
             let start = parseInt(obj.innerText.replace(/[^0-9]/g, '')) || 0;
             let startTimestamp = null;
@@ -80,14 +110,21 @@
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
                 const currentVal = Math.floor(progress * (end - start) + start);
                 const currency = isRTL ? "ريال" : "SAR";
-                obj.innerText = isRTL ? `${currentVal.toLocaleString()} ${currency}` : `${currency} ${currentVal.toLocaleString()}`;
+                
+                obj.innerText = isRTL 
+                    ? `${currentVal.toLocaleString()} ${currency}` 
+                    : `${currency} ${currentVal.toLocaleString()}`;
+                
                 if (progress < 1) window.requestAnimationFrame(step);
             };
             window.requestAnimationFrame(step);
         }
 
-        // 5. نظام الحجز الذكي لزر الحاسبة
-        const updateWhatsAppLink = () => {
+        /**
+         * 5. DYNAMIC BOOKING SYSTEM
+         * Updates the WhatsApp message with user's calculated area and price.
+         */
+        const updateEstimatorBooking = () => {
             const checkoutBtn = document.getElementById('checkoutBtn');
             const acceptPolicy = document.getElementById('acceptPolicy');
             const area = document.getElementById('inputArea')?.value || 0;
@@ -105,34 +142,40 @@
                         e.preventDefault();
                         window.open(waUrl, '_blank');
                         
+                        // Optional Redirect to Success Page
                         setTimeout(() => {
                             const successPage = isRTL ? 'success-ar.html' : 'success.html';
                             window.location.href = successPage; 
                         }, 1000); 
                     };
 
+                    checkoutBtn.classList.remove('btn-disabled');
                     checkoutBtn.style.opacity = "1";
                     checkoutBtn.style.pointerEvents = "auto";
                 } else {
                     checkoutBtn.onclick = null;
+                    checkoutBtn.classList.add('btn-disabled');
                     checkoutBtn.style.opacity = "0.5";
                     checkoutBtn.style.pointerEvents = "none";
                 }
             }
         };
 
-        // 6. الوظائف الإضافية (Menu, Theme, BackToTop)
+        /**
+         * 6. UI UTILITIES
+         * Theme switching, Mobile Menu, and Back-to-Top button.
+         */
         const initTheme = () => {
             const toggle = document.querySelector('.theme-switch input');
             const savedTheme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
             if (toggle) {
                 toggle.checked = savedTheme === 'dark';
-                toggle.onchange = () => {
+                toggle.addEventListener('change', () => {
                     const newTheme = toggle.checked ? 'dark' : 'light';
                     document.documentElement.setAttribute('data-theme', newTheme);
                     localStorage.setItem('theme', newTheme);
-                };
+                });
             }
         };
 
@@ -154,17 +197,22 @@
             }
         };
 
-        // تشغيل كافة العمليات
+        /**
+         * INITIALIZATION CALLS
+         * Launch all core functions on DOM Ready.
+         */
         initPreloader();
-        initGlobalWhatsApp(); // تحديث الروابط العامة فوراً
+        initGlobalWhatsApp();
         initHeaderScroll();
         initCalculator();
         initTheme();
         initMobileMenu();
         initBackToTop();
-        updateWhatsAppLink();
+        updateEstimatorBooking();
 
         const policyCheckbox = document.getElementById('acceptPolicy');
-        if (policyCheckbox) policyCheckbox.onchange = updateWhatsAppLink;
+        if (policyCheckbox) {
+            policyCheckbox.addEventListener('change', updateEstimatorBooking);
+        }
     });
 })();

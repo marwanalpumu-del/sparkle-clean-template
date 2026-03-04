@@ -1,14 +1,14 @@
 /**
  * SparkleClean - Premium JS Core
  * Optimized for: Maymona's Premium Template
- * Logic: Smart WhatsApp Redirect with 1s Delay
+ * Logic: Smart WhatsApp Redirect & Auto-Link Sync
  */
 
 (function () {
     "use strict";
 
     const COMPANY_SETTINGS = {
-        whatsappNumber: "967739777381", // ميمونة: غيري الرقم هنا فقط
+        whatsappNumber: "967739777381", // ميمونة: غيري الرقم هنا فقط وسيتغير في كل الموقع
         baseRate: 5
     };
 
@@ -28,7 +28,25 @@
             }
         };
 
-        // 2. الهيدر التفاعلي عند التمرير
+        // 2. تحديث كافة روابط الواتساب في الصفحة تلقائياً (بدون لمس HTML)
+        const initGlobalWhatsApp = () => {
+            const defaultMsg = isRTL 
+                ? "مرحباً SparkleClean، أريد الاستفسار عن خدماتكم" 
+                : "Hello SparkleClean, I'd like to inquire about your services";
+            
+            const newLink = `https://wa.me/${COMPANY_SETTINGS.whatsappNumber}?text=${encodeURIComponent(defaultMsg)}`;
+
+            // البحث عن أي رابط واتساب في الصفحة (باستثناء زر الحاسبة)
+            const waLinks = document.querySelectorAll('a[href^="https://wa.me/"]');
+            waLinks.forEach(link => {
+                if (link.id !== 'checkoutBtn') {
+                    link.href = newLink;
+                    link.target = "_blank";
+                }
+            });
+        };
+
+        // 3. الهيدر التفاعلي عند التمرير
         const initHeaderScroll = () => {
             const header = document.querySelector('.main-header');
             if (header) {
@@ -39,7 +57,7 @@
             }
         };
 
-        // 3. الحاسبة التفاعلية
+        // 4. الحاسبة التفاعلية
         const initCalculator = () => {
             const areaInput = document.getElementById('inputArea'); 
             const priceDisplay = document.getElementById('priceDisplay'); 
@@ -68,7 +86,7 @@
             window.requestAnimationFrame(step);
         }
 
-        // 4. نظام الحجز الذكي (فتح الواتساب + تحويل لصفحة النجاح)
+        // 5. نظام الحجز الذكي لزر الحاسبة
         const updateWhatsAppLink = () => {
             const checkoutBtn = document.getElementById('checkoutBtn');
             const acceptPolicy = document.getElementById('acceptPolicy');
@@ -85,9 +103,8 @@
                     
                     checkoutBtn.onclick = (e) => {
                         e.preventDefault();
-                        window.open(waUrl, '_blank'); // فتح الواتساب في نافذة جديدة
+                        window.open(waUrl, '_blank');
                         
-                        // تأخير ثانية واحدة قبل التحويل لصفحة النجاح
                         setTimeout(() => {
                             const successPage = isRTL ? 'success-ar.html' : 'success.html';
                             window.location.href = successPage; 
@@ -104,7 +121,7 @@
             }
         };
 
-        // 5. الوظائف الإضافية (Menu, Theme, BackToTop)
+        // 6. الوظائف الإضافية (Menu, Theme, BackToTop)
         const initTheme = () => {
             const toggle = document.querySelector('.theme-switch input');
             const savedTheme = localStorage.getItem('theme') || 'light';
@@ -137,8 +154,9 @@
             }
         };
 
-        // تشغيل كافة المحركات
+        // تشغيل كافة العمليات
         initPreloader();
+        initGlobalWhatsApp(); // تحديث الروابط العامة فوراً
         initHeaderScroll();
         initCalculator();
         initTheme();

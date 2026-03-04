@@ -28,3 +28,24 @@
       ├── js/           # main.js (Calculator & Centralized Logic)
       └── images/       # Optimized visual assets
 /Documentation          # Detailed setup and customization guide (HTML format)
+
+🛠️ Quick Setup
+​1. Configure Business Info
+​Open assets/js/main.js and locate the COMPANY_SETTINGS object at the very top. Update your details using the format below:
+
+const COMPANY_SETTINGS = {
+    whatsappNumber: "966500000000", // Your WhatsApp number with country code (e.g., Saudi Arabia)
+    baseRate: 5                     // Your price per square meter
+};
+
+2. Branding & Colors
+​Modify the :root CSS variables in assets/css/style.css to match your brand identity.
+​⚠️ Important Note on Visuals
+​The "Before & After" section currently features a Bathroom Deep Clean project. Ensure your HTML text labels match this content for professional consistency.
+​📜 Credits
+​Author: Maymona
+​Version: 1.8.5
+​Icons: FontAwesome 6.0.0
+​Fonts: Google Fonts (Inter, Cairo)
+​📧 Support
+​For technical issues or custom modification requests, please contact the author via the marketplace profile page.

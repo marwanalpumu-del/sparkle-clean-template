@@ -16,7 +16,7 @@
      * Global settings for business logic.
      */
     const COMPANY_SETTINGS = {
-        whatsappNumber: "966500000000", // International format (Dummy for preview)
+        whatsappNumber: "739777381", // International format (Dummy for preview)
         baseRate: 5                     // Base price per square meter
     };
 

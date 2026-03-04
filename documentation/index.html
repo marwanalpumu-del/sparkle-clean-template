@@ -23,53 +23,30 @@
         <p><strong>Version:</strong> 1.8.5 | <strong>Author:</strong> Maymona</p>
 
         <h2>1. Introduction</h2> 
-        <p>SparkleClean is a professional, high-performance HTML5 template designed for cleaning service providers. It features a modern, responsive design with advanced business logic, including a live cost estimator and WhatsApp booking integration.</p>
+        <p>SparkleClean is a professional, high-performance HTML5 template. It features a modern design with central business logic for WhatsApp integration.</p>
         
-<img src="../assets/images/SparkleClean_UI_Mockup_2026.png" alt="SparkleClean Mockup" style="width:100%; border-radius:8px; margin-top:20px;">
-
         <h2>2. Main Features</h2>
         <ul class="feature-list">
-            <li><strong>Multi-Language Support:</strong> Full LTR (English) and RTL (Arabic) versions included.</li>
-            <li><strong>Theme Switching:</strong> Built-in Dark & Light mode toggle with local storage persistence.</li>
-            <li><strong>Interactive Cost Estimator:</strong> Real-time pricing calculation based on area size.</li>
-            <li><strong>Conversion Optimized:</strong> Direct WhatsApp booking system for instant lead generation.</li>
-            <li><strong>Fully Responsive:</strong> Tested on iOS, Android, Windows, and Mac.</li>
-            <li><strong>W3C Validated:</strong> Clean, error-free code optimized for SEO.</li>
+            <li><strong>Auto-Sync WhatsApp:</strong> Change the number in one place to update the whole site.</li>
+            <li><strong>Multi-Language Support:</strong> Full LTR (English) and RTL (Arabic) versions.</li>
+            <li><strong>Interactive Estimator:</strong> Real-time pricing calculation.</li>
         </ul>
 
-        <h2>3. Folder Structure</h2>
+        <h2>3. Installation & Customization</h2>
+        <h3>A. WhatsApp & Business Info</h3>
+        <p>Open <code>assets/js/main.js</code> and update the <code>COMPANY_SETTINGS</code> object at the top:</p>
         <pre>
-/HTML/index.html        — English version (LTR)
-/HTML/index-ar.html     — Arabic version (RTL)
-/HTML/assets/css/       — Stylesheets (style.css)
-/HTML/assets/js/        — JavaScript files (main.js)
-/HTML/assets/images/    — Optimized images
-/Documentation/         — This help file
+const COMPANY_SETTINGS = {
+    whatsappNumber: "967739777381", // Your WhatsApp number
+    baseRate: 5                     // Your price per meter
+};
         </pre>
 
-        <h2>4. Installation & Customization</h2>
-        <h3>A. WhatsApp Number</h3>
-        <p>Open <code>assets/js/main.js</code>, locate <code>whatsappNumber</code>, and replace it with your number:</p>
-        <pre>const whatsappNumber = "966500000000";</pre>
-
-        <h3>B. Pricing Logic</h3>
-        <p>Update <code>pricePerMeter</code> in <code>main.js</code> to match your rates.</p>
-
-        <h3>C. Branding</h3>
-        <p><strong>Colors:</strong> Edit the <code>:root</code> section in <code>assets/css/style.css</code>.</p>
-        <p><strong>Fonts:</strong> Uses Google Fonts (Inter & Cairo).</p>
-
         <div class="note">
-            <strong>5. Important Note:</strong> The "Before & After" image features a <strong>Bathroom Deep Clean</strong>. Ensure your HTML labels match this content for professionalism.
+            <strong>Professional Hint:</strong> All buttons (Floating, Contact, and Booking) update automatically once you save the changes in <code>main.js</code>.
         </div>
 
-        <h2>6. Credits</h2>
-        <ul>
-            <li>Icons: FontAwesome 6.0.0</li>
-            <li>Framework: Pure HTML5/CSS3/JavaScript</li>
-        </ul>
-
-        <h2>7. Support</h2>
+        <h2>4. Support</h2>
         <p>For technical issues, please contact me through my marketplace profile page.</p>
     </div>
 </body>

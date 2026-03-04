@@ -25,29 +25,44 @@
         <h2>1. Introduction</h2> 
         <p>SparkleClean is a professional, high-performance HTML5 template. It features a modern design with central business logic for WhatsApp integration.</p>
         
+        <img src="../assets/images/SparkleClean_UI_Mockup_2026.png" alt="SparkleClean Mockup" style="width:100%; border-radius:8px; margin-top:20px; margin-bottom:20px;">
+
         <h2>2. Main Features</h2>
         <ul class="feature-list">
-            <li><strong>Auto-Sync WhatsApp:</strong> Change the number in one place to update the whole site.</li>
-            <li><strong>Multi-Language Support:</strong> Full LTR (English) and RTL (Arabic) versions.</li>
-            <li><strong>Interactive Estimator:</strong> Real-time pricing calculation.</li>
+            <li><strong>Auto-Sync WhatsApp:</strong> Update your phone number once to change it across the entire site.</li>
+            <li><strong>Multi-Language Support:</strong> Full LTR (English) and RTL (Arabic) versions included.</li>
+            <li><strong>Interactive Estimator:</strong> Real-time pricing calculation based on area size.</li>
+            <li><strong>Dark Mode Support:</strong> Built-in theme switcher with local storage persistence.</li>
         </ul>
 
         <h2>3. Installation & Customization</h2>
         <h3>A. WhatsApp & Business Info</h3>
-        <p>Open <code>assets/js/main.js</code> and update the <code>COMPANY_SETTINGS</code> object at the top:</p>
+        <p>Open <code>assets/js/main.js</code> and update the <code>COMPANY_SETTINGS</code> object at the top of the file:</p>
         <pre>
 const COMPANY_SETTINGS = {
-    whatsappNumber: "966500000000", // Your WhatsApp number
-    baseRate: 5                     // Your price per meter
-};
-        </pre>
+    whatsappNumber: "966500000000", // Replace with your international number
+    baseRate: 5                     // Set your price per square meter
+};</pre>
 
         <div class="note">
-            <strong>Professional Hint:</strong> All buttons (Floating, Contact, and Booking) update automatically once you save the changes in <code>main.js</code>.
+            <strong>Professional Hint:</strong> All buttons (Floating Button, Contact Section, and Calculator) update automatically once you save changes in <code>main.js</code>. No HTML editing required!
         </div>
 
-        <h2>4. Support</h2>
-        <p>For technical issues, please contact me through my marketplace profile page.</p>
+        <h3>B. Branding</h3>
+        <p><strong>Colors:</strong> Edit the <code>:root</code> variables in <code>assets/css/style.css</code> to match your brand colors.</p>
+        <p><strong>Fonts:</strong> Uses Google Fonts (Inter and Cairo).</p>
+
+        <h2>4. Folder Structure</h2>
+        <pre>
+/HTML/index.html        — English version (LTR)
+/HTML/index-ar.html     — Arabic version (RTL)
+/HTML/assets/css/       — Main Stylesheet
+/HTML/assets/js/        — Core Logic (main.js)
+/HTML/assets/images/    — Optimized image assets
+/Documentation/         — This guide</pre>
+
+        <h2>5. Support</h2>
+        <p>For technical issues or customization requests, please contact the author via the marketplace profile page.</p>
     </div>
 </body>
 </html>

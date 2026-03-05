@@ -3,20 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparkleClean | Professional Cleaning System</title>
+    <title>SparkleClean | Premium Cleaning System</title>
+    
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
+    <div id="preloader">
+        <div class="loader-spinner"></div>
+    </div>
+
     <header>
         <div class="logo">SPARKLE<span>CLEAN</span></div>
         <nav>
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Results</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#results">Results</a></li>
             </ul>
         </nav>
         <div class="lang-switch">
@@ -24,47 +31,54 @@
         </div>
     </header>
 
-    <section class="hero">
-        <h1>Experience Sparkling Excellence</h1>
-        <p>Premium professional cleaning for modern homes. Perfection you can trust.</p>
-        <button class="btn-primary">Our Services</button>
-    </section>
+    <main id="home">
+        <section class="hero">
+            <h1>Experience Sparkling Excellence</h1>
+            <p>Premium professional cleaning for modern homes. Perfection you can trust.</p>
+        </section>
 
-    <section class="estimator">
-        <div class="estimator-container">
-            <h3>Cost Estimator</h3>
-            <div class="input-group">
-                <label>Area (sq/m)</label>
-                <input type="number" id="areaInput" placeholder="e.g. 120">
-            </div>
-            <div class="result-display">
-                <p>Estimated Total</p>
-                <span id="totalPrice">0</span> <small>SAR</small>
-            </div>
-            <button class="secure-booking-btn" id="bookNow">Secure Booking <i class="fas fa-shield-alt"></i></button>
-        </div>
-    </section>
+        <section class="estimator">
+            <div class="estimator-container">
+                <h3><i class="fas fa-calculator"></i> Cost Estimator</h3>
+                
+                <div class="input-group">
+                    <label for="inputArea">Area (sq/m)</label>
+                    <input type="number" id="inputArea" placeholder="e.g. 120" min="0">
+                </div>
 
-    <section class="services">
-        <h2>Our Services</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-home"></i>
-                <h3>Residential</h3>
-                <p>Deep home cleaning and sanitization.</p>
+                <div class="result-box">
+                    <p>Estimated Total</p>
+                    <span id="priceDisplay">0 SAR</span>
+                </div>
+
+                <div class="policy-area">
+                    <input type="checkbox" id="acceptPolicy">
+                    <label for="acceptPolicy">I agree to the service policy and terms.</label>
+                </div>
+
+                <button id="checkoutBtn" class="secure-booking-btn">
+                    Secure Booking <i class="fas fa-shield-alt"></i>
+                </button>
             </div>
-            <div class="service-card">
-                <i class="fas fa-building"></i>
-                <h3>Office</h3>
-                <p>Healthy workspace for your team.</p>
+        </section>
+
+        <section class="services" id="services">
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Residential</h3>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-building"></i>
+                    <h3>Office</h3>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-broom"></i>
+                    <h3>Deep Clean</h3>
+                </div>
             </div>
-            <div class="service-card">
-                <i class="fas fa-broom"></i>
-                <h3>Deep Clean</h3>
-                <p>Reaching every hidden corner.</p>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <script src="main.js"></script>
 </body>

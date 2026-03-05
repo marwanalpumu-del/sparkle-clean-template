@@ -1,213 +1,71 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparkleClean | Premium Professional Cleaning Services</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>SparkleClean | Professional Cleaning System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-
-    <div id="preloader">
-        <div class="loader-content">
-            <div class="loader-box"><span class="loader-logo">S</span></div>
-            <p class="loader-text">SPARKLE CLEAN</p>
-        </div>
-    </div>
-
-    <header class="main-header">
-        <div class="container navbar">
-            <a href="index.html" class="brand-logo" aria-label="SparkleClean Home">
-                <div class="logo-shape">S</div>
-                <div class="logo-text">SPARKLE<span>CLEAN</span></div>
-            </a>
-
-            <nav class="nav-container" id="nav-menu">
-                <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#results" class="nav-link">Results</a></li>
-                    <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                    <li><a href="index-ar.html" class="nav-link" style="color: var(--primary); font-family: 'Cairo';">العربية</a></li>
-                </ul>
-            </nav>
-
-            <div class="nav-controls">
-                <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-
-                <button class="menu-toggle" id="mobile-menu" aria-label="Open Navigation Menu" aria-expanded="false">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-            </div>
+    <header>
+        <div class="logo">SPARKLE<span>CLEAN</span></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Results</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="lang-switch">
+            <button id="langBtn">العربية</button>
         </div>
     </header>
 
-    <section id="home" class="hero-banner">
-        <div class="container hero-wrapper">
-            <div class="banner-content">
-                <h1 class="hero-title">Experience <span>Sparkling</span> Excellence</h1>
-                <p>Premium professional cleaning for modern homes. Perfection you can trust.</p>
-                <div class="banner-buttons">
-                    <a href="#services" class="btn-primary" role="button">Our Services</a>
-                    <a href="#contact" class="btn-outline" role="button">Book Now ✨</a>
-                </div>
+    <section class="hero">
+        <h1>Experience Sparkling Excellence</h1>
+        <p>Premium professional cleaning for modern homes. Perfection you can trust.</p>
+        <button class="btn-primary">Our Services</button>
+    </section>
+
+    <section class="estimator">
+        <div class="estimator-container">
+            <h3>Cost Estimator</h3>
+            <div class="input-group">
+                <label>Area (sq/m)</label>
+                <input type="number" id="areaInput" placeholder="e.g. 120">
             </div>
+            <div class="result-display">
+                <p>Estimated Total</p>
+                <span id="totalPrice">0</span> <small>SAR</small>
+            </div>
+            <button class="secure-booking-btn" id="bookNow">Secure Booking <i class="fas fa-shield-alt"></i></button>
+        </div>
+    </section>
 
-            <div class="calc-card">
-                <h2>Cost Estimator</h2>
-                <div class="form-group">
-                    <label for="inputArea">Area (sq. meters)</label>
-                    <input type="number" id="inputArea" placeholder="e.g. 120">
-                </div>
-                <div class="price-result">
-                    <p>Estimated Total</p>
-                    <div id="priceDisplay">0 SAR</div> 
-                </div>
-                
-                <div class="policy-check" style="margin-bottom: 15px; display: flex; gap: 8px;">
-                    <input type="checkbox" id="acceptPolicy">
-                    <label for="acceptPolicy" style="font-size: 0.8rem; color: var(--text-muted);">
-                        I agree to the service policy and terms.
-                    </label>
-                </div>
-
-                <a href="#contact" class="btn-checkout" id="checkoutBtn" style="display: block; text-align: center; text-decoration: none;" role="button">Secure Booking ✨</a>
+    <section class="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-home"></i>
+                <h3>Residential</h3>
+                <p>Deep home cleaning and sanitization.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-building"></i>
+                <h3>Office</h3>
+                <p>Healthy workspace for your team.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-broom"></i>
+                <h3>Deep Clean</h3>
+                <p>Reaching every hidden corner.</p>
             </div>
         </div>
     </section>
 
-    <section id="services" class="section-padding">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-                <h2>Our <span>Services</span></h2>
-            </div>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <i class="fas fa-home" aria-hidden="true"></i>
-                    <h3>Residential</h3>
-                    <p>Complete home cleaning and sanitization.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-building" aria-hidden="true"></i>
-                    <h3>Office</h3>
-                    <p>Healthy workspace for your team.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-broom" aria-hidden="true"></i>
-                    <h3>Deep Clean</h3>
-                    <p>Reaching every hidden corner.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="results" class="section-padding" style="background: var(--card-bg);">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-                <h2>Before & <span>After</span></h2>
-            </div>
-            <div class="results-display">
-                <div class="results-card">
-                    <img src="assets/images/results.webp" alt="Kitchen cleaning before and after">
-                    <div style="padding: 15px; text-align: center; font-weight: bold;">Bathroom Deep Clean</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonials" class="section-padding" style="background: var(--bg-color);">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-                <h2>What Our <span>Clients Say</span></h2>
-                <p style="max-width: 600px; margin: 0 auto;">Real feedback from our happy customers.</p>
-            </div>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div style="color: #ff9800; margin-bottom: 10px;">⭐⭐⭐⭐⭐</div>
-                    <p style="font-style: italic;">"Amazing service! The cost estimator was very accurate and the team was professional."</p>
-                    <h3 style="margin-top: 15px; color: var(--primary); font-size: 1.17em; font-weight: bold;">Sarah J.</h3>
-                </div>
-                <div class="feature-card">
-                    <div style="color: #ff9800; margin-bottom: 10px;">⭐⭐⭐⭐⭐</div>
-                    <p style="font-style: italic;">"The best cleaning company I've ever dealt with. My house is sparkling clean!"</p>
-                    <h3 style="margin-top: 15px; color: var(--primary); font-size: 1.17em; font-weight: bold;">Ahmed K.</h3>
-                </div>
-                <div class="feature-card">
-                    <div style="color: #ff9800; margin-bottom: 10px;">⭐⭐⭐⭐⭐</div>
-                    <p style="font-style: italic;">"Fast booking via WhatsApp and excellent deep cleaning service."</p>
-                    <h3 style="margin-top: 15px; color: var(--primary); font-size: 1.17em; font-weight: bold;">Mona S.</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="section-padding" style="background: var(--card-bg);">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-                <h2>Why Choose <span>Us?</span></h2>
-                <p style="max-width: 700px; margin: 0 auto;">We combine professional expertise with eco-friendly solutions to provide a safe environment.</p>
-            </div>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <i class="fas fa-leaf" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
-                    <h3>Eco-Friendly</h3>
-                    <p>Safe materials for your family and pets.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-user-shield" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
-                    <h3>Trusted Team</h3>
-                    <p>Highly trained and background-checked staff.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-clock" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
-                    <h3>Save Time</h3>
-                    <p>Focus on your life while we handle the mess.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section-padding" style="background: var(--bg-color);">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-                <h2>Get In <span>Touch</span></h2>
-            </div>
-            <div class="contact-wrapper" style="text-align: center;">
-                <p>Ready for a cleaner home? Chat with us on WhatsApp for a custom quote.</p>
-                <a href="https://wa.me/966500000000" class="btn-primary" style="display:inline-block; margin-top:20px; text-decoration:none; width: auto; padding: 12px 40px;" role="button">Chat on WhatsApp</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="main-footer">
-        <div class="container" style="text-align: center; padding: 40px 0;">
-            <p>&copy; 2026 SparkleClean. Designed with <span style="color:red;">❤️</span> </p>
-        </div>
-    </footer>
-
-    <a href="https://wa.me/966500000000" class="whatsapp-float" aria-label="Contact us on WhatsApp">
-        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-    </a>
-
-    <button id="backToTop" class="back-to-top" aria-label="Back to top">
-        <i class="fas fa-chevron-up" aria-hidden="true"></i>
-    </button>
-
-    <script src="assets/js/main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

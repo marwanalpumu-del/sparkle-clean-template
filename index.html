@@ -3,314 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparkleClean | Premium Cleaning Management System</title>
+    <title>SparkleClean | Premium Smart System</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* SparkleClean Premium UI/UX Core */
         :root {
             --primary: #72d6f1;
-            --dark-blue: #007bff;
-            --dark: #1a1a1a;
-            --bg: #f8f9fa;
-            --white: #ffffff;
-            --shadow: 0 15px 35px rgba(0,0,0,0.1);
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --card-bg: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --header-bg: rgba(255, 255, 255, 0.9);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        body {
-            font-family: 'Poppins', 'Tajawal', sans-serif;
-            background-color: var(--bg);
-            color: var(--dark);
-            line-height: 1.6;
+        /* --- Dark Mode Variables --- */
+        [data-theme="dark"] {
+            --bg: #121212;
+            --text: #ffffff;
+            --card-bg: #1e1e1e;
+            --header-bg: rgba(18, 18, 18, 0.9);
+            --shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* Preloader */
-        #preloader {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: var(--white);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.6s ease;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; transition: background 0.3s, color 0.3s; }
+        body { font-family: 'Poppins', 'Tajawal', sans-serif; background: var(--bg); color: var(--text); scroll-behavior: smooth; }
 
-        /* Header Navigation */
+        /* --- Premium Header --- */
         header {
-            background: var(--white);
-            padding: 15px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 6%; background: var(--header-bg); backdrop-filter: blur(10px);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky; top: 0; z-index: 1000;
         }
 
-        .logo { font-size: 22px; font-weight: 800; color: var(--dark); }
+        .logo { font-size: 22px; font-weight: 800; color: var(--text); }
         .logo span { color: var(--primary); }
 
+        /* --- Menu Buttons --- */
+        .header-actions { display: flex; align-items: center; gap: 15px; }
+        
         .nav-links { display: flex; list-style: none; gap: 20px; }
-        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; transition: 0.3s; }
-        .nav-links a:hover { color: var(--primary); }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 14px; }
 
-        .lang-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
+        /* --- Hamburger Menu (Mobile) --- */
+        .hamburger { display: none; cursor: pointer; font-size: 24px; color: var(--text); }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                position: absolute; top: 100%; right: -100%; width: 70%; height: 100vh;
+                background: var(--card-bg); flex-direction: column; padding: 40px;
+                transition: 0.4s; box-shadow: var(--shadow);
+            }
+            .nav-links.active { right: 0; }
+            .hamburger { display: block; }
         }
 
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+        /* --- Dark Mode & Lang Toggles --- */
+        .toggle-btn { 
+            background: var(--primary); color: white; border: none; 
+            padding: 8px 15px; border-radius: 50px; cursor: pointer; font-weight: 600; font-size: 12px;
         }
 
-        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        /* --- Hero & Sections --- */
+        section { padding: 100px 6% 60px; }
+        .hero { text-align: center; background: linear-gradient(180deg, var(--primary) 0%, transparent 100%); opacity: 0.1; position: absolute; width: 100%; height: 400px; z-index: -1; }
+        .hero-content { text-align: center; padding-top: 120px; }
 
-        /* Interactive Estimator */
+        /* --- Estimator Card --- */
         .estimator-container {
-            background: var(--white);
-            max-width: 420px;
-            margin: -50px auto 40px;
-            padding: 35px;
-            border-radius: 25px;
-            box-shadow: var(--shadow);
-            text-align: center;
+            background: var(--card-bg); max-width: 450px; margin: 0 auto;
+            padding: 40px; border-radius: 30px; box-shadow: var(--shadow); text-align: center;
         }
-
-        .input-group { text-align: left; margin-bottom: 20px; }
-        label { display: block; font-size: 14px; margin-bottom: 8px; font-weight: 600; }
 
         input[type="number"] {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #eee;
-            border-radius: 12px;
-            font-size: 18px;
-            text-align: center;
-            outline: none;
-            transition: 0.3s;
+            width: 100%; padding: 18px; border: 2px solid #eee; border-radius: 15px;
+            font-size: 18px; text-align: center; background: var(--card-bg); color: var(--text); margin: 20px 0; outline: none;
         }
 
-        input:focus { border-color: var(--primary); }
-
-        .result-box {
-            background: #f0fbfe;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-        }
-
-        #priceDisplay {
-            display: block;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        .policy-area {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            font-size: 13px;
-            color: #666;
-        }
+        .result-box { background: rgba(114, 214, 241, 0.1); padding: 25px; border-radius: 20px; margin: 25px 0; }
+        #priceDisplay { font-size: 2.8rem; font-weight: 800; color: var(--primary); display: block; }
 
         #checkoutBtn {
-            width: 100%;
-            padding: 18px;
-            background: var(--primary);
-            color: var(--white);
-            border: none;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.4s;
+            width: 100%; padding: 20px; background: var(--primary); color: white;
+            border: none; border-radius: 50px; font-weight: 700; cursor: pointer; font-size: 16px;
         }
 
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            padding: 40px 6%;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: 0.3s;
-        }
-
-        .service-card i { font-size: 3rem; color: var(--primary); margin-bottom: 15px; }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 1.8rem; }
-        }
+        /* --- Service Cards --- */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
+        .service-card { background: var(--card-bg); padding: 40px; border-radius: 25px; text-align: center; box-shadow: var(--shadow); }
+        .service-card i { font-size: 3.5rem; color: var(--primary); margin-bottom: 20px; }
     </style>
 </head>
-<body>
-
-    <div id="preloader">
-        <div class="loader-spinner"></div>
-    </div>
+<body data-theme="light">
 
     <header>
         <div class="logo">SPARKLE<span>CLEAN</span></div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#results">Results</a></li>
-            </ul>
-        </nav>
-        <button id="langBtn" class="lang-btn">العربية</button>
+        
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+            <li><a href="#services" data-en="Services" data-ar="خدماتنا">Services</a></li>
+            <li><a href="#estimator" data-en="Calculator" data-ar="الحاسبة">Calculator</a></li>
+        </ul>
+
+        <div class="header-actions">
+            <button class="toggle-btn" id="langToggle">العربية</button>
+            <i class="fas fa-moon" id="themeToggle" style="cursor: pointer; font-size: 20px;"></i>
+            <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
     </header>
 
-    <section class="hero">
-        <h1>Experience Sparkling Excellence</h1>
-        <p>Premium professional cleaning for modern homes.</p>
+    <div class="hero"></div>
+
+    <section id="home" class="hero-content">
+        <h1 id="heroTitle">Experience Sparkling Excellence</h1>
+        <p id="heroDesc">Premium professional cleaning for modern homes.</p>
     </section>
 
-    <section class="estimator">
+    <section id="estimator">
         <div class="estimator-container">
-            <h3><i class="fas fa-calculator"></i> Cost Estimator</h3>
-            
-            <div class="input-group">
-                <label for="inputArea">Area (sq/m)</label>
-                <input type="number" id="inputArea" placeholder="e.g. 120">
-            </div>
-
+            <h3 id="calcTitle"><i class="fas fa-calculator"></i> Cost Estimator</h3>
+            <input type="number" id="inputArea" placeholder="Area in sq/m">
             <div class="result-box">
-                <p>Estimated Total</p>
+                <p id="totalText">Estimated Total</p>
                 <span id="priceDisplay">0 SAR</span>
             </div>
-
-            <div class="policy-area">
-                <input type="checkbox" id="acceptPolicy">
-                <label for="acceptPolicy">I agree to terms & policy</label>
+            <div style="margin-bottom: 20px; font-size: 13px;">
+                <input type="checkbox" id="acceptPolicy"> <span id="policyText">I agree to terms & policy</span>
             </div>
-
             <button id="checkoutBtn">Secure Booking <i class="fas fa-shield-alt"></i></button>
         </div>
     </section>
 
-    <section class="services" id="services">
+    <section id="services">
+        <h2 style="text-align: center; margin-bottom: 40px;" id="serviceTitle">Professional Services</h2>
         <div class="services-grid">
             <div class="service-card">
                 <i class="fas fa-home"></i>
-                <h3>Residential</h3>
-                <p>Deep home cleaning and sanitization.</p>
+                <h3 id="s1Title">Residential</h3>
             </div>
             <div class="service-card">
                 <i class="fas fa-building"></i>
-                <h3>Office</h3>
-                <p>Healthy workspace for your team.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-broom"></i>
-                <h3>Deep Clean</h3>
-                <p>Reaching every hidden corner.</p>
+                <h3 id="s2Title">Office</h3>
             </div>
         </div>
     </section>
 
     <script>
-        /**
-         * SparkleClean - Premium JS Core
-         * Author: Maymona | Version: 1.8.5
-         */
-        (function () {
-            "use strict";
+        // --- 1. Dark Mode Logic ---
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.onclick = () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.body.setAttribute('data-theme', newTheme);
+            themeToggle.className = newTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        };
 
-            const CONFIG = {
-                whatsappNumber: "739777381", 
-                baseRate: 5                     
-            };
+        // --- 2. Hamburger Logic ---
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.onclick = () => navLinks.classList.toggle('active');
+        navLinks.onclick = () => navLinks.classList.remove('active');
 
-            document.addEventListener('DOMContentLoaded', function () {
-                const isRTL = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ar';
+        // --- 3. Full Language Translation Logic ---
+        const langToggle = document.getElementById('langToggle');
+        let currentLang = 'en';
 
-                // Preloader Logic
-                const preloader = document.getElementById('preloader');
-                if (preloader) {
-                    window.addEventListener('load', () => {
-                        setTimeout(() => {
-                            preloader.style.opacity = '0';
-                            setTimeout(() => preloader.remove(), 600);
-                        }, 800);
-                    });
-                }
+        const translations = {
+            ar: {
+                heroTitle: "تجربة نظافة استثنائية",
+                heroDesc: "خدمات تنظيف احترافية للمنازل العصرية",
+                calcTitle: "حاسبة التكلفة",
+                totalText: "الإجمالي التقديري",
+                policyText: "أوافق على الشروط والسياسات",
+                serviceTitle: "خدماتنا الاحترافية",
+                s1Title: "تنظيف سكني",
+                s2Title: "تنظيف مكاتب",
+                langBtn: "English"
+            },
+            en: {
+                heroTitle: "Experience Sparkling Excellence",
+                heroDesc: "Premium professional cleaning for modern homes.",
+                calcTitle: "Cost Estimator",
+                totalText: "Estimated Total",
+                policyText: "I agree to terms & policy",
+                serviceTitle: "Professional Services",
+                s1Title: "Residential",
+                s2Title: "Office",
+                langBtn: "العربية"
+            }
+        };
 
-                // Calculator Logic
-                const areaInput = document.getElementById('inputArea'); 
-                const priceDisplay = document.getElementById('priceDisplay'); 
+        langToggle.onclick = () => {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLang;
+            
+            langToggle.innerText = translations[currentLang].langBtn;
+            document.getElementById('heroTitle').innerText = translations[currentLang].heroTitle;
+            document.getElementById('heroDesc').innerText = translations[currentLang].heroDesc;
+            document.getElementById('calcTitle').innerHTML = `<i class="fas fa-calculator"></i> ${translations[currentLang].calcTitle}`;
+            document.getElementById('totalText').innerText = translations[currentLang].totalText;
+            document.getElementById('policyText').innerText = translations[currentLang].policyText;
+            document.getElementById('serviceTitle').innerText = translations[currentLang].serviceTitle;
+            document.getElementById('s1Title').innerText = translations[currentLang].s1Title;
+            document.getElementById('s2Title').innerText = translations[currentLang].s2Title;
 
-                if (areaInput && priceDisplay) {
-                    areaInput.addEventListener('input', () => {
-                        const area = parseFloat(areaInput.value) || 0;
-                        const total = area * CONFIG.baseRate;
-                        animateValue(priceDisplay, total, 400);
-                        updateBookingStatus(); 
-                    });
-                }
-
-                function animateValue(obj, end, duration) {
-                    let start = parseInt(obj.innerText.replace(/[^0-9]/g, '')) || 0;
-                    let startTimestamp = null;
-                    const step = (timestamp) => {
-                        if (!startTimestamp) startTimestamp = timestamp;
-                        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                        const currentVal = Math.floor(progress * (end - start) + start);
-                        const currency = isRTL ? "ريال" : "SAR";
-                        obj.innerText = isRTL ? `${currentVal.toLocaleString()} ${currency}` : `${currency} ${currentVal.toLocaleString()}`;
-                        if (progress < 1) window.requestAnimationFrame(step);
-                    };
-                    window.requestAnimationFrame(step);
-                }
-
-                // Booking Logic
-                const updateBookingStatus = () => {
-                    const checkoutBtn = document.getElementById('checkoutBtn');
-                    const acceptPolicy = document.getElementById('acceptPolicy');
-                    const area = areaInput.value || 0;
-
-                    if (checkoutBtn && acceptPolicy) {
-                        if (acceptPolicy.checked && area > 0) {
-                            const msg = isRTL ? `حجز جديد: مساحة ${area}م` : `New Booking: ${area}sqm`;
-                            checkoutBtn.onclick = () => window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
-                            checkoutBtn.style.opacity = "1";
-                            checkoutBtn.style.pointerEvents = "auto";
-                        } else {
-                            checkoutBtn.onclick = null;
-                            checkoutBtn.style.opacity = "0.5";
-                            checkoutBtn.style.pointerEvents = "none";
-                        }
-                    }
-                };
-
-                const policyCheckbox = document.getElementById('acceptPolicy');
-                if (policyCheckbox) policyCheckbox.addEventListener('change', updateBookingStatus);
-                updateBookingStatus();
+            // Translate Nav Links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.innerText = link.getAttribute(`data-${currentLang}`);
             });
-        })();
+        };
+
+        // --- 4. Smart Calculator ---
+        const areaInput = document.getElementById('inputArea');
+        const priceDisplay = document.getElementById('priceDisplay');
+        areaInput.oninput = () => {
+            const area = areaInput.value || 0;
+            const total = area * 5;
+            const currency = currentLang === 'ar' ? 'ريال' : 'SAR';
+            priceDisplay.innerText = `${total} ${currency}`;
+        };
     </script>
 </body>
 </html>

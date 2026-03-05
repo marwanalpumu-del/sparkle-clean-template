@@ -5,32 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SparkleClean | Premium Smart System</title>
     
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
+        /* =========================================
+           CSS - التنسيق الفاخر (UI/UX)
+           ========================================= */
         :root {
             --primary: #72d6f1;
             --bg: #ffffff;
             --text: #1a1a1a;
             --card-bg: #ffffff;
             --shadow: 0 10px 30px rgba(0,0,0,0.08);
-            --header-bg: rgba(255, 255, 255, 0.9);
+            --header-bg: rgba(255, 255, 255, 0.95);
         }
 
-        /* --- Dark Mode Variables --- */
         [data-theme="dark"] {
             --bg: #121212;
             --text: #ffffff;
             --card-bg: #1e1e1e;
-            --header-bg: rgba(18, 18, 18, 0.9);
-            --shadow: 0 10px 30px rgba(0,0,0,0.5);
+            --header-bg: rgba(18, 18, 18, 0.95);
+            --shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; transition: background 0.3s, color 0.3s; }
-        body { font-family: 'Poppins', 'Tajawal', sans-serif; background: var(--bg); color: var(--text); scroll-behavior: smooth; }
+        * { box-sizing: border-box; margin: 0; padding: 0; transition: 0.3s ease; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', 'Tajawal', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-        /* --- Premium Header --- */
         header {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
@@ -38,85 +42,71 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        .logo { font-size: 22px; font-weight: 800; color: var(--text); }
+        .logo { font-size: 22px; font-weight: 800; }
         .logo span { color: var(--primary); }
 
-        /* --- Menu Buttons --- */
-        .header-actions { display: flex; align-items: center; gap: 15px; }
-        
-        .nav-links { display: flex; list-style: none; gap: 20px; }
-        .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 14px; }
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 14px; }
+        .nav-links a:hover { color: var(--primary); }
 
-        /* --- Hamburger Menu (Mobile) --- */
-        .hamburger { display: none; cursor: pointer; font-size: 24px; color: var(--text); }
+        .header-actions { display: flex; align-items: center; gap: 15px; }
+        .hamburger { display: none; cursor: pointer; font-size: 24px; }
 
         @media (max-width: 992px) {
             .nav-links {
-                position: absolute; top: 100%; right: -100%; width: 70%; height: 100vh;
-                background: var(--card-bg); flex-direction: column; padding: 40px;
-                transition: 0.4s; box-shadow: var(--shadow);
+                position: absolute; top: 100%; right: -100%; width: 280px; height: 100vh;
+                background: var(--card-bg); flex-direction: column; padding: 50px 30px; gap: 30px;
             }
             .nav-links.active { right: 0; }
             .hamburger { display: block; }
         }
 
-        /* --- Dark Mode & Lang Toggles --- */
-        .toggle-btn { 
-            background: var(--primary); color: white; border: none; 
-            padding: 8px 15px; border-radius: 50px; cursor: pointer; font-weight: 600; font-size: 12px;
-        }
-
-        /* --- Hero & Sections --- */
-        section { padding: 100px 6% 60px; }
-        .hero { text-align: center; background: linear-gradient(180deg, var(--primary) 0%, transparent 100%); opacity: 0.1; position: absolute; width: 100%; height: 400px; z-index: -1; }
-        .hero-content { text-align: center; padding-top: 120px; }
-
-        /* --- Estimator Card --- */
+        .hero { padding: 160px 6% 60px; text-align: center; }
         .estimator-container {
-            background: var(--card-bg); max-width: 450px; margin: 0 auto;
-            padding: 40px; border-radius: 30px; box-shadow: var(--shadow); text-align: center;
+            background: var(--card-bg); max-width: 480px; margin: 40px auto;
+            padding: 40px; border-radius: 30px; box-shadow: var(--shadow);
         }
 
         input[type="number"] {
             width: 100%; padding: 18px; border: 2px solid #eee; border-radius: 15px;
-            font-size: 18px; text-align: center; background: var(--card-bg); color: var(--text); margin: 20px 0; outline: none;
+            background: var(--card-bg); color: var(--text); font-size: 18px; text-align: center; outline: none;
         }
 
-        .result-box { background: rgba(114, 214, 241, 0.1); padding: 25px; border-radius: 20px; margin: 25px 0; }
-        #priceDisplay { font-size: 2.8rem; font-weight: 800; color: var(--primary); display: block; }
+        .price-box { background: rgba(114, 214, 241, 0.1); padding: 25px; border-radius: 20px; margin: 25px 0; }
+        #priceDisplay { font-size: 2.8rem; font-weight: 800; color: var(--primary); }
 
         #checkoutBtn {
             width: 100%; padding: 20px; background: var(--primary); color: white;
-            border: none; border-radius: 50px; font-weight: 700; cursor: pointer; font-size: 16px;
+            border: none; border-radius: 50px; font-weight: 700; cursor: pointer;
         }
 
-        /* --- Service Cards --- */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
-        .service-card { background: var(--card-bg); padding: 40px; border-radius: 25px; text-align: center; box-shadow: var(--shadow); }
-        .service-card i { font-size: 3.5rem; color: var(--primary); margin-bottom: 20px; }
+        /* تنسيق قسم قبل وبعد بناءً على مجلد images */
+        .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px 0; }
+        .compare-item { position: relative; border-radius: 25px; overflow: hidden; box-shadow: var(--shadow); border: 4px solid var(--white); }
+        .compare-item img { width: 100%; height: 350px; object-fit: cover; display: block; }
+        .label { position: absolute; top: 20px; left: 20px; background: var(--primary); color: white; padding: 6px 18px; border-radius: 50px; font-weight: 700; }
+
+        .toggle-btn { background: var(--primary); color: white; border: none; padding: 8px 18px; border-radius: 50px; cursor: pointer; font-weight: 700; }
     </style>
 </head>
 <body data-theme="light">
 
     <header>
         <div class="logo">SPARKLE<span>CLEAN</span></div>
-        
         <ul class="nav-links" id="navLinks">
             <li><a href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
-            <li><a href="#services" data-en="Services" data-ar="خدماتنا">Services</a></li>
             <li><a href="#estimator" data-en="Calculator" data-ar="الحاسبة">Calculator</a></li>
+            <li><a href="#results" data-en="Results" data-ar="النتائج">Results</a></li>
+            <li><a href="#services" data-en="Services" data-ar="خدماتنا">Services</a></li>
         </ul>
-
         <div class="header-actions">
             <button class="toggle-btn" id="langToggle">العربية</button>
-            <i class="fas fa-moon" id="themeToggle" style="cursor: pointer; font-size: 20px;"></i>
+            <i class="fas fa-moon" id="themeToggle" style="cursor: pointer;"></i>
             <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
         </div>
     </header>
 
-    <div class="hero"></div>
-
-    <section id="home" class="hero-content">
+    <section id="home" class="hero">
         <h1 id="heroTitle">Experience Sparkling Excellence</h1>
         <p id="heroDesc">Premium professional cleaning for modern homes.</p>
     </section>
@@ -125,105 +115,94 @@
         <div class="estimator-container">
             <h3 id="calcTitle"><i class="fas fa-calculator"></i> Cost Estimator</h3>
             <input type="number" id="inputArea" placeholder="Area in sq/m">
-            <div class="result-box">
+            <div class="price-box">
                 <p id="totalText">Estimated Total</p>
                 <span id="priceDisplay">0 SAR</span>
             </div>
             <div style="margin-bottom: 20px; font-size: 13px;">
-                <input type="checkbox" id="acceptPolicy"> <span id="policyText">I agree to terms & policy</span>
+                <input type="checkbox" id="acceptPolicy">
+                <span id="policyText">I agree to terms & policy</span>
             </div>
             <button id="checkoutBtn">Secure Booking <i class="fas fa-shield-alt"></i></button>
         </div>
     </section>
 
-    <section id="services">
-        <h2 style="text-align: center; margin-bottom: 40px;" id="serviceTitle">Professional Services</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-home"></i>
-                <h3 id="s1Title">Residential</h3>
+    <section id="results" style="padding: 60px 6%; text-align: center;">
+        <h2 id="resultsTitle">Before & After Results</h2>
+        <div class="comparison-grid">
+            <div class="compare-item">
+                <span class="label" data-en="Before" data-ar="قبل">Before</span>
+                <img src="assets/images/before.jpg" alt="Before">
             </div>
-            <div class="service-card">
-                <i class="fas fa-building"></i>
-                <h3 id="s2Title">Office</h3>
+            <div class="compare-item">
+                <span class="label" style="background: #2ecc71;" data-en="After" data-ar="بعد">After</span>
+                <img src="assets/images/after.jpg" alt="After">
             </div>
         </div>
     </section>
 
     <script>
-        // --- 1. Dark Mode Logic ---
+        /* =========================================
+           JS - المنطق البرمجي الذكي
+           ========================================= */
+        
+        // 1. الدارك مود
         const themeToggle = document.getElementById('themeToggle');
         themeToggle.onclick = () => {
-            const currentTheme = document.body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            document.body.setAttribute('data-theme', newTheme);
-            themeToggle.className = newTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            themeToggle.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
         };
 
-        // --- 2. Hamburger Logic ---
+        // 2. الهمبرجر
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         hamburger.onclick = () => navLinks.classList.toggle('active');
-        navLinks.onclick = () => navLinks.classList.remove('active');
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.onclick = () => navLinks.classList.remove('active');
+        });
 
-        // --- 3. Full Language Translation Logic ---
+        // 3. الترجمة والتحويل (RTL/LTR)
         const langToggle = document.getElementById('langToggle');
         let currentLang = 'en';
 
-        const translations = {
-            ar: {
-                heroTitle: "تجربة نظافة استثنائية",
-                heroDesc: "خدمات تنظيف احترافية للمنازل العصرية",
-                calcTitle: "حاسبة التكلفة",
-                totalText: "الإجمالي التقديري",
-                policyText: "أوافق على الشروط والسياسات",
-                serviceTitle: "خدماتنا الاحترافية",
-                s1Title: "تنظيف سكني",
-                s2Title: "تنظيف مكاتب",
-                langBtn: "English"
-            },
-            en: {
-                heroTitle: "Experience Sparkling Excellence",
-                heroDesc: "Premium professional cleaning for modern homes.",
-                calcTitle: "Cost Estimator",
-                totalText: "Estimated Total",
-                policyText: "I agree to terms & policy",
-                serviceTitle: "Professional Services",
-                s1Title: "Residential",
-                s2Title: "Office",
-                langBtn: "العربية"
-            }
+        const dict = {
+            ar: { heroT: "نظافة استثنائية", heroD: "خدمات احترافية تضمن لك الجودة والراحة التامة.", calcT: "حاسبة التكلفة", totalT: "الإجمالي", policyT: "أوافق على الشروط", bookB: "احجز الآن", resT: "النتائج قبل وبعد", langB: "English" },
+            en: { heroT: "Experience Sparkling Excellence", heroD: "Premium professional cleaning for modern homes.", calcT: "Cost Estimator", totalT: "Estimated Total", policyT: "I agree to terms", bookB: "Secure Booking", resT: "Before & After Results", langB: "العربية" }
         };
 
         langToggle.onclick = () => {
             currentLang = currentLang === 'en' ? 'ar' : 'en';
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-            document.documentElement.lang = currentLang;
-            
-            langToggle.innerText = translations[currentLang].langBtn;
-            document.getElementById('heroTitle').innerText = translations[currentLang].heroTitle;
-            document.getElementById('heroDesc').innerText = translations[currentLang].heroDesc;
-            document.getElementById('calcTitle').innerHTML = `<i class="fas fa-calculator"></i> ${translations[currentLang].calcTitle}`;
-            document.getElementById('totalText').innerText = translations[currentLang].totalText;
-            document.getElementById('policyText').innerText = translations[currentLang].policyText;
-            document.getElementById('serviceTitle').innerText = translations[currentLang].serviceTitle;
-            document.getElementById('s1Title').innerText = translations[currentLang].s1Title;
-            document.getElementById('s2Title').innerText = translations[currentLang].s2Title;
-
-            // Translate Nav Links
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.innerText = link.getAttribute(`data-${currentLang}`);
-            });
+            langToggle.innerText = dict[currentLang].langB;
+            document.getElementById('heroTitle').innerText = dict[currentLang].heroT;
+            document.getElementById('heroDesc').innerText = dict[currentLang].heroD;
+            document.getElementById('calcTitle').innerText = dict[currentLang].calcT;
+            document.getElementById('totalText').innerText = dict[currentLang].totalT;
+            document.getElementById('policyText').innerText = dict[currentLang].policyT;
+            document.getElementById('resultsTitle').innerText = dict[currentLang].resT;
+            document.querySelectorAll('.nav-links a').forEach(a => a.innerText = a.getAttribute(`data-${currentLang}`));
+            document.querySelectorAll('.label').forEach(l => l.innerText = l.getAttribute(`data-${currentLang}`));
         };
 
-        // --- 4. Smart Calculator ---
-        const areaInput = document.getElementById('inputArea');
+        // 4. الحاسبة وربط صفحة النجاح
+        const inputArea = document.getElementById('inputArea');
         const priceDisplay = document.getElementById('priceDisplay');
-        areaInput.oninput = () => {
-            const area = areaInput.value || 0;
-            const total = area * 5;
-            const currency = currentLang === 'ar' ? 'ريال' : 'SAR';
-            priceDisplay.innerText = `${total} ${currency}`;
+        const checkoutBtn = document.getElementById('checkoutBtn');
+
+        inputArea.oninput = () => {
+            const total = (inputArea.value || 0) * 5;
+            priceDisplay.innerText = `${total} ${currentLang === 'ar' ? 'ريال' : 'SAR'}`;
+        };
+
+        checkoutBtn.onclick = () => {
+            if(document.getElementById('acceptPolicy').checked && inputArea.value > 0) {
+                const msg = `Booking for ${inputArea.value}sqm`;
+                window.open(`https://wa.me/739777381?text=${encodeURIComponent(msg)}`, '_blank');
+                setTimeout(() => { window.location.href = 'success.html'; }, 1000);
+            } else {
+                alert(currentLang === 'ar' ? "يرجى الموافقة على الشروط وإدخال المساحة" : "Please agree to terms and enter area");
+            }
         };
     </script>
 </body>

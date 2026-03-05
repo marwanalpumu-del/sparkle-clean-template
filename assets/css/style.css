@@ -1,160 +1,168 @@
+/* --- Core Styles & Typography --- */
 :root {
-    --primary-color: #72d6f1;
-    --dark-blue: #007bff;
-    --bg-light: #f8f9fa;
-    --text-main: #333;
+    --primary: #72d6f1;
+    --dark: #1a1a1a;
+    --gray-light: #f4f7f6;
     --white: #ffffff;
+    --shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
     font-family: 'Poppins', 'Tajawal', sans-serif;
-    background-color: var(--bg-light);
-    color: var(--text-main);
+    background-color: var(--gray-light);
+    color: var(--dark);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
+/* --- Preloader Style --- */
+#preloader {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.6s ease;
+}
+
+/* --- Premium Navigation --- */
 header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 6%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%;
-    background: var(--white);
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .logo {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--dark-blue);
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.logo span {
-    color: var(--primary-color);
-}
+.logo span { color: var(--primary); }
 
-.nav-links {
+/* --- Interactive Estimator Section --- */
+.estimator {
+    padding: 60px 20px;
     display: flex;
-    list-style: none;
-}
-
-.nav-links li {
-    margin: 0 15px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-main);
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-.nav-links a:hover {
-    color: var(--primary-color);
-}
-
-.hero {
-    text-align: center;
-    padding: 80px 10%;
-    background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('hero-bg.jpg');
-    background-size: cover;
-}
-
-.hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
+    justify-content: center;
 }
 
 .estimator-container {
     background: var(--white);
-    max-width: 450px;
-    margin: -50px auto 40px;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 420px;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: var(--shadow);
     text-align: center;
+    border: 1px solid rgba(0,0,0,0.03);
 }
 
+.estimator-container h3 {
+    font-size: 22px;
+    margin-bottom: 25px;
+    color: var(--dark);
+}
+
+/* --- Input Area Customization --- */
 .input-group {
-    margin: 20px 0;
+    margin-bottom: 20px;
     text-align: left;
 }
 
-input[type="number"] {
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #666;
+}
+
+#inputArea {
     width: 100%;
-    padding: 12px;
-    border: 2px solid #eee;
-    border-radius: 10px;
-    font-size: 16px;
-    outline: none;
-    transition: 0.3s;
-}
-
-input:focus {
-    border-color: var(--primary-color);
-}
-
-.result-display {
-    margin: 25px 0;
     padding: 15px;
-    background: #e3f7fd;
-    border-radius: 10px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    outline: none;
+    text-align: center;
 }
 
-#totalPrice {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--dark-blue);
+#inputArea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(114, 214, 241, 0.1);
 }
 
-.secure-booking-btn {
+/* --- Dynamic Price Display --- */
+.result-box {
+    background: #f0fbfe;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 25px 0;
+}
+
+#priceDisplay {
+    display: block;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--primary);
+    margin-top: 5px;
+}
+
+/* --- Policy Checkbox & Booking Button --- */
+.policy-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #777;
+}
+
+#checkoutBtn {
     width: 100%;
-    padding: 16px;
-    background: var(--primary-color);
-    color: white;
+    padding: 18px;
+    background: var(--primary);
+    color: var(--white);
     border: none;
     border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 700;
     cursor: pointer;
-    transition: 0.4s;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
-.secure-booking-btn:hover {
-    background: var(--dark-blue);
+#checkoutBtn:hover {
     transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(114, 214, 241, 0.3);
 }
 
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 40px 5%;
-}
-
-.service-card {
-    background: var(--white);
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.service-card i {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
-
-@media (max-width: 768px) {
-    .nav-links { display: none; }
-    .hero h1 { font-size: 1.8rem; }
+/* --- Responsive Adjustments --- */
+@media (max-width: 480px) {
+    .estimator-container { padding: 25px; }
+    header { padding: 15px 4%; }
 }

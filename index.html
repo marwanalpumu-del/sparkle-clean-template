@@ -3,12 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparkleClean | Premium Cleaning System</title>
-    
-    <link rel="stylesheet" href="style.css">
+    <title>SparkleClean | Premium Cleaning Management System</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* SparkleClean Premium UI/UX Core */
+        :root {
+            --primary: #72d6f1;
+            --dark-blue: #007bff;
+            --dark: #1a1a1a;
+            --bg: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Poppins', 'Tajawal', sans-serif;
+            background-color: var(--bg);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease;
+        }
+
+        /* Header Navigation */
+        header {
+            background: var(--white);
+            padding: 15px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 1000;
+        }
+
+        .logo { font-size: 22px; font-weight: 800; color: var(--dark); }
+        .logo span { color: var(--primary); }
+
+        .nav-links { display: flex; list-style: none; gap: 20px; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .lang-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+        }
+
+        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+
+        /* Interactive Estimator */
+        .estimator-container {
+            background: var(--white);
+            max-width: 420px;
+            margin: -50px auto 40px;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .input-group { text-align: left; margin-bottom: 20px; }
+        label { display: block; font-size: 14px; margin-bottom: 8px; font-weight: 600; }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 18px;
+            text-align: center;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus { border-color: var(--primary); }
+
+        .result-box {
+            background: #f0fbfe;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        #priceDisplay {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .policy-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        #checkoutBtn {
+            width: 100%;
+            padding: 18px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 40px 6%;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .service-card i { font-size: 3rem; color: var(--primary); margin-bottom: 15px; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
 </head>
 <body>
 
@@ -28,55 +184,133 @@
         <button id="langBtn" class="lang-btn">العربية</button>
     </header>
 
-    <main>
-        <section class="hero">
-            <h1>Experience Sparkling Excellence</h1>
-            <p>Premium professional cleaning for modern homes.</p>
-        </section>
+    <section class="hero">
+        <h1>Experience Sparkling Excellence</h1>
+        <p>Premium professional cleaning for modern homes.</p>
+    </section>
 
-        <section class="estimator">
-            <div class="estimator-container">
-                <h3><i class="fas fa-calculator"></i> Cost Estimator</h3>
-                
-                <div class="input-group">
-                    <label for="inputArea">Area (sq/m)</label>
-                    <input type="number" id="inputArea" placeholder="e.g. 120" min="0">
-                </div>
-
-                <div class="result-box">
-                    <p>Estimated Total</p>
-                    <span id="priceDisplay">0 SAR</span>
-                </div>
-
-                <div class="policy-area">
-                    <input type="checkbox" id="acceptPolicy">
-                    <label for="acceptPolicy">I agree to terms & policy</label>
-                </div>
-
-                <button id="checkoutBtn" class="secure-btn">
-                    Secure Booking <i class="fas fa-shield-alt"></i>
-                </button>
+    <section class="estimator">
+        <div class="estimator-container">
+            <h3><i class="fas fa-calculator"></i> Cost Estimator</h3>
+            
+            <div class="input-group">
+                <label for="inputArea">Area (sq/m)</label>
+                <input type="number" id="inputArea" placeholder="e.g. 120">
             </div>
-        </section>
 
-        <section class="services" id="services">
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-home"></i>
-                    <h3>Residential</h3>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-building"></i>
-                    <h3>Office</h3>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-broom"></i>
-                    <h3>Deep Clean</h3>
-                </div>
+            <div class="result-box">
+                <p>Estimated Total</p>
+                <span id="priceDisplay">0 SAR</span>
             </div>
-        </section>
-    </main>
 
-    <script src="main.js"></script>
+            <div class="policy-area">
+                <input type="checkbox" id="acceptPolicy">
+                <label for="acceptPolicy">I agree to terms & policy</label>
+            </div>
+
+            <button id="checkoutBtn">Secure Booking <i class="fas fa-shield-alt"></i></button>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-home"></i>
+                <h3>Residential</h3>
+                <p>Deep home cleaning and sanitization.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-building"></i>
+                <h3>Office</h3>
+                <p>Healthy workspace for your team.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-broom"></i>
+                <h3>Deep Clean</h3>
+                <p>Reaching every hidden corner.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        /**
+         * SparkleClean - Premium JS Core
+         * Author: Maymona | Version: 1.8.5
+         */
+        (function () {
+            "use strict";
+
+            const CONFIG = {
+                whatsappNumber: "739777381", 
+                baseRate: 5                     
+            };
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const isRTL = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ar';
+
+                // Preloader Logic
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    window.addEventListener('load', () => {
+                        setTimeout(() => {
+                            preloader.style.opacity = '0';
+                            setTimeout(() => preloader.remove(), 600);
+                        }, 800);
+                    });
+                }
+
+                // Calculator Logic
+                const areaInput = document.getElementById('inputArea'); 
+                const priceDisplay = document.getElementById('priceDisplay'); 
+
+                if (areaInput && priceDisplay) {
+                    areaInput.addEventListener('input', () => {
+                        const area = parseFloat(areaInput.value) || 0;
+                        const total = area * CONFIG.baseRate;
+                        animateValue(priceDisplay, total, 400);
+                        updateBookingStatus(); 
+                    });
+                }
+
+                function animateValue(obj, end, duration) {
+                    let start = parseInt(obj.innerText.replace(/[^0-9]/g, '')) || 0;
+                    let startTimestamp = null;
+                    const step = (timestamp) => {
+                        if (!startTimestamp) startTimestamp = timestamp;
+                        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                        const currentVal = Math.floor(progress * (end - start) + start);
+                        const currency = isRTL ? "ريال" : "SAR";
+                        obj.innerText = isRTL ? `${currentVal.toLocaleString()} ${currency}` : `${currency} ${currentVal.toLocaleString()}`;
+                        if (progress < 1) window.requestAnimationFrame(step);
+                    };
+                    window.requestAnimationFrame(step);
+                }
+
+                // Booking Logic
+                const updateBookingStatus = () => {
+                    const checkoutBtn = document.getElementById('checkoutBtn');
+                    const acceptPolicy = document.getElementById('acceptPolicy');
+                    const area = areaInput.value || 0;
+
+                    if (checkoutBtn && acceptPolicy) {
+                        if (acceptPolicy.checked && area > 0) {
+                            const msg = isRTL ? `حجز جديد: مساحة ${area}م` : `New Booking: ${area}sqm`;
+                            checkoutBtn.onclick = () => window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+                            checkoutBtn.style.opacity = "1";
+                            checkoutBtn.style.pointerEvents = "auto";
+                        } else {
+                            checkoutBtn.onclick = null;
+                            checkoutBtn.style.opacity = "0.5";
+                            checkoutBtn.style.pointerEvents = "none";
+                        }
+                    }
+                };
+
+                const policyCheckbox = document.getElementById('acceptPolicy');
+                if (policyCheckbox) policyCheckbox.addEventListener('change', updateBookingStatus);
+                updateBookingStatus();
+            });
+        })();
+    </script>
 </body>
 </html>

@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparkleClean | Elite Smart System</title>
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>SparkleClean | نظام النظافة الذكي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -19,83 +18,64 @@
                 <div class="s-box">S</div>
                 <div class="brand-name">SPARKLE<span>CLEAN</span></div>
             </div>
-            <nav class="nav-menu">
-                <a href="#" onclick="openPrivacy(event)">Privacy</a>
-                <label class="theme-switch">
-                    <input type="checkbox">
-                    <span class="slider"></span>
-                </label>
+            
+            <nav class="nav-links" id="navLinks">
+                <a href="#home">الرئيسية</a>
+                <a href="#services">خدماتنا</a>
+                <a href="#results">قبل وبعد</a>
+                <a href="#" id="privacyBtn">الخصوصية</a>
             </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
         </div>
     </header>
 
     <main>
-        <section class="hero-section">
-            <div class="hero-content">
-                <h1 class="fade-in">Smart Luxury Cleaning</h1>
-                
-                <div class="estimator-card glass">
-                    <h3>Price Estimator</h3>
-                    
-                    <div class="currency-selector">
-                        <label>Currency / العملة</label>
-                        <select id="currencySelect">
-                            <option value="USD" data-rate="1" data-symbol="$">USD ($)</option>
-                            <option value="SAR" data-rate="3.75" data-symbol="ر.س">SAR (ر.س)</option>
-                            <option value="AED" data-rate="3.67" data-symbol="د.إ">AED (د.إ)</option>
-                            <option value="YER" data-rate="250" data-symbol="ر.ي">YER (ر.ي)</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <input type="number" id="inputArea" placeholder="Area (sqm)" value="100">
-                    </div>
-                    
-                    <div class="display-box">
-                        <span id="priceDisplay">$ 0</span>
-                    </div>
-
-                    <div class="policy-check">
-                        <input type="checkbox" id="acceptPolicy">
-                        <label for="acceptPolicy">I accept privacy & service policy</label>
-                    </div>
-                    
-                    <a href="#" id="checkoutBtn" class="btn-disabled">Book via WhatsApp</a>
+        <section class="hero-section" id="home">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <h1 class="fade-in">تجربة نظافة استثنائية</h1>
+                    <p>نظام ذكي يجمع بين الدقة التكنولوجية والرفاهية العصرية كما في أجهزة MacBook و iPhone.</p>
                 </div>
 
-                <div class="comparison-wrapper glass">
-                    <div class="image-wrapper">
-                        <img src="assets/images/after.webp" alt="After">
-                        <div class="before-overlay">
-                            <img src="assets/images/before.webp" alt="Before">
-                        </div>
-                        <input type="range" min="0" max="100" value="50" class="slider-bar" id="comparisonSlider">
-                        <div class="slider-button"></div>
+                <div class="estimator-card glass">
+                    <h3>حاسبة التكلفة الذكية</h3>
+                    <div class="currency-selector">
+                        <select id="currencySelect">
+                            <option value="SAR" data-rate="3.75" data-symbol="ر.س">ريال سعودي</option>
+                            <option value="YER" data-rate="250" data-symbol="ر.ي">ريال يمني</option>
+                            <option value="USD" data-rate="1" data-symbol="$">دولار أمريكي</option>
+                        </select>
                     </div>
+                    <input type="number" id="inputArea" placeholder="المساحة م2" value="100">
+                    <div class="display-box"><span id="priceDisplay">0 ريال</span></div>
+                    <div class="policy-check">
+                        <input type="checkbox" id="acceptPolicy">
+                        <label for="acceptPolicy">أوافق على سياسة الخصوصية</label>
+                    </div>
+                    <a href="#" id="checkoutBtn" class="btn-primary btn-disabled">احجز الآن عبر واتساب</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="results" class="results-section container">
+            <h2 class="section-title">نتائج العمل</h2>
+            <div class="comparison-wrapper glass">
+                <div class="image-wrapper">
+                    <img src="assets/images/after.webp" alt="بعد">
+                    <div class="before-overlay">
+                        <img src="assets/images/before.webp" alt="قبل">
+                    </div>
+                    <input type="range" min="0" max="100" value="50" class="slider-bar" id="comparisonSlider">
+                    <div class="slider-button"></div>
                 </div>
             </div>
         </section>
     </main>
 
-    <div id="privacyModal" class="modal-overlay">
-        <div class="modal-content glass">
-            <div class="modal-header">
-                <h3><i class="fas fa-shield-alt"></i> Privacy Policy</h3>
-                <span class="close-modal">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="policy-item">
-                    <h4>Geo-IP Detection</h4>
-                    <p>We use your IP to set the local currency automatically.</p>
-                    <p class="ar-text">نستخدم موقعك لتحديد العملة المحلية تلقائياً.</p>
-                </div>
-                <button class="btn-gold close-modal-btn">I Understand</button>
-            </div>
-        </div>
-    </div>
-
-    <a href="#" class="whatsapp-float whatsapp-btn"><i class="fab fa-whatsapp"></i></a>
-    <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+    <button id="backToTop" class="back-to-top"><i class="fas fa-chevron-up"></i></button>
 
     <script src="assets/js/main.js"></script>
 </body>

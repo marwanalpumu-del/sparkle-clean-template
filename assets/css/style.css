@@ -1,48 +1,93 @@
+/* --- Global Variables --- */
 :root {
-    --primary: #72d6f1; /* السماوي المعتمد */
+    --primary: #72d6f1;
     --dark-bg: #0b1120;
-    --card-bg: #1e293b;
-    --text-white: #ffffff;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --text: #ffffff;
+    --transition: all 0.3s ease;
 }
 
 [data-theme="light"] {
-    --dark-bg: #ffffff;
-    --text-white: #1a1a1a;
-    --card-bg: #f8fafc;
+    --dark-bg: #f8fafc;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --text: #1e293b;
 }
 
-body { margin: 0; font-family: 'Tajawal', 'Poppins', sans-serif; background: var(--dark-bg); color: var(--text-white); overflow-x: hidden; transition: 0.3s; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', 'Tajawal', sans-serif; background: var(--dark-bg); color: var(--text); overflow-x: hidden; transition: var(--transition); }
 
-/* اللوجو البرمجي */
-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; position: absolute; width: 90%; z-index: 100; }
-.logo-group { display: flex; align-items: center; gap: 6px; }
-.s-box { background: var(--primary); color: white; width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 900; }
-.brand-name { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+/* --- Header & Logo --- */
+header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 6%; position: absolute; width: 100%; z-index: 1000;
+}
+.logo-group { display: flex; align-items: center; gap: 8px; }
+.s-box { 
+    background: var(--primary); color: white; width: 34px; height: 34px; 
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 20px; box-shadow: 0 4px 15px rgba(114, 214, 241, 0.4);
+}
+.brand-name { font-weight: 800; font-size: 19px; color: #fff; text-transform: uppercase; }
 .brand-name span { color: var(--primary); }
 
-.nav-menu { display: flex; align-items: center; gap: 15px; font-size: 13px; }
-.nav-menu a { color: white; text-decoration: none; opacity: 0.8; }
-.lang-switch { color: var(--primary); font-weight: 700; cursor: pointer; }
+.header-actions { display: flex; align-items: center; gap: 20px; }
+.desktop-nav { display: flex; align-items: center; gap: 15px; }
+.lang-link { color: var(--primary); text-decoration: none; font-weight: 700; font-size: 14px; }
 
-/* زر السويتش */
-.switch { position: relative; width: 40px; height: 20px; }
-.switch input { opacity: 0; width: 0; height: 0; }
-.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: #334155; transition: .4s; border-radius: 34px; }
-.slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background: white; transition: .4s; border-radius: 50%; }
+/* --- Theme Switch --- */
+.theme-switch { position: relative; width: 44px; height: 22px; cursor: pointer; }
+.theme-switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; inset: 0; background: #334155; transition: 0.4s; border-radius: 34px; }
+.slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background: white; transition: 0.4s; border-radius: 50%; }
 input:checked + .slider { background: var(--primary); }
-input:checked + .slider:before { transform: translateX(20px); }
+input:checked + .slider:before { transform: translateX(22px); }
 
-/* البنر والحاسبة */
-.main-banner { height: 100vh; background: url('../images/hero-bg.jpg') no-repeat center/cover; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; }
-.overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 17, 32, 0.6); }
-.content { position: relative; z-index: 10; width: 90%; max-width: 450px; }
+/* --- Hero & Glass Card --- */
+.hero-section {
+    height: 100vh; background: url('../images/hero-bg.webp') no-repeat center/cover;
+    background-attachment: fixed; display: flex; align-items: center; justify-content: center; position: relative;
+}
+.hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+.hero-content { position: relative; z-index: 10; text-align: center; width: 90%; max-width: 420px; animation: fadeInUp 1s ease-out; }
 
-h1 { font-size: 2.2rem; font-weight: 900; color: var(--primary); }
+.hero-title { color: var(--primary); font-size: 2.4rem; font-weight: 900; margin-bottom: 12px; }
+.hero-subtitle { color: #e2e8f0; margin-bottom: 30px; font-weight: 500; }
 
-.calculator-box { background: var(--card-bg); padding: 25px; border-radius: 20px; margin-top: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-input[type="number"] { width: 100%; padding: 12px; border-radius: 10px; border: none; background: #0f172a; color: white; text-align: center; font-size: 18px; }
+.glass { background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid rgba(114, 214, 241, 0.2); padding: 35px; border-radius: 30px; }
+input[type="number"] { width: 100%; padding: 15px; border-radius: 15px; border: none; background: #0f172a; color: #fff; text-align: center; font-size: 22px; margin-bottom: 20px; }
+.price-box { background: rgba(114, 214, 241, 0.1); padding: 20px; border-radius: 20px; margin-bottom: 25px; }
+#totalPrice { color: var(--primary); font-size: 2.8rem; font-weight: 900; }
+.order-btn { width: 100%; padding: 20px; border-radius: 18px; border: none; background: var(--primary); color: #0b1120; font-weight: 900; font-size: 18px; cursor: pointer; transition: 0.3s; }
 
-.result-box { background: rgba(114, 214, 241, 0.1); padding: 15px; border-radius: 15px; margin: 20px 0; }
-#totalPrice { color: var(--primary); font-size: 2rem; margin: 5px 0; }
+/* --- Mobile Menu & Hamburger --- */
+.hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+.hamburger span { width: 30px; height: 3px; background: var(--primary); border-radius: 10px; }
 
-.btn-submit { width: 100%; padding: 15px; border-radius: 12px; border: none; background: var(--primary); color: #0b1120; font-weight: 900; cursor: pointer; }
+.mobile-menu { position: fixed; top: 0; width: 280px; height: 100vh; background: var(--dark-bg); z-index: 2100; display: flex; flex-direction: column; padding: 60px 30px; gap: 25px; transition: 0.5s ease; }
+.mobile-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; z-index: 2050; }
+.menu-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: var(--primary); font-size: 24px; cursor: pointer; }
+.mobile-menu a { color: var(--text); text-decoration: none; font-size: 20px; font-weight: 700; }
+
+/* --- Floating Buttons Positions --- */
+.whatsapp-float { position: fixed; bottom: 30px; width: 60px; height: 60px; background: #25d366; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; z-index: 1500; box-shadow: 0 10px 25px rgba(0,0,0,0.3); text-decoration: none; transition: 0.3s; }
+.back-to-top { position: fixed; bottom: 105px; width: 50px; height: 50px; background: var(--primary); color: #0b1120; border: none; border-radius: 12px; display: none; align-items: center; justify-content: center; z-index: 1500; cursor: pointer; font-size: 20px; transition: 0.3s; }
+
+/* Direction Controls */
+[dir="ltr"] .mobile-menu { left: -300px; }
+[dir="ltr"] .mobile-menu.active { left: 0; }
+[dir="ltr"] .whatsapp-float { right: 30px; }
+[dir="ltr"] .back-to-top { right: 35px; }
+
+[dir="rtl"] .mobile-menu { right: -300px; }
+[dir="rtl"] .mobile-menu.active { right: 0; }
+[dir="rtl"] .whatsapp-float { left: 30px; }
+[dir="rtl"] .back-to-top { left: 35px; }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .desktop-nav { display: none; }
+    .hamburger { display: flex; }
+    .hero-title { font-size: 1.9rem; }
+}
+
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }

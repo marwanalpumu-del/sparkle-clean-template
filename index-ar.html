@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سباركل كلين | النظام الذكي</title>
+    <title>سباركل كلين | النظام الذكي الفاخر</title>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -16,7 +16,6 @@
             <div class="s-box">S</div>
             <div class="brand-name">SPARKLE<span>CLEAN</span></div>
         </div>
-        
         <div class="header-actions">
             <nav class="desktop-nav">
                 <a href="index.html" class="lang-link">English</a>
@@ -34,20 +33,20 @@
     <div class="mobile-overlay" id="mobileOverlay"></div>
     <nav class="mobile-menu" id="mobileMenu">
         <button class="menu-close" id="menuClose"><i class="fas fa-times"></i></button>
-        <a href="index.html">English</a>
-        <a href="#home">الرئيسية</a>
-        <a href="#services">خدماتنا</a>
+        <a href="index.html" style="color: var(--primary);">English</a>
+        <a href="index-ar.html">الرئيسية</a>
+        <a href="success.html">حالة الحجز</a>
+        <a href="404.html">الدعم الفني</a>
     </nav>
 
     <main class="hero-section">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title">تجربة نظافة استثنائية</h1>
-            <p class="hero-subtitle">نظام ذكي متكامل مصمم لتقديم أرقى خدمات التنظيف الاحترافية.</p>
+            <h1 class="hero-title">تجربة نظافة ملكية</h1>
+            <p class="hero-subtitle">نظام ذكي متكامل مصمم للنخبة ولأرقى الوحدات السكنية.</p>
             
             <div class="calc-card glass">
-                <h3>خاصية التكلفة</h3>
-                <label>المساحة م2 (متر مربع)</label>
+                <h3>حاسبة التكلفة</h3>
                 <input type="number" id="areaInput" value="120" min="1">
                 <div class="price-box">
                     <small>التكلفة التقديرية</small>
@@ -55,15 +54,24 @@
                 </div>
                 <button class="order-btn" id="orderBtn">اطلب الآن</button>
             </div>
+
+            <div class="comparison-container glass">
+                <div class="image-wrapper">
+                    <img src="assets/images/after.webp" alt="بعد">
+                    <div class="before-overlay">
+                        <img src="assets/images/before.webp" alt="قبل">
+                    </div>
+                    <input type="range" min="0" max="100" value="50" class="slider-bar" id="comparisonSlider">
+                    <div class="slider-button"></div>
+                </div>
+            </div>
         </div>
     </main>
 
-    <a href="#" class="whatsapp-float" id="whatsappLink" target="_blank">
+    <a href="#" class="whatsapp-btn whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
-    <button id="backToTop" class="back-to-top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+    <button id="backToTop" class="back-to-top"><i class="fas fa-chevron-up"></i></button>
 
     <script src="assets/js/main.js"></script>
 </body>

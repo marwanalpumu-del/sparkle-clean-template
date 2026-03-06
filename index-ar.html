@@ -3,112 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سباركل كلين | النظام الذكي الفاخر</title>
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    
+    <title>SparkleClean | نظام التنظيف الذكي</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-theme="dark">
-
-    <div id="preloader"><div class="spinner"></div></div>
 
     <header class="main-header">
         <div class="container header-flex">
             <div class="logo-group">
                 <div class="s-box">S</div>
-                <div class="brand-name">سباركل<span>كلين</span></div>
+                <div class="brand-name">SPARKLE<span>CLEAN</span></div>
             </div>
-            <nav class="nav-menu">
-                <a href="index.html" class="lang-switch">English</a>
+            
+            <nav class="nav-links" id="navLinks">
+                <a href="#home">الرئيسية</a>
+                <a href="#services">خدماتنا</a>
+                <a href="#results">النتائج</a>
                 <a href="#" onclick="openPrivacy(event)">الخصوصية</a>
-                <label class="theme-switch">
-                    <input type="checkbox">
-                    <span class="slider"></span>
-                </label>
+                <button id="themeToggle" class="theme-btn"><i class="fas fa-moon"></i></button>
             </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
         </div>
     </header>
 
-    <main>
+    <main id="home">
         <section class="hero-section">
-            <div class="hero-content">
-                <h1 class="fade-in">نظافة ملكية ذكية</h1>
-                <p style="margin-bottom: 25px; opacity: 0.8;">أنظمة متطورة للعناية بالمساحات العصرية الفاخرة.</p>
-                
-                <div class="estimator-card glass">
-                    <h3>حاسبة التكلفة التقديرية</h3>
-                    
-                    <div class="currency-selector">
-                        <label>اختر العملة المفضلة</label>
-                        <select id="currencySelect">
-                            <option value="SAR" data-rate="3.75" data-symbol="ر.س">ريال سعودي (SAR)</option>
-                            <option value="AED" data-rate="3.67" data-symbol="د.إ">درهم إماراتي (AED)</option>
-                            <option value="YER" data-rate="250" data-symbol="ر.ي">ريال يمني (YER)</option>
-                            <option value="USD" data-rate="1" data-symbol="$">دولار أمريكي (USD)</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <label style="display: block; margin-bottom: 8px; font-size: 14px; opacity: 0.7;">أدخل مساحة المكان (متر مربع):</label>
-                        <input type="number" id="inputArea" placeholder="المساحة م2" value="100">
-                    </div>
-                    
-                    <div class="display-box">
-                        <span id="priceDisplay">0 ريال</span>
-                    </div>
-
-                    <div class="policy-check">
-                        <input type="checkbox" id="acceptPolicy">
-                        <label for="acceptPolicy">أوافق على سياسة الخدمة والخصوصية</label>
-                    </div>
-                    
-                    <a href="#" id="checkoutBtn" class="btn-disabled">احجز الآن عبر واتساب</a>
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <h1 class="fade-in">تجربة نظافة استثنائية</h1>
+                    <p>نظام ذكي يجمع بين الدقة التكنولوجية والرفاهية العصرية كما في أجهزة MacBook و iPhone.</p>
                 </div>
 
-                <div class="comparison-wrapper glass">
-                    <h4 style="margin-bottom: 15px; color: var(--primary);">نتائجنا الفاخرة</h4>
-                    <div class="image-wrapper">
-                        <img src="assets/images/after.webp" alt="بعد التنظيف">
-                        <div class="before-overlay">
-                            <img src="assets/images/before.webp" alt="قبل التنظيف">
-                        </div>
-                        <input type="range" min="0" max="100" value="50" class="slider-bar" id="comparisonSlider">
-                        <div class="slider-button"></div>
+                <div class="estimator-card glass">
+                    <h3>حاسبة التكلفة الذكية</h3>
+                    <div class="input-row">
+                        <select id="currencySelect">
+                            <option value="SAR" data-rate="3.75" data-symbol="ر.س">ريال سعودي</option>
+                            <option value="USD" data-rate="1" data-symbol="$">دولار أمريكي</option>
+                        </select>
+                        <input type="number" id="inputArea" placeholder="المساحة م2" value="100">
                     </div>
-                    <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 12px; opacity: 0.6;">
-                        <span>بعد</span>
-                        <span>قبل</span>
+                    <div class="display-box"><span id="priceDisplay">0 ريال</span></div>
+                    <div class="policy-check">
+                        <input type="checkbox" id="acceptPolicy">
+                        <label for="acceptPolicy">أوافق على سياسة الخصوصية</label>
                     </div>
+                    <a href="#" id="checkoutBtn" class="btn-primary btn-disabled">احجز الآن عبر واتساب</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="results" class="results-section container">
+            <h2 class="section-title">نتائج العمل (قبل وبعد)</h2>
+            <div class="comparison-wrapper glass">
+                <div class="image-wrapper">
+                    <img src="assets/images/after.webp" alt="بعد">
+                    <div class="before-overlay">
+                        <img src="assets/images/before.webp" alt="قبل">
+                    </div>
+                    <input type="range" min="0" max="100" value="50" class="slider-bar" id="comparisonSlider">
+                    <div class="slider-button"></div>
                 </div>
             </div>
         </section>
     </main>
 
-    <div id="privacyModal" class="modal-overlay">
-        <div class="modal-content glass">
-            <div class="modal-header">
-                <h3><i class="fas fa-shield-alt"></i> سياسة الخصوصية</h3>
-                <span class="close-modal">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="policy-item" style="text-align: right;">
-                    <h4><i class="fas fa-map-marker-alt"></i> تحديد الموقع تلقائياً</h4>
-                    <p>نستخدم تقنية Geo-IP لتحديد دولتك واختيار العملة المناسبة لك تلقائياً لتحسين تجربتك.</p>
-                </div>
-                <div class="policy-item" style="text-align: right;">
-                    <h4><i class="fas fa-lock"></i> حماية البيانات</h4>
-                    <p>جميع تفاصيل الحجز تُرسل مباشرة عبر واتساب ولا يتم تخزين أي بيانات حساسة في خوادمنا.</p>
-                </div>
-                <button class="btn-gold close-modal-btn">فهمت ذلك</button>
-            </div>
-        </div>
-    </div>
-
-    <a href="#" class="whatsapp-float whatsapp-btn"><i class="fab fa-whatsapp"></i></a>
-    <button id="backToTop" title="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
+    <button id="backToTop" class="back-to-top"><i class="fas fa-chevron-up"></i></button>
 
     <script src="assets/js/main.js"></script>
 </body>

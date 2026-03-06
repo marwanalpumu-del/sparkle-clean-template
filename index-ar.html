@@ -1,211 +1,68 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="light">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سباركل كلين | خدمات تنظيف احترافية</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>سباركل كلين | النظام الذكي</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body data-theme="dark">
 
-    <div id="preloader">
-        <div class="loader-content">
-            <div class="loader-box"><span class="loader-logo">S</span></div>
-            <p class="loader-text">SPARKLE CLEAN</p>
+    <header>
+        <div class="logo-group">
+            <div class="s-box">S</div>
+            <div class="brand-name">SPARKLE<span>CLEAN</span></div>
         </div>
-    </div>
-
-    <header class="main-header">
-        <div class="container navbar">
-            <a href="index-ar.html" class="brand-logo" aria-label="سباركل كلين الرئيسية">
-                <div class="logo-shape">S</div>
-                <div class="logo-text">SPARKLE<span>CLEAN</span></div>
-            </a>
-
-            <nav class="nav-container" id="nav-menu">
-                <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link">الرئيسية</a></li>
-                    <li><a href="#services" class="nav-link">خدماتنا</a></li>
-                    <li><a href="#results" class="nav-link">أعمالنا</a></li>
-                    <li><a href="#testimonials" class="nav-link">آراء العملاء</a></li>
-                    <li><a href="#about" class="nav-link">لماذا نحن؟</a></li>
-                    <li><a href="#contact" class="nav-link">اتصل بنا</a></li>
-                    <li><a href="index.html" class="nav-link" style="color: var(--primary); font-family: 'Inter';">English</a></li>
-                </ul>
+        
+        <div class="header-actions">
+            <nav class="desktop-nav">
+                <a href="index.html" class="lang-link">English</a>
+                <label class="theme-switch">
+                    <input type="checkbox" id="modeToggle">
+                    <span class="slider"></span>
+                </label>
             </nav>
-
-            <div class="nav-controls">
-                <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-
-                <button class="menu-toggle" id="mobile-menu" aria-label="فتح قائمة التنقل" aria-expanded="false">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
             </div>
         </div>
     </header>
 
-    <section id="home" class="hero-banner">
-        <div class="container hero-wrapper">
-            <div class="banner-content">
-                <h1 class="hero-title">تجربة <span>نظافة</span> استثنائية</h1>
-                <p>خدمات تنظيف احترافية للمنازل العصرية. دقة وإتقان يمكنك الوثوق بهما.</p>
-                <div class="banner-buttons">
-                    <a href="#services" class="btn-primary" role="button">خدماتنا</a>
-                    <a href="#contact" class="btn-outline" role="button">احجز الآن ✨</a>
-                </div>
-            </div>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-menu" id="mobileMenu">
+        <button class="menu-close" id="menuClose"><i class="fas fa-times"></i></button>
+        <a href="index.html">English</a>
+        <a href="#home">الرئيسية</a>
+        <a href="#services">خدماتنا</a>
+    </nav>
 
-            <div class="calc-card">
-                <h2>حاسبة التكلفة</h2>
-                <div class="form-group">
-                    <label for="inputArea">المساحة (متر مربع)</label>
-                    <input type="number" id="inputArea" placeholder="مثلاً: 120">
+    <main class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">تجربة نظافة استثنائية</h1>
+            <p class="hero-subtitle">نظام ذكي متكامل مصمم لتقديم أرقى خدمات التنظيف الاحترافية.</p>
+            
+            <div class="calc-card glass">
+                <h3>خاصية التكلفة</h3>
+                <label>المساحة م2 (متر مربع)</label>
+                <input type="number" id="areaInput" value="120" min="1">
+                <div class="price-box">
+                    <small>التكلفة التقديرية</small>
+                    <h2 id="totalPrice">600 ريال</h2>
                 </div>
-                <div class="price-result">
-                    <p>التكلفة التقديرية</p>
-                    <div id="priceDisplay">0 ريال</div> 
-                </div>
-                
-                <div class="policy-check" style="margin-bottom: 15px; display: flex; gap: 8px; align-items: center;">
-                    <input type="checkbox" id="acceptPolicy">
-                    <label for="acceptPolicy" style="font-size: 0.8rem; color: var(--text-muted);">
-                        أوافق على سياسة الخدمة والشروط.
-                    </label>
-                </div>
-
-                <a href="#contact" class="btn-checkout" id="checkoutBtn" style="display: block; text-align: center; text-decoration: none;" role="button">تأكيد الحجز ✨</a>
+                <button class="order-btn" id="orderBtn">اطلب الآن</button>
             </div>
         </div>
-    </section>
+    </main>
 
-    <section id="services" class="section-padding">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-                <h2><span>خدماتنا</span> المتميزة</h2>
-            </div>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <i class="fas fa-home" aria-hidden="true"></i>
-                    <h3>تنظيف سكني</h3>
-                    <p>تنظيف وتعقيم شامل لجميع مرافق المنزل.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-building" aria-hidden="true"></i>
-                    <h3>تنظيف مكاتب</h3>
-                    <p>بيئة عمل صحية ومنظمة لفريق عملك.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-broom" aria-hidden="true"></i>
-                    <h3>تنظيف عميق</h3>
-                    <p>الوصول إلى أصعب الزوايا والأماكن المخفية.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="results" class="section-padding" style="background: var(--card-bg);">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-                <h2>قبل <span>وبعد</span></h2>
-            </div>
-            <div class="results-display">
-                <div class="results-card">
-                    <img src="assets/images/results.webp" alt="نتائج تنظيف الحمام قبل وبعد">
-                    <div style="padding: 15px; text-align: center; font-weight: bold;">تنظيف عميق للحمامات</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonials" class="section-padding" style="background: var(--bg-color);">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-                <h2>ماذا يقول <span>عملاؤنا؟</span></h2>
-                <p style="max-width: 600px; margin: 0 auto;">آراء حقيقية من عملائنا السعداء بالخدمة.</p>
-            </div>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div style="color: #ff9800; margin-bottom: 10px;">⭐⭐⭐⭐⭐</div>
-                    <p style="font-style: italic;">"خدمة رائعة! حاسبة التكلفة كانت دقيقة جداً والفريق محترف للغاية."</p>
-                    <h3 style="margin-top: 15px; color: var(--primary); font-size: 1.17em; font-weight: bold;">سارة الجاسم</h3>
-                </div>
-                <div class="feature-card">
-                    <div style="color: #ff9800; margin-bottom: 10px;">⭐⭐⭐⭐⭐</div>
-                    <p style="font-style: italic;">"أفضل شركة تنظيف تعاملت معها على الإطلاق. منزلي يلمع الآن!"</p>
-                    <h3 style="margin-top: 15px; color: var(--primary); font-size: 1.17em; font-weight: bold;">أحمد كمال</h3>
-                </div>
-                <div class="feature-card">
-                    <div style="color: #ff9800; margin-bottom: 10px;">⭐⭐⭐⭐⭐</div>
-                    <p style="font-style: italic;">"حجز سريع عبر الواتساب وخدمة تنظيف عميق ممتازة. أنصح بهم بشدة!"</p>
-                    <h3 style="margin-top: 15px; color: var(--primary); font-size: 1.17em; font-weight: bold;">منى السعد</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="section-padding" style="background: var(--card-bg);">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-                <h2>لماذا تختار <span>سباركل كلين؟</span></h2>
-                <p style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--text-muted);">نحن نجمع بين الخبرة المهنية والمواد الصديقة للبيئة لضمان بيئة آمنة ونظيفة تماماً.</p>
-            </div>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <i class="fas fa-leaf" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
-                    <h3>مواد آمنة</h3>
-                    <p>منظفات صديقة للبيئة وآمنة على العائلة والأليفة.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-user-shield" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
-                    <h3>فريق موثوق</h3>
-                    <p>كوادر مدربة ومفحوصة لضمان أعلى مستويات الأمان.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-clock" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
-                    <h3>توفير الوقت</h3>
-                    <p>استمتع بوقتك ودع مهام التنظيف الشاقة لنا.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section-padding" style="background: var(--bg-color);">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-                <h2>تواصل <span>معنا</span></h2>
-            </div>
-            <div class="contact-wrapper" style="text-align: center;">
-                <p>هل أنت مستعد لمنزل أكثر نظافة؟ تواصل معنا عبر الواتساب للحصول على عرض سعر مخصص.</p>
-                <a href="https://wa.me/966500000000" class="btn-primary" style="display:inline-block; margin-top:20px; text-decoration:none; width: auto; padding: 12px 40px;" role="button">تحدث معنا عبر الواتساب</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="main-footer">
-        <div class="container" style="text-align: center; padding: 40px 0;">
-            <p>&copy; 2026 سباركل كلين. صُمم بكل <span style="color:red;">❤️</span> </p>
-        </div>
-    </footer>
-
-    <a href="https://wa.me/966500000000" class="whatsapp-float" aria-label="تواصل معنا عبر الواتساب">
-        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    <a href="#" class="whatsapp-float" id="whatsappLink" target="_blank">
+        <i class="fab fa-whatsapp"></i>
     </a>
-
-    <button id="backToTop" class="back-to-top" aria-label="الرجوع للأعلى">
-        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
     </button>
 
     <script src="assets/js/main.js"></script>

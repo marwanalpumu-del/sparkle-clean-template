@@ -3,122 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SparkleClean | نظام حجز خدمات التنظيف الذكي</title>
     
-    <title>SparkleClean | نظام حجز خدمات التنظيف الذكي في الخليج</title>
-    <meta name="description" content="سباركل كلين - حلول تنظيف احترافية في السعودية، الإمارات ودول الخليج. حاسبة أسعار ذكية وحجز فوري عبر واتساب.">
-    <meta name="keywords" content="تنظيف منازل, شركة تنظيف الرياض, تنظيف دبي, حاسبة تنظيف, SparkleClean, GCC Cleaning">
-    <meta name="author" content="SparkleClean Team">
-    <meta name="robots" content="index, follow">
-
-    <meta property="og:title" content="SparkleClean | نظام حجز خدمات التنظيف الذكي">
-    <meta property="og:description" content="احصل على تسعيرة فورية لتنظيف منزلك واحجز موعدك في ثوانٍ.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "SparkleClean Cleaning Service",
-      "serviceType": "Home Cleaning",
-      "areaServed": "GCC Countries",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": "SparkleClean",
-        "telephone": "+967739777381"
-      }
-    }
-    </script>
-
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <meta name="description" content="نظام حجز ذكي لشركات التنظيف في الخليج">
+    
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
     <header>
         <div class="container navbar">
             <a href="#" class="logo">
-                <div class="s-box">S</div>
-                <div>SPARKLE<span>CLEAN</span></div>
+                <div class="logo-icon">S</div>
+                <div class="logo-text">SPARKLE<span>CLEAN</span></div>
             </a>
-            <nav class="nav-menu" id="navMenu">
-                <a href="#home" id="m1">الرئيسية</a>
-                <a href="#results" id="m2">أعمالنا</a>
-                <button class="btn-ui-lang" onclick="toggleLang()" id="langBtn">English</button>
+            <nav class="nav-links">
+                <a href="#home">الرئيسية</a>
+                <a href="#results">أعمالنا</a>
+                <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon" id="tIcon"></i></button>
             </nav>
-            <div class="nav-controls">
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
-                    <i class="fas fa-moon" id="tIcon"></i>
-                </button>
-                <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-            </div>
         </div>
     </header>
 
     <main class="container">
         <section class="hero" id="home">
             <div class="hero-grid">
-                <div class="hero-text">
-                    <div class="trust-badge"><i class="fas fa-shield-check"></i> <span id="tTag">خدمة تنظيف بريميوم - معايير الخليج</span></div>
-                    <h1 class="hero-h1" id="hTitle">تجربة نظافة <br> تعكس رقيّ منزلك</h1>
-                    <p id="hDesc" class="hero-p">نظام ذكي يمنحك تسعيرة دقيقة في ثوانٍ مع فريق عمل محترف ومدرب.</p>
+                <div class="hero-info">
+                    <h1 class="hero-title">نظافة منزلك <br> تعكس رقيّك</h1>
+                    <p class="hero-p">نظام ذكي متكامل لحساب التكلفة وحجز المواعيد الفورية لدول الخليج.</p>
                 </div>
 
                 <div class="calc-card">
-                    <h3 id="cTitle">حاسبة السعر والعملات</h3>
+                    <h3>حاسبة السعر والعملات</h3>
                     
-                    <label class="form-label" id="lArea">المساحة الإجمالية (متر مربع)</label>
-                    <input type="number" id="area" value="100" oninput="runEngine()" min="1">
-                    
-                    <label class="form-label" id="lCurr">اختر عملة دولتك</label>
-                    <select id="curr" onchange="runEngine()">
-                        <option value="SAR" data-rate="1">الريال السعودي (SAR)</option>
-                        <option value="AED" data-rate="0.98">الدرهم الإماراتي (AED)</option>
-                        <option value="KWD" data-rate="0.082">الدينار الكويتي (KWD)</option>
-                        <option value="QAR" data-rate="0.97">الريال القطري (QAR)</option>
-                        <option value="BHD" data-rate="0.10">الدينار البحريني (BHD)</option>
-                        <option value="OMR" data-rate="0.10">الريال العماني (OMR)</option>
-                        <option value="USD" data-rate="0.266">الدولار الأمريكي (USD)</option>
-                    </select>
-
-                    <div class="price-display-box">
-                        <span class="price-val" id="display">0 SAR</span>
+                    <div class="input-group">
+                        <label>المساحة الإجمالية (م2)</label>
+                        <input type="number" id="area" value="100" oninput="runEngine()">
                     </div>
 
-                    <div class="check-box-wrap">
+                    <div class="input-group">
+                        <label>اختر العملة المحلية</label>
+                        <select id="curr" onchange="runEngine()">
+                            <option value="SAR" data-rate="1">الريال السعودي (SAR)</option>
+                            <option value="AED" data-rate="0.98">الدرهم الإماراتي (AED)</option>
+                            <option value="KWD" data-rate="0.082">الدينار الكويتي (KWD)</option>
+                            <option value="QAR" data-rate="0.97">الريال القطري (QAR)</option>
+                            <option value="BHD" data-rate="0.10">الدينار البحريني (BHD)</option>
+                            <option value="OMR" data-rate="0.10">الريال العماني (OMR)</option>
+                            <option value="USD" data-rate="0.266">الدولار الأمريكي (USD)</option>
+                        </select>
+                    </div>
+
+                    <div class="price-box">
+                        <div class="price-tag" id="display">0 SAR</div>
+                    </div>
+
+                    <div class="check-box">
                         <input type="checkbox" id="agree" onchange="validate()">
-                        <label for="agree" id="agreeText">أوافق على سياسة الخدمة والسعر التقديري</label>
+                        <label for="agree">أوافق على سياسة الخدمة والسعر</label>
                     </div>
 
-                    <button class="btn-main-action" id="btnMain" onclick="goToWA()" disabled>
-                        <i class="fab fa-whatsapp"></i> <span id="bText1">حجز موعد عبر الواتساب</span>
+                    <button class="btn-primary" id="btnMain" onclick="goToWA()" disabled>
+                        <i class="fab fa-whatsapp"></i> حجز عبر واتساب
                     </button>
-                    <button class="btn-pdf-sub" onclick="generateQuote()" id="bText2">
-                        <i class="fas fa-file-invoice"></i> تحميل عرض السعر PDF
+                    <button class="btn-secondary" onclick="generateQuote()">
+                        <i class="fas fa-file-pdf"></i> تحميل فاتورة PDF
                     </button>
                 </div>
             </div>
         </section>
 
-        <section class="slider-section" id="results">
-            <h2 id="sTitle">جودة نضمنها بالنتائج</h2>
-            <div class="comparison-container">
-                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200" class="img-base" alt="Clean room after service">
-                <div class="img-overlay" id="beforeWrap">
-                    <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1200" alt="Dirty room before service">
+        <section class="comparison" id="results">
+            <h2>جودة نضمنها بالنتائج</h2>
+            <div class="slider-box">
+                <img src="assets/images/results.webp" class="img-after">
+                <div class="img-before" id="beforeWrap">
+                    <img src="assets/images/results.webp" style="filter: grayscale(100%) contrast(1.2);">
                 </div>
-                <input type="range" min="0" max="100" value="50" class="slider-control" id="scroller">
+                <input type="range" min="0" max="100" value="50" class="slider-ui" id="scroller">
                 <div class="slider-button" id="handle"><i class="fas fa-arrows-alt-h"></i></div>
             </div>
         </section>
     </main>
 
-    <a href="#" class="whatsapp-float" id="waFloat" aria-label="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="#" class="wa-float" id="waFloat"><i class="fab fa-whatsapp"></i></a>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="main.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

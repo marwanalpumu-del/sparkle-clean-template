@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparkleClean System</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Tajawal:wght@700;900&display=swap" rel="stylesheet">
+    <title>SparkleClean | Premium Smart System</title>
+    <meta name="description" content="Professional cleaning system with smart cost estimation and mobile-ready UI.">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -16,40 +18,53 @@
             <div class="brand-name">SPARKLE<span>CLEAN</span></div>
         </div>
         
-        <nav class="nav-menu">
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#results">Results</a>
-            <a href="#testimonials">Testimonials</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-            <span class="lang-switch">العربية</span>
-            <label class="switch">
-                <input type="checkbox" id="modeToggle">
-                <span class="slider"></span>
-            </label>
-        </nav>
-    </header>
-
-    <section id="home" class="main-banner">
-        <div class="overlay"></div>
-        <div class="content">
-            <h1 id="heroTitle">تجربة نظافة استثنائية</h1>
-            <p id="heroDesc">استمتع بمنزل نظيف تماماً مع خدمات احترافية تضمن لك الجودة والراحة التامة.</p>
-            <button class="btn-main">احجز الآن</button>
-            
-            <div class="calculator-box">
-                <h3 id="calcTitle">خاصية التكلفة</h3>
-                <p id="calcHint">المساحة م2 (متر مربع)</p>
-                <input type="number" id="areaInput" value="120">
-                <div class="result-box">
-                    <span id="resultLabel">التكلفة التقديرية</span>
-                    <h2 id="totalPrice">600 ريال</h2>
-                </div>
-                <button class="btn-submit">اطلب الآن</button>
+        <div class="header-actions">
+            <nav class="desktop-nav">
+                <a href="index-ar.html" class="lang-link">العربية</a>
+                <label class="theme-switch">
+                    <input type="checkbox" id="modeToggle">
+                    <span class="slider"></span>
+                </label>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
             </div>
         </div>
-    </section>
+    </header>
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-menu" id="mobileMenu">
+        <button class="menu-close" id="menuClose"><i class="fas fa-times"></i></button>
+        <a href="index-ar.html">العربية</a>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+    </nav>
+
+    <main class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Exceptional Cleaning</h1>
+            <p class="hero-subtitle">Modern smart system designed for elite cleaning services.</p>
+            
+            <div class="calc-card glass">
+                <h3>Cost Estimator</h3>
+                <label>Area (sqm)</label>
+                <input type="number" id="areaInput" value="120" min="1">
+                <div class="price-box">
+                    <small>Estimated Price</small>
+                    <h2 id="totalPrice">600 SAR</h2>
+                </div>
+                <button class="order-btn" id="orderBtn">Book Now</button>
+            </div>
+        </div>
+    </main>
+
+    <a href="#" class="whatsapp-float" id="whatsappLink" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
     <script src="assets/js/main.js"></script>
 </body>

@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparkleClean | Premium Smart System</title>
-    <meta name="description" content="Professional cleaning system with smart cost estimation and mobile-ready UI.">
+    <title>SparkleClean | Elite Smart System</title>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -17,7 +16,6 @@
             <div class="s-box">S</div>
             <div class="brand-name">SPARKLE<span>CLEAN</span></div>
         </div>
-        
         <div class="header-actions">
             <nav class="desktop-nav">
                 <a href="index-ar.html" class="lang-link">العربية</a>
@@ -35,20 +33,20 @@
     <div class="mobile-overlay" id="mobileOverlay"></div>
     <nav class="mobile-menu" id="mobileMenu">
         <button class="menu-close" id="menuClose"><i class="fas fa-times"></i></button>
-        <a href="index-ar.html">العربية</a>
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
+        <a href="index-ar.html" style="color: var(--primary);">العربية</a>
+        <a href="index.html">Home</a>
+        <a href="success.html">Booking Status</a>
+        <a href="404.html">Support</a>
     </nav>
 
     <main class="hero-section">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title">Exceptional Cleaning</h1>
-            <p class="hero-subtitle">Modern smart system designed for elite cleaning services.</p>
+            <h1 class="hero-title">Elite Experience</h1>
+            <p class="hero-subtitle">Premium smart cleaning for luxury modern homes.</p>
             
             <div class="calc-card glass">
                 <h3>Cost Estimator</h3>
-                <label>Area (sqm)</label>
                 <input type="number" id="areaInput" value="120" min="1">
                 <div class="price-box">
                     <small>Estimated Price</small>
@@ -56,15 +54,24 @@
                 </div>
                 <button class="order-btn" id="orderBtn">Book Now</button>
             </div>
+
+            <div class="comparison-container glass">
+                <div class="image-wrapper">
+                    <img src="assets/images/after.webp" alt="After">
+                    <div class="before-overlay">
+                        <img src="assets/images/before.webp" alt="Before">
+                    </div>
+                    <input type="range" min="0" max="100" value="50" class="slider-bar" id="comparisonSlider">
+                    <div class="slider-button"></div>
+                </div>
+            </div>
         </div>
     </main>
 
-    <a href="#" class="whatsapp-float" id="whatsappLink" target="_blank">
+    <a href="#" class="whatsapp-btn whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
-    <button id="backToTop" class="back-to-top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+    <button id="backToTop" class="back-to-top"><i class="fas fa-chevron-up"></i></button>
 
     <script src="assets/js/main.js"></script>
 </body>

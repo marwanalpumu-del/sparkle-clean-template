@@ -1,44 +1,49 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. القائمة (الهمبرجر)
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    hamburger.onclick = () => navLinks.classList.toggle('active');
+const translations = {
+    ar: {
+        home: "الرئيسية", services: "خدماتنا", results: "النتائج", contact: "تواصل معنا",
+        heroTitle: "تجربة نظافة استثنائية", heroDesc: "نظام ذكي يجمع بين الدقة التكنولوجية والرفاهية العصرية.",
+        servicesTitle: "خدماتنا المتميزة", srvHome: "تنظيف منازل", srvOffice: "تنظيف مكاتب", srvWindow: "تنظيف نوافذ", srvDeep: "تنظيف عميق",
+        contactTitle: "تواصل معنا", contactSub: "نحن هنا لخدمتكم", contactDesc: "فريقنا جاهز للرد على استفساراتكم.",
+        formName: "الاسم الكامل", formEmail: "البريد الإلكتروني", formMsg: "رسالتك...", formBtn: "إرسال الرسالة",
+        calcTitle: "حاسبة التكلفة الذكية", bookBtn: "احجز الآن", langBtn: "English"
+    },
+    en: {
+        home: "Home", services: "Services", results: "Results", contact: "Contact",
+        heroTitle: "Premium Cleaning Experience", heroDesc: "Smart system combining technical precision with modern luxury.",
+        servicesTitle: "Our Premium Services", srvHome: "House Cleaning", srvOffice: "Office Cleaning", srvWindow: "Window Cleaning", srvDeep: "Deep Cleaning",
+        contactTitle: "Contact Us", contactSub: "We Are Here For You", contactDesc: "Our team is ready to answer your inquiries.",
+        formName: "Full Name", formEmail: "Email", formMsg: "Message...", formBtn: "Send Message",
+        calcTitle: "Smart Price Estimator", bookBtn: "Book Now", langBtn: "العربية"
+    }
+};
 
-    // 2. سهم العودة للأعلى
-    const btt = document.getElementById('backToTop');
-    window.onscroll = () => btt.style.display = window.scrollY > 400 ? 'block' : 'none';
-    btt.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+let currentLang = 'ar';
 
-    // 3. الحاسبة والعملات
-    const areaInput = document.getElementById('inputArea');
-    const currSelect = document.getElementById('currencySelect');
-    const priceOut = document.getElementById('priceDisplay');
-    const checkBtn = document.getElementById('checkoutBtn');
-    const policy = document.getElementById('acceptPolicy');
+// وظيفة الترجمة
+document.getElementById('langToggle').onclick = function() {
+    currentLang = currentLang === 'ar' ? 'en' : 'ar';
+    document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+    
+    document.getElementById('lnk-home').innerText = translations[currentLang].home;
+    document.getElementById('lnk-services').innerText = translations[currentLang].services;
+    document.getElementById('lnk-results').innerText = translations[currentLang].results;
+    document.getElementById('lnk-contact').innerText = translations[currentLang].contact;
+    document.getElementById('hero-title').innerText = translations[currentLang].heroTitle;
+    document.getElementById('hero-desc').innerText = translations[currentLang].heroDesc;
+    document.getElementById('services-title').innerText = translations[currentLang].servicesTitle;
+    document.getElementById('srv-home').innerText = translations[currentLang].srvHome;
+    document.getElementById('srv-office').innerText = translations[currentLang].srvOffice;
+    document.getElementById('srv-window').innerText = translations[currentLang].srvWindow;
+    document.getElementById('srv-deep').innerText = translations[currentLang].srvDeep;
+    document.getElementById('contact-title').innerText = translations[currentLang].contactTitle;
+    document.getElementById('form-name').placeholder = translations[currentLang].formName;
+    document.getElementById('form-btn').innerText = translations[currentLang].formBtn;
+    this.innerText = translations[currentLang].langBtn;
+};
 
-    const updatePrice = () => {
-        const area = parseFloat(areaInput.value) || 0;
-        const opt = currSelect.options[currSelect.selectedIndex];
-        const rate = parseFloat(opt.getAttribute('data-rate'));
-        const symbol = opt.getAttribute('data-symbol');
-        
-        const total = area * 5 * rate; // 5 هو السعر الافتراضي
-        priceOut.innerText = `${Math.ceil(total).toLocaleString()} ${symbol}`;
-
-        if (policy.checked && area > 0) {
-            checkBtn.classList.remove('btn-disabled');
-            checkBtn.href = `https://wa.me/967739777381?text=طلب حجز بمساحة ${area}م`;
-        } else {
-            checkBtn.classList.add('btn-disabled');
-        }
-    };
-
-    areaInput.oninput = updatePrice;
-    currSelect.onchange = updatePrice;
-    policy.onchange = updatePrice;
-
-    // 4. السلايدر (قبل وبعد)
-    const slider = document.getElementById('comparisonSlider');
-    const before = document.querySelector('.before-overlay');
-    if(slider) slider.oninput = (e) => before.style.width = (100 - e.target.value) + '%';
-});
+// الدارك مود
+document.getElementById('themeToggle').onclick = function() {
+    const theme = document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.body.setAttribute('data-theme', theme);
+    this.innerHTML = theme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+};
